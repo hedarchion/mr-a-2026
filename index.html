@@ -11,9 +11,17 @@
       .wrap { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
       header h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.04em; margin: 0 0 .4rem; }
       header p { margin: 0; color: #52657d; max-width: 60ch; }
-      .rule-waves { position: fixed; inset: 0; z-index: 0; overflow: hidden; color: #1f5f9e; opacity: .18; pointer-events: none; user-select: none; animation: rule-colour 48s linear infinite alternate; }
+      .rule-waves { position: fixed; inset: 0; z-index: 0; overflow: hidden; opacity: .18; pointer-events: auto; user-select: none; }
       .rule-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-      .rule-ring { transform-box: fill-box; transform-origin: center; animation: ring-spin var(--dur, 120s) linear infinite; animation-direction: var(--dir, normal); animation-delay: var(--delay, 0s); }
+      .rule-ring { transform-box: fill-box; transform-origin: center; will-change: transform; animation: ring-spin var(--dur, 120s) linear infinite; animation-direction: var(--dir, normal); animation-delay: var(--delay, 0s); }
+      .rule-breathe { transform-box: fill-box; transform-origin: center; will-change: transform; animation: breathe var(--bdur, 40s) ease-in-out infinite alternate; animation-delay: var(--bdelay, 0s); }
+      @font-face {
+        font-family: 'Manufacturing Consent';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('assets/manufacturing-consent-latin.woff2') format('woff2');
+      }
       @font-face {
         font-family: 'Inter';
         font-style: normal;
@@ -21,14 +29,10 @@
         font-display: swap;
         src: url('assets/inter-900-latin.woff2') format('woff2');
       }
-      .rule-ring text { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 900; letter-spacing: normal; fill: currentColor; }
+      .rule-ring text { font-family: 'Manufacturing Consent', 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 400; letter-spacing: normal; fill: currentColor; }
       @keyframes ring-spin { to { transform: rotate(360deg); } }
-      @keyframes rule-colour {
-        0%, 24% { color: #1f5f9e; }
-        26%, 49% { color: #087f8c; }
-        51%, 74% { color: #7048a8; }
-        76%, 100% { color: #a85b00; }
-      }
+      @keyframes breathe { from { transform: scale(.985); } to { transform: scale(1.015); } }
+      .rule-waves:hover .rule-ring, .rule-waves:hover .rule-breathe { animation-play-state: paused; }
       .filters { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1.75rem 0 1rem; }
       .filters select {
         appearance: none; -webkit-appearance: none; font: inherit; color: inherit; background-color: #fff;
@@ -62,7 +66,7 @@
       .empty { padding: 2.5rem 1rem; text-align: center; color: #52657d; background: #fff; border: 1px dashed #c9d6e4; border-radius: .9rem; }
       .reset { display: none; font: inherit; font-size: .85rem; background: #fff; border: 1px solid #c9d6e4; border-radius: .55rem; padding: .45rem .7rem; color: #1f5f9e; cursor: pointer; }
       .reset:hover { background: #eef4fb; }
-      @media (prefers-reduced-motion: reduce) { .rule-ring, .rule-waves { animation: none; } .rule-waves { color: #1f5f9e; } }
+      @media (prefers-reduced-motion: reduce) { .rule-ring, .rule-breathe { animation: none; } }
     </style>
   </head>
   <body>
@@ -90,45 +94,65 @@
 
     <div class="rule-waves" aria-hidden="true">
       <svg class="rule-svg" viewBox="0 0 1366 768" preserveAspectRatio="xMidYMid meet" role="presentation">
-        <g class="rule-ring" style="--dur: 132s; --dir: normal; --delay: -13s;">
-          <path id="rule-ring-1" d="M 583 384 a 100 100 0 1 0 200 0 a 100 100 0 1 0 -200 0" fill="none" />
-          <text font-size="19"><textPath href="#rule-ring-1" textLength="628">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        <g class="rule-ring" style="--dur: 60s; --dir: normal; --delay: -5s; opacity: 0.6; color: #0a8f8c;">
+          <g class="rule-breathe" style="--bdur: 34s; --bdelay: -2s;">
+            <path id="rule-ring-1" d="M 583.0 384.0 a 100 100 0 1 0 200.0 0.0 a 100 100 0 1 0 -200.0 0.0" fill="none" />
+            <text font-size="24"><textPath href="#rule-ring-1" textLength="628">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+          </g>
         </g>
-        <g class="rule-ring" style="--dur: 96s; --dir: reverse; --delay: -41s;">
-          <path id="rule-ring-2" d="M 533 384 a 150 150 0 1 0 300 0 a 150 150 0 1 0 -300 0" fill="none" />
-          <text font-size="27"><textPath href="#rule-ring-2" textLength="942">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        <g class="rule-ring" style="--dur: 68s; --dir: reverse; --delay: -14s; opacity: 0.64; color: #1680a8;">
+          <g class="rule-breathe" style="--bdur: 42s; --bdelay: -11s;">
+            <path id="rule-ring-2" d="M 585.9 313.5 a 120 120 0 1 0 194.2 141.1 a 120 120 0 1 0 -194.2 -141.1" fill="none" />
+            <text font-size="29"><textPath href="#rule-ring-2" textLength="754">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+          </g>
         </g>
-        <g class="rule-ring" style="--dur: 120s; --dir: normal; --delay: -27s;">
-          <path id="rule-ring-3" d="M 483 384 a 200 200 0 1 0 400 0 a 200 200 0 1 0 -400 0" fill="none" />
-          <text font-size="34"><textPath href="#rule-ring-3" textLength="1257">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        <g class="rule-ring" style="--dur: 76s; --dir: normal; --delay: -23s; opacity: 0.68; color: #1f6fb0;">
+          <g class="rule-breathe" style="--bdur: 29s; --bdelay: -5s;">
+            <path id="rule-ring-3" d="M 638.5 247.0 a 144 144 0 1 0 89.0 273.9 a 144 144 0 1 0 -89.0 -273.9" fill="none" />
+            <text font-size="35"><textPath href="#rule-ring-3" textLength="905">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+          </g>
         </g>
-        <g class="rule-ring" style="--dur: 84s; --dir: reverse; --delay: -59s;">
-          <path id="rule-ring-4" d="M 433 384 a 250 250 0 1 0 500 0 a 250 250 0 1 0 -500 0" fill="none" />
-          <text font-size="41"><textPath href="#rule-ring-4" textLength="1571">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        <g class="rule-ring" style="--dur: 84s; --dir: reverse; --delay: -32s; opacity: 0.72; color: #3363bc;">
+          <g class="rule-breathe" style="--bdur: 38s; --bdelay: -17s;">
+            <path id="rule-ring-4" d="M 736.5 219.5 a 173 173 0 1 0 -106.9 329.1 a 173 173 0 1 0 106.9 -329.1" fill="none" />
+            <text font-size="42"><textPath href="#rule-ring-4" textLength="1087">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+          </g>
         </g>
-        <g class="rule-ring" style="--dur: 108s; --dir: normal; --delay: -8s;">
-          <path id="rule-ring-5" d="M 383 384 a 300 300 0 1 0 600 0 a 300 300 0 1 0 -600 0" fill="none" />
-          <text font-size="47"><textPath href="#rule-ring-5" textLength="1885">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        <g class="rule-ring" style="--dur: 92s; --dir: normal; --delay: -41s; opacity: 0.76; color: #4d55c4;">
+          <g class="rule-breathe" style="--bdur: 46s; --bdelay: -8s;">
+            <path id="rule-ring-5" d="M 850.5 262.3 a 207 207 0 1 0 -334.9 243.3 a 207 207 0 1 0 334.9 -243.3" fill="none" />
+            <text font-size="50"><textPath href="#rule-ring-5" textLength="1301">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+          </g>
         </g>
-        <g class="rule-ring" style="--dur: 72s; --dir: reverse; --delay: -47s;">
-          <path id="rule-ring-6" d="M 333 384 a 350 350 0 1 0 700 0 a 350 350 0 1 0 -700 0" fill="none" />
-          <text font-size="52"><textPath href="#rule-ring-6" textLength="2199">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        <g class="rule-ring" style="--dur: 100s; --dir: reverse; --delay: -50s; opacity: 0.8; color: #6a4cc8;">
+          <g class="rule-breathe" style="--bdur: 33s; --bdelay: -21s;">
+            <path id="rule-ring-6" d="M 932.0 384.0 a 249 249 0 1 0 -498.0 0.0 a 249 249 0 1 0 498.0 -0.0" fill="none" />
+            <text font-size="60"><textPath href="#rule-ring-6" textLength="1565">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+          </g>
         </g>
-        <g class="rule-ring" style="--dur: 90s; --dir: normal; --delay: -33s;">
-          <path id="rule-ring-7" d="M 283 384 a 400 400 0 1 0 800 0 a 400 400 0 1 0 -800 0" fill="none" />
-          <text font-size="56"><textPath href="#rule-ring-7" textLength="2513">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        <g class="rule-ring" style="--dur: 108s; --dir: normal; --delay: -59s; opacity: 0.84; color: #8a44c4;">
+          <g class="rule-breathe" style="--bdur: 40s; --bdelay: -3s;">
+            <path id="rule-ring-7" d="M 924.9 559.7 a 299 299 0 1 0 -483.8 -351.5 a 299 299 0 1 0 483.8 351.5" fill="none" />
+            <text font-size="72"><textPath href="#rule-ring-7" textLength="1879">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+          </g>
         </g>
-        <g class="rule-ring" style="--dur: 126s; --dir: reverse; --delay: -21s;">
-          <path id="rule-ring-8" d="M 233 384 a 450 450 0 1 0 900 0 a 450 450 0 1 0 -900 0" fill="none" />
-          <text font-size="60"><textPath href="#rule-ring-8" textLength="2827">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        <g class="rule-ring" style="--dur: 116s; --dir: reverse; --delay: -68s; opacity: 0.88; color: #a644ae;">
+          <g class="rule-breathe" style="--bdur: 48s; --bdelay: -14s;">
+            <path id="rule-ring-8" d="M 793.6 724.5 a 358 358 0 1 0 -221.3 -681.0 a 358 358 0 1 0 221.3 681.0" fill="none" />
+            <text font-size="86"><textPath href="#rule-ring-8" textLength="2249">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+          </g>
         </g>
-        <g class="rule-ring" style="--dur: 102s; --dir: normal; --delay: -55s;">
-          <path id="rule-ring-9" d="M 183 384 a 500 500 0 1 0 1000 0 a 500 500 0 1 0 -1000 0" fill="none" />
-          <text font-size="63"><textPath href="#rule-ring-9" textLength="3142">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        <g class="rule-ring" style="--dur: 124s; --dir: normal; --delay: -77s; opacity: 0.92; color: #bf4d8c;">
+          <g class="rule-breathe" style="--bdur: 36s; --bdelay: -25s;">
+            <path id="rule-ring-9" d="M 550.1 793.0 a 430 430 0 1 0 265.8 -817.9 a 430 430 0 1 0 -265.8 817.9" fill="none" />
+            <text font-size="103"><textPath href="#rule-ring-9" textLength="2702">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+          </g>
         </g>
-        <g class="rule-ring" style="--dur: 78s; --dir: reverse; --delay: -64s;">
-          <path id="rule-ring-10" d="M 133 384 a 550 550 0 1 0 1100 0 a 550 550 0 1 0 -1100 0" fill="none" />
-          <text font-size="66"><textPath href="#rule-ring-10" textLength="3456">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        <g class="rule-ring" style="--dur: 132s; --dir: reverse; --delay: -86s; opacity: 0.96; color: #cf6a3f;">
+          <g class="rule-breathe" style="--bdur: 44s; --bdelay: -7s;">
+            <path id="rule-ring-10" d="M 265.5 687.3 a 516 516 0 1 0 834.9 -606.6 a 516 516 0 1 0 -834.9 606.6" fill="none" />
+            <text font-size="124"><textPath href="#rule-ring-10" textLength="3242">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+          </g>
         </g>
       </svg>
     </div>

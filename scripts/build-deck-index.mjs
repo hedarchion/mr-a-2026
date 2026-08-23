@@ -112,31 +112,55 @@ const days = [...new Set(lessons.map((l) => l.day))].sort(
 const json = JSON.stringify(lessons).replace(/</g, '\\u003c');
 const meta = JSON.stringify({ classes, weeks, days, generated: new Date().toISOString().slice(0, 10) }).replace(/</g, '\\u003c');
 
-// Concentric rings of curved text (SVG textPath) in Inter Black (900). Ten rings,
-// tight gaps (50px), normal character spacing, SMOOTH CONTINUOUS rings: each ring
-// carries the phrase once and textLength stretches it to close the full loop with
-// no repetition and no mid-word seam cut.
+// Concentric rings of curved text (SVG textPath) in Inter Black (900).
+// Typography-driven layout: radii grow geometrically (~20% per ring) and each
+// ring's font size is derived from its circumference, so the phrase fills every
+// ring at ~100% with natural character spacing (no stretch, no gaps, no repeats).
+// Each ring has its own hue (teal -> amber across radii), opacity (inner fainter,
+// outer crisper = the hero ring), geared speed (inner fast, outer slow), staggered
+// phrase start angle, and a slow "breath" scale. Hover pauses the spin.
 const RULE_PHRASE = 'First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking';
 const RING_CX = 683;
 const RING_CY = 384;
+// Natural advance of the phrase in Manufacturing Consent, measured in-page
+// (plain text, straight path, and circle all agree): ~20.9em (58 chars).
+// Ascent ~0.92em / descent ~0.28em; on the counter-clockwise arcs the glyph
+// bodies hang inward from the circle, so deep descenders/ligature tails stay
+// inside the ring band and never poke outward past the ring radius.
+const RULE_PHRASE_EM = 20.9;
+// Manufacturing Consent has tall glyphs (~1.2em total, mostly hanging inward),
+// so fonts sized for 100% fill would make neighbouring rings' text bands
+// interleave into one mass (measured overlap up to ~56px on the outer rings).
+// Backing the fill target off to 80% keeps every ring a closed loop while
+// shrinking the bands so adjacent rings only kiss (~2-28px, like the Inter
+// layout that was well received).
+const RULE_FILL_TARGET = 0.8;
 const ruleRingsMarkup = [
-  { r: 100, fs: 19, dur: 132, dir: 'normal', delay: 13 },
-  { r: 150, fs: 27, dur: 96, dir: 'reverse', delay: 41 },
-  { r: 200, fs: 34, dur: 120, dir: 'normal', delay: 27 },
-  { r: 250, fs: 41, dur: 84, dir: 'reverse', delay: 59 },
-  { r: 300, fs: 47, dur: 108, dir: 'normal', delay: 8 },
-  { r: 350, fs: 52, dur: 72, dir: 'reverse', delay: 47 },
-  { r: 400, fs: 56, dur: 90, dir: 'normal', delay: 33 },
-  { r: 450, fs: 60, dur: 126, dir: 'reverse', delay: 21 },
-  { r: 500, fs: 63, dur: 102, dir: 'normal', delay: 55 },
-  { r: 550, fs: 66, dur: 78, dir: 'reverse', delay: 64 },
+  { r: 100, dur: 60,  dir: 'normal',  delay: 5,  bdur: 34, bdelay: 2,  color: '#0a8f8c', op: 0.6 },
+  { r: 120, dur: 68,  dir: 'reverse', delay: 14, bdur: 42, bdelay: 11, color: '#1680a8', op: 0.64 },
+  { r: 144, dur: 76,  dir: 'normal',  delay: 23, bdur: 29, bdelay: 5,  color: '#1f6fb0', op: 0.68 },
+  { r: 173, dur: 84,  dir: 'reverse', delay: 32, bdur: 38, bdelay: 17, color: '#3363bc', op: 0.72 },
+  { r: 207, dur: 92,  dir: 'normal',  delay: 41, bdur: 46, bdelay: 8,  color: '#4d55c4', op: 0.76 },
+  { r: 249, dur: 100, dir: 'reverse', delay: 50, bdur: 33, bdelay: 21, color: '#6a4cc8', op: 0.8 },
+  { r: 299, dur: 108, dir: 'normal',  delay: 59, bdur: 40, bdelay: 3,  color: '#8a44c4', op: 0.84 },
+  { r: 358, dur: 116, dir: 'reverse', delay: 68, bdur: 48, bdelay: 14, color: '#a644ae', op: 0.88 },
+  { r: 430, dur: 124, dir: 'normal',  delay: 77, bdur: 36, bdelay: 25, color: '#bf4d8c', op: 0.92 },
+  { r: 516, dur: 132, dir: 'reverse', delay: 86, bdur: 44, bdelay: 7,  color: '#cf6a3f', op: 0.96 },
 ].map((ring, i) => {
   const circ = 2 * Math.PI * ring.r;
-  const text = RULE_PHRASE;
-  const d = `M ${RING_CX - ring.r} ${RING_CY} a ${ring.r} ${ring.r} 0 1 0 ${2 * ring.r} 0 a ${ring.r} ${ring.r} 0 1 0 ${-2 * ring.r} 0`;
-  return `        <g class="rule-ring" style="--dur: ${ring.dur}s; --dir: ${ring.dir}; --delay: -${ring.delay}s;">
-          <path id="rule-ring-${i + 1}" d="${d}" fill="none" />
-          <text font-size="${ring.fs}"><textPath href="#rule-ring-${i + 1}" textLength="${Math.round(circ)}">${text}</textPath></text>
+  const fs = Math.round((circ * RULE_FILL_TARGET) / RULE_PHRASE_EM); // font sized so the phrase ~fills the ring
+  // Staggered path start so the phrase begins at a different angle on every ring.
+  const a = ((180 + i * 36) * Math.PI) / 180;
+  const x1 = RING_CX + ring.r * Math.cos(a);
+  const y1 = RING_CY + ring.r * Math.sin(a);
+  const x2 = RING_CX - ring.r * Math.cos(a);
+  const y2 = RING_CY - ring.r * Math.sin(a);
+  const d = `M ${x1.toFixed(1)} ${y1.toFixed(1)} a ${ring.r} ${ring.r} 0 1 0 ${(x2 - x1).toFixed(1)} ${(y2 - y1).toFixed(1)} a ${ring.r} ${ring.r} 0 1 0 ${(x1 - x2).toFixed(1)} ${(y1 - y2).toFixed(1)}`;
+  return `        <g class="rule-ring" style="--dur: ${ring.dur}s; --dir: ${ring.dir}; --delay: -${ring.delay}s; opacity: ${ring.op}; color: ${ring.color};">
+          <g class="rule-breathe" style="--bdur: ${ring.bdur}s; --bdelay: -${ring.bdelay}s;">
+            <path id="rule-ring-${i + 1}" d="${d}" fill="none" />
+            <text font-size="${fs}"><textPath href="#rule-ring-${i + 1}" textLength="${Math.round(circ)}">${RULE_PHRASE}</textPath></text>
+          </g>
         </g>`;
 }).join('\n');
 
@@ -153,9 +177,17 @@ const html = `<!doctype html>
       .wrap { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
       header h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.04em; margin: 0 0 .4rem; }
       header p { margin: 0; color: #52657d; max-width: 60ch; }
-      .rule-waves { position: fixed; inset: 0; z-index: 0; overflow: hidden; color: #1f5f9e; opacity: .18; pointer-events: none; user-select: none; animation: rule-colour 48s linear infinite alternate; }
+      .rule-waves { position: fixed; inset: 0; z-index: 0; overflow: hidden; opacity: .18; pointer-events: auto; user-select: none; }
       .rule-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-      .rule-ring { transform-box: fill-box; transform-origin: center; animation: ring-spin var(--dur, 120s) linear infinite; animation-direction: var(--dir, normal); animation-delay: var(--delay, 0s); }
+      .rule-ring { transform-box: fill-box; transform-origin: center; will-change: transform; animation: ring-spin var(--dur, 120s) linear infinite; animation-direction: var(--dir, normal); animation-delay: var(--delay, 0s); }
+      .rule-breathe { transform-box: fill-box; transform-origin: center; will-change: transform; animation: breathe var(--bdur, 40s) ease-in-out infinite alternate; animation-delay: var(--bdelay, 0s); }
+      @font-face {
+        font-family: 'Manufacturing Consent';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('assets/manufacturing-consent-latin.woff2') format('woff2');
+      }
       @font-face {
         font-family: 'Inter';
         font-style: normal;
@@ -163,14 +195,10 @@ const html = `<!doctype html>
         font-display: swap;
         src: url('assets/inter-900-latin.woff2') format('woff2');
       }
-      .rule-ring text { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 900; letter-spacing: normal; fill: currentColor; }
+      .rule-ring text { font-family: 'Manufacturing Consent', 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 400; letter-spacing: normal; fill: currentColor; }
       @keyframes ring-spin { to { transform: rotate(360deg); } }
-      @keyframes rule-colour {
-        0%, 24% { color: #1f5f9e; }
-        26%, 49% { color: #087f8c; }
-        51%, 74% { color: #7048a8; }
-        76%, 100% { color: #a85b00; }
-      }
+      @keyframes breathe { from { transform: scale(.985); } to { transform: scale(1.015); } }
+      .rule-waves:hover .rule-ring, .rule-waves:hover .rule-breathe { animation-play-state: paused; }
       .filters { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1.75rem 0 1rem; }
       .filters select {
         appearance: none; -webkit-appearance: none; font: inherit; color: inherit; background-color: #fff;
@@ -204,7 +232,7 @@ const html = `<!doctype html>
       .empty { padding: 2.5rem 1rem; text-align: center; color: #52657d; background: #fff; border: 1px dashed #c9d6e4; border-radius: .9rem; }
       .reset { display: none; font: inherit; font-size: .85rem; background: #fff; border: 1px solid #c9d6e4; border-radius: .55rem; padding: .45rem .7rem; color: #1f5f9e; cursor: pointer; }
       .reset:hover { background: #eef4fb; }
-      @media (prefers-reduced-motion: reduce) { .rule-ring, .rule-waves { animation: none; } .rule-waves { color: #1f5f9e; } }
+      @media (prefers-reduced-motion: reduce) { .rule-ring, .rule-breathe { animation: none; } }
     </style>
   </head>
   <body>
