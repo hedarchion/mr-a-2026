@@ -11,20 +11,23 @@
       .wrap { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
       header h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.04em; margin: 0 0 .4rem; }
       header p { margin: 0; color: #52657d; max-width: 60ch; }
-      .rule-waves { position: fixed; inset: 0; z-index: 0; overflow: hidden; color: #1f5f9e; font-weight: 800; letter-spacing: -.075em; line-height: .73; opacity: .3; pointer-events: none; user-select: none; }
-      .rule-wave { position: absolute; display: block; width: max-content; white-space: nowrap; font-size: clamp(5rem, 14vw, 15rem); filter: blur(.25px); transform-origin: center; }
-      .rule-wave { animation: worm-rule 30s ease-in-out infinite alternate, worm-colour 30s linear infinite alternate; }
-      @keyframes worm-rule {
-        0% { transform: translate3d(-30vw, 6vh, 0) rotate(-15deg) skewX(-9deg); }
-        32% { transform: translate3d(-6vw, 26vh, 0) rotate(8deg) skewX(10deg); }
-        68% { transform: translate3d(-42vw, 59vh, 0) rotate(-7deg) skewX(-12deg); }
-        100% { transform: translate3d(-10vw, 82vh, 0) rotate(14deg) skewX(8deg); }
+      .rule-waves { position: fixed; inset: 0; z-index: 0; overflow: hidden; color: #1f5f9e; opacity: .18; pointer-events: none; user-select: none; animation: rule-colour 48s linear infinite alternate; }
+      .rule-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .rule-ring { transform-box: fill-box; transform-origin: center; animation: ring-spin var(--dur, 120s) linear infinite; animation-direction: var(--dir, normal); animation-delay: var(--delay, 0s); }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-display: swap;
+        src: url('assets/inter-900-latin.woff2') format('woff2');
       }
-      @keyframes worm-colour {
-        0%, 31% { color: #1f5f9e; }
-        33%, 67% { color: #087f8c; }
-        69%, 99% { color: #7048a8; }
-        100% { color: #a85b00; }
+      .rule-ring text { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 900; letter-spacing: normal; fill: currentColor; }
+      @keyframes ring-spin { to { transform: rotate(360deg); } }
+      @keyframes rule-colour {
+        0%, 24% { color: #1f5f9e; }
+        26%, 49% { color: #087f8c; }
+        51%, 74% { color: #7048a8; }
+        76%, 100% { color: #a85b00; }
       }
       .filters { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1.75rem 0 1rem; }
       .filters select {
@@ -59,7 +62,7 @@
       .empty { padding: 2.5rem 1rem; text-align: center; color: #52657d; background: #fff; border: 1px dashed #c9d6e4; border-radius: .9rem; }
       .reset { display: none; font: inherit; font-size: .85rem; background: #fff; border: 1px solid #c9d6e4; border-radius: .55rem; padding: .45rem .7rem; color: #1f5f9e; cursor: pointer; }
       .reset:hover { background: #eef4fb; }
-      @media (prefers-reduced-motion: reduce) { .rule-wave { animation: none; color: #1f5f9e; transform: translate3d(-24vw, 32vh, 0) rotate(-9deg); } }
+      @media (prefers-reduced-motion: reduce) { .rule-ring, .rule-waves { animation: none; } .rule-waves { color: #1f5f9e; } }
     </style>
   </head>
   <body>
@@ -86,11 +89,52 @@
     </main>
 
     <div class="rule-waves" aria-hidden="true">
-      <span class="rule-wave">First Rule of the Class is To Listen When I'm Speaking</span>
+      <svg class="rule-svg" viewBox="0 0 1366 768" preserveAspectRatio="xMidYMid meet" role="presentation">
+        <g class="rule-ring" style="--dur: 132s; --dir: normal; --delay: -13s;">
+          <path id="rule-ring-1" d="M 583 384 a 100 100 0 1 0 200 0 a 100 100 0 1 0 -200 0" fill="none" />
+          <text font-size="19"><textPath href="#rule-ring-1" textLength="628">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        </g>
+        <g class="rule-ring" style="--dur: 96s; --dir: reverse; --delay: -41s;">
+          <path id="rule-ring-2" d="M 533 384 a 150 150 0 1 0 300 0 a 150 150 0 1 0 -300 0" fill="none" />
+          <text font-size="27"><textPath href="#rule-ring-2" textLength="942">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        </g>
+        <g class="rule-ring" style="--dur: 120s; --dir: normal; --delay: -27s;">
+          <path id="rule-ring-3" d="M 483 384 a 200 200 0 1 0 400 0 a 200 200 0 1 0 -400 0" fill="none" />
+          <text font-size="34"><textPath href="#rule-ring-3" textLength="1257">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        </g>
+        <g class="rule-ring" style="--dur: 84s; --dir: reverse; --delay: -59s;">
+          <path id="rule-ring-4" d="M 433 384 a 250 250 0 1 0 500 0 a 250 250 0 1 0 -500 0" fill="none" />
+          <text font-size="41"><textPath href="#rule-ring-4" textLength="1571">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        </g>
+        <g class="rule-ring" style="--dur: 108s; --dir: normal; --delay: -8s;">
+          <path id="rule-ring-5" d="M 383 384 a 300 300 0 1 0 600 0 a 300 300 0 1 0 -600 0" fill="none" />
+          <text font-size="47"><textPath href="#rule-ring-5" textLength="1885">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        </g>
+        <g class="rule-ring" style="--dur: 72s; --dir: reverse; --delay: -47s;">
+          <path id="rule-ring-6" d="M 333 384 a 350 350 0 1 0 700 0 a 350 350 0 1 0 -700 0" fill="none" />
+          <text font-size="52"><textPath href="#rule-ring-6" textLength="2199">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        </g>
+        <g class="rule-ring" style="--dur: 90s; --dir: normal; --delay: -33s;">
+          <path id="rule-ring-7" d="M 283 384 a 400 400 0 1 0 800 0 a 400 400 0 1 0 -800 0" fill="none" />
+          <text font-size="56"><textPath href="#rule-ring-7" textLength="2513">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        </g>
+        <g class="rule-ring" style="--dur: 126s; --dir: reverse; --delay: -21s;">
+          <path id="rule-ring-8" d="M 233 384 a 450 450 0 1 0 900 0 a 450 450 0 1 0 -900 0" fill="none" />
+          <text font-size="60"><textPath href="#rule-ring-8" textLength="2827">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        </g>
+        <g class="rule-ring" style="--dur: 102s; --dir: normal; --delay: -55s;">
+          <path id="rule-ring-9" d="M 183 384 a 500 500 0 1 0 1000 0 a 500 500 0 1 0 -1000 0" fill="none" />
+          <text font-size="63"><textPath href="#rule-ring-9" textLength="3142">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        </g>
+        <g class="rule-ring" style="--dur: 78s; --dir: reverse; --delay: -64s;">
+          <path id="rule-ring-10" d="M 133 384 a 550 550 0 1 0 1100 0 a 550 550 0 1 0 -1100 0" fill="none" />
+          <text font-size="66"><textPath href="#rule-ring-10" textLength="3456">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
+        </g>
+      </svg>
     </div>
 
     <script type="application/json" id="deck-data">[{"class":"1M","classSlug":"class-1m","year":"2026","week":"29","date":"2026-08-21","day":"Friday","topic":"Responsible AI Competition Preparation","topicSlug":"responsible-ai-competition-prep","href":"decks/class-1m/2026/week-29/2026-08-21-responsible-ai-competition-prep/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"2E","classSlug":"class-2e","year":"2026","week":"29","date":"2026-08-20","day":"Thursday","topic":"Supermarket Complaint Counter","topicSlug":"supermarket-complaint-counter","href":"decks/class-2e/2026/week-29/2026-08-20-supermarket-complaint-counter/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":false},{"class":"1D","classSlug":"class-1d","year":"2026","week":"29","date":"2026-08-18","day":"Tuesday","topic":"Present Continuous: What Are They Doing Right Now?","topicSlug":"present-continuous","href":"decks/class-1d/2026/week-29/2026-08-18-present-continuous/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"29","date":"2026-08-17","day":"Monday","topic":"National Day Collocations","topicSlug":"national-day-collocations","href":"decks/class-1d/2026/week-29/2026-08-17-national-day-collocations/","hasSlides":true,"worksheet":"worksheet.html","worksheetPdf":null,"notes":true},{"class":"2E","classSlug":"class-2e","year":"2026","week":"29","date":"2026-08-17","day":"Monday","topic":"Reading Detectives","topicSlug":"reading-detectives","href":"decks/class-2e/2026/week-29/2026-08-17-reading-detectives/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"28","date":"2026-08-14","day":"Friday","topic":"Simple Past, Part 2","topicSlug":"simple-past-tense-2","href":"decks/class-1d/2026/week-28/2026-08-14-simple-past-tense-2/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"28","date":"2026-08-14","day":"Friday","topic":"Simple Present Tense","topicSlug":"simple-present-tense","href":"decks/class-1d/2026/week-28/2026-08-14-simple-present-tense/","hasSlides":true,"worksheet":"worksheet.html","worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"28","date":"2026-08-11","day":"Tuesday","topic":"Common Illness Past Tense","topicSlug":"common-illness-past-tense","href":"decks/class-1d/2026/week-28/2026-08-11-common-illness-past-tense/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true}]</script>
-    <script type="application/json" id="deck-meta">{"classes":["1D","1M","2E"],"weeks":["28","29"],"days":["Monday","Tuesday","Thursday","Friday"],"generated":"2026-08-21"}</script>
+    <script type="application/json" id="deck-meta">{"classes":["1D","1M","2E"],"weeks":["28","29"],"days":["Monday","Tuesday","Thursday","Friday"],"generated":"2026-08-23"}</script>
     <script>
       const DECKS = JSON.parse(document.getElementById('deck-data').textContent);
       const META = JSON.parse(document.getElementById('deck-meta').textContent);

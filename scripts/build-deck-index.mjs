@@ -112,6 +112,34 @@ const days = [...new Set(lessons.map((l) => l.day))].sort(
 const json = JSON.stringify(lessons).replace(/</g, '\\u003c');
 const meta = JSON.stringify({ classes, weeks, days, generated: new Date().toISOString().slice(0, 10) }).replace(/</g, '\\u003c');
 
+// Concentric rings of curved text (SVG textPath) in Inter Black (900). Ten rings,
+// tight gaps (50px), normal character spacing, SMOOTH CONTINUOUS rings: each ring
+// carries the phrase once and textLength stretches it to close the full loop with
+// no repetition and no mid-word seam cut.
+const RULE_PHRASE = 'First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking';
+const RING_CX = 683;
+const RING_CY = 384;
+const ruleRingsMarkup = [
+  { r: 100, fs: 19, dur: 132, dir: 'normal', delay: 13 },
+  { r: 150, fs: 27, dur: 96, dir: 'reverse', delay: 41 },
+  { r: 200, fs: 34, dur: 120, dir: 'normal', delay: 27 },
+  { r: 250, fs: 41, dur: 84, dir: 'reverse', delay: 59 },
+  { r: 300, fs: 47, dur: 108, dir: 'normal', delay: 8 },
+  { r: 350, fs: 52, dur: 72, dir: 'reverse', delay: 47 },
+  { r: 400, fs: 56, dur: 90, dir: 'normal', delay: 33 },
+  { r: 450, fs: 60, dur: 126, dir: 'reverse', delay: 21 },
+  { r: 500, fs: 63, dur: 102, dir: 'normal', delay: 55 },
+  { r: 550, fs: 66, dur: 78, dir: 'reverse', delay: 64 },
+].map((ring, i) => {
+  const circ = 2 * Math.PI * ring.r;
+  const text = RULE_PHRASE;
+  const d = `M ${RING_CX - ring.r} ${RING_CY} a ${ring.r} ${ring.r} 0 1 0 ${2 * ring.r} 0 a ${ring.r} ${ring.r} 0 1 0 ${-2 * ring.r} 0`;
+  return `        <g class="rule-ring" style="--dur: ${ring.dur}s; --dir: ${ring.dir}; --delay: -${ring.delay}s;">
+          <path id="rule-ring-${i + 1}" d="${d}" fill="none" />
+          <text font-size="${ring.fs}"><textPath href="#rule-ring-${i + 1}" textLength="${Math.round(circ)}">${text}</textPath></text>
+        </g>`;
+}).join('\n');
+
 const html = `<!doctype html>
 <html lang="en">
   <head>
@@ -125,20 +153,23 @@ const html = `<!doctype html>
       .wrap { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
       header h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.04em; margin: 0 0 .4rem; }
       header p { margin: 0; color: #52657d; max-width: 60ch; }
-      .rule-waves { position: fixed; inset: 0; z-index: 0; overflow: hidden; color: #1f5f9e; font-weight: 800; letter-spacing: -.075em; line-height: .73; opacity: .3; pointer-events: none; user-select: none; }
-      .rule-wave { position: absolute; display: block; width: max-content; white-space: nowrap; font-size: clamp(5rem, 14vw, 15rem); filter: blur(.25px); transform-origin: center; }
-      .rule-wave { animation: worm-rule 30s ease-in-out infinite alternate, worm-colour 30s linear infinite alternate; }
-      @keyframes worm-rule {
-        0% { transform: translate3d(-30vw, 6vh, 0) rotate(-15deg) skewX(-9deg); }
-        32% { transform: translate3d(-6vw, 26vh, 0) rotate(8deg) skewX(10deg); }
-        68% { transform: translate3d(-42vw, 59vh, 0) rotate(-7deg) skewX(-12deg); }
-        100% { transform: translate3d(-10vw, 82vh, 0) rotate(14deg) skewX(8deg); }
+      .rule-waves { position: fixed; inset: 0; z-index: 0; overflow: hidden; color: #1f5f9e; opacity: .18; pointer-events: none; user-select: none; animation: rule-colour 48s linear infinite alternate; }
+      .rule-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .rule-ring { transform-box: fill-box; transform-origin: center; animation: ring-spin var(--dur, 120s) linear infinite; animation-direction: var(--dir, normal); animation-delay: var(--delay, 0s); }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-display: swap;
+        src: url('assets/inter-900-latin.woff2') format('woff2');
       }
-      @keyframes worm-colour {
-        0%, 31% { color: #1f5f9e; }
-        33%, 67% { color: #087f8c; }
-        69%, 99% { color: #7048a8; }
-        100% { color: #a85b00; }
+      .rule-ring text { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 900; letter-spacing: normal; fill: currentColor; }
+      @keyframes ring-spin { to { transform: rotate(360deg); } }
+      @keyframes rule-colour {
+        0%, 24% { color: #1f5f9e; }
+        26%, 49% { color: #087f8c; }
+        51%, 74% { color: #7048a8; }
+        76%, 100% { color: #a85b00; }
       }
       .filters { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1.75rem 0 1rem; }
       .filters select {
@@ -173,7 +204,7 @@ const html = `<!doctype html>
       .empty { padding: 2.5rem 1rem; text-align: center; color: #52657d; background: #fff; border: 1px dashed #c9d6e4; border-radius: .9rem; }
       .reset { display: none; font: inherit; font-size: .85rem; background: #fff; border: 1px solid #c9d6e4; border-radius: .55rem; padding: .45rem .7rem; color: #1f5f9e; cursor: pointer; }
       .reset:hover { background: #eef4fb; }
-      @media (prefers-reduced-motion: reduce) { .rule-wave { animation: none; color: #1f5f9e; transform: translate3d(-24vw, 32vh, 0) rotate(-9deg); } }
+      @media (prefers-reduced-motion: reduce) { .rule-ring, .rule-waves { animation: none; } .rule-waves { color: #1f5f9e; } }
     </style>
   </head>
   <body>
@@ -200,7 +231,9 @@ const html = `<!doctype html>
     </main>
 
     <div class="rule-waves" aria-hidden="true">
-      <span class="rule-wave">First Rule of the Class is To Listen When I'm Speaking</span>
+      <svg class="rule-svg" viewBox="0 0 1366 768" preserveAspectRatio="xMidYMid meet" role="presentation">
+${ruleRingsMarkup}
+      </svg>
     </div>
 
     <script type="application/json" id="deck-data">${json}</script>
