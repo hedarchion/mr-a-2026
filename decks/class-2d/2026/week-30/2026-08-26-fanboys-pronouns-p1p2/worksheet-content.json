@@ -1,0 +1,47 @@
+{
+  "title": "2D-W30-R-20260826-P1P1-P1P2",
+  "subtitle": "My Family Day",
+  "classAbbrev": "2D",
+  "weekNo": 30,
+  "date": "2026-08-26",
+  "marks": 16,
+  "part1": {
+    "instructions": "Read each short text carefully. Choose the best answer, A, B or C.",
+    "pages": [
+      [
+        {"number":1,"stimulusHtml":"<p><b>Hi Sara,</b></p><p>Mum is taking us to the park at 10.00 a.m. on Sunday. Please bring your blue ball. I will bring sandwiches.</p><p class=\"signoff\">Amir</p>","question":"What should Sara bring?","options":{"A":"sandwiches","B":"a blue ball","C":"a camera"}},
+        {"number":2,"stimulusHtml":"<div class=\"poster\"><b>FAMILY DAY</b><br>Saturday, 5 September · 9.00 a.m.–1.00 p.m.<br>School field<br><small>Bring a hat and water. Games start at 9.30 a.m.</small></div>","question":"The poster is written to","options":{"A":"invite families to a school event.","B":"sell hats and water.","C":"announce a sports examination."}},
+        {"number":3,"stimulusHtml":"<table class=\"mini-table\"><tr><th>Family member</th><th>Family Day job</th></tr><tr><td>Amir</td><td>bring cups</td></tr><tr><td>Sara</td><td>bring a camera</td></tr><tr><td>Mum</td><td>prepare sandwiches</td></tr><tr><td>Dad</td><td>bring a picnic mat</td></tr></table>","question":"Which statement is true?","options":{"A":"Dad brings the cups.","B":"Mum brings the camera.","C":"Sara brings the camera."}}
+      ],
+      [
+        {"number":4,"stimulusHtml":"<table class=\"mini-table\"><tr><th>Time</th><th>Activity</th></tr><tr><td>9.00 a.m.</td><td>Welcome</td></tr><tr><td>9.30 a.m.</td><td>Games</td></tr><tr><td>11.00 a.m.</td><td>Family photos</td></tr><tr><td>12.00 noon</td><td>Lunch</td></tr></table>","question":"A family arrives at 10.30 a.m. What is the next activity?","options":{"A":"Games","B":"Family photos","C":"Lunch"}},
+        {"number":5,"stimulusHtml":"<div class=\"notice\"><b>PICNIC AREA RULES</b><ul><li>Keep food covered.</li><li>Do not feed the animals.</li><li>Take photos only from the marked line.</li></ul></div>","question":"Which action is allowed?","options":{"A":"Feeding the animals","B":"Leaving food uncovered","C":"Taking photos from the marked line"}},
+        {"number":6,"stimulusHtml":"<p>Family Day moved indoors after heavy rain began at noon. Students continued with board games in the school hall.</p>","question":"Why did the students move indoors?","options":{"A":"Because it started raining.","B":"Because the games had finished.","C":"Because the hall was closed."}}
+      ],
+      [
+        {"number":7,"stimulusHtml":"<p><b>Dear Hana,</b></p><p>Grandpa is 70 on Saturday. Please arrive at 6.30 p.m. We will eat at 7.30 p.m. Bring a family photo for the memory book.</p><p class=\"signoff\">Love, Sara</p>","question":"When will the family eat?","options":{"A":"6.30 p.m.","B":"7.30 p.m.","C":"8.30 p.m."}},
+        {"number":8,"stimulusHtml":"<p>Amir left his football at home. Sara has a ball, but she is using it with her sister until 11.00 a.m.</p><p><b>Amir:</b> “I will wait and play with them after 11.00 a.m.”</p>","question":"What will Amir probably do?","options":{"A":"Play football with Sara and her sister after 11.00 a.m.","B":"Go home immediately.","C":"Eat lunch before playing football."}}
+      ]
+    ]
+  },
+  "part2": {
+    "instructions": "Read the text below and correct the underlined errors. Write one correct word for each question.",
+    "passageTitle": "A Day by the Lake",
+    "paragraphs": [
+      "Last Sunday, our family [[0:bring]] a blue ball, so we played football near the lake. My sister Sara [[9:take]] many photos while Mum prepared sandwiches. Dad [[10:were]] talking to Grandpa under a tree, and Grandma was [[11:sit]] beside them.",
+      "At noon, there were [[12:much]] people at the picnic area because another family event had started. Amir wanted to show [[13:she]] his new game, but Sara preferred to rest. She gave the camera to [[14:he]] before lunch, and he used it carefully.",
+      "Mum put [[15:his]] sandwiches on the mat. Everyone helped, so our family [[16:feel]] proud when we went home."
+    ],
+    "items": [
+      {"number":0,"incorrect":"bring","answer":"brought","target":"past simple example"},
+      {"number":9,"incorrect":"take","answer":"took","target":"past simple"},
+      {"number":10,"incorrect":"were","answer":"was","target":"subject–verb agreement"},
+      {"number":11,"incorrect":"sit","answer":"sitting","target":"past continuous"},
+      {"number":12,"incorrect":"much","answer":"many","target":"quantifier"},
+      {"number":13,"incorrect":"she","answer":"her","target":"object pronoun"},
+      {"number":14,"incorrect":"he","answer":"him","target":"object pronoun"},
+      {"number":15,"incorrect":"his","answer":"her","target":"possessive adjective"},
+      {"number":16,"incorrect":"feel","answer":"felt","target":"past simple"}
+    ]
+  }
+}
