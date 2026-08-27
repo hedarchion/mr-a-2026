@@ -25,6 +25,8 @@
         min-height: 273mm;
         margin: 8mm auto;
         background: #fff;
+        break-after: page;
+        page-break-after: always;
       }
       .head {
         text-align: center;
@@ -104,6 +106,10 @@
           margin: 0;
           width: auto;
           min-height: 0;
+        }
+        .page:last-child {
+          break-after: auto;
+          page-break-after: auto;
         }
       }
     </style>
@@ -199,5 +205,13 @@
         <p>32 Every pupil received <span class="ans"></span>.</p>
       </div>
     </main>
+    <script>
+      // Two identical pages let the teacher choose “2 pages per sheet” and cut
+      // the printout into two complete learner copies.
+      const original = document.querySelector('.page');
+      const duplicate = original.cloneNode(true);
+      duplicate.setAttribute('aria-label', 'Duplicate learner copy');
+      document.body.append(duplicate);
+    </script>
   </body>
 </html>

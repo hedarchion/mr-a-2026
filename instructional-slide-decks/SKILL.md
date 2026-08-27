@@ -76,15 +76,29 @@ Every interaction needs a prompt, response path, teacher-controlled check or rev
 
 ## Align worksheets
 
+Read [references/worksheet-templates.md](references/worksheet-templates.md) before authoring worksheet HTML. Reuse the matching scaffold under `templates/worksheet-html/`, keep content in its separate input file, and render the final self-contained learner HTML instead of rebuilding stable structure. Apply the coded title there for every lesson-related worksheet. If a subtitle is useful, keep it content-only; omit learner-facing difficulty, process, or task-type annotations such as `Easy`, `Revision`, `Practice`, or `Error Correction` unless the user explicitly requests them or the official assessment format requires them.
+
+Interpret `2 in 1` as the teacher's shorthand for duplicating a one-page worksheet as two identical document pages. The resulting file is intended for `2 pages per sheet` printing and cutting into two complete learner copies; preserve a one-copy override.
+
+For Paper 1 Part 2, reuse `templates/worksheet-html/paper-1-part-2/` and change only the content JSON. Default to question numbers 9–16 after Paper 1 Part 1 and make the answer-table number columns extremely narrow so corrected-word spaces receive most of the width.
+
 When a worksheet is requested, also use the `worksheet-assessment-design` skill. Default unspecified administration to brief, individual, formative, ungraded, teacher-marked work with ordinary classroom supports; record the assumption rather than stopping the build.
 
+For an English Paper 1 or Paper 2 part assessment, read its corresponding workspace-root `paper-<paper>-part-<part>-*.md` guide before drafting. Confirm the form, use the guide's format and CEFR level, produce the answer key or rubric with the learner task, and complete its item-specific validation. Keep official-format requirements separate from UASA model-paper conventions in `notes.md`.
+
+When the requested assessment is Form 1 English **Paper 1 Part 3** or **Information Transfer**, read the workspace-root `paper-1-part-3-information-transfer.md` as the primary format reference. It governs the task architecture: a CEFR A2 linear passage, eight semantic fields in a table or graphic organiser, eight one-mark dichotomously scored items, and normally source-lifted answers of no more than three words and/or a number. Keep official KPM requirements distinct from UASA conventions in `notes.md`. Plan the eight target facts before drafting the passage; include controlled competing information in several items, ensure each field has a single defensible answer, and document canonical and accepted answers.
+
+When the requested assessment is English **Paper 1 Part 5** or **Gapped Text**, read the workspace-root `paper-1-part-5-gapped-text.md`. Confirm whether it is Form 1 or Form 2 and use the appropriate option architecture. Draft a complete linear passage first; remove only sentences whose replacement requires bidirectional contextual cohesion. Verify each gap against every option, use plausible Form 2 distractors, reject ambiguity, reconstruct the original passage, and deliver the answer key. Treat this as a reading and discourse-cohesion task, not grammar gap fill.
+
 Derive worksheet outcomes from the deck objective and taught practice. Build the blueprint and key/rubric together. Use fresh examples, sample important outcomes more than once when practical, and keep learner material separate from scoring guidance. Ensure slide instruction, exit evidence, worksheet items, and scoring rules make the same learning claim.
+
+After verification, mirror every completed worksheet set into `/Users/copu/Documents/Worksheets 2026/Archive/`. Preserve the lesson originals, but exclude HTML from the archive; keep worksheet HTML in the lesson repository and mirror only its printable PDF plus the key/rubric, content input and useful non-HTML editable source. Group those files under the same coded folder, use role suffixes that make each file's purpose obvious, and update the central `INDEX.md` and `catalog.csv`. Never invent a missing date or week; use `UNDATED` and `Unscheduled` and record the limitation.
 
 ## Verify before delivery
 
 Inspect every slide at the exact viewport, including answer, error, reset, and final states. Fix clipping, overlap, wrapping, below-fold content, tiny text, broken focus, inaccessible controls, and navigation faults. Check that every slide advances the objective and that feedback explains the reasoning.
 
-For a worksheet, verify outcome coverage, item clarity, answer defensibility, distractor plausibility, scoring consistency, fairness, accessibility, and the stated limits of an unpiloted instrument. Cross-check all answers against the learner version.
+For a worksheet, verify outcome coverage, item clarity, answer defensibility, distractor plausibility, scoring consistency, fairness, accessibility, and the stated limits of an unpiloted instrument. Cross-check all answers against the learner version. For Information Transfer, additionally verify exactly eight gaps and eight marks; that every canonical answer is a short, preferably contiguous span in the passage; uniqueness of each table field; varied semantic categories; A2-appropriate language; and that the table cannot be completed reliably by keyword matching alone.
 
 ## Learn from use
 

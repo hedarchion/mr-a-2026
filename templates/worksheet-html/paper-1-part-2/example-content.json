@@ -1,0 +1,31 @@
+{
+  "lessonRelated": true,
+  "classAbbrev": "2X",
+  "weekNo": 30,
+  "date": "2026-08-26",
+  "paper": 1,
+  "part": 2,
+  "firstItem": 9,
+  "copies": 2,
+  "subtitle": "Grammar Focus",
+  "marks": 8,
+  "instructions": "Read the text below and correct the underlined errors. For each question, write one correct word in the answer table.",
+  "focus": "Replace each underlined error with one correct word.",
+  "passageTitle": "Passage Title",
+  "paragraphs": [
+    "Write the first part of the coherent passage here. Include the worked example [[0:wrong]] and the first errors [[9:wrong]] and [[10:wrong]].",
+    "Continue the same passage here with [[11:wrong]], [[12:wrong]] and [[13:wrong]].",
+    "Finish the passage here with [[14:wrong]], [[15:wrong]] and [[16:wrong]]."
+  ],
+  "items": [
+    { "number": 0, "incorrect": "wrong", "answer": "correct", "target": "worked example" },
+    { "number": 9, "incorrect": "wrong", "answer": "correct", "target": "target construct" },
+    { "number": 10, "incorrect": "wrong", "answer": "correct", "target": "target construct" },
+    { "number": 11, "incorrect": "wrong", "answer": "correct", "target": "target construct" },
+    { "number": 12, "incorrect": "wrong", "answer": "correct", "target": "target construct" },
+    { "number": 13, "incorrect": "wrong", "answer": "correct", "target": "target construct" },
+    { "number": 14, "incorrect": "wrong", "answer": "correct", "target": "target construct" },
+    { "number": 15, "incorrect": "wrong", "answer": "correct", "target": "target construct" },
+    { "number": 16, "incorrect": "wrong", "answer": "correct", "target": "target construct" }
+  ]
+}

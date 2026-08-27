@@ -1,0 +1,99 @@
+{
+  "lessonRelated": true,
+  "classAbbrev": "1D",
+  "weekNo": 30,
+  "date": "2026-08-25",
+  "paper": 1,
+  "part": 1,
+  "subtitle": "Short Text Multiple Choice: Everyday Texts",
+  "marks": 8,
+  "instructions": "Read the text carefully for each question. Choose the best answer, A, B or C.",
+  "pages": [
+    [
+      {
+        "number": 1,
+        "stimulusHtml": "<p>Hi Haziq,</p><p>Art Club ends at 4.00 p.m. today. Mum's car is at the workshop, so please wait for me beside the school library at 4.15 p.m. We will take the bus home together.</p><p>Sara</p>",
+        "question": "Sara wants Haziq to",
+        "options": {
+          "A": "take the bus home before 4.00 p.m.",
+          "B": "meet her near the library after Art Club.",
+          "C": "ask their mother to collect them."
+        }
+      },
+      {
+        "number": 2,
+        "stimulusHtml": "<p class=\"stimulus-title\">GREEN FRIDAY</p><p>Because of the rain, the clean-up has moved from the school garden to the school hall.</p><p><b>Friday, 28 August · 2.30–4.00 p.m.</b><br>Bring gloves and a bottle of water. Students who chose tree planting will now sort recyclable items.</p>",
+        "question": "Which statement is true?",
+        "options": {
+          "A": "The activity will take place inside the school.",
+          "B": "The activity will begin at 4.00 p.m.",
+          "C": "Students will plant trees in the garden."
+        }
+      },
+      {
+        "number": 3,
+        "stimulusHtml": "<p class=\"stimulus-title\">STUDENT AFTER-SCHOOL DEAL</p><p><b>Monday–Thursday · 3.00–5.00 p.m.</b></p><p>Toast and a fruit drink for RM7. Show your school identity card when ordering. This deal is not available on public holidays.</p>",
+        "question": "To get the deal, a customer must",
+        "options": {
+          "A": "visit the café on Friday before five.",
+          "B": "spend more than RM7 on food.",
+          "C": "show a school identity card when ordering."
+        }
+      }
+    ],
+    [
+      {
+        "number": 4,
+        "stimulusHtml": "<p class=\"stimulus-title\">SHUTTLE TO THE PUBLIC LIBRARY</p><table aria-label=\"Library shuttle timetable\"><thead><tr><th>Leaves the town bus stop</th><th>Arrives at the library</th></tr></thead><tbody><tr><td>8.10 a.m.</td><td>8.35 a.m.</td></tr><tr><td>9.10 a.m.</td><td>9.35 a.m.</td></tr><tr><td>10.10 a.m.</td><td>10.35 a.m.</td></tr></tbody></table><p style=\"margin-top:2mm\">The robotics workshop begins at the library at <b>9.30 a.m.</b></p>",
+        "question": "A student who takes the 9.10 a.m. shuttle will",
+        "options": {
+          "A": "reach the library before the workshop starts.",
+          "B": "arrive five minutes after the workshop starts.",
+          "C": "wait one hour for the workshop to begin."
+        }
+      },
+      {
+        "number": 5,
+        "stimulusHtml": "<p>Dear Ms Leong,</p><p>I cannot join debate practice on Wednesday because I have a dental appointment. I have finished my speech notes. Could Nabila collect them from me during recess on Tuesday? I will return to practice on Thursday.</p><p>Amira</p>",
+        "question": "Why did Amira write the email?",
+        "options": {
+          "A": "To arrange for her work to reach the debate group.",
+          "B": "To cancel debate practice for the whole week.",
+          "C": "To request a new speech topic from Ms Leong."
+        }
+      },
+      {
+        "number": 6,
+        "stimulusHtml": "<p class=\"stimulus-title\">COMMUNITY SWIMMING POOL</p><p>Children under 12 must be with an adult. Shower before entering the pool. Leave food and drinks outside. Kickboards can be borrowed from the counter.</p>",
+        "question": "An 11-year-old may enter the pool if the child",
+        "options": {
+          "A": "brings a kickboard from home.",
+          "B": "is accompanied by an adult.",
+          "C": "leaves immediately after showering."
+        }
+      }
+    ],
+    [
+      {
+        "number": 7,
+        "stimulusHtml": "<p class=\"stimulus-title\">STUDENTS IMPROVE RIVER WALK</p><p>Last weekend, 30 students collected 18 bags of litter from the River Walk. Most of the rubbish was plastic bottles. After the clean-up, the volunteers labelled bins along the path to help visitors sort their waste.</p>",
+        "question": "What is the main message of the report?",
+        "options": {
+          "A": "Students learnt how to walk safely by the river.",
+          "B": "Visitors gave plastic bottles to the volunteers.",
+          "C": "Students cleaned the path and encouraged waste sorting."
+        }
+      },
+      {
+        "number": 8,
+        "stimulusHtml": "<p class=\"stimulus-title\">BEGINNER BICYCLE-REPAIR WORKSHOP</p><p><b>Saturday, 5 September · 9.00–11.00 a.m.<br>Community Centre · Only 16 places</b></p><p>Register by Wednesday. Bring your bicycle with you. All repair tools will be provided.</p>",
+        "question": "Amir registered on Tuesday but does not own any repair tools. He should",
+        "options": {
+          "A": "bring his bicycle and use the tools provided.",
+          "B": "buy a set of tools before the workshop.",
+          "C": "return on Wednesday to register again."
+        }
+      }
+    ]
+  ]
+}

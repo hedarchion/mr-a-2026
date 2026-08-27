@@ -1,0 +1,27 @@
+{
+  "lessonRelated": true,
+  "classAbbrev": "1D",
+  "weekNo": 30,
+  "date": "2026-08-25",
+  "paper": 1,
+  "part": 1,
+  "subtitle": "Short Text Multiple Choice: Example Set",
+  "marks": 8,
+  "instructions": "Read the text carefully for each question. Choose the best answer, A, B or C.",
+  "pages": [
+    [
+      { "number": 1, "stimulusHtml": "<p>Replace with stimulus 1.</p>", "question": "Replace with question 1.", "options": { "A": "Option A", "B": "Option B", "C": "Option C" } },
+      { "number": 2, "stimulusHtml": "<p>Replace with stimulus 2.</p>", "question": "Replace with question 2.", "options": { "A": "Option A", "B": "Option B", "C": "Option C" } },
+      { "number": 3, "stimulusHtml": "<p>Replace with stimulus 3.</p>", "question": "Replace with question 3.", "options": { "A": "Option A", "B": "Option B", "C": "Option C" } }
+    ],
+    [
+      { "number": 4, "stimulusHtml": "<p>Replace with stimulus 4.</p>", "question": "Replace with question 4.", "options": { "A": "Option A", "B": "Option B", "C": "Option C" } },
+      { "number": 5, "stimulusHtml": "<p>Replace with stimulus 5.</p>", "question": "Replace with question 5.", "options": { "A": "Option A", "B": "Option B", "C": "Option C" } },
+      { "number": 6, "stimulusHtml": "<p>Replace with stimulus 6.</p>", "question": "Replace with question 6.", "options": { "A": "Option A", "B": "Option B", "C": "Option C" } }
+    ],
+    [
+      { "number": 7, "stimulusHtml": "<p>Replace with stimulus 7.</p>", "question": "Replace with question 7.", "options": { "A": "Option A", "B": "Option B", "C": "Option C" } },
+      { "number": 8, "stimulusHtml": "<p>Replace with stimulus 8.</p>", "question": "Replace with question 8.", "options": { "A": "Option A", "B": "Option B", "C": "Option C" } }
+    ]
+  ]
+}

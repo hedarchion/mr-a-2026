@@ -27,11 +27,10 @@ The human-readable timetable labels do not perfectly map to every legacy class-c
 - Default classroom canvas: 1366 × 768.
 - Established Class 1D continuation canvas: 1280 × 665.
 - Smartboard Android: fixed 1265 × 536 canvas with compact safe-area spacing.
-- Teacher MacBook: device-pixel ratio 2.00; browser viewport 1710 × 985; screen 1710 × 1107.
+- Teacher MacBook: device-pixel ratio 2.00; browser viewport 1710 × 907; screen 1710 × 1107.
 
 Scale a fixed teaching canvas to the available browser window. Verify every slide and reveal/reset state at the intended profile. Full-screen is useful, but essential content must remain visible without relying on accidental browser geometry.
 
 ## Classroom delivery
 
 Materials are normally teacher-led on one shared screen. Students may answer orally, point, vote with fingers, use mini whiteboards, or write on paper. Every digital interaction needs one of these non-digital fallbacks. Keep teacher prompts, timing, anticipated answers, and transitions in separate delivery notes when producing a new artifact.
-
