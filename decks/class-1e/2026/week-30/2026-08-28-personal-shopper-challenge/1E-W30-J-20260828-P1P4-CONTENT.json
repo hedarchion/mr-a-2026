@@ -1,0 +1,32 @@
+{
+  "code": "1E-W30-J-20260828-P1P4",
+  "title": "Shopping at FreshMart",
+  "paper": 1,
+  "part": 4,
+  "copies": 2,
+  "marks": 8,
+  "textTitle": "FreshMart — The New Supermarket",
+  "wordCount": 189,
+  "textParagraphs": [
+    "FreshMart, the supermarket in Taman Jaya, opened its doors on Saturday, 6 June. The store is next to the bus station, so it is easy to reach. A big car park behind the store is free for shoppers. FreshMart sells food, drinks, household items and school supplies, but it does not sell toys or clothes.",
+    "The fruit and vegetable section is on the ground floor, near the main entrance. You can find apples, bananas, oranges and strawberries there. Every morning, the shop receives fresh milk from a dairy farm in Johor. The milk is sold in one-litre cartons at RM6.50 each.",
+    "FreshMart has special offers every week. This week, all packets of biscuits are 20% cheaper. On the opening day, the first 100 customers will receive a free notebook. Shoppers who collect ten stamps on their FreshMart card will get RM10 off their next visit.",
+    "The supermarket opens from 9 a.m. to 10 p.m. every day, including public holidays. Shoppers can pay by cash, card or e-wallet at the checkout counters on the first floor. There is also a small café where shoppers can rest after buying their groceries."
+  ],
+  "tfStatements": [
+    { "n": 25, "text": "FreshMart is located next to the bus station." },
+    { "n": 26, "text": "FreshMart sells toys and clothes." },
+    { "n": 27, "text": "The milk comes from a farm in Johor." },
+    { "n": 28, "text": "Shoppers must pay by cash." }
+  ],
+  "shortItems": [
+    { "n": 29, "text": "The fruit and vegetable section is on the ___ANS___." },
+    { "n": 30, "text": "A one-litre carton of milk costs ___ANS___." },
+    { "n": 31, "text": "This week, the special offer is on packets of ___ANS___." },
+    { "n": 32, "text": "The supermarket stays open until ___ANS___ every day." }
+  ],
+  "answerMap": {
+    "25": "True", "26": "False", "27": "True", "28": "False",
+    "29": "ground floor", "30": "RM6.50", "31": "biscuits", "32": "10 p.m."
+  }
+}

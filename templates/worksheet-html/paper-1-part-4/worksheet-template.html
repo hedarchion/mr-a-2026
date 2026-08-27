@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{{CODE}}</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 12mm;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #eee;
+        color: #111;
+        font:
+          11pt/1.38 Arial,
+          sans-serif;
+      }
+      .page {
+        width: 186mm;
+        min-height: 273mm;
+        margin: 8mm auto;
+        background: #fff;
+        break-after: page;
+        page-break-after: always;
+      }
+      .head {
+        text-align: center;
+        border-bottom: 1.5px solid;
+        padding-bottom: 3mm;
+      }
+      .code {
+        font-size: 11pt;
+        font-weight: 700;
+      }
+      .paper {
+        font-size: 16pt;
+        font-weight: 700;
+      }
+      .sub {
+        font-size: 11pt;
+        font-weight: 700;
+      }
+      .meta {
+        display: flex;
+        gap: 10mm;
+        margin: 4mm 0;
+      }
+      .field {
+        flex: 1;
+        border-bottom: 1px solid;
+        height: 6mm;
+      }
+      .instructions {
+        border: 1px solid #222;
+        padding: 3mm 4mm;
+        font-size: 10pt;
+      }
+      .box {
+        border: 1px solid #222;
+        padding: 4mm 5mm;
+        margin-top: 4mm;
+      }
+      .box h2 {
+        font-size: 13pt;
+        text-align: center;
+        margin: 0 0 2mm;
+      }
+      .box p {
+        margin: 0 0 3mm;
+      }
+      .q {
+        margin: 4mm 0 0;
+      }
+      .tf {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 2mm;
+      }
+      .tf td,
+      .tf th {
+        border: 1px solid #333;
+        padding: 2.5mm;
+        text-align: left;
+      }
+      .ans {
+        display: inline-block;
+        border-bottom: 1px solid;
+        min-width: 62mm;
+        height: 5mm;
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        .page {
+          margin: 0;
+          width: auto;
+          min-height: 0;
+        }
+        .page:last-child {
+          break-after: auto;
+          page-break-after: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="head">
+        <div class="code">{{CODE}}</div>
+        <div class="paper">FORM 1 ENGLISH · PAPER 1 PART 4</div>
+        <div class="sub">
+          Short Answer: {{TITLE}}
+          <span style="float: right">[{{MARKS}} marks]</span>
+        </div>
+      </header>
+      <div class="meta">
+        <div>Name: <span class="field"></span></div>
+        <div>Class: <span class="field"></span></div>
+        <div>Date: <span class="field"></span></div>
+      </div>
+      <p class="instructions">
+        <b>Questions 25–32.</b> Read the text and answer the questions that
+        follow.<br />For questions <b>25 to 28</b>, write <b>True</b> or
+        <b>False</b> for every statement given.<br />For questions
+        <b>29 to 32</b>, choose
+        <b>no more than five words and/or a number</b> from the text for each
+        answer.
+      </p>
+      <section class="box">
+        <h2>{{TEXT_TITLE}}</h2>
+        {{TEXT_PARAGRAPHS}}
+      </section>
+      <div class="q"><b>For questions 25 to 28, write True or False.</b></div>
+      <table class="tf">
+        <tr>
+          <th style="width: 12mm">No.</th>
+          <th>Statement</th>
+          <th style="width: 36mm">Answer</th>
+        </tr>
+        {{TF_ROWS}}
+      </table>
+      <div class="q">
+        <b
+          >For questions 29 to 32, choose no more than five words and/or a
+          number from the text.</b
+        >
+        {{SA_ITEMS}}
+      </div>
+    </main>
+    {{COPY_SCRIPT}}
+  </body>
+</html>
