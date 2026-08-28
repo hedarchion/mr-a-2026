@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class 1M | Personal Shopper Challenge</title>
+<style>
+:root{--ink:#19324a;--muted:#5b7083;--cream:#fffaf0;--mint:#dff5ec;--teal:#0f766e;--coral:#f97362;--sun:#ffd166;--blue:#dcecff;--white:#fff;--red:#ffe0d9;--line:#d7e3df}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#e8eef3;color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif}
+#stage{width:1280px;height:665px;position:relative;transform-origin:top left;background:var(--cream);overflow:hidden}
+.slide{display:none;height:589px;padding:24px 48px 12px;position:relative}.slide.active{display:block}
+.slide::after{content:'🎄  ✨  🎁';position:absolute;right:48px;top:22px;z-index:2;font-size:27px;letter-spacing:4px;filter:drop-shadow(0 2px 0 rgba(255,255,255,.8));pointer-events:none}
+.slide:nth-of-type(3n+2)::after{content:'🍬  ❄️  🛒'}
+.slide:nth-of-type(3n)::after{content:'🧸  ⭐  🎁'}
+.bubble{position:absolute;right:-100px;top:-150px;width:390px;height:390px;border-radius:50%;background:var(--mint)}
+.content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column}
+.tag{display:inline-block;padding:6px 12px;border-radius:99px;background:var(--mint);color:var(--teal);font-size:14px;font-weight:900;letter-spacing:.06em;align-self:flex-start}
+.title{font-size:46px;line-height:1.05;margin:10px 0 6px;font-weight:950}
+.heading{font-size:38px;line-height:1.08;margin:10px 0 8px;font-weight:950}
+.sub{font-size:24px;color:var(--muted);font-weight:650;margin:0;line-height:1.3}
+.prompt{background:var(--ink);color:#fff;border-radius:20px;padding:14px 22px;font-size:29px;line-height:1.25;font-weight:900}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-block;padding:6px 14px;border-radius:99px;background:var(--sun);color:var(--ink);font-size:22px;font-weight:900}
+button{font:inherit;color:inherit}.btn,.choice,.pack,.clue,.checkbtn,.anschip,.hintchip,.infobtn,.stepbtn{border:0;cursor:pointer}
+.btn{border-radius:14px;padding:11px 16px;background:#fff;box-shadow:0 5px 0 #cdd8e0;font-size:16px;font-weight:850;margin-left:7px}.btn.primary{background:var(--teal);color:#fff;box-shadow:0 5px 0 #075e58}
+.panel{background:#fff;border:2px solid var(--line);border-radius:18px;padding:12px 18px;box-shadow:0 6px 0 rgba(25,50,74,.06)}
+.panel.warn{background:var(--red);border-color:var(--coral)}
+.panel.good{background:var(--mint);border-color:var(--teal)}
+.panel.speak{background:var(--blue);border-color:#7fa8d9}
+.hidden{display:none!important}
+.ok{background:var(--mint)!important;border-color:var(--teal)!important}
+.no{opacity:.42}
+.warnring{box-shadow:0 0 0 5px var(--coral)!important}
+.goodring{box-shadow:0 0 0 5px var(--teal)!important}
+.found{background:var(--sun)!important;box-shadow:0 0 0 4px var(--sun)}
+.fade{opacity:.28}
+.revealbox{border:2px dashed var(--coral);border-radius:14px;padding:10px 14px;color:var(--coral);font-size:20px;font-weight:850;background:#fff}
+/* S1 products */
+.prow{display:flex;gap:18px;margin-top:14px}
+.pcard{flex:1;background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 16px;text-align:center;box-shadow:0 6px 0 rgba(25,50,74,.06)}
+.pcard .plabel{display:inline-block;width:46px;height:46px;line-height:46px;border-radius:12px;background:var(--blue);font-size:26px;font-weight:950}
+.pcard .pinfo{display:block;margin-top:10px;font-size:27px;font-weight:900}
+.pcard .porigin{display:block;margin-top:8px;font-size:22px;font-weight:850;color:var(--teal)}
+.s1msg{min-height:52px;margin-top:12px;font-size:24px;font-weight:850}
+.s1btns{display:flex;gap:12px;margin-top:12px}
+.s1btns button{font-size:21px;font-weight:900;border-radius:14px;padding:10px 18px;background:var(--teal);color:#fff;box-shadow:0 5px 0 #075e58}
+.s1ans{min-height:44px;margin-top:10px;font-size:25px;font-weight:900;color:var(--teal)}
+/* S2 info */
+.s2row{display:flex;gap:22px;margin-top:14px;align-items:stretch}
+.infogrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1}
+.infobtn{background:#fff;border:2px solid var(--line);border-radius:16px;padding:13px 10px;font-size:25px;font-weight:900;text-align:center;box-shadow:0 5px 0 rgba(25,50,74,.07)}
+.infobtn.active{background:var(--mint);border-color:var(--teal)}
+.labelcard{flex:1;background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px 20px;box-shadow:0 6px 0 rgba(25,50,74,.06);display:flex;flex-direction:column;justify-content:center;gap:12px}
+.lrow{font-size:26px;font-weight:900;border-left:5px solid var(--line);padding-left:12px}
+.lrow small{display:block;font-size:16px;font-weight:800;color:var(--muted);min-height:19px}
+.lrow.revealed{border-left-color:var(--coral)}
+.lrow.revealed small{color:var(--coral)}
+.s2out{min-height:44px;margin-top:12px;font-size:23px;font-weight:850}
+.measure{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:10px}
+.measure span{background:var(--ink);color:#fff;border-radius:99px;padding:6px 14px;font-size:20px;font-weight:850}
+/* S3 packaging */
+.packgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.pack{background:#fff;border:2px solid var(--line);border-radius:18px;padding:12px;text-align:center;box-shadow:0 5px 0 rgba(25,50,74,.07);min-height:118px}
+.pack .pic{font-size:44px;display:block}
+.pack .phrase{display:block;margin-top:8px;font-size:24px;font-weight:900;color:var(--muted);min-height:30px}
+.pack .ans{display:none;font-size:24px;font-weight:950;color:var(--teal)}
+.pack.open .ans{display:block}.pack.open .phrase{display:none}
+.pack.hint .phrase{color:var(--coral)}
+.s3tools{display:flex;gap:12px;margin-top:14px;align-items:center}
+.s3tools button{font-size:19px;font-weight:900;border-radius:13px;padding:9px 16px;background:var(--teal);color:#fff;box-shadow:0 5px 0 #075e58}
+/* S4 message */
+.msgbox{background:#fff;border:2px solid var(--line);border-radius:20px;padding:16px 22px;font-size:26px;line-height:1.5;font-weight:700;box-shadow:0 6px 0 rgba(25,50,74,.06);margin-top:14px}
+.clue{border:0;background:transparent;padding:0 3px;border-radius:8px;font-size:26px;font-weight:900;text-decoration:underline dotted var(--coral) 3px;text-underline-offset:5px}
+.clue:focus{outline:4px solid var(--sun);outline-offset:2px}
+.s4row{display:flex;gap:18px;margin-top:14px;align-items:stretch}
+.s4clues{flex:1;background:var(--ink);color:#fff;border-radius:18px;padding:14px 18px}
+.s4clues h3{margin:0 0 8px;font-size:21px;letter-spacing:.08em}
+.s4clues .chips .chip{background:var(--sun);font-size:21px}
+.s4qa{flex:1;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.s4qa .q{font-size:22px;font-weight:850}
+.s4qa .a{font-size:21px;font-weight:950;color:var(--teal);min-height:27px}
+/* S5 steps */
+.steps3{display:flex;gap:18px;margin-top:22px;flex:1}
+.step{flex:1;background:#fff;border:2px solid var(--line);border-radius:20px;padding:18px;text-align:center;box-shadow:0 6px 0 rgba(25,50,74,.06);display:flex;flex-direction:column;justify-content:center}
+.step .num{display:inline-block;width:44px;height:44px;line-height:44px;border-radius:50%;background:var(--ink);color:#fff;font-size:24px;font-weight:950;margin:0 auto}
+.step .icon{font-size:44px;margin-top:10px}
+.step .verb{font-size:40px;font-weight:950;margin-top:10px;color:var(--teal);min-height:50px}
+.step .verb .blank{color:var(--coral)}
+.step .cap{font-size:21px;font-weight:800;color:var(--muted);margin-top:8px;min-height:56px}
+.step .cap.hidden{visibility:hidden}
+/* S6 try one */
+.req{background:var(--ink);color:#fff;border-radius:20px;padding:12px 20px;font-size:23px;line-height:1.35;font-weight:800;margin-top:12px}
+.req .chips{margin-top:8px}
+.req .chips .chip{font-size:19px}
+.prod3{display:flex;gap:16px;margin-top:14px}
+.prod{flex:1;background:#fff;border:2px solid var(--line);border-radius:18px;padding:12px 16px;box-shadow:0 6px 0 rgba(25,50,74,.06)}
+.prod h4{margin:0 0 8px;font-size:24px;font-weight:950}
+.prod .pline{font-size:22px;font-weight:800;padding:3px 0;border-bottom:1px dashed var(--line)}
+.prod .pline:last-child{border-bottom:0}
+.s6check{display:flex;gap:14px;margin-top:14px;align-items:flex-start}
+.checkbtn{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 16px;font-size:21px;font-weight:900;box-shadow:0 5px 0 rgba(25,50,74,.07)}
+.checkbtn:disabled{background:var(--line);box-shadow:none;cursor:default}
+.s6lines{flex:1;font-size:22px;font-weight:850;min-height:44px}
+.s6lines div{margin:3px 0}
+.s6ans{font-size:26px;font-weight:950;color:var(--teal);min-height:36px;margin-top:6px}
+/* S7 books */
+.books3{display:flex;gap:16px;margin-top:14px}
+.book{flex:1;background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 16px;box-shadow:0 6px 0 rgba(25,50,74,.06)}
+.book h4{margin:0 0 8px;font-size:25px;font-weight:950}
+.book .bline{font-size:22px;font-weight:800;padding:4px 0;border-bottom:1px dashed var(--line)}
+.book .bline:last-child{border-bottom:0}
+.book .why{font-size:20px;font-weight:850;color:var(--coral);min-height:26px;margin-top:8px}
+.book.bad{opacity:.55}
+.book.bad.warned{opacity:1;border-color:var(--coral)}
+.s7btns{display:flex;gap:12px;margin-top:14px}
+.s7btns button{font-size:20px;font-weight:900;border-radius:13px;padding:9px 16px;background:var(--teal);color:#fff;box-shadow:0 5px 0 #075e58}
+.s7msg{font-size:23px;font-weight:900;min-height:36px;margin-top:12px}
+.s7msg .big{font-size:30px;color:var(--coral)}
+/* S8 catalogue */
+.cat4{display:flex;gap:14px;margin-top:14px}
+.cat{flex:1;background:#fff;border:2px solid var(--line);border-radius:16px;padding:12px 14px;box-shadow:0 5px 0 rgba(25,50,74,.06);text-align:center}
+.cat .code{display:inline-block;padding:3px 12px;border-radius:10px;background:var(--ink);color:#fff;font-size:21px;font-weight:950}
+.cat .cline{font-size:21px;font-weight:850;margin-top:7px}
+.cat .why{font-size:19px;font-weight:850;color:var(--coral);min-height:24px;margin-top:7px}
+.ansrow{display:flex;gap:14px;margin-top:14px;align-items:flex-start}
+.fingers{display:flex;gap:10px}
+.anschip{width:74px;height:74px;border-radius:16px;background:#fff;border:2px solid var(--line);font-size:26px;font-weight:950;box-shadow:0 5px 0 rgba(25,50,74,.07)}
+.anschip.selected{background:var(--sun);border-color:#c99400}
+.anschip small{display:block;font-size:14px;font-weight:800;color:var(--muted)}
+.s8prove{flex:1;font-size:22px;font-weight:850}
+.s8ans{font-size:26px;font-weight:950;color:var(--teal);min-height:36px;margin-top:8px}
+/* S9 mission */
+.s9grid{display:flex;gap:20px;margin-top:14px;flex:1}
+.s9steps{flex:1.3;background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px 20px;box-shadow:0 6px 0 rgba(25,50,74,.06)}
+.s9steps ol{margin:0;padding-left:26px}
+.s9steps li{font-size:24px;font-weight:800;margin:9px 0}
+.s9steps li b{color:var(--teal)}
+.s9side{flex:1;display:flex;flex-direction:column;gap:12px}
+.s9qa .q{font-size:21px;font-weight:850}
+.s9qa .a{font-size:21px;font-weight:950;color:var(--teal);min-height:27px}
+.stratband{background:var(--ink);color:#fff;border-radius:18px;padding:12px 18px;font-size:26px;font-weight:950;text-align:center;letter-spacing:.05em}
+/* S10 sweep */
+.s10mid{flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.s10q{font-size:25px;font-weight:850;margin:0 0 4px 0}
+.s10list{background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px 24px;box-shadow:0 6px 0 rgba(25,50,74,.06)}
+.s10list p{font-size:24px;font-weight:800;margin:7px 0}
+.s10foot{align-self:center;background:var(--coral);color:#fff;border-radius:99px;padding:9px 26px;font-size:24px;font-weight:950}
+/* S11 attempt */
+.attempt6{display:flex;gap:10px;margin-top:16px}
+.attempt6 .slot{flex:1;background:#fff;border:2px solid var(--line);border-radius:14px;text-align:center;padding:10px 0;font-size:30px;font-weight:950}
+.attempt6 .slot .n{font-size:16px;font-weight:800;color:var(--muted);display:block}
+.s11qa{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.s11qa .q{font-size:23px;font-weight:850}
+.s11qa .a{font-size:22px;font-weight:950;color:var(--teal);min-height:29px}
+/* S12 repair */
+.repair4{display:flex;gap:14px;margin-top:14px}
+.repair4 .rstep{flex:1;background:#fff;border:2px solid var(--line);border-radius:16px;padding:12px 14px;text-align:center;box-shadow:0 5px 0 rgba(25,50,74,.06)}
+.repair4 .rstep .rn{display:inline-block;width:36px;height:36px;line-height:36px;border-radius:50%;background:var(--teal);color:#fff;font-size:20px;font-weight:950}
+.repair4 .rstep .rt{font-size:21px;font-weight:900;margin-top:8px}
+.repair4 .rstep .rd{font-size:18px;font-weight:750;color:var(--muted);margin-top:5px}
+.hints{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.hintchip{background:#fff;border:2px solid var(--line);border-radius:99px;padding:9px 16px;font-size:20px;font-weight:900;box-shadow:0 4px 0 rgba(25,50,74,.07)}
+.hintchip.open{background:var(--red);border-color:var(--coral)}
+.s12out{min-height:38px;margin-top:12px;font-size:22px;font-weight:900;color:var(--coral)}
+/* S13 prove */
+.frame{background:var(--ink);color:#fff;border-radius:20px;padding:18px 24px;font-size:30px;font-weight:950;line-height:1.4;margin-top:14px;text-align:center}
+.frame .fill{color:var(--sun)}
+.s13example{background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 20px;margin-top:14px;box-shadow:0 6px 0 rgba(25,50,74,.06)}
+.s13example .who{font-size:20px;font-weight:850;color:var(--muted)}
+.s13example .sent{font-size:25px;font-weight:900;margin-top:8px;line-height:1.4}
+.s13row{display:flex;gap:16px;margin-top:14px}
+.partnerq{flex:1;background:var(--blue);border:2px solid #7fa8d9;border-radius:16px;padding:12px 16px;font-size:22px;font-weight:850}
+.partnerq .a{font-size:20px;font-weight:950;color:var(--teal);min-height:26px}
+.diff{flex:1;display:flex;flex-direction:column;gap:8px}
+.diff .dline{font-size:19px;font-weight:800;color:var(--muted)}
+/* S14 exit */
+.blank3{display:flex;gap:18px;justify-content:center;margin-top:26px}
+.blank3 .b3{flex:1;max-width:300px;background:#fff;border:2px dashed var(--coral);border-radius:18px;text-align:center;padding:20px 10px;font-size:34px;font-weight:950;color:var(--coral);min-height:86px}
+.blank3 .b3.filled{color:var(--teal);border-style:solid;border-color:var(--teal)}
+.challenge{background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 20px;margin-top:18px;font-size:25px;font-weight:850;box-shadow:0 6px 0 rgba(25,50,74,.06)}
+.challenge .no{display:none;font-size:52px;font-weight:950;color:var(--coral);margin-top:6px}
+.challenge .no.show{display:block}
+.oraltake{font-size:21px;font-weight:850;color:var(--muted);margin-top:12px;min-height:27px}
+.finalbanner{background:var(--ink);color:#fff;border-radius:18px;padding:14px 22px;font-size:24px;font-weight:950;line-height:1.35;text-align:center;margin-top:12px}
+.finalbanner .hl{color:var(--sun)}
+/* chrome */
+.chrome{position:absolute;left:0;right:0;bottom:0;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(255,250,240,.97);border-top:1px solid rgba(25,50,74,.1);font-size:17px}
+#toast{position:absolute;top:20px;right:25px;padding:12px 15px;border-radius:14px;background:var(--ink);color:#fff;font-weight:850;opacity:0;transition:.2s;z-index:5;pointer-events:none;max-width:420px}
+.show-toast{opacity:1!important}
+</style></head>
+<body><main id="stage" aria-label="Class 1M personal shopper challenge lesson"><div id="toast"></div>
+
+<!-- ============ SLIDE 1 · PERSONAL SHOPPER WANTED ============ -->
+<section class="slide active" data-title="Personal shopper"><div class="bubble"></div><div class="content">
+<span class="tag">CLASS 1M · WEEK 30 · FRIDAY, 28 AUGUST 2026</span>
+<div class="title">PERSONAL SHOPPER <span style="color:var(--coral)">WANTED</span></div>
+<p class="sub">Your customer sends a shopping request. Your job: find the <b>exact</b> products. But be careful…</p>
+<div class="prow">
+  <div class="pcard" id="s1A"><span class="plabel">A</span><span class="pinfo">250 g</span><span class="porigin hidden">🇲🇾 Malaysia</span></div>
+  <div class="pcard" id="s1B"><span class="plabel">B</span><span class="pinfo">500 g</span><span class="porigin hidden">🇹🇭 Thailand</span></div>
+  <div class="pcard" id="s1C"><span class="plabel">C</span><span class="pinfo">250 g</span><span class="porigin hidden">🇹🇭 Thailand</span></div>
+</div>
+<div class="s1msg" id="s1msg"></div>
+<div class="s1btns"><button id="s1b1">More about the customer →</button><button id="s1b2" class="hidden">The answer is…</button></div>
+<div class="s1ans" id="s1ans"></div>
+</div></section>
+
+<!-- ============ SLIDE 2 · WHAT CAN WE CHECK? ============ -->
+<section class="slide" data-title="What can we check?"><div class="bubble"></div><div class="content">
+<span class="tag">VOCABULARY · PRODUCT INFORMATION</span>
+<div class="heading">What can we <span style="color:var(--coral)">check</span> on a product?</div>
+<div class="s2row">
+  <div class="infogrid">
+    <button class="infobtn" data-t="brand">brand</button>
+    <button class="infobtn" data-t="size">weight / size</button>
+    <button class="infobtn" data-t="country">country</button>
+    <button class="infobtn" data-t="colour">colour</button>
+    <button class="infobtn" data-t="ingredients">ingredients</button>
+    <button class="infobtn" data-t="type">type / flavour</button>
+  </div>
+  <div class="labelcard">
+    <div class="lrow" data-f="brand">FreshDay Milk<small>?</small></div>
+    <div class="lrow" data-f="type">Full Cream<small>?</small></div>
+    <div class="lrow" data-f="size">1 litre<small>?</small></div>
+    <div class="lrow" data-f="country">Product of Malaysia<small>?</small></div>
+  </div>
+</div>
+<div class="s2out" id="s2out">Tap a type of information. Where do we find it?</div>
+<div class="measure"><span>250 grams</span><span>1 kilogram</span><span>500 millilitres</span><span>1 litre</span></div>
+</div></section>
+
+<!-- ============ SLIDE 3 · PACKAGING QUICK CHECK ============ -->
+<section class="slide" data-title="What is it?"><div class="bubble"></div><div class="content">
+<span class="tag">QUICK RETRIEVAL · PACKAGING WORDS</span>
+<div class="heading">What is it? Say it together!</div>
+<div class="packgrid">
+  <button class="pack" data-ans="a carton of milk"><span class="pic">🥛</span><span class="phrase">a ______ of milk</span><span class="ans">a carton of milk</span></button>
+  <button class="pack" data-ans="a bottle of juice"><span class="pic">🧃</span><span class="phrase">a ______ of juice</span><span class="ans">a bottle of juice</span></button>
+  <button class="pack" data-ans="a block of butter"><span class="pic">🧈</span><span class="phrase">a ______ of butter</span><span class="ans">a block of butter</span></button>
+  <button class="pack" data-ans="a packet of biscuits"><span class="pic">🍪</span><span class="phrase">a ______ of biscuits</span><span class="ans">a packet of biscuits</span></button>
+  <button class="pack" data-ans="a roll of tissue"><span class="pic">🧻</span><span class="phrase">a ______ of tissue</span><span class="ans">a roll of tissue</span></button>
+  <button class="pack" data-ans="a can of drink"><span class="pic">🥫</span><span class="phrase">a ______ of drink</span><span class="ans">a can of drink</span></button>
+</div>
+<div class="s3tools"><button id="s3hint">Show first letters</button><span class="sub" style="font-size:20px">Tap each picture to reveal it. Say the word first!</span></div>
+</div></section>
+
+<!-- ============ SLIDE 4 · FIND THE IMPORTANT WORDS ============ -->
+<section class="slide" data-title="Find the important words"><div class="bubble"></div><div class="content">
+<span class="tag">READING · TURN THE MESSAGE INTO CLUES</span>
+<div class="heading">Read the customer's message</div>
+<div class="msgbox" id="s4msg">Mum asked me to buy some milk. She wants <button class="clue">a one-litre carton</button> because we need enough for breakfast tomorrow. She prefers a product <button class="clue">from Malaysia</button>. Please <button class="clue">do not buy chocolate milk</button>.</div>
+<div class="s4row">
+  <div class="s4clues hidden" id="s4clues"><h3>SHOPPING CLUES</h3><div class="chips"><span class="chip">1 litre</span><span class="chip">carton</span><span class="chip">Malaysia</span><span class="chip">NOT chocolate</span></div></div>
+  <div class="s4qa">
+    <div class="q">Does “breakfast tomorrow” help us identify the product?</div>
+    <div class="a" id="s4a1"></div>
+    <div class="q">Which words are the <b>clues</b>? Tap them.</div>
+    <div class="a" id="s4a2">Clues found: <b id="s4count">0</b> / 3</div>
+  </div>
+</div>
+</div></section>
+
+<!-- ============ SLIDE 5 · THREE-STEP METHOD ============ -->
+<section class="slide" data-title="Three-step method"><div class="bubble"></div><div class="content">
+<span class="tag">STRATEGY · THE SHOPPING METHOD</span>
+<div class="heading">Our three-step method</div>
+<div class="steps3">
+  <div class="step"><span class="num">1</span><span class="icon">🔍</span><div class="verb"><span class="blank">F_______</span></div><div class="cap hidden">Find the important clues.</div></div>
+  <div class="step"><span class="num">2</span><span class="icon">⚖️</span><div class="verb"><span class="blank">C_______</span></div><div class="cap hidden">Find products that might match.</div></div>
+  <div class="step"><span class="num">3</span><span class="icon">✅</span><div class="verb"><span class="blank">C_______</span></div><div class="cap hidden">Does your product match EVERY clue?</div></div>
+</div>
+<div class="prompt" style="margin-top:14px">What do we do first? … Then? … Before we write the answer?</div>
+</div></section>
+
+<!-- ============ SLIDE 6 · TRY ONE TOGETHER ============ -->
+<section class="slide" data-title="Try one together"><div class="bubble"></div><div class="content">
+<span class="tag">MODEL · PROGRESSIVE ELIMINATION</span>
+<div class="heading">Customer request <span style="color:var(--coral)">→</span> which product?</div>
+<div class="req">“I need orange juice for my sister. Please buy a <b>one-litre bottle</b>. She does not want added sugar. Choose one <b>made in Thailand</b>.”</div>
+<div class="prod3">
+  <div class="prod" id="pA"><h4>A · Sunny Orange</h4><div class="pline">1 L · bottle</div><div class="pline">Thailand</div><div class="pline">no added sugar</div></div>
+  <div class="prod" id="pB"><h4>B · Sunny Orange</h4><div class="pline">1 L · bottle</div><div class="pline">Malaysia</div><div class="pline">no added sugar</div></div>
+  <div class="prod" id="pC"><h4>C · Fresh Orange</h4><div class="pline">1 L · bottle</div><div class="pline">Thailand</div><div class="pline">added sugar</div></div>
+</div>
+<div class="s6check">
+  <button class="checkbtn" data-check="1">Check: 1 litre</button>
+  <button class="checkbtn" data-check="2">Check: Thailand</button>
+  <button class="checkbtn" data-check="3">Check: no added sugar</button>
+  <div class="s6lines" id="s6lines"></div>
+</div>
+<div class="s6ans" id="s6ans"></div>
+</div></section>
+
+<!-- ============ SLIDE 7 · ALMOST-CORRECT PRODUCT ============ -->
+<section class="slide" data-title="Almost correct"><div class="bubble"></div><div class="content">
+<span class="tag">ERROR DETECTIVE · DISTRACTORS</span>
+<div class="heading">Customer wants: <span class="chips" style="display:inline-flex;vertical-align:middle"><span class="chip">blue cover</span><span class="chip">female author</span><span class="chip">less than 200 pages</span></span></div>
+<div class="books3">
+  <div class="book" id="bA"><h4>A</h4><div class="bline">Blue cover</div><div class="bline">Female author</div><div class="bline">184 pages</div><div class="why"></div></div>
+  <div class="book" id="bB"><h4>B</h4><div class="bline">Blue cover</div><div class="bline">Male author</div><div class="bline">176 pages</div><div class="why"></div></div>
+  <div class="book" id="bC"><h4>C</h4><div class="bline">Red cover</div><div class="bline">Female author</div><div class="bline">184 pages</div><div class="why"></div></div>
+</div>
+<div class="s7btns">
+  <button id="s7b1">Which products are almost correct?</button>
+  <button id="s7b2" class="hidden">Which matches everything?</button>
+</div>
+<div class="s7msg" id="s7msg"></div>
+</div></section>
+
+<!-- ============ SLIDE 8 · YOU SOLVE IT ============ -->
+<section class="slide" data-title="You solve it"><div class="bubble"></div><div class="content">
+<span class="tag">PRACTISE · SOLVE IT YOURSELF</span>
+<div class="heading">Shopping mission <span style="color:var(--coral)">→</span> your turn</div>
+<div class="req">“My brother needs a notebook for school. Find one with a <b>green cover</b>. It must have <b>more than 100 pages</b>. He wants the <b>cheapest suitable</b> notebook.”</div>
+<div class="cat4">
+  <div class="cat" id="cK21"><span class="code">K21</span><div class="cline">Green</div><div class="cline">80 pages</div><div class="cline">RM3.50</div><div class="why"></div></div>
+  <div class="cat" id="cK22"><span class="code">K22</span><div class="cline">Green</div><div class="cline">120 pages</div><div class="cline">RM5.00</div><div class="why"></div></div>
+  <div class="cat" id="cK23"><span class="code">K23</span><div class="cline">Blue</div><div class="cline">160 pages</div><div class="cline">RM4.50</div><div class="why"></div></div>
+  <div class="cat" id="cK24"><span class="code">K24</span><div class="cline">Green</div><div class="cline">160 pages</div><div class="cline">RM6.50</div><div class="why"></div></div>
+</div>
+<div class="ansrow">
+  <div class="fingers" id="s8fingers">
+    <button class="anschip" data-k="K21">1<small>K21</small></button>
+    <button class="anschip" data-k="K22">2<small>K22</small></button>
+    <button class="anschip" data-k="K23">3<small>K23</small></button>
+    <button class="anschip" data-k="K24">4<small>K24</small></button>
+  </div>
+  <div class="s8prove" id="s8prove">Show fingers: 1 = K21 · 2 = K22 · 3 = K23 · 4 = K24</div>
+</div>
+<div class="s8ans" id="s8ans"></div>
+</div></section>
+
+<!-- ============ SLIDE 9 · YOUR SHOPPING MISSION ============ -->
+<section class="slide" data-title="Your shopping mission"><div class="bubble"></div><div class="content">
+<span class="tag">INDEPENDENT TASK · LAUNCH</span>
+<div class="heading">SHOPPING <span style="color:var(--coral)">SWEEP</span></div>
+<div class="s9grid">
+  <div class="s9steps"><ol>
+    <li><b>Read</b> your customer's message.</li>
+    <li><b>Find</b> the important clues.</li>
+    <li><b>Compare</b> the catalogue.</li>
+    <li>Choose the <b>6 exact products</b>.</li>
+    <li>Write their codes in <b>Attempt 1</b>.</li>
+  </ol></div>
+  <div class="s9side">
+    <div class="panel warn" style="padding:12px 16px"><b>Important:</b> Do NOT ask another student for answers. <b>Your mission is different.</b></div>
+    <div class="stratband">FIND → COMPARE → CHECK</div>
+    <div class="panel s9qa">
+      <div class="q">Do you need a product that matches <b>one</b> clue or <b>every</b> clue?</div>
+      <div class="a" id="s9a1"></div>
+      <div class="q">Do we use <b>Attempt 2</b> now?</div>
+      <div class="a" id="s9a2"></div>
+    </div>
+  </div>
+</div>
+</div></section>
+
+<!-- ============ SLIDE 10 · SHOPPING SWEEP ============ -->
+<section class="slide" data-title="Shopping sweep"><div class="bubble"></div><div class="content">
+<span class="tag">WORK TIME · ATTEMPT 1</span>
+<div class="heading">SHOPPING <span style="color:var(--coral)">SWEEP</span></div>
+<div class="s10mid">
+  <div class="stratband" style="font-size:34px">FIND → COMPARE → CHECK</div>
+  <div class="s10list">
+    <p class="s10q">Stuck? Ask yourself:</p>
+    <p>1. What exactly does the customer want?</p>
+    <p>2. Which products <b>might</b> match?</p>
+    <p>3. What detail removes the distractor?</p>
+    <p>4. Did I check <b>every clue</b>?</p>
+  </div>
+  <div class="s10foot">ATTEMPT 1 ONLY.</div>
+</div>
+</div></section>
+
+<!-- ============ SLIDE 11 · DO NOT CHANGE ANYTHING YET ============ -->
+<section class="slide" data-title="Attempt 1 check"><div class="bubble"></div><div class="content">
+<span class="tag">DIAGNOSTIC FEEDBACK · NO ANSWERS YET</span>
+<div class="heading">ATTEMPT 1 CHECK</div>
+<p class="sub">You will NOT see the correct answers yet. Only ✓ or ✗.</p>
+<div class="attempt6">
+  <div class="slot"><span class="n">1</span>✓</div>
+  <div class="slot"><span class="n">2</span>✓</div>
+  <div class="slot" style="border-color:var(--coral)"><span class="n">3</span>✗</div>
+  <div class="slot"><span class="n">4</span>✓</div>
+  <div class="slot" style="border-color:var(--coral)"><span class="n">5</span>✗</div>
+  <div class="slot"><span class="n">6</span>✓</div>
+</div>
+<div class="s11qa">
+  <div class="q">If number 3 is wrong, what should you do?</div>
+  <div class="a" id="s11a1"></div>
+  <div class="q">Why don't I show you the correct product immediately?</div>
+  <div class="a" id="s11a2"></div>
+</div>
+</div></section>
+
+<!-- ============ SLIDE 12 · REPAIR YOUR BASKET ============ -->
+<section class="slide" data-title="Repair your basket"><div class="bubble"></div><div class="content">
+<span class="tag">REREAD · SELF-CORRECT</span>
+<div class="heading">FIX ONLY THE <span style="color:var(--coral)">✗</span> ANSWERS</div>
+<div class="repair4">
+  <div class="rstep"><span class="rn">1</span><div class="rt">Read the request again.</div><div class="rd">Find the important clue.</div></div>
+  <div class="rstep"><span class="rn">2</span><div class="rt">Compare two products.</div><div class="rd">What is different?</div></div>
+  <div class="rstep"><span class="rn">3</span><div class="rt">Write your new answer in…</div><div class="rd" style="font-weight:950;color:var(--teal);font-size:21px">ATTEMPT 2</div></div>
+  <div class="rstep"><span class="rn">4</span><div class="rt">Check the word NOT.</div><div class="rd">NOT / WITHOUT / doesn't want</div></div>
+</div>
+<div class="hints">
+  <button class="hintchip" data-h="Check the weight / size.">Check the weight / size</button>
+  <button class="hintchip" data-h="Check the origin (country).">Check the origin</button>
+  <button class="hintchip" data-h="Check the colour.">Check the colour</button>
+  <button class="hintchip" data-h="Check the ingredients.">Check the ingredients</button>
+  <button class="hintchip" data-h="Check the author.">Check the author</button>
+  <button class="hintchip" data-h="Read the sentence with NOT / WITHOUT again.">Check NOT / WITHOUT</button>
+</div>
+<div class="s12out" id="s12out">Teacher: reveal only the type of clue when a student is still stuck.</div>
+</div></section>
+
+<!-- ============ SLIDE 13 · PROVE YOUR CHOICE ============ -->
+<section class="slide" data-title="Prove your choice"><div class="bubble"></div><div class="content">
+<span class="tag">EVIDENCE · EXPLAIN, DON'T JUST SAY THE CODE</span>
+<div class="heading">DON'T JUST SAY THE CODE. <span style="color:var(--coral)">PROVE IT.</span></div>
+<div class="frame">I chose <span class="fill">______</span> because it is <span class="fill">______</span>, it has <span class="fill">______</span>, and it <span class="fill">______</span>.</div>
+<div class="s13example hidden" id="s13ex">
+  <div class="who">Customer wants: 250 g · Malaysia · strawberry flavour</div>
+  <div class="sent">“I chose <b>D14</b> because it weighs <b>250 grams</b>, it is from <b>Malaysia</b>, and it has <b>strawberry flavour</b>.”</div>
+</div>
+<div class="s13row">
+  <div class="partnerq"><b>Partner question:</b> Does it match EVERY clue?<div class="a" id="s13a"></div></div>
+  <div class="diff">
+    <div class="dline">Weaker: <b>I chose ______ because it is ______ and ______.</b></div>
+    <div class="dline">Stronger: no frame — give <b>three</b> pieces of evidence.</div>
+  </div>
+</div>
+</div></section>
+
+<!-- ============ SLIDE 14 · EXIT CHECK ============ -->
+<section class="slide" data-title="Exit check"><div class="bubble"></div><div class="content">
+<span class="tag">EXIT CHECK · RAPID RETRIEVAL</span>
+<div class="heading">How do you beat a distractor? <span class="sub" style="font-size:20px;font-weight:800">NO NOTES.</span></div>
+<div class="blank3">
+  <div class="b3" id="e1">F______</div>
+  <div class="b3" id="e2">C______</div>
+  <div class="b3" id="e3">C______</div>
+</div>
+<div class="challenge">A product matches <b>four out of five</b> clues. Do you buy it?<div class="no" id="eNo">NO!</div></div>
+<div class="oraltake" id="eOral">When two products look correct, I should __________.</div>
+<div class="finalbanner hidden" id="eFinal">GOOD READERS DO NOT JUST FIND MATCHING WORDS.<br><span class="hl">THEY CHECK THE DETAILS.</span></div>
+</div></section>
+
+<div class="chrome"><div id="status">CLASS 1M · PERSONAL SHOPPER · 1 / 14</div><div><button class="btn" id="prev">← Back</button><button class="btn primary" id="next">Next →</button><button class="btn" id="reveal">Reveal</button><button class="btn" id="reset">Reset</button></div></div></main>
+<script>
+const slides=[...document.querySelectorAll('.slide')],toastEl=document.querySelector('#toast');let current=0;
+function fit(){document.querySelector('#stage').style.transform=`scale(${Math.min(innerWidth/1280,innerHeight/665)})`}
+function toast(t){toastEl.textContent=t;toastEl.classList.add('show-toast');setTimeout(()=>toastEl.classList.remove('show-toast'),1400)}
+function show(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===current));document.querySelector('#status').textContent=`CLASS 1M · ${slides[current].dataset.title.toUpperCase()} · ${current+1} / ${slides.length}`;fit()}
+document.querySelector('#next').onclick=()=>show(current+1);document.querySelector('#prev').onclick=()=>show(current-1);document.querySelector('#reset').onclick=()=>resetCurrent();document.querySelector('#reveal').onclick=()=>revealCurrent();
+
+/* ---------- S1 · Personal shopper: predict → reveal ---------- */
+const s1A=document.querySelector('#s1A'),s1B=document.querySelector('#s1B'),s1C=document.querySelector('#s1C'),s1msg=document.querySelector('#s1msg'),s1ans=document.querySelector('#s1ans'),s1b1=document.querySelector('#s1b1'),s1b2=document.querySelector('#s1b2');
+s1b1.onclick=()=>{s1msg.innerHTML='⚠ <b>Not enough information!</b> Your customer also wants one <b>made in Malaysia</b>. Choose again.';document.querySelectorAll('.porigin').forEach(o=>o.classList.remove('hidden'));s1b1.classList.add('hidden');s1b2.classList.remove('hidden');toast('One matching detail is not enough!')};
+s1b2.onclick=()=>{s1A.classList.add('goodring');s1ans.textContent='✓ Answer: A — 250 g and made in Malaysia. One matching detail is sometimes not enough!';toast('A matches BOTH clues')};
+
+/* ---------- S2 · What can we check? ---------- */
+const s2map={brand:['brand','FreshDay Milk'],size:['weight / size','1 litre'],country:['country','Product of Malaysia'],type:['type / flavour','Full Cream'],colour:null,ingredients:null},s2out=document.querySelector('#s2out');
+document.querySelectorAll('.infobtn').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.infobtn').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  const t=b.dataset.t,m=s2map[t];
+  if(!m){s2out.innerHTML='<b>'+t+'</b> — not on this label! Check the back of the pack.';return}
+  const row=document.querySelector(`.lrow[data-f="${t}"]`);row.classList.add('revealed');
+  s2out.innerHTML=`We can find the <b>${m[0]}</b> here: <b>${m[1]}</b>`;
+});
+
+/* ---------- S3 · Packaging ---------- */
+const packs=[...document.querySelectorAll('.pack')];
+packs.forEach(p=>{p.tabIndex=0;p.setAttribute('role','button');p.setAttribute('aria-pressed','false');const t=()=>{p.classList.toggle('open');p.setAttribute('aria-pressed',String(p.classList.contains('open')))};p.onclick=t;p.onkeydown=e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();t()}}});
+const s3hint=document.querySelector('#s3hint');let hintsOn=false;
+packs.forEach(p=>{const w=p.dataset.ans.split(' ');const cont=w[1];p.dataset.plain=p.querySelector('.phrase').textContent;p.dataset.hint=w[0]+' '+cont.charAt(0)+'_'.repeat(cont.length-1)+' '+w.slice(2).join(' ')});
+function s3ApplyHints(){packs.forEach(p=>{const ph=p.querySelector('.phrase');if(hintsOn&&!p.classList.contains('open')){ph.textContent=p.dataset.hint;p.classList.add('hint')}else{ph.textContent=p.dataset.plain;p.classList.remove('hint')}});s3hint.textContent=hintsOn?'Hide first letters':'Show first letters'}
+s3hint.onclick=()=>{hintsOn=!hintsOn;s3ApplyHints()};
+
+/* ---------- S4 · Find the important words ---------- */
+const clues=[...document.querySelectorAll('.clue')],s4count=document.querySelector('#s4count'),s4clues=document.querySelector('#s4clues'),s4a1=document.querySelector('#s4a1'),s4msg=document.querySelector('#s4msg');
+let found=0;
+function bump(d){found=Math.max(0,Math.min(3,found+d));s4count.textContent=found;if(found===3){s4clues.classList.remove('hidden');toast('All clues found!')}}
+clues.forEach(c=>{c.tabIndex=0;c.setAttribute('aria-pressed','false');const t=()=>{const on=c.classList.toggle('found');c.setAttribute('aria-pressed',String(on));bump(on?1:-1)};c.onclick=t;c.onkeydown=e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();t()}}});
+function s4Reveal(){clues.forEach(c=>{if(!c.classList.contains('found')){c.classList.add('found');found++;}c.setAttribute('aria-pressed','true')});s4count.textContent=3;s4clues.classList.remove('hidden');s4msg.classList.add('fade');s4a1.innerHTML='No — it is context, not a clue. A long paragraph can hide a short list of useful clues.'}
+function s4Reset(){clues.forEach(c=>{c.classList.remove('found');c.setAttribute('aria-pressed','false')});found=0;s4count.textContent=0;s4clues.classList.add('hidden');s4msg.classList.remove('fade');s4a1.textContent=''}
+
+/* ---------- S5 · Three-step method ---------- */
+const verbs=['FIND','COMPARE','CHECK'];
+function s5Reveal(){document.querySelectorAll('.step .verb').forEach((v,i)=>{v.innerHTML='<b>'+verbs[i]+'</b>'});document.querySelectorAll('.step .cap').forEach(c=>c.classList.remove('hidden'));toast('FIND → COMPARE → CHECK')}
+function s5Reset(){const bl=['F_______','C_______','C_______'];document.querySelectorAll('.step .verb').forEach((v,i)=>v.innerHTML='<span class="blank">'+bl[i]+'</span>');document.querySelectorAll('.step .cap').forEach(c=>c.classList.add('hidden'))}
+
+/* ---------- S6 · Try one together ---------- */
+const prodMap={pA:[1,2,3],pB:[1],pC:[1,2]},s6lines=document.querySelector('#s6lines'),s6ans=document.querySelector('#s6ans'),checkLines=['1 litre → <b>A ✓ · B ✓ · C ✓</b>','Thailand → <b>A ✓ · C ✓</b>','no added sugar → <b>A ✓</b>'];
+let s6step=0;
+document.querySelectorAll('.checkbtn').forEach(b=>b.onclick=()=>{
+  const n=+b.dataset.check;if(n!==s6step+1)return;b.disabled=true;s6step=n;
+  s6lines.insertAdjacentHTML('beforeend','<div>'+checkLines[n-1]+'</div>');
+  Object.entries(prodMap).forEach(([id,ms])=>{const el=document.querySelector('#'+id);if(ms.includes(n))el.classList.add('ok');else if(!el.classList.contains('no'))el.classList.add('no')});
+  if(n===3){s6ans.textContent='✓ Answer: A — it matches ALL the clues.';toast('Do not stop at one clue!')}
+});
+
+/* ---------- S7 · Almost correct ---------- */
+const s7b1=document.querySelector('#s7b1'),s7b2=document.querySelector('#s7b2'),s7msg=document.querySelector('#s7msg');
+s7b1.onclick=()=>{['bB','bC'].forEach(id=>{const b=document.querySelector('#'+id);b.classList.add('warned','warnring');});s7msg.innerHTML='<span class="big">B and C</span> are almost correct — but ALMOST correct = WRONG.';s7b1.classList.add('hidden');s7b2.classList.remove('hidden')};
+s7b2.onclick=()=>{const a=document.querySelector('#bA');a.classList.add('ok','goodring');document.querySelector('#bB .why').textContent='✗ male author';document.querySelector('#bC .why').textContent='✗ red cover';s7msg.innerHTML='<span class="big">A</span> matches everything: blue ✓ · female ✓ · 184 pages ✓';toast('Why is B wrong? Male author. Why is C wrong? Red cover.')};
+
+/* ---------- S8 · You solve it ---------- */
+const s8fingers=document.querySelector('#s8fingers'),s8prove=document.querySelector('#s8prove'),s8ans=document.querySelector('#s8ans');
+s8fingers.querySelectorAll('.anschip').forEach(ch=>ch.onclick=()=>{s8fingers.querySelectorAll('.anschip').forEach(x=>x.classList.remove('selected'));ch.classList.add('selected');s8prove.textContent='A K22 supporter: “Prove it.” → Green ✓ · more than 100 pages ✓ · RM5.00 cheaper than K24'});
+const s8reasons={K21:'✗ only 80 pages',K22:'',K23:'✗ blue cover',K24:'✗ RM6.50 — not the cheapest suitable'};
+function s8Reveal(){Object.entries(s8reasons).forEach(([k,r])=>{const c=document.querySelector('#c'+k);if(r){c.classList.add('no');c.querySelector('.why').textContent=r}else{c.classList.add('ok','goodring')}});s8ans.textContent='✓ Answer: K22 — first find suitable products, then compare price.';toast('Suitable first · then price')}
+function s8Reset(){Object.keys(s8reasons).forEach(k=>{const c=document.querySelector('#c'+k);c.classList.remove('ok','no','goodring');c.querySelector('.why').textContent=''});s8fingers.querySelectorAll('.anschip').forEach(x=>x.classList.remove('selected'));s8ans.textContent='';s8prove.textContent='Show fingers: 1 = K21 · 2 = K22 · 3 = K23 · 4 = K24'}
+
+/* ---------- S9 · Mission launch ---------- */
+function s9Reveal(){document.querySelector('#s9a1').textContent='Every clue.';document.querySelector('#s9a2').textContent='No — Attempt 1 first.'}
+function s9Reset(){document.querySelector('#s9a1').textContent='';document.querySelector('#s9a2').textContent=''}
+
+/* ---------- S11 · Attempt 1 check ---------- */
+function s11Reveal(){document.querySelector('#s11a1').textContent='Return to the customer’s clues. (Not: ask for the answer.)';document.querySelector('#s11a2').textContent='Because your brain needs to find the mistake.'}
+function s11Reset(){document.querySelector('#s11a1').textContent='';document.querySelector('#s11a2').textContent=''}
+
+/* ---------- S12 · Repair ---------- */
+const s12out=document.querySelector('#s12out');
+document.querySelectorAll('.hintchip').forEach(h=>h.onclick=()=>{h.classList.toggle('open');s12out.textContent=h.classList.contains('open')?('Hint: '+h.dataset.h+'  →  read both products again.'):'Teacher: reveal only the type of clue when a student is still stuck.'});
+
+/* ---------- S13 · Prove ---------- */
+function s13Reveal(){document.querySelector('#s13ex').classList.remove('hidden');document.querySelector('#s13a').textContent='Yes — it matches EVERY clue.'}
+function s13Reset(){document.querySelector('#s13ex').classList.add('hidden');document.querySelector('#s13a').textContent=''}
+
+/* ---------- S14 · Exit check ---------- */
+const eFill=[['FIND','e1'],['COMPARE','e2'],['CHECK','e3']];let eStep=0;
+function eNext(){eStep=Math.min(3,eStep+1);
+  if(eStep>=1)eFill.forEach(([w,id])=>{const el=document.querySelector('#'+id);el.textContent=w;el.classList.add('filled')});
+  if(eStep>=2)document.querySelector('#eNo').classList.add('show');
+  if(eStep>=3){document.querySelector('#eFinal').classList.remove('hidden');document.querySelector('#eOral').textContent='When two products look correct, I should compare the details / check every clue.';toast('Check EVERY clue!')}
+  if(eStep===3)toast('The correct product must match EVERY important clue.')}
+function eReset(){eStep=0;eFill.forEach(([w,id])=>{const el=document.querySelector('#'+id);el.textContent=w[0]+'______';el.classList.remove('filled')});document.querySelector('#eNo').classList.remove('show');document.querySelector('#eFinal').classList.add('hidden');document.querySelector('#eOral').textContent='When two products look correct, I should __________.'}
+
+/* ---------- Global reveal / reset ---------- */
+function revealCurrent(){const t=slides[current].dataset.title;
+  if(t==='Personal shopper'){if(!s1b1.classList.contains('hidden'))s1b1.click();else if(!s1b2.classList.contains('hidden'))s1b2.click();else toast('A: 250 g AND Malaysia')}
+  else if(t==='What can we check?'){['brand','type','size','country'].forEach(tt=>{const b=document.querySelector(`.infobtn[data-t="${tt}"]`);if(!b.classList.contains('active'))b.click()});toast('Brand · size · country · type')}
+  else if(t==='What is it?'){packs.forEach(p=>{if(!p.classList.contains('open'))p.click()});toast('Say them together!')}
+  else if(t==='Find the important words'){s4Reveal()}
+  else if(t==='Three-step method'){s5Reveal()}
+  else if(t==='Try one together'){document.querySelectorAll('.checkbtn').forEach(b=>{if(!b.disabled)b.click()})}
+  else if(t==='Almost correct'){if(!s7b1.classList.contains('hidden'))s7b1.click();else if(!s7b2.classList.contains('hidden'))s7b2.click();else toast('A is the only full match')}
+  else if(t==='You solve it'){s8Reveal()}
+  else if(t==='Your shopping mission'){s9Reveal()}
+  else if(t==='Shopping sweep'){toast('FIND → COMPARE → CHECK. Attempt 1 only.')}
+  else if(t==='Attempt 1 check'){s11Reveal()}
+  else if(t==='Repair your basket'){document.querySelectorAll('.hintchip').forEach(h=>{if(!h.classList.contains('open'))h.click()})}
+  else if(t==='Prove your choice'){s13Reveal()}
+  else if(t==='Exit check'){eNext()}
+}
+function resetCurrent(){const t=slides[current].dataset.title;
+  if(t==='Personal shopper'){document.querySelectorAll('.porigin').forEach(o=>o.classList.add('hidden'));s1msg.textContent='';s1ans.textContent='';s1A.classList.remove('goodring');s1b1.classList.remove('hidden');s1b2.classList.add('hidden')}
+  else if(t==='What can we check?'){document.querySelectorAll('.infobtn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.lrow').forEach(r=>r.classList.remove('revealed'));s2out.textContent='Tap a type of information. Where do we find it?'}
+  else if(t==='What is it?'){packs.forEach(p=>{p.classList.remove('open','hint');p.setAttribute('aria-pressed','false')});hintsOn=false;s3ApplyHints()}
+  else if(t==='Find the important words'){s4Reset()}
+  else if(t==='Three-step method'){s5Reset()}
+  else if(t==='Try one together'){s6step=0;s6lines.innerHTML='';s6ans.textContent='';document.querySelectorAll('.checkbtn').forEach(b=>b.disabled=false);Object.keys(prodMap).forEach(id=>{const el=document.querySelector('#'+id);el.classList.remove('ok','no')})}
+  else if(t==='Almost correct'){['bA','bB','bC'].forEach(id=>{const b=document.querySelector('#'+id);b.classList.remove('ok','no','warned','warnring');b.querySelector('.why').textContent=''});s7msg.textContent='';s7b1.classList.remove('hidden');s7b2.classList.add('hidden')}
+  else if(t==='You solve it'){s8Reset()}
+  else if(t==='Your shopping mission'){s9Reset()}
+  else if(t==='Attempt 1 check'){s11Reset()}
+  else if(t==='Repair your basket'){document.querySelectorAll('.hintchip').forEach(h=>h.classList.remove('open'));s12out.textContent='Teacher: reveal only the type of clue when a student is still stuck.'}
+  else if(t==='Prove your choice'){s13Reset()}
+  else if(t==='Exit check'){eReset()}
+  toast('Board reset');
+}
+addEventListener('keydown',e=>{if(e.defaultPrevented||['BUTTON','SELECT','INPUT','TEXTAREA'].includes(e.target.tagName))return;if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(current+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(current-1)}if(e.key.toLowerCase()==='r')document.querySelector('#reveal').click()});addEventListener('resize',fit);show(Number(new URLSearchParams(location.search).get('slide')||1)-1);
+</script></body></html>
