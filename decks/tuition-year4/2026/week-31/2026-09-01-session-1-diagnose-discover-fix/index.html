@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Year 4 Tuition · Session 1 · Diagnose, Discover, Fix</title>
+<style>
+:root{--ink:#17324a;--muted:#506b7e;--paper:#fffaf1;--white:#fff;--teal:#08786f;--mint:#dff5e9;--sun:#ffd166;--coral:#e86151;--pink:#ffe4df;--sky:#dfedff;--line:#bdd0d8;--shadow:rgba(23,50,74,.09)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe8ec;color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif}button{font:inherit;color:inherit}
+#stage{position:fixed;left:0;top:0;width:1366px;height:768px;transform-origin:top left;overflow:hidden;background:var(--paper)}
+.slide{display:none;position:relative;height:688px;padding:28px 58px 18px}.slide.active{display:block}.content{position:relative;z-index:2;height:100%}.sun{position:absolute;right:-120px;top:-160px;width:370px;height:370px;border-radius:50%;background:var(--sun);opacity:.48}.dot{position:absolute;left:-90px;bottom:-120px;width:280px;height:280px;border-radius:50%;background:var(--mint);opacity:.7}
+.tag{display:inline-block;color:var(--teal);background:var(--mint);padding:7px 14px;border-radius:999px;font-size:17px;font-weight:950;letter-spacing:.05em}.title{font-size:68px;line-height:1.02;margin:18px 0 12px;font-weight:950;letter-spacing:-.03em}.heading{font-size:48px;line-height:1.04;margin:12px 0 15px;font-weight:950;letter-spacing:-.02em}.sub{font-size:29px;line-height:1.28;color:var(--muted);font-weight:750;margin:0}.hero-line{font-size:47px;font-weight:950;margin-top:38px}.arrow{color:var(--coral);padding:0 9px}.prompt{background:var(--ink);color:#fff;border-radius:21px;padding:18px 23px;font-size:34px;line-height:1.2;font-weight:950}.board{background:var(--white);border:3px solid var(--line);border-radius:21px;padding:17px 20px;box-shadow:0 6px 0 var(--shadow)}.grid{display:grid;gap:15px}.two{grid-template-columns:repeat(2,1fr)}.three{grid-template-columns:repeat(3,1fr)}.four{grid-template-columns:repeat(4,1fr)}.board h3{font-size:24px;margin:0 0 9px;color:var(--teal);letter-spacing:.03em}.question{font-size:27px;line-height:1.24;font-weight:900}.mini{font-size:23px;line-height:1.3;font-weight:780;color:var(--muted)}.choice-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:11px}.choice{border:3px solid var(--line);border-radius:14px;background:#fff;padding:10px 9px;font-size:22px;line-height:1.1;font-weight:900;cursor:pointer;box-shadow:0 4px 0 var(--shadow)}.choice.selected{background:var(--sky);border-color:#6c9bd1}.choice.correct{background:var(--mint);border-color:var(--teal)}.choice.wrong{background:var(--pink);border-color:var(--coral)}.choice:focus-visible,.btn:focus-visible,.branch:focus-visible{outline:5px solid var(--sun);outline-offset:3px}.answer{display:none;color:var(--teal);font-size:22px;line-height:1.18;font-weight:900;margin-top:10px}.show-answer .answer{display:block}.reading{font-size:26px;line-height:1.4;font-weight:800}.write-card{margin-top:22px;padding:25px 28px;background:#fff;border:4px solid var(--teal);border-radius:24px;box-shadow:0 7px 0 var(--shadow)}.write-card p{font-size:31px;line-height:1.35;font-weight:850;margin:0}.jobs{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}.job{background:var(--sun);border-radius:15px;padding:11px 16px;font-size:25px;font-weight:950}.lines{margin-top:21px}.line{height:51px;border-bottom:3px solid var(--line)}
+.talk-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:26px}.talk{font-size:30px;line-height:1.15;font-weight:900;background:#fff;border:3px solid var(--line);border-radius:20px;padding:23px}.flow{display:flex;gap:14px;align-items:center;margin-top:36px}.flow .step{flex:1;text-align:center;background:#fff;border:3px solid var(--line);border-radius:20px;padding:22px 10px;font-size:27px;font-weight:950}.conference{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:24px}.conference .board{min-height:190px}.conference .icon{font-size:48px}.conference h3{font-size:26px;margin-top:9px}.conference p{font-size:21px;line-height:1.25;font-weight:780;margin:0;color:var(--muted)}
+.branch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:24px}.branch{border:3px solid var(--line);background:#fff;border-radius:20px;padding:25px 14px;min-height:190px;cursor:pointer;box-shadow:0 6px 0 var(--shadow);font-size:27px;font-weight:950}.branch span{display:block;font-size:46px;margin-bottom:12px}.lesson-pane{display:none}.lesson-pane.active{display:block}.formula{font-size:42px;line-height:1.18;font-weight:950;text-align:center;background:#fff;border:3px solid var(--line);border-radius:20px;padding:18px}.example{font-size:30px;line-height:1.35;font-weight:900;background:#fff;border-left:9px solid var(--coral);border-radius:15px;padding:16px 20px}.focus-label{color:var(--coral);font-weight:950}.repair-btn{display:inline-block;margin-top:15px}.profile{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}.profile .board{font-size:24px;font-weight:900;min-height:87px}.blank{display:inline-block;min-width:270px;border-bottom:4px solid var(--ink);height:37px;vertical-align:bottom}
+.footer{position:absolute;left:0;right:0;bottom:0;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-top:2px solid #cbd9df;background:rgba(255,250,241,.98);font-weight:950}.status{font-size:18px}.btn{border:0;border-radius:14px;padding:11px 15px;background:#fff;box-shadow:0 5px 0 #c4d3d9;font-size:17px;font-weight:950;cursor:pointer;margin-left:7px}.btn.primary{background:var(--teal);color:#fff;box-shadow:0 5px 0 #065b55}.btn.secondary{background:var(--sun);box-shadow:0 5px 0 #d7a623}.btn[disabled]{opacity:.45;cursor:not-allowed}.toast{position:absolute;top:20px;right:28px;z-index:20;background:var(--ink);color:#fff;padding:12px 16px;border-radius:12px;font-weight:900;opacity:0;transition:opacity .18s}.toast.show{opacity:1}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main id="stage" aria-label="Year 4 tuition Session 1 diagnostic and repair lesson">
+<div id="toast" class="toast" aria-live="polite"></div>
+
+<section class="slide active" data-title="Try, notice, improve">
+  <div class="sun"></div><div class="dot"></div><div class="content">
+    <span class="tag">YEAR 4 TUITION · SESSION 1 · TUESDAY, 1 SEPTEMBER 2026</span>
+    <h1 class="title">Try. Notice.<br><span style="color:var(--coral)">Improve.</span></h1>
+    <p class="sub">Today is a starting point—not a graded test.</p>
+    <div class="hero-line">You try <span class="arrow">→</span> we notice <span class="arrow">→</span> you improve</div>
+  </div>
+</section>
+
+<section class="slide" data-title="Let’s talk">
+  <div class="sun"></div><div class="content">
+    <span class="tag">FIRST FIVE MINUTES</span><h2 class="heading">Let’s talk.</h2>
+    <div class="talk-grid">
+      <div class="talk">What is your favourite subject?</div><div class="talk">What did you do yesterday?</div>
+      <div class="talk">Tell me about your best friend.</div><div class="talk">What do you like doing after school?</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-title="How today works">
+  <div class="sun"></div><div class="content">
+    <span class="tag">OUR PLAN</span><h2 class="heading">Here is how today works.</h2>
+    <div class="flow"><div class="step">Talk</div><span class="arrow">→</span><div class="step">Try</div><span class="arrow">→</span><div class="step">Look back</div><span class="arrow">→</span><div class="step">Fix one thing</div><span class="arrow">→</span><div class="step">Try again</div></div>
+    <div class="prompt" style="margin-top:33px">Do your own best work. It is okay to be unsure.</div>
+  </div>
+</section>
+
+<section class="slide diagnostic" data-title="Diagnostic A">
+  <div class="content"><span class="tag">DIAGNOSTIC A · SHORT TEXTS</span><h2 class="heading">Read the message. Choose one answer.</h2>
+    <div class="grid two">
+      <div class="board"><div class="question">1. ART CLUB<br><span class="mini">Tuesday · 3:30 p.m. · Room 4</span><br>Where is the club?</div><div class="choice-row"><button class="choice" data-correct="1">Room 4</button><button class="choice">Tuesday</button><button class="choice">3:30 p.m.</button></div><div class="answer">Room 4 is the place.</div></div>
+      <div class="board"><div class="question">2. “Please bring your PE shoes tomorrow.”<br>What must you bring?</div><div class="choice-row"><button class="choice">A book</button><button class="choice" data-correct="1">PE shoes</button><button class="choice">A hat</button></div><div class="answer">The message names PE shoes.</div></div>
+      <div class="board"><div class="question">3. NO FOOD OR DRINKS IN THE COMPUTER ROOM<br>What may you take inside?</div><div class="choice-row"><button class="choice">Water</button><button class="choice">A sandwich</button><button class="choice" data-correct="1">Neither</button></div><div class="answer">“No food or drinks” means neither is allowed.</div></div>
+      <div class="board"><div class="question">4. “I am hungry.”<br>Choose the best reply.</div><div class="choice-row"><button class="choice">It is blue.</button><button class="choice" data-correct="1">Let’s eat.</button><button class="choice">See you yesterday.</button></div><div class="answer">“Let’s eat” responds to being hungry.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide diagnostic" data-title="Diagnostic B">
+  <div class="content"><span class="tag">DIAGNOSTIC B · WORDS IN A TEXT</span><h2 class="heading">Choose the word that completes the story.</h2>
+    <div class="grid two">
+      <div class="board reading" style="font-size:27px">Last Saturday, my family and I <b>(5) ___</b> to a community garden. I took a bottle of water <b>(6) ___</b> me. Mr Lee showed us <b>(7) ___</b> tomato plants. Before we left, we <b>(8) ___</b> some fresh vegetables for dinner.</div>
+      <div class="board" style="padding:13px 16px">
+        <div class="question">5.</div><div class="choice-row"><button class="choice">go</button><button class="choice">going</button><button class="choice" data-correct="1">went</button></div>
+        <div class="question" style="margin-top:10px">6.</div><div class="choice-row"><button class="choice">from</button><button class="choice">at</button><button class="choice" data-correct="1">with</button></div>
+        <div class="question" style="margin-top:10px">7.</div><div class="choice-row"><button class="choice" data-correct="1">his</button><button class="choice">him</button><button class="choice">he</button></div>
+        <div class="question" style="margin-top:10px">8.</div><div class="choice-row"><button class="choice">buy</button><button class="choice" data-correct="1">bought</button><button class="choice">buying</button></div>
+        <div class="answer">5 went · 6 with · 7 his · 8 bought</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide diagnostic" data-title="Diagnostic C">
+  <div class="content"><span class="tag">DIAGNOSTIC C · READING FOR DETAILS</span><h2 class="heading">Find the information.</h2>
+    <div class="board reading">Our <b>School Gardening Day</b> is on <b>Saturday, 12 September</b>. Meet at <b>8:00 a.m.</b> in the <b>garden behind the library</b>. Bring <b>gardening gloves</b>. We will <b>plant flowers</b> together.</div>
+    <div class="grid two" style="margin-top:16px">
+      <div class="board"><div class="question">9. When is it?</div><div class="choice-row"><button class="choice" data-correct="1">12 September</button><button class="choice">8 September</button><button class="choice">Saturday night</button></div><div class="answer">12 September is the date.</div></div>
+      <div class="board"><div class="question">10. Where do pupils meet?</div><div class="choice-row"><button class="choice">In the library</button><button class="choice" data-correct="1">Behind the library</button><button class="choice">At the gate</button></div><div class="answer">They meet in the garden behind the library.</div></div>
+      <div class="board"><div class="question">11. What should pupils bring?</div><div class="choice-row"><button class="choice">Flowers</button><button class="choice" data-correct="1">Gloves</button><button class="choice">Books</button></div><div class="answer">The text says to bring gardening gloves.</div></div>
+      <div class="board"><div class="question">12. What will they do?</div><div class="choice-row"><button class="choice" data-correct="1">Plant flowers</button><button class="choice">Read books</button><button class="choice">Paint a wall</button></div><div class="answer">They will plant flowers.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide diagnostic" data-title="Diagnostic D">
+  <div class="content"><span class="tag">DIAGNOSTIC D · MATCH INFORMATION</span><h2 class="heading">Which club is the best match?</h2>
+    <div class="grid three" style="gap:12px">
+      <div class="board"><h3>A · ART MAKERS</h3><div class="mini">Tuesday · Art Room<br>Make cards and decorations from paper and old boxes.<br>Bring pencils and scissors.</div></div>
+      <div class="board"><h3>B · JUNIOR CHEFS</h3><div class="mini">Thursday · Life Skills Room<br>Make sandwiches, fruit salad and snacks.<br>Bring an apron.</div></div>
+      <div class="board"><h3>C · NATURE EXPLORERS</h3><div class="mini">Wednesday · School garden<br>Grow herbs and watch birds.<br>Bring a notebook and hat.</div></div>
+    </div>
+    <div class="grid three" style="margin-top:14px;gap:12px">
+      <div class="board"><div class="question">13. Farah wants to make a birthday card.</div><div class="choice-row"><button class="choice" data-correct="1">A</button><button class="choice">B</button><button class="choice">C</button></div><div class="answer">A · Art Makers</div></div>
+      <div class="board"><div class="question">14. Kavin likes watching birds.</div><div class="choice-row"><button class="choice">A</button><button class="choice">B</button><button class="choice" data-correct="1">C</button></div><div class="answer">C · Nature Explorers</div></div>
+      <div class="board"><div class="question">15. Who must bring an apron?</div><div class="choice-row"><button class="choice">A</button><button class="choice" data-correct="1">B</button><button class="choice">C</button></div><div class="answer">B · Junior Chefs</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide diagnostic" data-title="Diagnostic E">
+  <div class="content"><span class="tag">DIAGNOSTIC E · WORD COMPLETION</span><h2 class="heading">Write the community place.</h2>
+    <p class="sub">The first letter is given. One line stands for one missing letter.</p>
+    <div class="grid three" style="margin-top:28px">
+      <div class="board"><h3>16</h3><div class="question">You can borrow books here.</div><div class="formula" style="font-size:34px;margin-top:20px">l _ _ _ _ _ _</div><div class="answer">library</div></div>
+      <div class="board"><h3>17</h3><div class="question">You can buy bread and cakes here.</div><div class="formula" style="font-size:34px;margin-top:20px">b _ _ _ _ _</div><div class="answer">bakery</div></div>
+      <div class="board"><h3>18</h3><div class="question">You can see a doctor here.</div><div class="formula" style="font-size:34px;margin-top:20px">c _ _ _ _ _</div><div class="answer">clinic</div></div>
+    </div>
+    <div class="prompt" style="margin-top:30px">Say the word quietly. Then spell it.</div>
+  </div>
+</section>
+
+<section class="slide" data-title="Writing A">
+  <div class="sun"></div><div class="content"><span class="tag">WRITING A · 5 MINUTES</span><h2 class="heading">Write a short message.</h2>
+    <div class="write-card"><p>Your friend Mia invited you to her birthday party. Write a message to Mia.</p><div class="jobs"><span class="job">thank her</span><span class="job">say if you can come</span><span class="job">say what you will bring</span></div></div>
+    <div class="prompt" style="margin-top:26px">Write 30–50 words. No help yet.</div>
+  </div>
+</section>
+
+<section class="slide" data-title="Writing B">
+  <div class="sun"></div><div class="content"><span class="tag">WRITING B · 5 MINUTES</span><h2 class="heading">Turn the notes into 4–5 sentences.</h2>
+    <div class="grid two" style="margin-top:20px"><div class="board"><h3>SCHOOL SPORTS DAY</h3><div class="question">Saturday<br>school field<br>8:00 a.m.<br>running competition<br>bring water</div></div><div class="board"><h3>EMAIL YOUR COUSIN</h3><div class="question">Invite your cousin to join.<br>Say why it will be fun.</div><div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div></div></div>
+    <div class="prompt" style="margin-top:18px">For today: write 4–5 complete sentences.</div>
+  </div>
+</section>
+
+<section class="slide" data-title="Show your thinking">
+  <div class="content"><span class="tag">LOOK BACK TOGETHER</span><h2 class="heading">Show me your thinking.</h2>
+    <div class="grid three" style="margin-top:29px"><div class="board"><h3>1</h3><div class="question">Why did you choose this?</div></div><div class="board"><h3>2</h3><div class="question">What word helped you?</div></div><div class="board"><h3>3</h3><div class="question">What were you unsure about?</div></div></div>
+    <div class="prompt" style="margin-top:33px">Mistakes help us choose the right next step.</div>
+  </div>
+</section>
+
+<section class="slide" data-title="Name the problem">
+  <div class="content"><span class="tag">NOTICE THE CAUSE</span><h2 class="heading">What made the answer difficult?</h2>
+    <div class="conference"><div class="board"><div class="icon">🧠</div><h3>Knowledge</h3><p>“I did not know the form or rule.”</p></div><div class="board"><div class="icon">🔎</div><h3>Reading</h3><p>“I misunderstood the question or missed the clue.”</p></div><div class="board"><div class="icon">💬</div><h3>Vocabulary</h3><p>“One word blocked the meaning.”</p></div><div class="board"><div class="icon">⏸️</div><h3>Checking</h3><p>“I knew it when I stopped and looked again.”</p></div></div>
+    <div class="answer" style="font-size:25px">Teacher: use three errors plus the writing sample. Do not diagnose from one item.</div>
+  </div>
+</section>
+
+<section class="slide" data-title="Choose one focus">
+  <div class="content"><span class="tag">FIX ONE BOTTLENECK</span><h2 class="heading">Choose today’s focus.</h2>
+    <div class="branch-grid"><button class="branch" data-pane="sentence"><span>🧱</span>Build complete sentences</button><button class="branch" data-pane="prompt"><span>🎯</span>Find every job</button><button class="branch" data-pane="vocab"><span>🔍</span>Use context clues</button><button class="branch" data-pane="checking"><span>✅</span>Pause and check</button></div>
+    <div class="answer">Choose only one path—the strongest evidence from today.</div>
+  </div>
+</section>
+
+<section class="slide" id="focusedRepair" data-title="One focused repair">
+  <div class="content"><span class="tag">TARGETED MINI-LESSON</span><h2 class="heading" id="paneHeading">Build complete sentences.</h2>
+    <div class="lesson-pane active" id="pane-sentence"><div class="formula"><span style="color:var(--coral)">WHO</span> + <span style="color:var(--teal)">ACTION</span> + MORE</div><div class="example" style="margin-top:24px"><span class="focus-label">I</span> + <span class="focus-label">will bring</span> + some cupcakes.</div><div class="example" style="margin-top:15px"><span class="focus-label">We</span> + <span class="focus-label">will play</span> + games at the party.</div></div>
+    <div class="lesson-pane" id="pane-prompt"><div class="prompt">Thank Mia · Say if you can come · Say what you will bring</div><div class="formula" style="margin-top:24px">3 jobs <span class="arrow">→</span> 3 clear answers</div><div class="example" style="margin-top:18px">Point to each job. Then point to the sentence that answers it.</div></div>
+    <div class="lesson-pane" id="pane-vocab"><div class="example">The puppy was <u>exhausted</u>, so it lay down and slept.</div><div class="formula" style="margin-top:24px">Unknown word + nearby clue = sensible guess</div><div class="example" style="margin-top:18px"><b>lay down and slept</b> tells us “exhausted” means very tired.</div></div>
+    <div class="lesson-pane" id="pane-checking"><div class="formula">STOP <span class="arrow">→</span> READ <span class="arrow">→</span> PROVE</div><div class="grid three" style="margin-top:25px"><div class="board question">Did I answer every job?</div><div class="board question">Does each sentence have WHO + ACTION?</div><div class="board question">Capital letters and full stops?</div></div></div>
+    <button class="btn primary repair-btn" id="toRepair">Repair my writing →</button>
+  </div>
+</section>
+
+<section class="slide" id="repairWriting" data-title="Repair your writing">
+  <div class="content"><span class="tag">YOUR WORDS · BETTER VERSION</span><h2 class="heading">Repair one part of your writing.</h2>
+    <div class="grid two" style="margin-top:27px"><div class="board"><h3>BEFORE</h3><div class="question">Copy one sentence or idea from your first try.</div><div class="lines"><div class="line"></div><div class="line"></div></div></div><div class="board"><h3>AFTER</h3><div class="question">Write the clearer version.</div><div class="lines"><div class="line"></div><div class="line"></div></div></div></div>
+    <div class="prompt" style="margin-top:30px">Explain: “I changed ___ because ___.”</div>
+  </div>
+</section>
+
+<section class="slide" data-title="Exit challenge">
+  <div class="sun"></div><div class="content"><span class="tag">FRESH CHALLENGE · 5 MINUTES</span><h2 class="heading">What are you doing this weekend?</h2>
+    <div class="write-card"><p>Your friend asks about your weekend. Write <b>3–4 sentences</b>.</p><div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div></div>
+    <div class="answer" style="font-size:25px">After two quiet minutes: check complete sentences, a clear weekend plan, capitals, full stops, and the chosen focus.</div>
+  </div>
+</section>
+
+<section class="slide" data-title="What changed?">
+  <div class="sun"></div><div class="content"><span class="tag">FINISH WITH EVIDENCE</span><h2 class="heading">One thing I can do better now is…</h2>
+    <div class="prompt" style="margin-top:28px"><span class="blank"></span></div>
+    <div class="profile"><div class="board">Vocabulary</div><div class="board">Grammar</div><div class="board">Reading</div><div class="board">Sentence building</div><div class="board">Answering every job</div><div class="board">Spelling & punctuation</div></div>
+    <p class="sub" style="margin-top:22px">Next session will begin with what today’s work shows.</p>
+  </div>
+</section>
+
+<div class="footer"><div id="status" class="status">YEAR 4 TUITION · TRY, NOTICE, IMPROVE</div><div><button class="btn" id="prev">← Back</button><button class="btn primary" id="next">Next →</button><button class="btn secondary" id="reveal">Reveal</button><button class="btn" id="reset">Reset</button></div></div>
+</main>
+<script>
+const stage=document.getElementById('stage'),slides=[...document.querySelectorAll('.slide')],status=document.getElementById('status'),toastEl=document.getElementById('toast'),focusedIndex=slides.indexOf(document.getElementById('focusedRepair')),repairIndex=slides.indexOf(document.getElementById('repairWriting'));let current=0,timer,diagnosticUnlocked=false;
+function fit(){const scale=Math.min(innerWidth/1366,innerHeight/768);stage.style.transform=`scale(${scale})`;stage.style.marginLeft=`${Math.max(0,(innerWidth-1366*scale)/2)}px`;stage.style.marginTop=`${Math.max(0,(innerHeight-768*scale)/2)}px`}
+function toast(text){clearTimeout(timer);toastEl.textContent=text;toastEl.classList.add('show');timer=setTimeout(()=>toastEl.classList.remove('show'),1500)}
+function show(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===current));if(current>=10)diagnosticUnlocked=true;status.textContent=`YEAR 4 TUITION · ${slides[current].dataset.title.toUpperCase()} · ${current+1} / ${slides.length}`;document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===slides.length-1;fit()}
+document.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{const group=b.closest('.choice-row');group.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')});
+function reveal(){const s=slides[current];if(s.classList.contains('diagnostic')&&!diagnosticUnlocked){toast('Answers stay hidden until the diagnostic is complete.');return}s.classList.add('show-answer');s.querySelectorAll('.choice-row').forEach(g=>{const selected=g.querySelector('.choice.selected');g.querySelectorAll('.choice').forEach(x=>x.classList.toggle('correct',x.dataset.correct==='1'));if(selected&&selected.dataset.correct!=='1')selected.classList.add('wrong')});toast('Teacher reveal shown')}
+function reset(){const s=slides[current];s.classList.remove('show-answer');s.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected','correct','wrong'));toast('Current slide reset')}
+document.querySelectorAll('.branch').forEach(b=>b.onclick=()=>{const key=b.dataset.pane;document.querySelectorAll('.lesson-pane').forEach(p=>p.classList.toggle('active',p.id===`pane-${key}`));const labels={sentence:'Build complete sentences.',prompt:'Find every job in the prompt.',vocab:'Use context clues.',checking:'Pause and check.'};document.getElementById('paneHeading').textContent=labels[key];show(focusedIndex)});
+document.getElementById('toRepair').onclick=()=>show(repairIndex);document.getElementById('next').onclick=()=>show(current===focusedIndex?repairIndex:current+1);document.getElementById('prev').onclick=()=>show(current-1);document.getElementById('reveal').onclick=reveal;document.getElementById('reset').onclick=reset;window.addEventListener('resize',fit);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();show(current===focusedIndex?repairIndex:current+1);return}if(e.key==='ArrowLeft'){e.preventDefault();show(current-1);return}if(e.target instanceof Element&&e.target.matches('button,input,textarea,select'))return;if(e.key===' '){e.preventDefault();show(current===focusedIndex?repairIndex:current+1)}if(e.key.toLowerCase()==='r')reveal();if(e.key.toLowerCase()==='x')reset()});show(0);
+</script>
+</body>
+</html>

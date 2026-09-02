@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class 2D · My Family Paragraph</title>
+<style>
+:root{--ink:#123047;--muted:#496679;--paper:#fffaf0;--teal:#08786f;--mint:#dcf4e8;--sun:#ffd166;--coral:#e85d4a;--pink:#ffe3dd;--sky:#dcecff;--skyink:#1c6fb8;--amber:#a66a00;--cream:#fff1c7;--line:#b9cbd3;--white:#fff}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe8ec;color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif}button{font:inherit;color:inherit}
+#stage{position:fixed;left:0;top:0;width:1366px;height:768px;transform-origin:top left;overflow:hidden;background:var(--paper)}
+.slide{display:none;position:relative;height:688px;padding:28px 58px 18px}.slide.active{display:block}
+.content{position:relative;z-index:1;height:100%}
+.sun{position:absolute;right:-120px;top:-155px;width:360px;height:360px;border-radius:50%;background:var(--sun);opacity:.46}
+.tag{display:inline-block;color:var(--teal);background:var(--mint);padding:7px 14px;border-radius:999px;font-size:17px;font-weight:950;letter-spacing:.05em}
+.title{font-size:68px;line-height:1.02;margin:18px 0 10px;font-weight:950;letter-spacing:-.03em}
+.heading{font-size:49px;line-height:1.04;margin:12px 0 16px;font-weight:950;letter-spacing:-.02em}
+.sub{font-size:29px;line-height:1.28;color:var(--muted);font-weight:750;margin:0}
+.prompt{background:var(--ink);color:#fff;border-radius:20px;padding:18px 23px;font-size:36px;line-height:1.18;font-weight:950}
+.center{text-align:center}
+.grid{display:grid;gap:16px}.two{grid-template-columns:repeat(2,1fr)}.four{grid-template-columns:repeat(4,1fr)}
+.board{background:var(--white);border:3px solid var(--line);border-radius:22px;padding:18px 20px;box-shadow:0 6px 0 rgba(18,48,71,.08)}
+.board h3{font-size:25px;margin:0 0 12px;color:var(--teal);letter-spacing:.04em}
+.big{font-size:62px;font-weight:950}
+.choice{display:block;width:100%;padding:14px 16px;border:3px solid var(--line);border-radius:17px;background:#fff;font-size:30px;font-weight:950;cursor:pointer;box-shadow:0 4px 0 rgba(18,48,71,.08);text-align:center}
+.choice.good{background:var(--mint);border-color:var(--teal)}
+.choice.bad{background:var(--pink);border-color:var(--coral)}
+.choice:focus-visible,.btn:focus-visible,.order-card:focus-visible,.doc-row:focus-visible,.tick-row:focus-visible{outline:5px solid var(--sun);outline-offset:3px}
+.btn{border:0;border-radius:14px;padding:11px 15px;background:#fff;box-shadow:0 5px 0 #c4d3d9;font-size:17px;font-weight:950;cursor:pointer;margin-left:7px}
+.btn.primary{background:var(--teal);color:#fff;box-shadow:0 5px 0 #065b55}
+.btn.secondary{background:var(--sun);box-shadow:0 5px 0 #d7a623}
+.btn.good{background:var(--mint);color:var(--teal);box-shadow:0 5px 0 #065b55}
+.btn.bad{background:var(--pink);color:var(--coral);box-shadow:0 5px 0 #c9503f}
+.feedback{min-height:37px;margin-top:11px;font-size:27px;line-height:1.18;font-weight:900;color:var(--teal)}
+.hidden{visibility:hidden}
+.answer{display:none}.show-answer .answer{display:block}.show-answer #picFrames{display:grid}
+.reveal-line{display:none}
+.counter{font-size:20px;color:var(--muted);font-weight:900}
+/* paragraph lines with job chips */
+.pline{display:flex;align-items:center;gap:14px;background:#fff;border:3px solid var(--line);border-radius:18px;padding:12px 16px;font-size:31px;line-height:1.22;font-weight:950}
+.pline .job{flex:0 0 150px;font-size:18px;letter-spacing:.06em;text-align:center;border-radius:12px;padding:8px 6px;color:#fff}
+.model-line{border-style:dashed;opacity:.62}
+.model-line .txt{visibility:hidden}
+.model-line.on{border-style:solid;opacity:1}
+.model-line.on .txt{visibility:visible}
+.build-slot{border-style:dashed;opacity:.62}
+.build-slot .txt{visibility:hidden}
+.build-slot.on{border-style:solid;opacity:1}
+.build-slot.on .txt{visibility:visible}
+.job.start{background:var(--coral)}.job.people{background:var(--teal)}.job.together{background:var(--amber)}.job.feeling{background:var(--skyink)}
+.pline .pro{color:var(--teal);border-bottom:4px solid var(--sun)}
+.pline .link{color:var(--amber);border-bottom:4px solid var(--coral)}
+/* plan cards */
+.plan{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.plan-card{background:#fff;border:3px solid var(--line);border-radius:20px;padding:14px 18px;display:flex;gap:14px;align-items:flex-start}
+.plan-card .num{flex:0 0 46px;height:46px;border-radius:50%;color:#fff;font-size:26px;font-weight:950;display:flex;align-items:center;justify-content:center}
+.plan-card h4{margin:0 0 6px;font-size:27px;font-weight:950;letter-spacing:.02em}
+.plan-card p{margin:0;font-size:25px;line-height:1.24;font-weight:850;color:var(--muted)}
+/* order cards */
+.order-card{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fff;border:3px solid var(--line);border-radius:18px;padding:12px 16px;font-size:29px;font-weight:950;cursor:pointer;box-shadow:0 4px 0 rgba(18,48,71,.08)}
+.order-card .badge{flex:0 0 44px;height:44px;border-radius:50%;border:3px dashed var(--line);color:var(--muted);font-size:23px;font-weight:950;display:flex;align-items:center;justify-content:center;background:#fbfdfe}
+.order-card.set .badge{border-style:solid;background:var(--sky);color:var(--skyink)}
+.order-card.right{border-color:var(--teal);background:var(--mint)}
+.order-card.wrong{border-color:var(--coral);background:var(--pink)}
+/* doctor rows */
+.doc-row{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fff;border:3px solid var(--line);border-radius:18px;padding:11px 15px;font-size:27px;font-weight:950;cursor:pointer}
+.doc-row .q{flex:0 0 38px;height:38px;border-radius:50%;background:var(--mint);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:23px}
+.doc-row .why{display:none;margin-top:6px;font-size:22px;line-height:1.18;color:var(--muted);font-weight:900}
+.doc-row.open .why{display:block}
+.doc-row.open{border-color:var(--teal)}
+/* write frames */
+.frame{display:flex;align-items:center;gap:14px;background:#fff;border:3px solid var(--line);border-radius:18px;padding:12px 16px;font-size:30px;font-weight:950}
+.frame .job{flex:0 0 150px;font-size:18px;letter-spacing:.06em;text-align:center;border-radius:12px;padding:8px 6px;color:#fff}
+.frame .blank{color:var(--skyink);letter-spacing:.02em}
+.tick-row{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fff;border:3px solid var(--line);border-radius:18px;padding:14px 18px;font-size:29px;font-weight:950;cursor:pointer}
+.tick-row .box{flex:0 0 44px;height:44px;border-radius:12px;border:3px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--teal);background:#fbfdfe}
+.tick-row.done{border-color:var(--teal);background:var(--mint)}
+.picture{width:100%;height:425px;object-fit:cover;border:4px solid var(--line);border-radius:22px;display:block}
+.picture-prompt{position:absolute;left:85px;bottom:36px;background:#fff;border:4px solid var(--teal);border-radius:18px;padding:13px 18px;font-size:30px;font-weight:950;box-shadow:0 7px 0 rgba(18,48,71,.12)}
+.footer{position:absolute;left:0;right:0;bottom:0;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-top:2px solid #cbd9df;background:rgba(255,250,240,.98);font-weight:950}
+.status{font-size:18px}
+.toast{position:absolute;top:20px;right:28px;z-index:10;background:var(--ink);color:#fff;padding:12px 16px;border-radius:12px;font-weight:900;opacity:0;transition:opacity .18s}
+.toast.show{opacity:1}
+.help{display:none;position:absolute;inset:72px 145px 110px;z-index:30;background:#fff;border:5px solid var(--teal);border-radius:27px;padding:30px 42px;box-shadow:0 20px 60px rgba(18,48,71,.35)}
+.help.open{display:block}
+.help h2{font-size:45px;margin:0 0 18px}
+.help-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;text-align:center}
+.help-grid div{background:var(--mint);border-radius:17px;padding:18px;font-size:28px;font-weight:950}
+.close{position:absolute;right:18px;top:14px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main id="stage" aria-label="Class 2D My Family paragraph lesson">
+<div id="toast" class="toast" aria-live="polite"></div>
+
+<!-- 1 · Retrieval: pronoun check -->
+<section class="slide active" data-title="Quick pronoun check">
+  <div class="sun"></div><div class="content">
+    <span class="tag">CLASS 2D · WEEK 31 · RABU, 2 SEPTEMBER 2026</span>
+    <h1 class="title">Quick pronoun check</h1>
+    <p class="sub">Say the pronoun before you click.</p>
+    <div class="grid two" style="margin-top:26px;align-items:stretch">
+      <div class="board" style="display:flex;flex-direction:column;justify-content:center">
+        <h3 id="pronCount">1 / 5</h3>
+        <p id="pronText" class="prompt" style="font-size:40px">My brother → <span style="color:var(--sun)">___</span> is ten.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;justify-content:center">
+        <button class="choice pron-choice">He</button>
+        <button class="choice pron-choice">She</button>
+        <button class="choice pron-choice">They</button>
+      </div>
+    </div>
+    <p class="feedback" id="pronFeedback">Wait for the class answer, then click the pronoun.</p>
+    <div class="center" style="margin-top:6px">
+      <button class="btn primary" id="pronNext">Next item →</button>
+      <button class="btn" id="pronReset">Start again</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · Retrieval: full sentence check -->
+<section class="slide" data-title="Is it a full sentence?">
+  <div class="sun"></div><div class="content">
+    <span class="tag">REMEMBER LAST LESSON</span>
+    <h2 class="heading">Is it a full sentence?</h2>
+    <p class="sub">A full sentence needs WHO + ACTION. Decide together, then click.</p>
+    <div id="sentRows" style="display:flex;flex-direction:column;gap:12px;margin-top:20px;max-width:1130px">
+      <div class="sent-row" style="display:flex;align-items:center;gap:14px">
+        <span style="flex:1;font-size:32px;font-weight:950;background:#fff;border:3px solid var(--line);border-radius:18px;padding:12px 18px">My brother</span>
+        <button class="btn secondary sent-yes">Sentence ✓</button>
+        <button class="btn sent-no">Not yet ✗</button>
+      </div>
+      <div class="sent-row" style="display:flex;align-items:center;gap:14px">
+        <span style="flex:1;font-size:32px;font-weight:950;background:#fff;border:3px solid var(--line);border-radius:18px;padding:12px 18px">He plays football.</span>
+        <button class="btn secondary sent-yes">Sentence ✓</button>
+        <button class="btn sent-no">Not yet ✗</button>
+      </div>
+      <div class="sent-row" style="display:flex;align-items:center;gap:14px">
+        <span style="flex:1;font-size:32px;font-weight:950;background:#fff;border:3px solid var(--line);border-radius:18px;padding:12px 18px">Is cooking dinner.</span>
+        <button class="btn secondary sent-yes">Sentence ✓</button>
+        <button class="btn sent-no">Not yet ✗</button>
+      </div>
+      <div class="sent-row" style="display:flex;align-items:center;gap:14px">
+        <span style="flex:1;font-size:32px;font-weight:950;background:#fff;border:3px solid var(--line);border-radius:18px;padding:12px 18px">We visit our grandmother on Sunday.</span>
+        <button class="btn secondary sent-yes">Sentence ✓</button>
+        <button class="btn sent-no">Not yet ✗</button>
+      </div>
+    </div>
+    <p class="feedback" id="sentFeedback">Which rows have WHO + ACTION?</p>
+  </div>
+</section>
+
+<!-- 3 · Bridge: sentences → paragraph -->
+<section class="slide" data-title="Many sentences, one topic">
+  <div class="sun"></div><div class="content">
+    <span class="tag">TODAY'S BIG IDEA</span>
+    <h2 class="heading">Many sentences, one topic</h2>
+    <div class="grid two" style="margin-top:22px;align-items:stretch">
+      <div class="board">
+        <h3>FOUR SENTENCES</h3>
+        <p style="font-size:28px;line-height:1.6;font-weight:900;margin:0">This is my family.<br>I have one brother and one sister.<br>We eat dinner together.<br>I love my family because they help me.</p>
+      </div>
+      <div class="board" style="display:flex;flex-direction:column;justify-content:center;background:var(--mint);border-color:var(--teal)">
+        <h3 style="color:var(--ink)">ONE TOPIC: MY FAMILY</h3>
+        <p class="big" style="font-size:47px;line-height:1.12;margin:0">This is a <span style="color:var(--coral)">paragraph</span>.</p>
+      </div>
+    </div>
+    <p class="prompt center" style="margin-top:22px">A paragraph is a <span style="color:var(--sun)">group of sentences</span> about one topic.</p>
+    <p class="sub center" style="margin-top:14px">Today: we build a <b>My Family paragraph</b> with four lines.</p>
+  </div>
+</section>
+
+<!-- 4 · Model paragraph -->
+<section class="slide" data-title="Read a model paragraph">
+  <div class="sun"></div><div class="content">
+    <span class="tag">MODEL · READ TOGETHER</span>
+    <h2 class="heading">A My Family paragraph</h2>
+    <p class="sub">Four lines, four jobs. Click <b>Next line</b> as we read.</p>
+    <div id="modelStage" style="display:flex;flex-direction:column;gap:12px;margin-top:22px;max-width:1150px">
+      <div class="pline model-line"><span class="job start">START</span><span class="txt">This is my family.</span></div>
+      <div class="pline model-line"><span class="job people">PEOPLE</span><span class="txt">I have one brother and one sister. <span class="pro">They</span> are young.</span></div>
+      <div class="pline model-line"><span class="job together">TOGETHER</span><span class="txt"><span class="pro">We</span> eat dinner together <span class="link">and</span> <span class="pro">we</span> play games at night.</span></div>
+      <div class="pline model-line"><span class="job feeling">FEELING</span><span class="txt"><span class="pro">I</span> love my family <span class="link">because</span> <span class="pro">they</span> always help me.</span></div>
+    </div>
+    <div class="center" style="margin-top:18px">
+      <button class="btn secondary" id="modelNext">Next line →</button>
+      <button class="btn" id="modelReset">Start again</button>
+      <span class="counter" id="modelCount" style="margin-left:12px">Which job comes first?</span>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · The plan: 4 jobs -->
+<section class="slide" data-title="The plan: four jobs">
+  <div class="sun"></div><div class="content">
+    <span class="tag">OUR WRITING PLAN</span>
+    <h2 class="heading">Four jobs in four lines</h2>
+    <div class="plan" style="margin-top:24px">
+      <div class="plan-card"><span class="num" style="background:var(--coral)">1</span><div><h4>START</h4><p>Name your family.<br><b>This is my family.</b></p></div></div>
+      <div class="plan-card"><span class="num" style="background:var(--teal)">2</span><div><h4>PEOPLE</h4><p>Who is in it? Use a pronoun.<br><b>I have one sister. <u>She</u> is ten.</b></p></div></div>
+      <div class="plan-card"><span class="num" style="background:var(--amber)">3</span><div><h4>TOGETHER</h4><p>What do you do? Add with <b>and</b>.<br><b>We cook together <u>and</u> we watch TV.</b></p></div></div>
+      <div class="plan-card"><span class="num" style="background:var(--skyink)">4</span><div><h4>FEELING</h4><p>Why do you love them? Use <b>because</b>.<br><b>I love my family <u>because</u> they help me.</b></p></div></div>
+    </div>
+    <p class="sub center" style="margin-top:22px">Say the four jobs with me: <b>START — PEOPLE — TOGETHER — FEELING.</b></p>
+  </div>
+</section>
+
+<!-- 6 · Order the plan -->
+<section class="slide" data-title="Order the paragraph">
+  <div class="sun"></div><div class="content">
+    <span class="tag">GUIDED PRACTICE</span>
+    <h2 class="heading">Put the lines in order</h2>
+    <p class="sub">Click the lines in the order 1 → 4. Which job is each line doing?</p>
+    <div id="orderStage" style="display:flex;flex-direction:column;gap:12px;margin-top:20px;max-width:1150px">
+      <button class="order-card"><span class="badge">?</span><span>I love my family because we have fun.</span></button>
+      <button class="order-card"><span class="badge">?</span><span>My mother is a nurse and my father is a teacher.</span></button>
+      <button class="order-card"><span class="badge">?</span><span>We cook together and we watch films.</span></button>
+      <button class="order-card"><span class="badge">?</span><span>This is my family.</span></button>
+    </div>
+    <div class="center" style="margin-top:16px">
+      <button class="btn primary" id="orderCheck">Check order</button>
+      <button class="btn" id="orderReset">Start again</button>
+    </div>
+    <p class="feedback" id="orderFeedback">Which line names the topic? That one is first.</p>
+  </div>
+</section>
+
+<!-- 7 · Pronoun swap -->
+<section class="slide" data-title="Swap the repeated noun">
+  <div class="sun"></div><div class="content">
+    <span class="tag">GUIDED PRACTICE</span>
+    <h2 class="heading">Swap the repeated noun</h2>
+    <p class="sub">Say the noun once. After that, use the pronoun.</p>
+    <div class="grid two" style="margin-top:22px;align-items:stretch">
+      <div class="board" style="display:flex;flex-direction:column;justify-content:center">
+        <h3 id="swapCount">1 / 3</h3>
+        <p id="swapText" class="prompt" style="font-size:35px">My sister is kind. My sister helps my mother. → <span style="color:var(--sun)">___</span> helps my mother.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;justify-content:center">
+        <button class="choice swap-choice" data-v="He">He</button>
+        <button class="choice swap-choice" data-v="She">She</button>
+        <button class="choice swap-choice" data-v="They">They</button>
+      </div>
+    </div>
+    <p class="feedback" id="swapFeedback">Which pronoun replaces <b>my sister</b>?</p>
+    <div class="center" style="margin-top:6px">
+      <button class="btn primary" id="swapNext">Next item →</button>
+      <button class="btn" id="swapReset">Start again</button>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · and vs because -->
+<section class="slide" data-title="and or because?">
+  <div class="sun"></div><div class="content">
+    <span class="tag">GUIDED PRACTICE</span>
+    <h2 class="heading">and or because?</h2>
+    <p class="sub"><b>and</b> adds another idea. <b>because</b> gives a reason.</p>
+    <div class="grid two" style="margin-top:22px;align-items:stretch">
+      <div class="board" style="display:flex;flex-direction:column;justify-content:center">
+        <h3 id="linkCount">1 / 3</h3>
+        <p id="linkText" class="prompt" style="font-size:35px">We eat dinner together <span style="color:var(--sun)">___</span> we talk about our day.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;justify-content:center">
+        <button class="choice link-choice" data-v="and">and — adds an idea</button>
+        <button class="choice link-choice" data-v="because">because — gives a reason</button>
+      </div>
+    </div>
+    <p class="feedback" id="linkFeedback">Am I adding an idea, or answering why?</p>
+    <div class="center" style="margin-top:6px">
+      <button class="btn primary" id="linkNext">Next item →</button>
+      <button class="btn" id="linkReset">Start again</button>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · Fix the broken line -->
+<section class="slide" data-title="Fix the broken line">
+  <div class="sun"></div><div class="content">
+    <span class="tag">ERROR CLINIC</span>
+    <h2 class="heading" style="margin-bottom:10px">Fix the broken line</h2>
+    <p class="sub">Say the correct line first. Then reveal.</p>
+    <div style="display:flex;flex-direction:column;gap:11px;margin-top:14px;max-width:1150px">
+      <div class="board" style="padding:11px 16px">
+        <p style="margin:0;font-size:30px;font-weight:950">1&nbsp;&nbsp;<span style="color:var(--coral)">Him</span> is my little brother.</p>
+        <p class="reveal-line" style="margin:5px 0 0;font-size:27px;font-weight:950;color:var(--teal)"><span class="pro">He</span> is my little brother. — He does the action; him receives it.</p>
+        <button class="btn secondary fix-btn" style="margin-top:7px;margin-left:0" data-fix="He is my little brother. — He does the action; him receives it.">Reveal fix</button>
+      </div>
+      <div class="board" style="padding:11px 16px">
+        <p style="margin:0;font-size:30px;font-weight:950">2&nbsp;&nbsp;My mother <span style="color:var(--coral)">cook</span> dinner every night.</p>
+        <p class="reveal-line" style="margin:5px 0 0;font-size:27px;font-weight:950;color:var(--teal)">My mother <span class="pro">cooks</span> dinner. — she + action → add -s.</p>
+        <button class="btn secondary fix-btn" style="margin-top:7px;margin-left:0" data-fix="My mother cooks dinner. — she + action → add -s.">Reveal fix</button>
+      </div>
+      <div class="board" style="padding:11px 16px">
+        <p style="margin:0;font-size:30px;font-weight:950">3&nbsp;&nbsp;<span style="color:var(--coral)">she is my sister</span></p>
+        <p class="reveal-line" style="margin:5px 0 0;font-size:27px;font-weight:950;color:var(--teal)"><span class="pro">S</span>he is my sister<span class="pro">.</span> — big letter, full stop.</p>
+        <button class="btn secondary fix-btn" style="margin-top:7px;margin-left:0" data-fix="She is my sister. — big letter, full stop.">Reveal fix</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · Build the class paragraph -->
+<section class="slide" data-title="Build our class paragraph">
+  <div class="sun"></div><div class="content">
+    <span class="tag">APPLY TOGETHER</span>
+    <h2 class="heading">Build our class paragraph</h2>
+    <div id="buildStage" style="display:flex;flex-direction:column;gap:12px;margin-top:22px;max-width:1150px;min-height:300px">
+      <div class="pline build-slot" data-step="1"><span class="job start">START</span><span class="txt">This is my family.</span></div>
+      <div class="pline build-slot" data-step="2"><span class="job people">PEOPLE</span><span class="txt">I have one brother and one sister. <span class="pro">They</span> are young.</span></div>
+      <div class="pline build-slot" data-step="3"><span class="job together">TOGETHER</span><span class="txt"><span class="pro">We</span> eat dinner together <span class="link">and</span> <span class="pro">we</span> play games.</span></div>
+      <div class="pline build-slot" data-step="4"><span class="job feeling">FEELING</span><span class="txt"><span class="pro">I</span> love my family <span class="link">because</span> <span class="pro">they</span> help me.</span></div>
+    </div>
+    <p class="feedback" id="buildFeedback">What does line 1 do? It names the topic.</p>
+    <div class="center" style="margin-top:6px">
+      <button class="btn secondary" id="buildNext">Build next line →</button>
+      <button class="btn" id="buildReset">Start again</button>
+      <span class="counter" id="buildCount" style="margin-left:12px">4 lines</span>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · Paragraph Doctor -->
+<section class="slide" data-title="Paragraph Doctor">
+  <div class="sun"></div><div class="content">
+    <span class="tag">CHECK OUR WORK</span>
+    <h2 class="heading">Paragraph Doctor 🔎</h2>
+    <div class="grid two" style="margin-top:16px;align-items:start">
+      <div>
+        <div class="board">
+          <h3>OUR PARAGRAPH</h3>
+          <p style="font-size:26px;line-height:1.55;font-weight:900;margin:0">This is my family.<br>I have one brother and one sister. They are young.<br>We eat dinner together and we play games.<br>I love my family because they help me.</p>
+        </div>
+        <p class="sub" style="margin-top:14px">Our paragraph is healthy. Now write <b>yours</b>.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <button class="doc-row"><span class="q">1</span><span>Full sentences?<span class="why">Every line needs WHO + ACTION. No lonely nouns.</span></span></button>
+        <button class="doc-row"><span class="q">2</span><span>Big letter + full stop?<span class="why">Every line starts with a big letter and ends with a full stop.</span></span></button>
+        <button class="doc-row"><span class="q">3</span><span>Pronouns, not repeats?<span class="why">Say the noun once, then he / she / they.</span></span></button>
+        <button class="doc-row"><span class="q">4</span><span>One link word?<span class="why">and adds; because gives a reason. Say one — never “because … so”.</span></span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · Picture talk -->
+<section class="slide" data-title="Picture talk first">
+  <div class="sun"></div><div class="content">
+    <span class="tag">SPEAK IT BEFORE YOU WRITE IT</span>
+    <h2 class="heading" style="margin-bottom:10px">Picture talk first</h2>
+    <div style="position:relative;margin-top:14px">
+      <img class="picture" style="height:340px" src="assets/family-day-scene.png" alt="A family eating and playing together at home">
+      <div class="picture-prompt" style="bottom:20px">One line for each job: START · PEOPLE · TOGETHER · FEELING</div>
+    </div>
+    <div class="center" style="margin-top:12px">
+      <button class="btn secondary" id="picReveal">Show sentence frames</button>
+      <button class="btn" id="picReset">Hide</button>
+    </div>
+    <div class="answer grid four" id="picFrames" style="margin-top:10px">
+      <div class="board" style="padding:10px 12px"><h3 style="margin:0 0 8px">START</h3><p style="font-size:24px;font-weight:900;margin:0">This is my family.</p></div>
+      <div class="board" style="padding:10px 12px"><h3 style="margin:0 0 8px">PEOPLE</h3><p style="font-size:24px;font-weight:900;margin:0">I have … They are …</p></div>
+      <div class="board" style="padding:10px 12px"><h3 style="margin:0 0 8px">TOGETHER</h3><p style="font-size:24px;font-weight:900;margin:0">We … and we …</p></div>
+      <div class="board" style="padding:10px 12px"><h3 style="margin:0 0 8px">FEELING</h3><p style="font-size:24px;font-weight:900;margin:0">I love … because …</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · Write time -->
+<section class="slide" data-title="Your turn: write">
+  <div class="sun"></div><div class="content">
+    <span class="tag">INDEPENDENT WRITING · 8 MINUTES</span>
+    <h2 class="heading">Your turn: write your 4 lines</h2>
+    <p class="sub">Write in your exercise book. Follow the plan, then run the Paragraph Doctor.</p>
+    <div style="display:flex;flex-direction:column;gap:11px;margin-top:18px;max-width:1150px">
+      <div class="frame"><span class="job start">START</span><span>This is <span class="blank">________________</span>.</span></div>
+      <div class="frame"><span class="job people">PEOPLE</span><span>I have <span class="blank">____________</span>. <span class="blank">He / She / They</span> <span class="blank">________</span>.</span></div>
+      <div class="frame"><span class="job together">TOGETHER</span><span>We <span class="blank">________</span> together <span class="link">and</span> we <span class="blank">________</span>.</span></div>
+      <div class="frame"><span class="job feeling">FEELING</span><span>I love my family <span class="link">because</span> <span class="blank">____________</span>.</span></div>
+    </div>
+    <div class="center" style="margin-top:16px">
+      <button class="btn secondary" id="writeReveal">Need help? Show the model</button>
+      <button class="btn" id="writeReset">Hide</button>
+    </div>
+    <p class="answer" id="writeModel" style="font-size:25px;line-height:1.5;font-weight:900;background:var(--mint);border:3px solid var(--teal);border-radius:18px;padding:12px 18px;margin-top:12px;max-width:1150px">This is my family. I have one brother and one sister. They are young. We eat dinner together and we play games. I love my family because they help me.</p>
+  </div>
+</section>
+
+<!-- 14 · Share and check -->
+<section class="slide" data-title="Share and check">
+  <div class="sun"></div><div class="content">
+    <span class="tag">EXIT EVIDENCE</span>
+    <h2 class="heading">Share and check</h2>
+    <p class="sub">Two writers read aloud. The class runs the Paragraph Doctor with thumbs.</p>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:22px;max-width:1100px">
+      <button class="tick-row"><span class="box">✓</span><span>Every line is a full sentence — WHO + ACTION.</span></button>
+      <button class="tick-row"><span class="box">✓</span><span>At least two pronouns used correctly.</span></button>
+      <button class="tick-row"><span class="box">✓</span><span>One and (add) or one because (reason).</span></button>
+    </div>
+    <p class="prompt center" style="margin-top:22px">Finished? Tick all three, then put your book on the front table.</p>
+  </div>
+</section>
+
+<!-- 15 · Recap -->
+<section class="slide" data-title="What did we learn?">
+  <div class="sun"></div><div class="content">
+    <span class="tag">RECAP</span>
+    <h2 class="heading">What did we learn?</h2>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:20px;max-width:1100px">
+      <div class="board" style="padding:14px 18px"><p style="margin:0;font-size:30px;font-weight:950">1&nbsp;&nbsp;What is a paragraph?</p><p class="reveal-line" style="margin:6px 0 0;font-size:27px;font-weight:950;color:var(--teal)">A group of sentences about one topic.</p></div>
+      <div class="board" style="padding:14px 18px"><p style="margin:0;font-size:30px;font-weight:950">2&nbsp;&nbsp;What does because give? What does and add?</p><p class="reveal-line" style="margin:6px 0 0;font-size:27px;font-weight:950;color:var(--teal)">because = a reason. and = another idea.</p></div>
+      <div class="board" style="padding:14px 18px"><p style="margin:0;font-size:30px;font-weight:950">3&nbsp;&nbsp;What do we use instead of repeating a noun?</p><p class="reveal-line" style="margin:6px 0 0;font-size:27px;font-weight:950;color:var(--teal)">A pronoun: he, she, they, we, I.</p></div>
+    </div>
+    <p class="prompt center" style="margin-top:22px">Next lesson: we make our paragraph <span style="color:var(--sun)">longer and better</span>.</p>
+  </div>
+</section>
+
+<div class="footer"><div id="status" class="status">CLASS 2D · QUICK PRONOUN CHECK · 1 / 15</div><div><button class="btn" id="helpBtn">? Help</button><button class="btn" id="prev">← Back</button><button class="btn primary" id="next">Next →</button><button class="btn secondary" id="reveal">Reveal</button><button class="btn" id="reset">Reset</button></div></div>
+
+<div class="help" id="help">
+  <h2>How to use this deck</h2>
+  <div class="help-grid">
+    <div>← → or Space<br>change slide</div>
+    <div>Reveal button or R<br>show the answer</div>
+    <div>Reset button or X<br>clear the slide</div>
+    <div>Click answers<br>before revealing</div>
+    <div>Esc<br>close this help</div>
+    <div>No board? Point,<br>say answers, reveal</div>
+  </div>
+  <button class="btn close" id="helpClose">✕ Close</button>
+</div>
+</main>
+
+<script>
+const stage=document.getElementById('stage'),slides=[...document.querySelectorAll('.slide')],status=document.getElementById('status'),toastEl=document.getElementById('toast'),help=document.getElementById('help');let current=0,timer;
+function fit(){const scale=Math.min(innerWidth/1366,innerHeight/768);stage.style.transform=`scale(${scale})`;stage.style.marginLeft=`${Math.max(0,(innerWidth-1366*scale)/2)}px`;stage.style.marginTop=`${Math.max(0,(innerHeight-768*scale)/2)}px`}
+function toast(text){clearTimeout(timer);toastEl.textContent=text;toastEl.classList.add('show');timer=setTimeout(()=>toastEl.classList.remove('show'),1100)}
+function show(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===current));status.textContent=`CLASS 2D · ${slides[current].dataset.title.toUpperCase()} · ${current+1} / ${slides.length}`;fit()}
+function reveal(){const s=slides[current];s.classList.add('show-answer');s.querySelectorAll('.answer').forEach(x=>x.style.display='');s.querySelectorAll('.reveal-line').forEach(x=>x.style.display='block');s.querySelectorAll('.feedback').forEach(x=>x.classList.remove('hidden'));s.querySelectorAll('.doc-row').forEach(x=>x.classList.add('open'));s.querySelectorAll('.model-line,.build-slot').forEach(x=>x.classList.add('on'));toast('Answer revealed')}
+const slideReset={};
+function reset(){const s=slides[current];s.classList.remove('show-answer');s.querySelectorAll('.answer').forEach(x=>x.style.display='');s.querySelectorAll('.reveal-line').forEach(x=>x.style.display='none');s.querySelectorAll('.feedback').forEach(x=>x.classList.add('hidden'));s.querySelectorAll('.choice').forEach(x=>x.classList.remove('good','bad','selected'));s.querySelectorAll('.doc-row').forEach(x=>x.classList.remove('open'));s.querySelectorAll('.tick-row').forEach(x=>x.classList.remove('done'));s.querySelectorAll('.model-line,.build-slot').forEach(x=>x.classList.remove('on'));if(slideReset[current])slideReset[current]()}
+
+/* Slide 1 · pronoun check */
+const pronItems=[
+ {q:'My brother → <span style="color:var(--sun)">___</span> is ten.',a:'He',why:'He is my brother. Now say: <b>He is ten.</b>',one:'one boy → He',opts:['He','She','They']},
+ {q:'My sister → <span style="color:var(--sun)">___</span> likes music.',a:'She',why:'one girl → She. Say: <b>She likes music.</b>',one:'one girl → She',opts:['He','She','They']},
+ {q:'My parents → <span style="color:var(--sun)">___</span> cook dinner.',a:'They',why:'two people → They. Say: <b>They cook dinner.</b>',one:'two people → They',opts:['He','She','They']},
+ {q:'I play with my brother every day. I play with <span style="color:var(--sun)">___</span> .',a:'him',why:'after <b>with</b> the person receives the action → him.',one:'receives the action → him',opts:['he','him','she']},
+ {q:'My sister owns this bag. This is <span style="color:var(--sun)">___</span> bag.',a:'her',why:'owns + thing → her bag. (he → his, she → her, they → their)',one:'owns + thing → her',opts:['his','her','their']}
+];
+let pronIndex=0,pronAnswer='';
+function pronRender(){const d=pronItems[pronIndex];document.getElementById('pronCount').textContent=`${pronIndex+1} / ${pronItems.length}`;document.getElementById('pronText').innerHTML=d.q;document.getElementById('pronFeedback').textContent='Wait for the class answer, then click the pronoun.';pronAnswer='';document.querySelectorAll('.pron-choice').forEach((b,i)=>{b.textContent=d.opts[i];b.classList.remove('good','bad','selected')})}
+document.querySelectorAll('.pron-choice').forEach(b=>b.onclick=()=>{pronAnswer=b.textContent.trim();const d=pronItems[pronIndex];document.querySelectorAll('.pron-choice').forEach(x=>{x.classList.remove('good','bad');if(x.textContent.trim()===d.a)x.classList.add('good');else if(x===b)x.classList.add('bad')});const ok=pronAnswer===d.a;document.getElementById('pronFeedback').innerHTML=ok?`✓ ${d.why}`:`${pronAnswer} is not it. ${d.one}. ${d.why}`;toast(ok?'Correct pronoun':'Check again')});
+document.getElementById('pronNext').onclick=()=>{pronIndex=(pronIndex+1)%pronItems.length;pronRender();toast('Next: say it first')};
+document.getElementById('pronReset').onclick=()=>{pronIndex=0;pronRender();toast('Start again')};
+slideReset[0]=()=>{pronIndex=0;pronRender()};
+
+/* Slide 2 · full sentence check */
+const sentTruth=[false,true,false,true];
+const sentWhy=['No action — only a WHO. Say: <b>My brother plays…</b>','WHO + ACTION — a full sentence.','No WHO — only an action. Say: <b>She is cooking…</b>','WHO + ACTION + MORE — a full sentence.'];
+document.querySelectorAll('.sent-row').forEach((row,i)=>{
+ row.querySelector('.sent-yes').onclick=()=>{const ok=sentTruth[i];row.querySelector('.sent-yes').classList.toggle('good',ok);row.querySelector('.sent-yes').classList.toggle('bad',!ok);row.querySelector('.sent-no').classList.remove('good','bad');document.getElementById('sentFeedback').innerHTML=ok?`✓ Full sentence. ${sentWhy[i]}`:`Not yet. ${sentWhy[i]}`;toast(ok?'Full sentence':'Not a full sentence')};
+ row.querySelector('.sent-no').onclick=()=>{const ok=!sentTruth[i];row.querySelector('.sent-no').classList.toggle('good',ok);row.querySelector('.sent-no').classList.toggle('bad',!ok);row.querySelector('.sent-yes').classList.remove('good','bad');document.getElementById('sentFeedback').innerHTML=ok?`✓ Right — not yet. ${sentWhy[i]}`:`It IS a full sentence. ${sentWhy[i]}`;toast(ok?'Right — not yet':'It is a full sentence')};
+});
+slideReset[1]=()=>{document.querySelectorAll('.sent-row .btn').forEach(x=>x.classList.remove('good','bad'));document.getElementById('sentFeedback').textContent='Which rows have WHO + ACTION?'};
+
+/* Slide 4 · model paragraph builder */
+let modelStep=0;const modelLines=[...document.querySelectorAll('.model-line')];
+function updateModel(){modelLines.forEach((l,i)=>l.classList.toggle('on',i<modelStep));const jobs=['START names the topic','PEOPLE says who','TOGETHER says what you do','FEELING ends with why'];document.getElementById('modelCount').textContent=modelStep===0?'Which job comes first?':jobs[modelStep-1]}
+document.getElementById('modelNext').onclick=()=>{if(modelStep<4)modelStep++;updateModel();toast(modelStep===4?'Four jobs, four lines':'Next line')};
+document.getElementById('modelReset').onclick=()=>{modelStep=0;updateModel();toast('Start again')};
+slideReset[3]=()=>{modelStep=0;updateModel()};
+
+/* Slide 6 · order the plan */
+const orderTruth=[4,2,3,1];let orderClicks=[];
+const orderCards=[...document.querySelectorAll('.order-card')];
+function orderPaint(){orderCards.forEach((c,i)=>{const n=orderTruth[i];c.classList.toggle('set',orderClicks.includes(i));c.querySelector('.badge').textContent=orderClicks.includes(i)?orderClicks.indexOf(i)+1:'?'})}
+orderCards.forEach((c,i)=>c.onclick=()=>{if(orderClicks.includes(i))return;if(orderClicks.length>=4)return;orderClicks.push(i);orderPaint();toast(`Number ${orderClicks.length} placed`)});
+document.getElementById('orderCheck').onclick=()=>{
+ if(orderClicks.length<4){toast('Place all four lines first');return}
+ let allOk=true;orderCards.forEach((c,i)=>{const got=orderClicks.indexOf(i)+1,want=orderTruth[i];c.classList.toggle('right',got===want);c.classList.toggle('wrong',got!==want);if(got!==want)allOk=false});
+ document.getElementById('orderFeedback').textContent=allOk?'✓ Perfect: START names it, PEOPLE tells who, TOGETHER tells what you do, FEELING ends with why.':'Look at the red lines. START names the topic first; FEELING ends with because.';
+ toast(allOk?'Perfect order':'Check red lines')};
+document.getElementById('orderReset').onclick=()=>{orderClicks=[];orderCards.forEach(c=>c.classList.remove('right','wrong','set'));orderPaint();document.getElementById('orderFeedback').textContent='Which line names the topic? That one is first.';toast('Start again')};
+slideReset[5]=()=>{orderClicks=[];orderCards.forEach(c=>c.classList.remove('right','wrong','set'));orderPaint();document.getElementById('orderFeedback').textContent='Which line names the topic? That one is first.'};
+
+/* Slide 7 · pronoun swap */
+const swapItems=[
+ {q:'My sister is kind. My sister helps my mother. → <span style="color:var(--sun)">___</span> helps my mother.',a:'She',why:'one girl → <b>She</b>. Say the noun once, then the pronoun.',opts:['He','She','They']},
+ {q:'My brothers are big. My brothers play rugby. → <span style="color:var(--sun)">___</span> play rugby.',a:'They',why:'more than one → <b>They</b>.',opts:['She','They','We']},
+ {q:'I have a little brother. I play with <span style="color:var(--sun)">___</span> .',a:'him',why:'after <b>with</b> → <b>him</b> receives the action.',opts:['he','him','they']}
+];
+let swapIndex=0,swapAnswer='';
+function swapRender(){const d=swapItems[swapIndex];document.getElementById('swapCount').textContent=`${swapIndex+1} / ${swapItems.length}`;document.getElementById('swapText').innerHTML=d.q;document.getElementById('swapFeedback').textContent='Which pronoun replaces the repeated noun?';swapAnswer='';document.querySelectorAll('.swap-choice').forEach((b,i)=>{b.textContent=d.opts[i];b.classList.remove('good','bad','selected')})}
+document.querySelectorAll('.swap-choice').forEach(b=>b.onclick=()=>{swapAnswer=b.textContent.trim();const d=swapItems[swapIndex];document.querySelectorAll('.swap-choice').forEach(x=>{x.classList.remove('good','bad');if(x.textContent.trim()===d.a)x.classList.add('good');else if(x===b)x.classList.add('bad')});const ok=swapAnswer===d.a;document.getElementById('swapFeedback').innerHTML=ok?`✓ ${d.why}`:`Not ${swapAnswer}. ${d.why}`;toast(ok?'Good swap':'Check the pronoun')});
+document.getElementById('swapNext').onclick=()=>{swapIndex=(swapIndex+1)%swapItems.length;swapRender();toast('Say the noun once, then swap')};
+document.getElementById('swapReset').onclick=()=>{swapIndex=0;swapRender();toast('Start again')};
+slideReset[6]=()=>{swapIndex=0;swapRender()};
+
+/* Slide 8 · and vs because */
+const linkItems=[
+ {q:'We eat dinner together <span style="color:var(--sun)">___</span> we talk about our day.',a:'and',why:'adds another idea → <b>and</b>.'},
+ {q:'I love my grandmother <span style="color:var(--sun)">___</span> she makes the best cake.',a:'because',why:'answers WHY → <b>because</b>.'},
+ {q:'My father is tired <span style="color:var(--sun)">___</span> he worked all night.',a:'because',why:'answers WHY he is tired → <b>because</b>.'}
+];
+let linkIndex=0,linkAnswer='';
+function linkRender(){const d=linkItems[linkIndex];document.getElementById('linkCount').textContent=`${linkIndex+1} / ${linkItems.length}`;document.getElementById('linkText').innerHTML=d.q;document.getElementById('linkFeedback').textContent='Am I adding an idea, or answering why?';linkAnswer='';document.querySelectorAll('.link-choice').forEach(x=>x.classList.remove('good','bad','selected'))}
+document.querySelectorAll('.link-choice').forEach(b=>b.onclick=()=>{linkAnswer=b.dataset.v;const d=linkItems[linkIndex];document.querySelectorAll('.link-choice').forEach(x=>{x.classList.remove('good','bad');if(x.dataset.v===d.a)x.classList.add('good');else if(x===b)x.classList.add('bad')});const ok=linkAnswer===d.a;document.getElementById('linkFeedback').textContent=ok?`✓ ${d.why}`:`Not ${linkAnswer}. ${d.why}`;toast(ok?'Good link word':'Think: add or reason?')});
+document.getElementById('linkNext').onclick=()=>{linkIndex=(linkIndex+1)%linkItems.length;linkRender();toast('Add or reason?')};
+document.getElementById('linkReset').onclick=()=>{linkIndex=0;linkRender();toast('Start again')};
+slideReset[7]=()=>{linkIndex=0;linkRender()};
+
+/* Slide 9 · fix the broken line */
+document.querySelectorAll('.fix-btn').forEach(b=>b.onclick=()=>{const row=b.closest('.board');row.querySelector('.reveal-line').style.display='block';toast(b.dataset.fix)});
+slideReset[8]=()=>{document.querySelectorAll('.slide')[8].querySelectorAll('.reveal-line').forEach(x=>x.style.display='none')};
+
+/* Slide 10 · build class paragraph */
+let buildStep=0;const buildSlots=[...document.querySelectorAll('.build-slot')];
+const buildJobs=['Line 1 · START — names the topic','Line 2 · PEOPLE — says who, with a pronoun','Line 3 · TOGETHER — what you do, joined with and','Line 4 · FEELING — ends with because'];
+function updateBuild(){buildSlots.forEach((s,i)=>s.classList.toggle('on',i<buildStep));document.getElementById('buildCount').textContent=`${buildStep} / 4 lines`;document.getElementById('buildFeedback').textContent=buildStep===0?'What does line 1 do? It names the topic.':buildJobs[buildStep-1]}
+document.getElementById('buildNext').onclick=()=>{if(buildStep<4)buildStep++;updateBuild();toast(buildStep===4?'Read the whole paragraph aloud':'Next line')};
+document.getElementById('buildReset').onclick=()=>{buildStep=0;updateBuild();toast('Start again')};
+slideReset[9]=()=>{buildStep=0;updateBuild()};
+
+/* Slide 11 · doctor rows */
+document.querySelectorAll('.doc-row').forEach(b=>b.onclick=()=>b.classList.toggle('open'));
+
+/* Slide 12 · picture frames */
+document.getElementById('picReveal').onclick=()=>{document.getElementById('picFrames').style.display='grid';toast('Say one line per job')};
+document.getElementById('picReset').onclick=()=>{document.getElementById('picFrames').style.display='none';toast('Hidden')};
+
+/* Slide 13 · write model */
+document.getElementById('writeReveal').onclick=()=>{document.getElementById('writeModel').style.display='block';toast('Model after attempts, not before')};
+document.getElementById('writeReset').onclick=()=>{document.getElementById('writeModel').style.display='none';toast('Hidden')};
+
+/* Slide 14 · tick criteria */
+document.querySelectorAll('.tick-row').forEach(b=>b.onclick=()=>{b.classList.toggle('done');toast(b.classList.contains('done')?'✓ Checked':'Unchecked')});
+
+/* Slide 15 · recap reveals handled by global Reveal */
+
+document.getElementById('prev').onclick=()=>show(current-1);
+document.getElementById('next').onclick=()=>show(current+1);
+document.getElementById('reveal').onclick=reveal;
+document.getElementById('reset').onclick=reset;
+document.getElementById('helpBtn').onclick=()=>help.classList.add('open');
+document.getElementById('helpClose').onclick=()=>help.classList.remove('open');
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){help.classList.remove('open');return}if(e.key==='ArrowRight'){e.preventDefault();show(current+1);return}if(e.key==='ArrowLeft'){e.preventDefault();show(current-1);return}if(e.target instanceof Element&&e.target.matches('button,input,textarea,select'))return;if(e.key===' '){e.preventDefault();show(current+1)}if(e.key.toLowerCase()==='r')reveal();if(e.key.toLowerCase()==='x')reset()});
+updateModel();updateBuild();fit();
+</script>
+</body>
+</html>
