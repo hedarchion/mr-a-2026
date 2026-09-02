@@ -82,6 +82,7 @@
 .toast.show{opacity:1}
 .help{display:none;position:absolute;inset:72px 145px 110px;z-index:30;background:#fff;border:5px solid var(--teal);border-radius:27px;padding:30px 42px;box-shadow:0 20px 60px rgba(18,48,71,.35)}
 .help.open{display:block}
+.prompt .blank{color:var(--sun);border-bottom:3px solid rgba(255,255,255,.6);padding:0 10px;transition:all .18s}.prompt .blank.filled{color:var(--ink);background:#fff;border-bottom-color:var(--sun);border-radius:8px}
 .help h2{font-size:45px;margin:0 0 18px}
 .help-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;text-align:center}
 .help-grid div{background:var(--mint);border-radius:17px;padding:18px;font-size:28px;font-weight:950}
@@ -103,7 +104,7 @@
     <div class="grid two" style="margin-top:26px;align-items:stretch">
       <div class="board" style="display:flex;flex-direction:column;justify-content:center">
         <h3 id="pronCount">1 / 5</h3>
-        <p id="pronText" class="prompt" style="font-size:40px">My brother → <span style="color:var(--sun)">___</span> is ten.</p>
+        <p id="pronText" class="prompt" style="font-size:40px">My brother → <span class="blank" style="color:var(--sun)">___</span> is ten.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;justify-content:center">
         <button class="choice pron-choice">He</button>
@@ -235,7 +236,7 @@
     <div class="grid two" style="margin-top:22px;align-items:stretch">
       <div class="board" style="display:flex;flex-direction:column;justify-content:center">
         <h3 id="swapCount">1 / 3</h3>
-        <p id="swapText" class="prompt" style="font-size:35px">My sister is kind. My sister helps my mother. → <span style="color:var(--sun)">___</span> helps my mother.</p>
+        <p id="swapText" class="prompt" style="font-size:35px">My sister is kind. My sister helps my mother. → <span class="blank" style="color:var(--sun)">___</span> helps my mother.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;justify-content:center">
         <button class="choice swap-choice" data-v="He">He</button>
@@ -260,7 +261,7 @@
     <div class="grid two" style="margin-top:22px;align-items:stretch">
       <div class="board" style="display:flex;flex-direction:column;justify-content:center">
         <h3 id="linkCount">1 / 3</h3>
-        <p id="linkText" class="prompt" style="font-size:35px">We eat dinner together <span style="color:var(--sun)">___</span> we talk about our day.</p>
+        <p id="linkText" class="prompt" style="font-size:35px">We eat dinner together <span class="blank" style="color:var(--sun)">___</span> we talk about our day.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px;justify-content:center">
         <button class="choice link-choice" data-v="and">and — adds an idea</button>
@@ -442,15 +443,15 @@ function reset(){const s=slides[current];s.classList.remove('show-answer');s.que
 
 /* Slide 1 · pronoun check */
 const pronItems=[
- {q:'My brother → <span style="color:var(--sun)">___</span> is ten.',a:'He',why:'He is my brother. Now say: <b>He is ten.</b>',one:'one boy → He',opts:['He','She','They']},
- {q:'My sister → <span style="color:var(--sun)">___</span> likes music.',a:'She',why:'one girl → She. Say: <b>She likes music.</b>',one:'one girl → She',opts:['He','She','They']},
- {q:'My parents → <span style="color:var(--sun)">___</span> cook dinner.',a:'They',why:'two people → They. Say: <b>They cook dinner.</b>',one:'two people → They',opts:['He','She','They']},
- {q:'I play with my brother every day. I play with <span style="color:var(--sun)">___</span> .',a:'him',why:'after <b>with</b> the person receives the action → him.',one:'receives the action → him',opts:['he','him','she']},
- {q:'My sister owns this bag. This is <span style="color:var(--sun)">___</span> bag.',a:'her',why:'owns + thing → her bag. (he → his, she → her, they → their)',one:'owns + thing → her',opts:['his','her','their']}
+ {q:'My brother → <span class="blank" style="color:var(--sun)">___</span> is ten.',a:'He',why:'He is my brother. Now say: <b>He is ten.</b>',one:'one boy → He',opts:['He','She','They']},
+ {q:'My sister → <span class="blank" style="color:var(--sun)">___</span> likes music.',a:'She',why:'one girl → She. Say: <b>She likes music.</b>',one:'one girl → She',opts:['He','She','They']},
+ {q:'My parents → <span class="blank" style="color:var(--sun)">___</span> cook dinner.',a:'They',why:'two people → They. Say: <b>They cook dinner.</b>',one:'two people → They',opts:['He','She','They']},
+ {q:'I play with my brother every day. I play with <span class="blank" style="color:var(--sun)">___</span> .',a:'him',why:'after <b>with</b> the person receives the action → him.',one:'receives the action → him',opts:['he','him','she']},
+ {q:'My sister owns this bag. This is <span class="blank" style="color:var(--sun)">___</span> bag.',a:'her',why:'owns + thing → her bag. (he → his, she → her, they → their)',one:'owns + thing → her',opts:['his','her','their']}
 ];
 let pronIndex=0,pronAnswer='';
 function pronRender(){const d=pronItems[pronIndex];document.getElementById('pronCount').textContent=`${pronIndex+1} / ${pronItems.length}`;document.getElementById('pronText').innerHTML=d.q;document.getElementById('pronFeedback').textContent='Wait for the class answer, then click the pronoun.';pronAnswer='';document.querySelectorAll('.pron-choice').forEach((b,i)=>{b.textContent=d.opts[i];b.classList.remove('good','bad','selected')})}
-document.querySelectorAll('.pron-choice').forEach(b=>b.onclick=()=>{pronAnswer=b.textContent.trim();const d=pronItems[pronIndex];document.querySelectorAll('.pron-choice').forEach(x=>{x.classList.remove('good','bad');if(x.textContent.trim()===d.a)x.classList.add('good');else if(x===b)x.classList.add('bad')});const ok=pronAnswer===d.a;document.getElementById('pronFeedback').innerHTML=ok?`✓ ${d.why}`:`${pronAnswer} is not it. ${d.one}. ${d.why}`;toast(ok?'Correct pronoun':'Check again')});
+document.querySelectorAll('.pron-choice').forEach(b=>b.onclick=()=>{pronAnswer=b.textContent.trim();const d=pronItems[pronIndex];document.querySelectorAll('.pron-choice').forEach(x=>{x.classList.remove('good','bad');if(x.textContent.trim()===d.a)x.classList.add('good');else if(x===b)x.classList.add('bad')});const ok=pronAnswer===d.a;document.getElementById('pronFeedback').innerHTML=ok?`✓ ${d.why}`:`${pronAnswer} is not it. ${d.one}. ${d.why}`;const blank=document.querySelector('#pronText .blank');if(blank){blank.textContent=pronAnswer;blank.classList.add('filled');}toast(ok?'Correct pronoun':'Check again')});
 document.getElementById('pronNext').onclick=()=>{pronIndex=(pronIndex+1)%pronItems.length;pronRender();toast('Next: say it first')};
 document.getElementById('pronReset').onclick=()=>{pronIndex=0;pronRender();toast('Start again')};
 slideReset[0]=()=>{pronIndex=0;pronRender()};
@@ -486,26 +487,26 @@ slideReset[5]=()=>{orderClicks=[];orderCards.forEach(c=>c.classList.remove('righ
 
 /* Slide 7 · pronoun swap */
 const swapItems=[
- {q:'My sister is kind. My sister helps my mother. → <span style="color:var(--sun)">___</span> helps my mother.',a:'She',why:'one girl → <b>She</b>. Say the noun once, then the pronoun.',opts:['He','She','They']},
- {q:'My brothers are big. My brothers play rugby. → <span style="color:var(--sun)">___</span> play rugby.',a:'They',why:'more than one → <b>They</b>.',opts:['She','They','We']},
- {q:'I have a little brother. I play with <span style="color:var(--sun)">___</span> .',a:'him',why:'after <b>with</b> → <b>him</b> receives the action.',opts:['he','him','they']}
+ {q:'My sister is kind. My sister helps my mother. → <span class="blank" style="color:var(--sun)">___</span> helps my mother.',a:'She',why:'one girl → <b>She</b>. Say the noun once, then the pronoun.',opts:['He','She','They']},
+ {q:'My brothers are big. My brothers play rugby. → <span class="blank" style="color:var(--sun)">___</span> play rugby.',a:'They',why:'more than one → <b>They</b>.',opts:['She','They','We']},
+ {q:'I have a little brother. I play with <span class="blank" style="color:var(--sun)">___</span> .',a:'him',why:'after <b>with</b> → <b>him</b> receives the action.',opts:['he','him','they']}
 ];
 let swapIndex=0,swapAnswer='';
 function swapRender(){const d=swapItems[swapIndex];document.getElementById('swapCount').textContent=`${swapIndex+1} / ${swapItems.length}`;document.getElementById('swapText').innerHTML=d.q;document.getElementById('swapFeedback').textContent='Which pronoun replaces the repeated noun?';swapAnswer='';document.querySelectorAll('.swap-choice').forEach((b,i)=>{b.textContent=d.opts[i];b.classList.remove('good','bad','selected')})}
-document.querySelectorAll('.swap-choice').forEach(b=>b.onclick=()=>{swapAnswer=b.textContent.trim();const d=swapItems[swapIndex];document.querySelectorAll('.swap-choice').forEach(x=>{x.classList.remove('good','bad');if(x.textContent.trim()===d.a)x.classList.add('good');else if(x===b)x.classList.add('bad')});const ok=swapAnswer===d.a;document.getElementById('swapFeedback').innerHTML=ok?`✓ ${d.why}`:`Not ${swapAnswer}. ${d.why}`;toast(ok?'Good swap':'Check the pronoun')});
+document.querySelectorAll('.swap-choice').forEach(b=>b.onclick=()=>{swapAnswer=b.textContent.trim();const d=swapItems[swapIndex];document.querySelectorAll('.swap-choice').forEach(x=>{x.classList.remove('good','bad');if(x.textContent.trim()===d.a)x.classList.add('good');else if(x===b)x.classList.add('bad')});const ok=swapAnswer===d.a;document.getElementById('swapFeedback').innerHTML=ok?`✓ ${d.why}`:`Not ${swapAnswer}. ${d.why}`;const blank=document.querySelector('#swapText .blank');if(blank){blank.textContent=swapAnswer;blank.classList.add('filled');}toast(ok?'Good swap':'Check the pronoun')});
 document.getElementById('swapNext').onclick=()=>{swapIndex=(swapIndex+1)%swapItems.length;swapRender();toast('Say the noun once, then swap')};
 document.getElementById('swapReset').onclick=()=>{swapIndex=0;swapRender();toast('Start again')};
 slideReset[6]=()=>{swapIndex=0;swapRender()};
 
 /* Slide 8 · and vs because */
 const linkItems=[
- {q:'We eat dinner together <span style="color:var(--sun)">___</span> we talk about our day.',a:'and',why:'adds another idea → <b>and</b>.'},
- {q:'I love my grandmother <span style="color:var(--sun)">___</span> she makes the best cake.',a:'because',why:'answers WHY → <b>because</b>.'},
- {q:'My father is tired <span style="color:var(--sun)">___</span> he worked all night.',a:'because',why:'answers WHY he is tired → <b>because</b>.'}
+ {q:'We eat dinner together <span class="blank" style="color:var(--sun)">___</span> we talk about our day.',a:'and',why:'adds another idea → <b>and</b>.'},
+ {q:'I love my grandmother <span class="blank" style="color:var(--sun)">___</span> she makes the best cake.',a:'because',why:'answers WHY → <b>because</b>.'},
+ {q:'My father is tired <span class="blank" style="color:var(--sun)">___</span> he worked all night.',a:'because',why:'answers WHY he is tired → <b>because</b>.'}
 ];
 let linkIndex=0,linkAnswer='';
 function linkRender(){const d=linkItems[linkIndex];document.getElementById('linkCount').textContent=`${linkIndex+1} / ${linkItems.length}`;document.getElementById('linkText').innerHTML=d.q;document.getElementById('linkFeedback').textContent='Am I adding an idea, or answering why?';linkAnswer='';document.querySelectorAll('.link-choice').forEach(x=>x.classList.remove('good','bad','selected'))}
-document.querySelectorAll('.link-choice').forEach(b=>b.onclick=()=>{linkAnswer=b.dataset.v;const d=linkItems[linkIndex];document.querySelectorAll('.link-choice').forEach(x=>{x.classList.remove('good','bad');if(x.dataset.v===d.a)x.classList.add('good');else if(x===b)x.classList.add('bad')});const ok=linkAnswer===d.a;document.getElementById('linkFeedback').textContent=ok?`✓ ${d.why}`:`Not ${linkAnswer}. ${d.why}`;toast(ok?'Good link word':'Think: add or reason?')});
+document.querySelectorAll('.link-choice').forEach(b=>b.onclick=()=>{linkAnswer=b.dataset.v;const d=linkItems[linkIndex];document.querySelectorAll('.link-choice').forEach(x=>{x.classList.remove('good','bad');if(x.dataset.v===d.a)x.classList.add('good');else if(x===b)x.classList.add('bad')});const ok=linkAnswer===d.a;document.getElementById('linkFeedback').textContent=ok?`✓ ${d.why}`:`Not ${linkAnswer}. ${d.why}`;const blank=document.querySelector('#linkText .blank');if(blank){blank.textContent=linkAnswer;blank.classList.add('filled');}toast(ok?'Good link word':'Think: add or reason?')});
 document.getElementById('linkNext').onclick=()=>{linkIndex=(linkIndex+1)%linkItems.length;linkRender();toast('Add or reason?')};
 document.getElementById('linkReset').onclick=()=>{linkIndex=0;linkRender();toast('Start again')};
 slideReset[7]=()=>{linkIndex=0;linkRender()};

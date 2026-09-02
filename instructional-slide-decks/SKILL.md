@@ -28,6 +28,20 @@ decks/<class-slug>/<YYYY>/week-<NN>/<YYYY-MM-DD>-<topic-slug>/
 
 Keep worksheets and keys aligned to the deck in the same lesson folder. Keep reusable assets in `templates/`.
 
+## Parallelize with Luna subagents
+
+For every slide-deck or worksheet generation or revision, the main agent must first read and interpret all applicable skills and references, then delegate at least one concrete independent workstream to a subagent with `model: "gpt-5.6-luna"`. Use two or three Luna subagents by default when independent tracks exist, such as context or source retrieval, content and answer validation, visual or interaction inspection, and worksheet archive or catalog checks. Use a bounded `fork_turns` value compatible with the model override and give each subagent a precise task, inputs, output expectation, and file-ownership boundary so parallel edits do not collide.
+
+The main agent owns the lesson architecture, integration, conflict resolution, final viewport and cross-artifact verification, Longan Lesson Notes update, and user handoff. Subagent findings are inputs, not substitutes for the main agent's required skill reading or final judgment. If collaboration tools are unavailable, state that limitation and complete all required checks locally.
+
+## Log the lesson plan in Longan
+
+For teaching Week 31 of 2026 onward, finish each verified deck or worksheet workflow by updating the matching Longan **Lesson Notes** entry in the production Neon database. Use the lesson's `notes.md` and verified learner-facing artifacts as evidence, but write an apt planning summary rather than copying them wholesale.
+
+Keep the entry concise and useful at teaching time. Include the lesson focus or objective, the main model/practice/application sequence, the purpose of any worksheet, and the intended evidence of learning or exit check. Do not include a slide-by-slide list, every worksheet item, answer keys, source-search details, build notes, or QA logs. When both slides and a worksheet belong to the same lesson, integrate them into one coherent lesson note. Preserve any teacher-written content and the separate reflection field when updating an existing row.
+
+Resolve the class, date, and timetable slot from the lesson folder and the Longan schedule; never guess a missing mapping. After the local artifact passes verification, upsert only the corresponding Lesson Notes content and read it back to confirm the saved text. Treat this standing Week 31+ instruction as permission for that narrow database update, not for unrelated Neon changes.
+
 ## Build a compact context pack
 
 Before drafting, inspect the most recent relevant same-class deck and notes. Capture internally: objective, prerequisite knowledge, prior coverage, likely misconception, class-level scaffolding need, duration, display, source evidence, and durable preferences from `learning/user-preferences.md`. Do not make the user restate discoverable context.
@@ -72,7 +86,7 @@ Support `ArrowLeft`, `ArrowRight`, and `Space`, plus visible previous/next contr
 
 Read [references/formative-interactions.md](references/formative-interactions.md) when adding interactions. Use the smallest interaction that reveals useful thinking: predict/reveal, choose, order, categorise, complete, or error analysis.
 
-Every interaction needs a prompt, response path, teacher-controlled check or reveal, explanatory feedback, reset, keyboard access, and non-digital fallback. Visible controls that do not change state are failed interactions, not decoration. Refactor inherited slide code or shared button handlers when needed so the actual click and keyboard paths work. Avoid scores, timers, confetti, accounts, and competitive mechanics unless they directly serve the objective.
+Every interaction needs a prompt, response path, teacher-controlled check or reveal, explanatory feedback, reset, keyboard access, and non-digital fallback. For any **gap-fill / cloze / complete-the-sentence** interaction where the prompt sentence contains a blank (`_____` or similar), selecting an answer must **update the blank inline within the sentence itself** — the chosen word or phrase appears in the blank — in addition to any choice highlighting (e.g., green/bordered) or separate explanatory feedback. Do not rely solely on colouring the correct choice or printing the answer elsewhere; the sentence display must show the selection in context, and Reset must clear the blank again. Visible controls that do not change state, or that leave the blank empty after a selection, are failed interactions, not decoration. Refactor inherited slide code or shared button handlers when needed so the actual click and keyboard paths update both the choice state and the in-sentence blank. Avoid scores, timers, confetti, accounts, and competitive mechanics unless they directly serve the objective.
 
 ## Align worksheets
 
