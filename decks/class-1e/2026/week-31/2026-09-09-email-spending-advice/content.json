@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "title": "Advice for Raju · Spending tips",
+  "viewport": "1280x665",
+  "slides": [
+    {
+      "id": "spending-schema",
+      "type": "prompt",
+      "prompt": "What do you spend money on every week?",
+      "hint": "Think about food, transport, or phone top-up.",
+      "notes": "60-min Rabu lesson. Activate spending schema before Raju's email. Oral pair answers, 3 min. Bridge from 2 Sep describing people: today we help a person, not describe one."
+    },
+    {
+      "id": "raju-email",
+      "type": "passage",
+      "prompt": "What does Raju ask for?",
+      "text": "Hi, I hope you are doing well. I need some advice on how to manage my spending. Please share tips that help you control your expenses. You are good at handling money. Regards, Raju",
+      "hint": "Find the asking sentence.",
+      "notes": "Paraphrased Module p85 stimulus, kept short for projection. Expected: advice on managing spending. Teacher plays the NotebookLM primer video before or after this slide per SOT plan."
+    },
+    {
+      "id": "reply-job",
+      "type": "choice",
+      "prompt": "What must your reply do?",
+      "options": [
+        "Ask Raju for money.",
+        "Give Raju spending tips.",
+        "Describe Raju's school."
+      ],
+      "answer": "Give Raju spending tips.",
+      "feedback": "Raju asks for advice, so your email must give tips.",
+      "notes": "P2 Part 1 content dimension: answer what the sender asked. Volunteers choose; teacher reveals. Non-digital fallback: fingers 1/2/3."
+    },
+    {
+      "id": "email-shape",
+      "type": "reveal",
+      "prompt": "What shape does good advice take?",
+      "answer": "Greeting, two or three tips with reasons, then closing.",
+      "feedback": "Each part has a job: hello, help, goodbye.",
+      "notes": "Model the Module suggested answer shape without copying its sentences. Elicit parts before revealing."
+    },
+    {
+      "id": "advice-words",
+      "type": "reveal",
+      "prompt": "How do we sound helpful?",
+      "answer": "You should make a budget. Save a little money. Do not buy what you do not need.",
+      "feedback": "Should plus verb advises. Do not plus verb warns.",
+      "notes": "Core advice frames for the book task. Drill should + verb chorally. Misconception to listen for: should to buy / should not saving (wrong verb form)."
+    },
+    {
+      "id": "kinder-advice",
+      "type": "cloze",
+      "prompt": "Choose the kinder advice.",
+      "sentence": "You {{blank}} buy things you do not need.",
+      "options": ["should not", "should"],
+      "answer": "should not",
+      "feedback": "Should not warns kindly. Should would push bad spending.",
+      "notes": "Click fills the blank inline; Reset clears it. Check polarity meaning, not just grammar."
+    },
+    {
+      "id": "stronger-tip",
+      "type": "choice",
+      "prompt": "Which tip is stronger?",
+      "options": [
+        "Save money every month.",
+        "Save money because emergencies happen."
+      ],
+      "answer": "Save money because emergencies happen.",
+      "feedback": "Because adds a reason. Reasons persuade readers.",
+      "notes": "Organisation dimension: connect tip to reason. Ask a volunteer to add a different because ending."
+    },
+    {
+      "id": "email-order",
+      "type": "order",
+      "prompt": "Put the email in order.",
+      "items": [
+        "Hi Raju,",
+        "You should make a budget.",
+        "Also, avoid impulse buys.",
+        "I hope this helps! Regards, Ana"
+      ],
+      "feedback": "Greet first, give tips in the middle, close last.",
+      "notes": "Click sentences in sequence. Reveal restores canonical order. Names the dependency: greeting opens, closing ends."
+    },
+    {
+      "id": "module-task",
+      "type": "writing",
+      "prompt": "Email Raju: spending tips",
+      "task": "In about 60 words, write an email to Raju giving him spending advice. Use two tips with reasons.",
+      "frame": "Hi Raju, You should … because … . Also, … . I hope these tips help! Regards, …",
+      "notes": "Module p85 book task, individual, ~15 min. Frame hidden until Reveal; weaker pupils may keep it. Collect books for marks per SOT."
+    },
+    {
+      "id": "exit-tip",
+      "type": "prompt",
+      "prompt": "Tell your partner one tip for Raju.",
+      "hint": "Start with You should … because … .",
+      "notes": "Exit evidence, 3 min oral. Listen for should + verb and one reason. Weak or missing reasons become Thursday's retrieval bridge."
+    }
+  ]
+}

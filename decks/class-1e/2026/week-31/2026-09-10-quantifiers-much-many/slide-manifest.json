@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "notice-pair",
+      "type": "prompt",
+      "initialWords": 6,
+      "hintWords": 15,
+      "revealedWords": 6
+    },
+    {
+      "id": "count-sort",
+      "type": "sort",
+      "initialWords": 18,
+      "hintWords": 18,
+      "revealedWords": 28
+    },
+    {
+      "id": "many-model",
+      "type": "reveal",
+      "initialWords": 5,
+      "hintWords": 5,
+      "revealedWords": 23
+    },
+    {
+      "id": "much-model",
+      "type": "reveal",
+      "initialWords": 5,
+      "hintWords": 5,
+      "revealedWords": 25
+    },
+    {
+      "id": "some-few-lot",
+      "type": "reveal",
+      "initialWords": 8,
+      "hintWords": 8,
+      "revealedWords": 38
+    },
+    {
+      "id": "q1-kittens",
+      "type": "cloze",
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 24
+    },
+    {
+      "id": "q2-rice",
+      "type": "cloze",
+      "initialWords": 12,
+      "hintWords": 12,
+      "revealedWords": 19
+    },
+    {
+      "id": "q3-salt",
+      "type": "choice",
+      "initialWords": 9,
+      "hintWords": 9,
+      "revealedWords": 17
+    },
+    {
+      "id": "q4-assembly",
+      "type": "cloze",
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 21
+    },
+    {
+      "id": "q5-juice",
+      "type": "choice",
+      "initialWords": 10,
+      "hintWords": 10,
+      "revealedWords": 18
+    },
+    {
+      "id": "q6-mangoes",
+      "type": "cloze",
+      "initialWords": 19,
+      "hintWords": 19,
+      "revealedWords": 29
+    },
+    {
+      "id": "q7-durians",
+      "type": "choice",
+      "initialWords": 12,
+      "hintWords": 12,
+      "revealedWords": 23
+    },
+    {
+      "id": "q8-milk",
+      "type": "cloze",
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 21
+    },
+    {
+      "id": "q9-coins",
+      "type": "choice",
+      "initialWords": 15,
+      "hintWords": 15,
+      "revealedWords": 29
+    },
+    {
+      "id": "q10-water",
+      "type": "cloze",
+      "initialWords": 12,
+      "hintWords": 12,
+      "revealedWords": 23
+    },
+    {
+      "id": "exit-rule",
+      "type": "prompt",
+      "initialWords": 7,
+      "hintWords": 12,
+      "revealedWords": 7
+    }
+  ]
+}

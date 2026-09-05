@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "title": "Refresh · Quantifiers and describing",
+  "viewport": "1280x665",
+  "slides": [
+    {
+      "id": "recall-duel",
+      "type": "prompt",
+      "prompt": "Much or many: what decides it?",
+      "hint": "Start with countable or uncountable.",
+      "notes": "Friday refresh, 60 min. Retrieval of Thursday's rule before worksheets. Oral, 3 min. PBD table visits happen during worksheet time per SOT."
+    },
+    {
+      "id": "check-homework",
+      "type": "cloze",
+      "prompt": "Check one: complete it.",
+      "sentence": "We have {{blank}} homework tonight.",
+      "options": ["much", "many"],
+      "answer": "much",
+      "feedback": "Homework is uncountable, so much fits.",
+      "notes": "Click fills the blank inline; Reset clears it. Fast check, one volunteer."
+    },
+    {
+      "id": "check-friends",
+      "type": "choice",
+      "prompt": "Check two: She has ___ close friends: six.",
+      "options": ["many", "much"],
+      "answer": "many",
+      "feedback": "Six friends is countable and plural, so many fits.",
+      "notes": "Number-clue strategy reused from Thursday."
+    },
+    {
+      "id": "rule-card",
+      "type": "reveal",
+      "prompt": "What must you remember today?",
+      "answer": "Many plus countable plurals. Much plus uncountables. A few is small, a lot of is large.",
+      "feedback": "Say the noun kind first, then choose.",
+      "notes": "Memory anchor for the worksheets. Leave visible while distributing sheets."
+    },
+    {
+      "id": "describe-check",
+      "type": "choice",
+      "prompt": "Which sentence describes correctly?",
+      "options": [
+        "She is a tall girl.",
+        "She is girl tall."
+      ],
+      "answer": "She is a tall girl.",
+      "feedback": "The adjective comes before the noun it describes.",
+      "notes": "Past-grammar strand from 2 Sep describing people. Directly targets the adjective-order confusion in that reflection."
+    },
+    {
+      "id": "mixed-trees",
+      "type": "cloze",
+      "prompt": "Mix both skills: complete it.",
+      "sentence": "There are {{blank}} tall trees behind our school.",
+      "options": ["many", "much"],
+      "answer": "many",
+      "feedback": "Trees are countable, so many fits. Tall just describes them.",
+      "notes": "Combined item modelling worksheet 2's mixed format. Adjective does not change the quantifier rule."
+    },
+    {
+      "id": "work-launch",
+      "type": "writing",
+      "prompt": "Two worksheets, your turn",
+      "task": "Complete worksheet 1 (quantifiers) then worksheet 2 (mixed revision). Work alone for 20 minutes.",
+      "frame": "Step 1: name the noun kind. Step 2: choose the quantifier. Step 3: check the number clue.",
+      "notes": "Administration: brief, individual, formative, ungraded, teacher-marked, ordinary supports. Teacher goes table to table for PBD. Reveal the 3-step frame if pupils stall."
+    },
+    {
+      "id": "exit-proud",
+      "type": "prompt",
+      "prompt": "Read out one answer you are sure about.",
+      "hint": "Say the noun kind first, then your answer.",
+      "notes": "Plenary evidence, 5 min. Collect sheets for marks per SOT. Note insecure items for next week's planning."
+    }
+  ]
+}

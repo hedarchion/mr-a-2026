@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{{CODE}}</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 12mm;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #eee;
+        color: #111;
+        font:
+          11pt/1.38 Arial,
+          sans-serif;
+      }
+      .page {
+        width: 186mm;
+        min-height: 150mm;
+        margin: 8mm auto;
+        background: #fff;
+        break-after: page;
+        page-break-after: always;
+      }
+      .head {
+        text-align: center;
+        border-bottom: 1.5px solid;
+        padding-bottom: 3mm;
+      }
+      .code {
+        font-size: 11pt;
+        font-weight: 700;
+      }
+      .paper {
+        font-size: 15pt;
+        font-weight: 700;
+      }
+      .sub {
+        font-size: 11pt;
+        font-weight: 700;
+      }
+      .meta {
+        display: flex;
+        gap: 10mm;
+        margin: 4mm 0;
+      }
+      .field {
+        flex: 1;
+        border-bottom: 1px solid;
+        height: 6mm;
+      }
+      .instructions {
+        border: 1px solid #222;
+        padding: 3mm 4mm;
+        font-size: 10pt;
+      }
+      .box {
+        border: 1px solid #222;
+        padding: 4mm 5mm;
+        margin-top: 4mm;
+      }
+      .box h2 {
+        font-size: 12pt;
+        margin: 0 0 2mm;
+      }
+      .box p {
+        margin: 0 0 2mm;
+      }
+      .item {
+        margin: 2.5mm 0;
+      }
+      .ans {
+        display: inline-block;
+        border-bottom: 1px solid;
+        min-width: 30mm;
+        height: 5mm;
+      }
+      .bank {
+        text-align: center;
+        font-weight: 700;
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        .page {
+          margin: 0;
+          width: auto;
+          min-height: 0;
+        }
+        .page:last-child {
+          break-after: auto;
+          page-break-after: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="head">
+        <div class="code">{{CODE}}</div>
+        <div class="paper">FORM 1 ENGLISH · GRAMMAR PRACTICE</div>
+        <div class="sub">
+          {{SUBTITLE}}
+          <span style="float: right">[{{MARKS}} marks]</span>
+        </div>
+      </header>
+      <div class="meta">
+        <div>Name: <span class="field"></span></div>
+        <div>Class: <span class="field"></span></div>
+        <div>Date: <span class="field"></span></div>
+      </div>
+      <p class="instructions">{{INSTRUCTIONS}}</p>
+      {{SECTIONS}}
+    </main>
+    {{COPY_SCRIPT}}
+  </body>
+</html>

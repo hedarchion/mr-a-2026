@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "title": "Quantifiers · much, many and friends",
+  "viewport": "1280x665",
+  "slides": [
+    {
+      "id": "notice-pair",
+      "type": "prompt",
+      "prompt": "How much money? How many friends?",
+      "hint": "Why does money take much but friends take many?",
+      "notes": "60-min Khamis lesson, Module p86. Deductive opening: pupils notice the contrast before any rule. Collect oral guesses, give nothing away."
+    },
+    {
+      "id": "count-sort",
+      "type": "sort",
+      "prompt": "Can you count it, or not?",
+      "categories": ["Countable", "Uncountable"],
+      "items": [
+        {"text": "apples", "category": "Countable"},
+        {"text": "water", "category": "Uncountable"},
+        {"text": "friends", "category": "Countable"},
+        {"text": "money", "category": "Uncountable"}
+      ],
+      "feedback": "Countable nouns take a plural. Uncountable nouns have one form.",
+      "notes": "Prerequisite check: countable/uncountable decides every quantifier today. Teacher clicks the category the class proposes. Grammar book: countable unit nouns vs mass nouns."
+    },
+    {
+      "id": "many-model",
+      "type": "reveal",
+      "prompt": "When do we use many?",
+      "answer": "She has many friends. Many pupils joined the walk.",
+      "feedback": "Many plus plural countable nouns means a large number.",
+      "notes": "First pattern from pupil deduction. Elicit the rule before revealing. Grammar book Much-many: many with countable plurals."
+    },
+    {
+      "id": "much-model",
+      "type": "reveal",
+      "prompt": "When do we use much?",
+      "answer": "There is not much time left. Do we have much sugar?",
+      "feedback": "Much plus uncountable nouns, mostly in negatives and questions.",
+      "notes": "Second pattern. Stress negatives/questions at elementary level per grammar book. Drill chorally."
+    },
+    {
+      "id": "some-few-lot",
+      "type": "reveal",
+      "prompt": "What about some, a few, a lot of?",
+      "answer": "I have some apples. I have a few books. There are a lot of cars.",
+      "feedback": "Some hides the number. A few is small and countable. A lot of is large.",
+      "notes": "Third pattern, Module p86 points 2-5. A lot of works for both kinds in affirmatives. Keep brisk; the 10 questions do the heavy lifting."
+    },
+    {
+      "id": "q1-kittens",
+      "type": "cloze",
+      "prompt": "Question 1: complete it.",
+      "sentence": "We saw {{blank}} kittens near the drain.",
+      "options": ["many", "much"],
+      "answer": "many",
+      "feedback": "Kittens are countable, so many fits. Much needs an uncountable noun.",
+      "notes": "Volunteer 1. Click fills the blank inline; Reset clears it."
+    },
+    {
+      "id": "q2-rice",
+      "type": "cloze",
+      "prompt": "Question 2: complete it.",
+      "sentence": "How {{blank}} rice do we need?",
+      "options": ["much", "many"],
+      "answer": "much",
+      "feedback": "Rice is uncountable, and questions take much.",
+      "notes": "Volunteer 2. Ask why many fails before revealing."
+    },
+    {
+      "id": "q3-salt",
+      "type": "choice",
+      "prompt": "Question 3: There isn't ___ salt left.",
+      "options": ["much", "many"],
+      "answer": "much",
+      "feedback": "Salt is uncountable, and negatives take much.",
+      "notes": "Volunteer 3. Non-digital fallback: fingers 1/2."
+    },
+    {
+      "id": "q4-assembly",
+      "type": "cloze",
+      "prompt": "Question 4: complete it.",
+      "sentence": "There were {{blank}} pupils at the assembly.",
+      "options": ["many", "much"],
+      "answer": "many",
+      "feedback": "Pupils are countable and plural, so many fits.",
+      "notes": "Volunteer 4."
+    },
+    {
+      "id": "q5-juice",
+      "type": "choice",
+      "prompt": "Question 5: He did not drink ___ juice.",
+      "options": ["much", "many"],
+      "answer": "much",
+      "feedback": "Juice is uncountable, and negatives take much.",
+      "notes": "Volunteer 5. Halfway checkpoint: ask the class to state the much/many rule so far."
+    },
+    {
+      "id": "q6-mangoes",
+      "type": "cloze",
+      "prompt": "Question 6: use the number clue.",
+      "sentence": "He picked {{blank}} mangoes: four for his family.",
+      "options": ["a few", "a lot of"],
+      "answer": "a few",
+      "feedback": "Four is a small countable number, so a few fits.",
+      "notes": "Volunteer 6. Teach the number-clue strategy from Module section B."
+    },
+    {
+      "id": "q7-durians",
+      "type": "choice",
+      "prompt": "Question 7: They saw ___ durians: fifty at the stall.",
+      "options": ["many", "much"],
+      "answer": "many",
+      "feedback": "Fifty durians is a large countable number, so many fits.",
+      "notes": "Volunteer 7."
+    },
+    {
+      "id": "q8-milk",
+      "type": "cloze",
+      "prompt": "Question 8: complete it.",
+      "sentence": "There is {{blank}} milk in the fridge.",
+      "options": ["much", "many"],
+      "answer": "much",
+      "feedback": "Milk is uncountable. Many milk is never correct.",
+      "notes": "Volunteer 8. Name the classic error many + uncountable explicitly."
+    },
+    {
+      "id": "q9-coins",
+      "type": "choice",
+      "prompt": "Question 9: She saved ___ coins: thirty in her box.",
+      "options": ["a lot of", "a little"],
+      "answer": "a lot of",
+      "feedback": "Thirty coins is large and countable, so a lot of fits.",
+      "notes": "Volunteer 9. A little needs an uncountable noun, so it fails twice here."
+    },
+    {
+      "id": "q10-water",
+      "type": "cloze",
+      "prompt": "Question 10: complete it.",
+      "sentence": "He drank {{blank}} water before training.",
+      "options": ["some", "many"],
+      "answer": "some",
+      "feedback": "Water is uncountable and the number is unknown, so some fits.",
+      "notes": "Volunteer 10. Some for unknown exact number per Module p86 point 2."
+    },
+    {
+      "id": "exit-rule",
+      "type": "prompt",
+      "prompt": "State the rule for much and many.",
+      "hint": "Start with countable or uncountable.",
+      "notes": "Exit evidence, oral, 3 min. Expected: many + plural countable; much + uncountable in negatives/questions. Gaps found here open Friday's refresh."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "recall-duel",
+      "type": "prompt",
+      "initialWords": 6,
+      "hintWords": 11,
+      "revealedWords": 6
+    },
+    {
+      "id": "check-homework",
+      "type": "cloze",
+      "initialWords": 11,
+      "hintWords": 11,
+      "revealedWords": 17
+    },
+    {
+      "id": "check-friends",
+      "type": "choice",
+      "initialWords": 10,
+      "hintWords": 10,
+      "revealedWords": 20
+    },
+    {
+      "id": "rule-card",
+      "type": "reveal",
+      "initialWords": 5,
+      "hintWords": 5,
+      "revealedWords": 28
+    },
+    {
+      "id": "describe-check",
+      "type": "choice",
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 26
+    },
+    {
+      "id": "mixed-trees",
+      "type": "cloze",
+      "initialWords": 15,
+      "hintWords": 15,
+      "revealedWords": 25
+    },
+    {
+      "id": "work-launch",
+      "type": "writing",
+      "initialWords": 18,
+      "hintWords": 18,
+      "revealedWords": 35
+    },
+    {
+      "id": "exit-proud",
+      "type": "prompt",
+      "initialWords": 8,
+      "hintWords": 16,
+      "revealedWords": 8
+    }
+  ]
+}

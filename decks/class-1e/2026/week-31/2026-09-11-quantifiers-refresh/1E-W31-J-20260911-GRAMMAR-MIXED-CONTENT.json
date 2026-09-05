@@ -1,0 +1,40 @@
+{
+  "code": "1E-W31-J-20260911-GRAMMAR-MIXED",
+  "subtitle": "Mixed revision: quantifiers and describing people",
+  "marks": 10,
+  "instructions": "Answer all questions. For questions 1 to 9, circle the correct answer. For question 10, write two suitable adjectives. [10 marks]",
+  "sections": [
+    {
+      "heading": "Section A — quantifiers",
+      "items": [
+        {"text": "( Many / Much ) visitors came: two hundred."},
+        {"text": "I have ( a few / a little ) storybooks: five on my shelf."},
+        {"text": "There is ( much / many ) noise outside."},
+        {"text": "We need ( some / many ) sugar for the kuih."},
+        {"text": "He saved ( a lot of / much ) stamps: ninety in his album."}
+      ]
+    },
+    {
+      "heading": "Section B — describing people",
+      "items": [
+        {"text": "Circle the correct sentence: ( She is a tall girl. / She is a girl tall. )"},
+        {"text": "Circle the correct sentence: ( They are strong players. / They are players strong. )"},
+        {"text": "Circle the correct word: My brother is ( tall and friendly / tallly and friendly )."},
+        {"text": "Circle the correct words: ( He is / They is ) my best friend."},
+        {"text": "Complete the sentence: Aiman is ___ANS___ and ___ANS___."}
+      ]
+    }
+  ],
+  "answerMap": {
+    "1": "Many",
+    "2": "a few",
+    "3": "much",
+    "4": "some",
+    "5": "a lot of",
+    "6": "She is a tall girl.",
+    "7": "They are strong players.",
+    "8": "tall and friendly",
+    "9": "He is",
+    "10": "Any two suitable adjectives (e.g. tall, kind, brave, helpful)"
+  }
+}

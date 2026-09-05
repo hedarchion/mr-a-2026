@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "spending-schema",
+      "type": "prompt",
+      "initialWords": 8,
+      "hintWords": 15,
+      "revealedWords": 8
+    },
+    {
+      "id": "raju-email",
+      "type": "passage",
+      "initialWords": 39,
+      "hintWords": 43,
+      "revealedWords": 39
+    },
+    {
+      "id": "reply-job",
+      "type": "choice",
+      "initialWords": 16,
+      "hintWords": 16,
+      "revealedWords": 30
+    },
+    {
+      "id": "email-shape",
+      "type": "reveal",
+      "initialWords": 6,
+      "hintWords": 6,
+      "revealedWords": 23
+    },
+    {
+      "id": "advice-words",
+      "type": "reveal",
+      "initialWords": 5,
+      "hintWords": 5,
+      "revealedWords": 31
+    },
+    {
+      "id": "kinder-advice",
+      "type": "cloze",
+      "initialWords": 15,
+      "hintWords": 15,
+      "revealedWords": 24
+    },
+    {
+      "id": "stronger-tip",
+      "type": "choice",
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 25
+    },
+    {
+      "id": "email-order",
+      "type": "order",
+      "initialWords": 22,
+      "hintWords": 22,
+      "revealedWords": 31
+    },
+    {
+      "id": "module-task",
+      "type": "writing",
+      "initialWords": 22,
+      "hintWords": 22,
+      "revealedWords": 40
+    },
+    {
+      "id": "exit-tip",
+      "type": "prompt",
+      "initialWords": 7,
+      "hintWords": 15,
+      "revealedWords": 7
+    }
+  ]
+}

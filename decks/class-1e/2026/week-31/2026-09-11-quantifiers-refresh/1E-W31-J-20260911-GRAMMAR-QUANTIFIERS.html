@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>1E-W31-J-20260911-GRAMMAR-QUANTIFIERS</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 12mm;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #eee;
+        color: #111;
+        font:
+          11pt/1.38 Arial,
+          sans-serif;
+      }
+      .page {
+        width: 186mm;
+        min-height: 150mm;
+        margin: 8mm auto;
+        background: #fff;
+        break-after: page;
+        page-break-after: always;
+      }
+      .head {
+        text-align: center;
+        border-bottom: 1.5px solid;
+        padding-bottom: 3mm;
+      }
+      .code {
+        font-size: 11pt;
+        font-weight: 700;
+      }
+      .paper {
+        font-size: 15pt;
+        font-weight: 700;
+      }
+      .sub {
+        font-size: 11pt;
+        font-weight: 700;
+      }
+      .meta {
+        display: flex;
+        gap: 10mm;
+        margin: 4mm 0;
+      }
+      .field {
+        flex: 1;
+        border-bottom: 1px solid;
+        height: 6mm;
+      }
+      .instructions {
+        border: 1px solid #222;
+        padding: 3mm 4mm;
+        font-size: 10pt;
+      }
+      .box {
+        border: 1px solid #222;
+        padding: 4mm 5mm;
+        margin-top: 4mm;
+      }
+      .box h2 {
+        font-size: 12pt;
+        margin: 0 0 2mm;
+      }
+      .box p {
+        margin: 0 0 2mm;
+      }
+      .item {
+        margin: 2.5mm 0;
+      }
+      .ans {
+        display: inline-block;
+        border-bottom: 1px solid;
+        min-width: 30mm;
+        height: 5mm;
+      }
+      .bank {
+        text-align: center;
+        font-weight: 700;
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        .page {
+          margin: 0;
+          width: auto;
+          min-height: 0;
+        }
+        .page:last-child {
+          break-after: auto;
+          page-break-after: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="head">
+        <div class="code">1E-W31-J-20260911-GRAMMAR-QUANTIFIERS</div>
+        <div class="paper">FORM 1 ENGLISH · GRAMMAR PRACTICE</div>
+        <div class="sub">
+          Quantifiers: much, many, some, a few, a lot of
+          <span style="float: right">[10 marks]</span>
+        </div>
+      </header>
+      <div class="meta">
+        <div>Name: <span class="field"></span></div>
+        <div>Class: <span class="field"></span></div>
+        <div>Date: <span class="field"></span></div>
+      </div>
+      <p class="instructions">Answer all questions. For questions 1 to 5, circle the correct word. For questions 6 to 10, circle the correct words. [10 marks]</p>
+            <section class="box">
+        <h2>Section A — much or many</h2>
+        <p class="item">1. There are ( many / much ) pupils in the hall: forty.</p>
+        <p class="item">2. We have not got ( much / many ) flour for the cake.</p>
+        <p class="item">3. How ( many / much ) bottles are on the shelf?</p>
+        <p class="item">4. She does not spend ( much / many ) time on games.</p>
+        <p class="item">5. There is too ( much / many ) smoke in the kitchen.</p>
+      </section>
+      <section class="box">
+        <h2>Section B — choose the correct words</h2>
+        <p class="item">6. She packed ( a few / much ) sandwiches: two for lunch.</p>
+        <p class="item">7. They collected ( a lot of / a little ) plastic bottles: eighty for recycling.</p>
+        <p class="item">8. There is ( some / many ) Milo in the mug.</p>
+        <p class="item">9. We did not use ( much / many ) paint today.</p>
+        <p class="item">10. He knows ( many / much ) stories about Melaka.</p>
+      </section>
+    </main>
+        <script>
+      // Two identical pages let the teacher choose “2 pages per sheet” and cut
+      // the printout into two complete learner copies. Add ?single=1 to the URL
+      // to render one full-size copy instead.
+      if (!new URLSearchParams(location.search).has("single")) {
+        const original = document.querySelector(".page");
+        const duplicate = original.cloneNode(true);
+        duplicate.setAttribute("aria-label", "Duplicate learner copy");
+        document.body.append(duplicate);
+      }
+    </script>
+  </body>
+</html>
