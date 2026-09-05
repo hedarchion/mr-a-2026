@@ -1,0 +1,160 @@
+{
+  "version": 1,
+  "title": "The Internet · Lift the Facts",
+  "viewport": "1280x665",
+  "slides": [
+    {
+      "id": "internet-use",
+      "type": "prompt",
+      "prompt": "What do you use the Internet for?",
+      "hint": "Chatting? Shopping? Gaming?",
+      "notes": "60-min Tue lesson, sl_t2 (time assumed 60 min). Hook activates table fields 6-8. Outcomes (teacher-kept): say 6 hard words in Malay and simple English; complete Module p33 fields 1-8 with three words or fewer."
+    },
+    {
+      "id": "word-developed",
+      "type": "reveal",
+      "prompt": "What does developed mean?",
+      "answer": "Dibangunkan. Made or grown step by step.",
+      "feedback": "The Internet developed in the 1960s.",
+      "notes": "Word 1 of 6. Elicit before revealing. Malay first for A1-A2 access, then simple English."
+    },
+    {
+      "id": "word-coldwar",
+      "type": "reveal",
+      "prompt": "What was the Cold War?",
+      "answer": "Perang Dingin. A long fight without real war.",
+      "feedback": "Between the United States and the Soviet Union.",
+      "notes": "Word 2 of 6. Names both countries early; fields 2-3 reuse them."
+    },
+    {
+      "id": "word-launched",
+      "type": "reveal",
+      "prompt": "What does launched mean?",
+      "answer": "Dilancarkan. Started something new.",
+      "feedback": "ARPA launched ARPANET in 1969.",
+      "notes": "Word 3 of 6. 1969 vs 1960s contrast starts here; field 1 tests it."
+    },
+    {
+      "id": "word-expanded",
+      "type": "reveal",
+      "prompt": "What does expanded mean?",
+      "answer": "Berkembang. Grew bigger.",
+      "feedback": "It expanded across the US and globally.",
+      "notes": "Word 4 of 6. Field 4 tests the global step."
+    },
+    {
+      "id": "word-invented",
+      "type": "reveal",
+      "prompt": "What does invented mean?",
+      "answer": "Mencipta. Made something for the first time.",
+      "feedback": "Tim Berners-Lee invented the World Wide Web.",
+      "notes": "Word 5 of 6. Field 5 tests the inventor."
+    },
+    {
+      "id": "word-billions",
+      "type": "reveal",
+      "prompt": "What does billions mean?",
+      "answer": "Bilion. A thousand millions.",
+      "feedback": "Billions of people use the Internet today.",
+      "notes": "Word 6 of 6. Bridges to fields 6-8 (today's uses)."
+    },
+    {
+      "id": "pbd-reading",
+      "type": "steps",
+      "prompt": "How does PBD reading work?",
+      "items": [
+        "Open Module p33. Readers take turns reading.",
+        "Listeners raise hands on Internet words.",
+        "Table work after reading."
+      ],
+      "notes": "Passage stays in the book. Evidence: fluency + one heard-word per listener. Record readers separately; no names in artifacts."
+    },
+    {
+      "id": "field-1",
+      "type": "cloze",
+      "prompt": "Field 1 — when it was developed:",
+      "sentence": "Developed in: {{blank}}.",
+      "options": ["in the 1960s", "in 1969"],
+      "answer": "in the 1960s",
+      "feedback": "1969 is ARPANET. Developed means the 1960s.",
+      "notes": "Competing dates. Matches Module p33 key field 1."
+    },
+    {
+      "id": "field-2",
+      "type": "cloze",
+      "prompt": "Field 2 — Cold War country, first:",
+      "sentence": "First country: {{blank}}.",
+      "options": ["the United States", "the Soviet Union"],
+      "answer": "the United States",
+      "feedback": "The key accepts either country. Write one here.",
+      "notes": "Module key: answers interchangeable. Reveal fills the first-listed; accept the other."
+    },
+    {
+      "id": "field-3",
+      "type": "cloze",
+      "prompt": "Field 3 — Cold War country, second:",
+      "sentence": "Second country: {{blank}}.",
+      "options": ["the Soviet Union", "the United States"],
+      "answer": "the Soviet Union",
+      "feedback": "Write the other country here.",
+      "notes": "Interchangeable with field 2. Matches Module p33 key."
+    },
+    {
+      "id": "field-4",
+      "type": "cloze",
+      "prompt": "Field 4 — first network linked globally:",
+      "sentence": "Linked globally: {{blank}}.",
+      "options": ["by the 1970s", "in 1969"],
+      "answer": "by the 1970s",
+      "feedback": "1969 is the first link. Global came later.",
+      "notes": "Competing dates again. Matches Module p33 key field 4."
+    },
+    {
+      "id": "field-5",
+      "type": "cloze",
+      "prompt": "Field 5 — inventor of the World Wide Web:",
+      "sentence": "Inventor: {{blank}}.",
+      "options": ["Tim Berners-Lee", "the US government"],
+      "answer": "Tim Berners-Lee",
+      "feedback": "The government needed it. Berners-Lee invented it.",
+      "notes": "Matches Module p33 key field 5."
+    },
+    {
+      "id": "field-6",
+      "type": "cloze",
+      "prompt": "Field 6 — people use it for, first:",
+      "sentence": "Use number one: {{blank}}.",
+      "options": ["chatting", "gaming"],
+      "answer": "chatting",
+      "feedback": "The key accepts chatting, shopping or gaming in any order.",
+      "notes": "Interchangeable trio. Reveal fills chatting; accept the others."
+    },
+    {
+      "id": "field-7",
+      "type": "cloze",
+      "prompt": "Field 7 — people use it for, second:",
+      "sentence": "Use number two: {{blank}}.",
+      "options": ["shopping", "chatting"],
+      "answer": "shopping",
+      "feedback": "Pick a different one from field 6.",
+      "notes": "Matches Module p33 key; any order accepted."
+    },
+    {
+      "id": "field-8",
+      "type": "cloze",
+      "prompt": "Field 8 — people use it for, third:",
+      "sentence": "Use number three: {{blank}}.",
+      "options": ["gaming", "shopping"],
+      "answer": "gaming",
+      "feedback": "The last one left.",
+      "notes": "Matches Module p33 key; any order accepted."
+    },
+    {
+      "id": "exit-field",
+      "type": "prompt",
+      "prompt": "Read out one field and its words.",
+      "hint": "Say the field, then up to three words.",
+      "notes": "Exit evidence, 3 min. Collect tables for PBD marks per teacher plan."
+    }
+  ]
+}

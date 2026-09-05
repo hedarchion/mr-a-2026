@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "title": "Endangered Animals · Read and Answer",
+  "viewport": "1280x665",
+  "slides": [
+    {
+      "id": "vanishing-hook",
+      "type": "prompt",
+      "prompt": "Which Malaysian animals are disappearing?",
+      "hint": "Tiger, terrapin, hornbill.",
+      "notes": "60-min Thu lesson, sl_h1 (time assumed 60 min). Hook names the three passage animals. Outcomes (teacher-kept): say 6 hard words in Malay with correct stress; answer Module p35 Q1-8 from the p34 text."
+    },
+    {
+      "id": "word-endangered",
+      "type": "reveal",
+      "prompt": "What does endangered mean?",
+      "answer": "Terancam. In danger of disappearing.",
+      "feedback": "Say it: en-DAYNG-jerd.",
+      "notes": "Word 1 of 6. Stress in capitals; class repeats chorally after Reveal."
+    },
+    {
+      "id": "word-poachers",
+      "type": "reveal",
+      "prompt": "Who are poachers?",
+      "answer": "Pemburu haram. People who hunt illegally.",
+      "feedback": "Say it: POH-cherz.",
+      "notes": "Word 2 of 6. Contrast with rangers (protectors) orally."
+    },
+    {
+      "id": "word-deforestation",
+      "type": "reveal",
+      "prompt": "What is deforestation?",
+      "answer": "Penebangan hutan. Cutting down forests.",
+      "feedback": "Say it: dee-for-es-TAY-shun.",
+      "notes": "Word 3 of 6."
+    },
+    {
+      "id": "word-conflict",
+      "type": "reveal",
+      "prompt": "What is human-wildlife conflict?",
+      "answer": "Konflik. People and animals clash.",
+      "feedback": "Say it: KON-flikt.",
+      "notes": "Word 4 of 6. Noun stress on KON."
+    },
+    {
+      "id": "word-conservation",
+      "type": "reveal",
+      "prompt": "What is conservation?",
+      "answer": "Pemuliharaan. Protecting nature.",
+      "feedback": "Say it: kon-ser-VAY-shun.",
+      "notes": "Word 5 of 6."
+    },
+    {
+      "id": "word-ecofriendly",
+      "type": "reveal",
+      "prompt": "What does eco-friendly mean?",
+      "answer": "Mesra alam. Safe for nature.",
+      "feedback": "Say it: EE-koh-FREND-lee.",
+      "notes": "Word 6 of 6. Example ready: reusable cups."
+    },
+    {
+      "id": "tf-model",
+      "type": "choice",
+      "prompt": "Poachers protect wild animals.",
+      "options": ["True", "False"],
+      "answer": "False",
+      "feedback": "Poachers hunt illegally. The text says so.",
+      "notes": "Models the Q1-4 True/False move: check the claim against the text, not memory."
+    },
+    {
+      "id": "pbd-reading",
+      "type": "steps",
+      "prompt": "How does PBD reading work?",
+      "items": [
+        "Open Module p34. Readers take turns reading.",
+        "Listeners hunt one animal word.",
+        "Answer p35 in books after reading."
+      ],
+      "notes": "Passage stays in the book. Evidence: fluency + one heard-word per listener. Then pupils do Module p35 Q1-8 (True/False + short answers up to five words) individually."
+    },
+    {
+      "id": "exit-action",
+      "type": "prompt",
+      "prompt": "Name one way to protect animals.",
+      "hint": "No, support, share, reuse.",
+      "notes": "Exit evidence, 3 min. Expected: say no to wildlife products, support conservation, raise awareness, or use eco-friendly products. Collect books after."
+    }
+  ]
+}

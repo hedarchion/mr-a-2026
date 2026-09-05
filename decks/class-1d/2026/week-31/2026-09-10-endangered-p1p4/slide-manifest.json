@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "vanishing-hook",
+      "type": "prompt",
+      "initialWords": 5,
+      "hintWords": 8,
+      "revealedWords": 5
+    },
+    {
+      "id": "word-endangered",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 12
+    },
+    {
+      "id": "word-poachers",
+      "type": "reveal",
+      "initialWords": 3,
+      "hintWords": 3,
+      "revealedWords": 12
+    },
+    {
+      "id": "word-deforestation",
+      "type": "reveal",
+      "initialWords": 3,
+      "hintWords": 3,
+      "revealedWords": 11
+    },
+    {
+      "id": "word-conflict",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 12
+    },
+    {
+      "id": "word-conservation",
+      "type": "reveal",
+      "initialWords": 3,
+      "hintWords": 3,
+      "revealedWords": 9
+    },
+    {
+      "id": "word-ecofriendly",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 12
+    },
+    {
+      "id": "tf-model",
+      "type": "choice",
+      "initialWords": 6,
+      "hintWords": 6,
+      "revealedWords": 14
+    },
+    {
+      "id": "pbd-reading",
+      "type": "steps",
+      "initialWords": 12,
+      "hintWords": 12,
+      "revealedWords": 23
+    },
+    {
+      "id": "exit-action",
+      "type": "prompt",
+      "initialWords": 6,
+      "hintWords": 10,
+      "revealedWords": 6
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "title": "Every Day or Right Now",
+  "viewport": "1280x665",
+  "slides": [
+    {
+      "id": "routine-hook",
+      "type": "prompt",
+      "prompt": "What do you do every day?",
+      "hint": "Think of your morning routine.",
+      "notes": "60-min Mon lesson, sl_m3. Retrieval from 31-Aug routine lesson and 18-Aug present continuous. Outcomes (teacher-kept): choose time words and verb forms for routines vs right-now actions; complete Module p32 A-C."
+    },
+    {
+      "id": "routine-or-now",
+      "type": "choice",
+      "prompt": "Which sentence is a routine?",
+      "options": [
+        "Monkeys often swing from tree to tree.",
+        "The birds are building their nests now."
+      ],
+      "answer": "Monkeys often swing from tree to tree.",
+      "feedback": "Often signals a routine, so the verb stays simple.",
+      "notes": "Module p32 Grammar Notes contrast. Grammar book: simple describes routine behaviour, a fact about the person."
+    },
+    {
+      "id": "time-teams",
+      "type": "sort",
+      "prompt": "Routine word or right-now word?",
+      "categories": ["Routine", "Right now"],
+      "items": [
+        {"text": "often", "category": "Routine"},
+        {"text": "now", "category": "Right now"},
+        {"text": "every day", "category": "Routine"},
+        {"text": "at the moment", "category": "Right now"}
+      ],
+      "feedback": "Routine words team with the simple verb. Right-now words team with am, is, are.",
+      "notes": "Teacher clicks the team the class proposes. Caveat for teacher: signal words are clues, not absolute rules."
+    },
+    {
+      "id": "tigers-rest",
+      "type": "cloze",
+      "prompt": "Tigers rest where?",
+      "sentence": "Tigers {{blank}} on warm rocks.",
+      "options": ["sleep", "are sleeping"],
+      "answer": "sleep",
+      "feedback": "Tigers always rest there. A fact about tigers.",
+      "notes": "Fresh parallel of Module B1 (pandas). Click fills the blank inline; Reset clears it."
+    },
+    {
+      "id": "look-elephant",
+      "type": "cloze",
+      "prompt": "What is happening now?",
+      "sentence": "Look! The baby elephant {{blank}} water at visitors.",
+      "options": ["sprays", "is spraying"],
+      "answer": "is spraying",
+      "feedback": "Look means it is happening now.",
+      "notes": "Fresh parallel of Module B2. Grammar book: continuous marks temporary, incomplete actions."
+    },
+    {
+      "id": "saturday-word",
+      "type": "choice",
+      "prompt": "Which word fits a Saturday routine?",
+      "options": ["sometimes", "at the moment"],
+      "answer": "sometimes",
+      "feedback": "Sometimes teams with routines. At the moment teams with now.",
+      "notes": "Quick check before the picture contrast."
+    },
+    {
+      "id": "giraffe-changes",
+      "type": "compare",
+      "prompt": "What changes between the two sentences?",
+      "columns": [
+        {"label": "Every day", "text": "The giraffe eats leaves from trees."},
+        {"label": "Right now", "text": "The giraffe is eating leaves from a tree."}
+      ],
+      "hint": "Look at the verb.",
+      "notes": "Module C model pair. Expected: eats vs is eating; routine vs now."
+    },
+    {
+      "id": "module-launch",
+      "type": "writing",
+      "prompt": "Module p32: your turn",
+      "task": "Open Module p32. Do A (time words), B (verb forms) and C (picture sentences) in your book.",
+      "frame": "Routine: often, sometimes, every day + verb. Right now: now, at the moment + am, is, are + verb-ing.",
+      "notes": "About 20 min individual. Frame revealed on request. Collect books after per teacher routine."
+    },
+    {
+      "id": "exit-pair",
+      "type": "prompt",
+      "prompt": "Say one routine sentence and one right-now sentence.",
+      "hint": "Start with Every day and Look.",
+      "notes": "Exit evidence, oral pairs, 3 min. Listen for verb choice matching the signal word."
+    }
+  ]
+}

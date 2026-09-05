@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "internet-use",
+      "type": "prompt",
+      "initialWords": 7,
+      "hintWords": 10,
+      "revealedWords": 7
+    },
+    {
+      "id": "word-developed",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 17
+    },
+    {
+      "id": "word-coldwar",
+      "type": "reveal",
+      "initialWords": 5,
+      "hintWords": 5,
+      "revealedWords": 21
+    },
+    {
+      "id": "word-launched",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 13
+    },
+    {
+      "id": "word-expanded",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 14
+    },
+    {
+      "id": "word-invented",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 18
+    },
+    {
+      "id": "word-billions",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 15
+    },
+    {
+      "id": "pbd-reading",
+      "type": "steps",
+      "initialWords": 12,
+      "hintWords": 12,
+      "revealedWords": 22
+    },
+    {
+      "id": "field-1",
+      "type": "cloze",
+      "initialWords": 15,
+      "hintWords": 15,
+      "revealedWords": 22
+    },
+    {
+      "id": "field-2",
+      "type": "cloze",
+      "initialWords": 16,
+      "hintWords": 16,
+      "revealedWords": 24
+    },
+    {
+      "id": "field-3",
+      "type": "cloze",
+      "initialWords": 16,
+      "hintWords": 16,
+      "revealedWords": 21
+    },
+    {
+      "id": "field-4",
+      "type": "cloze",
+      "initialWords": 15,
+      "hintWords": 15,
+      "revealedWords": 23
+    },
+    {
+      "id": "field-5",
+      "type": "cloze",
+      "initialWords": 16,
+      "hintWords": 16,
+      "revealedWords": 23
+    },
+    {
+      "id": "field-6",
+      "type": "cloze",
+      "initialWords": 14,
+      "hintWords": 14,
+      "revealedWords": 24
+    },
+    {
+      "id": "field-7",
+      "type": "cloze",
+      "initialWords": 14,
+      "hintWords": 14,
+      "revealedWords": 21
+    },
+    {
+      "id": "field-8",
+      "type": "cloze",
+      "initialWords": 14,
+      "hintWords": 14,
+      "revealedWords": 18
+    },
+    {
+      "id": "exit-field",
+      "type": "prompt",
+      "initialWords": 7,
+      "hintWords": 15,
+      "revealedWords": 7
+    }
+  ]
+}

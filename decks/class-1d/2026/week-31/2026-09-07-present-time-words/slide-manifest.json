@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "routine-hook",
+      "type": "prompt",
+      "initialWords": 6,
+      "hintWords": 11,
+      "revealedWords": 6
+    },
+    {
+      "id": "routine-or-now",
+      "type": "choice",
+      "initialWords": 19,
+      "hintWords": 19,
+      "revealedWords": 35
+    },
+    {
+      "id": "time-teams",
+      "type": "sort",
+      "initialWords": 24,
+      "hintWords": 24,
+      "revealedWords": 38
+    },
+    {
+      "id": "tigers-rest",
+      "type": "cloze",
+      "initialWords": 11,
+      "hintWords": 11,
+      "revealedWords": 19
+    },
+    {
+      "id": "look-elephant",
+      "type": "cloze",
+      "initialWords": 15,
+      "hintWords": 15,
+      "revealedWords": 21
+    },
+    {
+      "id": "saturday-word",
+      "type": "choice",
+      "initialWords": 10,
+      "hintWords": 10,
+      "revealedWords": 21
+    },
+    {
+      "id": "giraffe-changes",
+      "type": "compare",
+      "initialWords": 24,
+      "hintWords": 28,
+      "revealedWords": 24
+    },
+    {
+      "id": "module-launch",
+      "type": "writing",
+      "initialWords": 21,
+      "hintWords": 21,
+      "revealedWords": 40
+    },
+    {
+      "id": "exit-pair",
+      "type": "prompt",
+      "initialWords": 8,
+      "hintWords": 14,
+      "revealedWords": 8
+    }
+  ]
+}

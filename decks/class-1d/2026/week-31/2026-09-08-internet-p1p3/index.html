@@ -1,0 +1,518 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Internet · Lift the Facts</title><style>:root {
+  color-scheme: light;
+  --ink: #172b36;
+  --paper: #fffdf8;
+  --accent: #07685f;
+  --line: #829894;
+  --soft: #e8f3ee;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #182b34;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+#stage {
+  position: absolute;
+  width: 1366px;
+  height: 768px;
+  background: var(--paper);
+  transform-origin: top left;
+  overflow: hidden;
+}
+#slide {
+  --text-expansion: 1;
+  height: calc(100% - 76px);
+  padding: 32px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  overflow-wrap: normal;
+}
+#slide > * {
+  flex-shrink: 0;
+}
+h1 {
+  font-size: calc(60px * var(--text-expansion));
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  margin: 0;
+  font-weight: 700;
+}
+p {
+  margin: 0;
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 2px solid var(--line);
+  background: transparent;
+  border-radius: 9px;
+  padding: 10px 18px;
+}
+button:hover {
+  border-color: var(--accent);
+}
+button:focus-visible {
+  outline: 4px solid #ab5100;
+  outline-offset: 4px;
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+button[hidden] {
+  display: none;
+}
+.hero {
+  font-size: calc(68px * var(--text-expansion));
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+}
+.body,
+.answer {
+  font-size: calc(48px * var(--text-expansion));
+  line-height: 1.22;
+}
+.passage {
+  font-size: calc(46px * var(--text-expansion));
+  line-height: 1.3;
+  white-space: pre-line;
+}
+.choices {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.choices button {
+  font-size: calc(44px * var(--text-expansion));
+  text-align: left;
+  padding: 18px 25px;
+}
+.selected {
+  border-color: var(--accent);
+  background: var(--soft);
+}
+.feedback,
+.hint {
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.22;
+  color: var(--accent);
+}
+.answer {
+  color: var(--accent);
+}
+.blank {
+  border-bottom: 4px solid var(--accent);
+  padding: 0 8px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.blank.empty {
+  border-bottom-color: transparent;
+}
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+.compare > div + div {
+  border-left: 2px solid var(--line);
+  padding-left: 36px;
+}
+.label {
+  font-size: calc(36px * var(--text-expansion));
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.list button,
+.step {
+  font-size: calc(40px * var(--text-expansion));
+  text-align: left;
+  line-height: 1.16;
+}
+.sort-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  font-size: calc(44px * var(--text-expansion));
+}
+.sort-row button {
+  font-size: calc(36px * var(--text-expansion));
+  padding: 12px 20px;
+}
+.sort-row .choices {
+  gap: 12px;
+}
+#slide[data-type="image"] {
+  justify-content: flex-start;
+}
+#slide .picture {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  align-self: stretch;
+}
+.prompt-only h1 {
+  font-size: calc(96px * var(--text-expansion));
+  line-height: 1.1;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+}
+footer > div,
+nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+footer button {
+  font-size: 24px;
+  min-height: 48px;
+  min-width: 52px;
+  padding: 9px 17px;
+}
+#count {
+  min-width: 82px;
+  text-align: center;
+  font-size: 24px;
+}
+#slide [hidden] {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.list button:disabled {
+  opacity: 1;
+}
+</style><body><main id="stage"><section id="slide" aria-label="Teaching slide"></section><div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div><footer><div><button id="hint">Hint</button><button id="reveal">Reveal</button><button id="reset">Reset</button></div><nav aria-label="Slides"><button id="prev" aria-label="Previous slide">←</button><span id="count"></span><button id="next" aria-label="Next slide">→</button></nav></footer></main><script type="application/json" id="deck-data">{"version":1,"title":"The Internet · Lift the Facts","viewport":"1280x665","slides":[{"id":"internet-use","type":"prompt","prompt":"What do you use the Internet for?","hint":"Chatting? Shopping? Gaming?"},{"id":"word-developed","type":"reveal","prompt":"What does developed mean?","answer":"Dibangunkan. Made or grown step by step.","feedback":"The Internet developed in the 1960s."},{"id":"word-coldwar","type":"reveal","prompt":"What was the Cold War?","answer":"Perang Dingin. A long fight without real war.","feedback":"Between the United States and the Soviet Union."},{"id":"word-launched","type":"reveal","prompt":"What does launched mean?","answer":"Dilancarkan. Started something new.","feedback":"ARPA launched ARPANET in 1969."},{"id":"word-expanded","type":"reveal","prompt":"What does expanded mean?","answer":"Berkembang. Grew bigger.","feedback":"It expanded across the US and globally."},{"id":"word-invented","type":"reveal","prompt":"What does invented mean?","answer":"Mencipta. Made something for the first time.","feedback":"Tim Berners-Lee invented the World Wide Web."},{"id":"word-billions","type":"reveal","prompt":"What does billions mean?","answer":"Bilion. A thousand millions.","feedback":"Billions of people use the Internet today."},{"id":"pbd-reading","type":"steps","prompt":"How does PBD reading work?","items":["Open Module p33. Readers take turns reading.","Listeners raise hands on Internet words.","Table work after reading."]},{"id":"field-1","type":"cloze","prompt":"Field 1 — when it was developed:","sentence":"Developed in: {{blank}}.","options":["in the 1960s","in 1969"],"answer":"in the 1960s","feedback":"1969 is ARPANET. Developed means the 1960s."},{"id":"field-2","type":"cloze","prompt":"Field 2 — Cold War country, first:","sentence":"First country: {{blank}}.","options":["the United States","the Soviet Union"],"answer":"the United States","feedback":"The key accepts either country. Write one here."},{"id":"field-3","type":"cloze","prompt":"Field 3 — Cold War country, second:","sentence":"Second country: {{blank}}.","options":["the Soviet Union","the United States"],"answer":"the Soviet Union","feedback":"Write the other country here."},{"id":"field-4","type":"cloze","prompt":"Field 4 — first network linked globally:","sentence":"Linked globally: {{blank}}.","options":["by the 1970s","in 1969"],"answer":"by the 1970s","feedback":"1969 is the first link. Global came later."},{"id":"field-5","type":"cloze","prompt":"Field 5 — inventor of the World Wide Web:","sentence":"Inventor: {{blank}}.","options":["Tim Berners-Lee","the US government"],"answer":"Tim Berners-Lee","feedback":"The government needed it. Berners-Lee invented it."},{"id":"field-6","type":"cloze","prompt":"Field 6 — people use it for, first:","sentence":"Use number one: {{blank}}.","options":["chatting","gaming"],"answer":"chatting","feedback":"The key accepts chatting, shopping or gaming in any order."},{"id":"field-7","type":"cloze","prompt":"Field 7 — people use it for, second:","sentence":"Use number two: {{blank}}.","options":["shopping","chatting"],"answer":"shopping","feedback":"Pick a different one from field 6."},{"id":"field-8","type":"cloze","prompt":"Field 8 — people use it for, third:","sentence":"Use number three: {{blank}}.","options":["gaming","shopping"],"answer":"gaming","feedback":"The last one left."},{"id":"exit-field","type":"prompt","prompt":"Read out one field and its words.","hint":"Say the field, then up to three words."}]}</script><script>(() => {
+  "use strict";
+  const deck = JSON.parse(document.getElementById("deck-data").textContent),
+    stage = document.getElementById("stage"),
+    slide = document.getElementById("slide");
+  const [w, h] = (deck.viewport || "1366x768").split("x").map(Number);
+  stage.style.width = w + "px";
+  stage.style.height = h + "px";
+  let index = 0;
+  const states = deck.slides.map(() => ({
+    hint: false,
+    revealed: false,
+    step: 0,
+    selected: null,
+    order: [],
+    groups: {},
+  }));
+  const el = (tag, text, cls) => {
+    const n = document.createElement(tag);
+    if (text !== undefined) n.textContent = text;
+    if (cls) n.className = cls;
+    return n;
+  };
+  const button = (text, fn, selected = false) => {
+    const n = el("button", text, selected ? "selected" : "");
+    n.type = "button";
+    n.setAttribute("aria-pressed", String(selected));
+    n.onclick = fn;
+    return n;
+  };
+  function draw() {
+    const focused = document.activeElement;
+    const focusIndex = [...slide.querySelectorAll("button")].indexOf(focused);
+    const s = deck.slides[index],
+      st = states[index];
+    slide.style.setProperty("--text-expansion", "1");
+    slide.replaceChildren();
+    slide.className = ["prompt", "reveal"].includes(s.type)
+      ? "prompt-only"
+      : "";
+    slide.dataset.id = s.id;
+    slide.dataset.type = s.type;
+    slide.setAttribute("aria-label", s.prompt);
+    slide.append(el("h1", s.prompt));
+    const add = (tag, text, cls) => {
+      const n = el(tag, text, cls);
+      slide.append(n);
+      return n;
+    };
+    if (s.type === "cloze") {
+      const n = add("p", undefined, "hero");
+      const [a, b] = s.sentence.split("{{blank}}");
+      const blankText = st.revealed ? s.answer : st.selected || "_____";
+      n.append(
+        document.createTextNode(a),
+        el("span", blankText, blankText === "_____" ? "blank empty" : "blank"),
+        document.createTextNode(b),
+      );
+    }
+    if (["choice", "cloze"].includes(s.type)) {
+      const n = add("div", undefined, "choices");
+      s.options.forEach((o) =>
+        n.append(
+          button(
+            o,
+            () => {
+              st.selected = o;
+              st.revealed = false;
+              draw();
+              focusChoice(o);
+            },
+            st.selected === o,
+          ),
+        ),
+      );
+    }
+    if (s.type === "compare") {
+      const n = add("div", undefined, "compare");
+      s.columns.forEach((c) => {
+        const col = el("div");
+        col.append(el("p", c.label, "label"), el("p", c.text, "body"));
+        n.append(col);
+      });
+    }
+    if (s.type === "passage") add("p", s.text, "passage");
+    if (s.type === "writing") {
+      add("p", s.task, "body");
+      if (st.revealed && s.frame) add("p", s.frame, "answer");
+    }
+    if (s.type === "image") {
+      const n = add("img", undefined, "picture");
+      n.src = s.src;
+      n.alt = s.alt;
+    }
+    if (s.type === "steps") {
+      const n = add("div", undefined, "list");
+      s.items
+        .slice(0, Math.max(1, st.step + 1))
+        .forEach((t, i) => n.append(el("p", `${i + 1}. ${t}`, "step")));
+    }
+    if (s.type === "order") {
+      const n = add("div", undefined, "list");
+      const display = s.items.map((_, i) => i);
+      if (!st.revealed) display.reverse();
+      display.forEach((i) => {
+        const pos = st.order.indexOf(i);
+        n.append(
+          button(
+            `${pos < 0 ? "○" : pos + 1 + "."} ${s.items[i]}`,
+            () => {
+              if (st.revealed) return;
+              st.order =
+                pos < 0 ? [...st.order, i] : st.order.filter((x) => x !== i);
+              draw();
+            },
+            pos >= 0,
+          ),
+        );
+      });
+      if (st.revealed)
+        n.querySelectorAll("button").forEach((b) => (b.disabled = true));
+    }
+    if (s.type === "sort") {
+      const n = add("div", undefined, "list");
+      s.items.forEach((item, i) => {
+        const row = el("div", undefined, "sort-row"),
+          choices = el("div", undefined, "choices");
+        row.append(el("span", item.text));
+        choices.setAttribute("role", "group");
+        choices.setAttribute("aria-label", item.text);
+        s.categories.forEach((c) =>
+          choices.append(
+            button(
+              c,
+              () => {
+                st.groups[i] = c;
+                st.revealed = false;
+                draw();
+              },
+              st.groups[i] === c,
+            ),
+          ),
+        );
+        if (st.revealed)
+          choices.querySelectorAll("button").forEach((b) => {
+            if (b.getAttribute("aria-pressed") === "true")
+              b.textContent = "✓ " + b.textContent;
+          });
+        row.append(choices);
+        n.append(row);
+      });
+    }
+    if (st.hint && s.hint && !st.revealed) add("p", s.hint, "hint");
+    if (st.revealed) {
+      if (["reveal", "choice"].includes(s.type)) add("p", s.answer, "answer");
+      if (s.feedback) {
+        const f = add("p", s.feedback, "feedback");
+        f.setAttribute("role", "status");
+      }
+    }
+    expandContent(s.type);
+    const hint = document.getElementById("hint"),
+      rev = document.getElementById("reveal");
+    hint.hidden = !s.hint;
+    hint.disabled = st.revealed;
+    hint.textContent = st.hint ? "Hide hint" : "Hint";
+    rev.hidden = !(
+      ["reveal", "choice", "cloze", "steps", "order", "sort"].includes(
+        s.type,
+      ) ||
+      (s.type === "writing" && s.frame)
+    );
+    rev.textContent = s.type === "steps" ? "Next step" : "Reveal";
+    rev.disabled =
+      s.type === "steps" ? st.step >= s.items.length - 1 : st.revealed;
+    document.getElementById("reset").hidden = hint.hidden && rev.hidden;
+    document.getElementById("prev").disabled = index === 0;
+    document.getElementById("next").disabled = index === deck.slides.length - 1;
+    document.getElementById("count").textContent =
+      `${index + 1} / ${deck.slides.length}`;
+    if (focusIndex >= 0) slide.querySelectorAll("button")[focusIndex]?.focus();
+    document.getElementById("announcement").textContent =
+      `Slide ${index + 1} of ${deck.slides.length}. ${s.prompt}. ` +
+      (st.revealed
+        ? (s.answer || "") + " " + (s.feedback || "")
+        : st.hint
+          ? s.hint || ""
+          : st.selected || "");
+  }
+  // Enlarge sparse content to use the classroom canvas. Never shrink below
+  // the shared projection type scale; oversized content must be split in JSON.
+  function expandContent(type) {
+    if (type === "image") return;
+    const fits = () => {
+      const bounds = slide.getBoundingClientRect();
+      const ratio = bounds.width / slide.offsetWidth;
+      const style = getComputedStyle(slide);
+      const top = bounds.top + parseFloat(style.paddingTop) * ratio;
+      const bottom = bounds.bottom - parseFloat(style.paddingBottom) * ratio;
+      const left = bounds.left + parseFloat(style.paddingLeft) * ratio;
+      const right = bounds.right - parseFloat(style.paddingRight) * ratio;
+      return [...slide.querySelectorAll("*")].every((node) => {
+        const r = node.getBoundingClientRect();
+        return (
+          (!r.width && !r.height) ||
+          (r.top >= top - 1 &&
+            r.bottom <= bottom + 1 &&
+            r.left >= left - 1 &&
+            r.right <= right + 1 &&
+            node.scrollWidth <= node.clientWidth + 1)
+        );
+      });
+    };
+    let low = 1,
+      high = type === "prompt" || type === "reveal" ? 1.4 : 1.25;
+    for (let i = 0; i < 8; i++) {
+      const mid = (low + high) / 2;
+      slide.style.setProperty("--text-expansion", mid);
+      if (fits()) low = mid;
+      else high = mid;
+    }
+    slide.style.setProperty("--text-expansion", low.toFixed(3));
+  }
+  function focusChoice(text) {
+    [...slide.querySelectorAll("button")]
+      .find((n) => n.textContent === text)
+      ?.focus();
+  }
+  function reveal() {
+    const s = deck.slides[index],
+      st = states[index];
+    if (s.type === "steps") st.step = Math.min(st.step + 1, s.items.length - 1);
+    else {
+      st.revealed = true;
+      st.hint = false;
+      if (["choice", "cloze"].includes(s.type)) st.selected = s.answer;
+      if (s.type === "sort")
+        s.items.forEach((x, i) => (st.groups[i] = x.category));
+      if (s.type === "order") st.order = s.items.map((_, i) => i);
+    }
+    draw();
+  }
+  function move(n) {
+    index = Math.max(0, Math.min(deck.slides.length - 1, index + n));
+    draw();
+  }
+  document.getElementById("hint").onclick = () => {
+    states[index].hint = !states[index].hint;
+    draw();
+  };
+  document.getElementById("reveal").onclick = reveal;
+  document.getElementById("reset").onclick = () => {
+    states[index] = {
+      hint: false,
+      revealed: false,
+      step: 0,
+      selected: null,
+      order: [],
+      groups: {},
+    };
+    draw();
+  };
+  document.getElementById("prev").onclick = () => move(-1);
+  document.getElementById("next").onclick = () => move(1);
+  document.addEventListener("keydown", (e) => {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      move(1);
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      move(-1);
+    } else if (
+      e.code === "Space" &&
+      !e.target.closest("button,input,textarea,select")
+    ) {
+      e.preventDefault();
+      move(1);
+    }
+  });
+  function scale() {
+    const z = Math.min(innerWidth / w, innerHeight / h);
+    stage.style.transform = `scale(${z})`;
+    stage.style.left = (innerWidth - w * z) / 2 + "px";
+    stage.style.top = (innerHeight - h * z) / 2 + "px";
+  }
+  addEventListener("resize", scale);
+  scale();
+  draw();
+})();
+</script></body></html>
