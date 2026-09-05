@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "lift-today",
+      "type": "prompt",
+      "initialWords": 10,
+      "hintWords": 16,
+      "revealedWords": 10
+    },
+    {
+      "id": "three-word-rule",
+      "type": "choice",
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 24
+    },
+    {
+      "id": "passage-one",
+      "type": "passage",
+      "initialWords": 66,
+      "hintWords": 71,
+      "revealedWords": 66
+    },
+    {
+      "id": "passage-two",
+      "type": "passage",
+      "initialWords": 41,
+      "hintWords": 50,
+      "revealedWords": 41
+    },
+    {
+      "id": "field-17",
+      "type": "cloze",
+      "initialWords": 17,
+      "hintWords": 17,
+      "revealedWords": 24
+    },
+    {
+      "id": "field-18",
+      "type": "cloze",
+      "initialWords": 15,
+      "hintWords": 15,
+      "revealedWords": 22
+    },
+    {
+      "id": "field-19",
+      "type": "cloze",
+      "initialWords": 17,
+      "hintWords": 17,
+      "revealedWords": 24
+    },
+    {
+      "id": "field-20",
+      "type": "cloze",
+      "initialWords": 16,
+      "hintWords": 16,
+      "revealedWords": 24
+    },
+    {
+      "id": "field-21",
+      "type": "cloze",
+      "initialWords": 16,
+      "hintWords": 16,
+      "revealedWords": 23
+    },
+    {
+      "id": "field-22",
+      "type": "cloze",
+      "initialWords": 15,
+      "hintWords": 15,
+      "revealedWords": 24
+    },
+    {
+      "id": "field-23",
+      "type": "cloze",
+      "initialWords": 16,
+      "hintWords": 16,
+      "revealedWords": 26
+    },
+    {
+      "id": "field-24",
+      "type": "cloze",
+      "initialWords": 14,
+      "hintWords": 14,
+      "revealedWords": 21
+    },
+    {
+      "id": "phrase-bank",
+      "type": "reveal",
+      "initialWords": 6,
+      "hintWords": 14,
+      "revealedWords": 33
+    },
+    {
+      "id": "p22-rebuild",
+      "type": "writing",
+      "initialWords": 21,
+      "hintWords": 21,
+      "revealedWords": 42
+    },
+    {
+      "id": "collect",
+      "type": "prompt",
+      "initialWords": 6,
+      "hintWords": 12,
+      "revealedWords": 6
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "title": "Small Words, Strong Sentences",
+  "viewport": "1280x665",
+  "slides": [
+    {
+      "id": "evidence-habit",
+      "type": "prompt",
+      "prompt": "What evidence habit do we reuse today?",
+      "hint": "Monday: 4 checks to find the missing link.",
+      "notes": "60-min Tue lesson, sl_t1. Monday one-liner only, no reteaching. Outcomes (teacher-kept): read the p.69 passage clearly for PBD; use 6 new words in own sentences."
+    },
+    {
+      "id": "prime-changes",
+      "type": "steps",
+      "prompt": "Before we open the book — what changed?",
+      "items": [
+        "It spread through tiny droplets.",
+        "Life was disrupted, but cooperation grew.",
+        "Hygiene and technology built resilience."
+      ],
+      "notes": "Prime Module p.69 ideas. Partner talk 1 min: which change still helps us today? Point and say why."
+    },
+    {
+      "id": "words-illness",
+      "type": "reveal",
+      "prompt": "What do these three words mean?",
+      "answer": "Resilient means strong again after difficulty. Severity means how serious an illness is. Droplet means a very tiny drop.",
+      "feedback": "-let means small: droplet, booklet, leaflet.",
+      "notes": "Elicit meanings before revealing. -let spotlight: drop + -let, book + -let, leaf + -let."
+    },
+    {
+      "id": "words-life",
+      "type": "reveal",
+      "prompt": "What do the next three words mean?",
+      "answer": "Vital means very important. Disruption means stopping normal life. Significant means very great or very large.",
+      "feedback": "Use each word in a new sentence, not its definition.",
+      "notes": "Module gloss for significant follows p.69. Misconception: pupils copy definitions — enforce show, don't repeat."
+    },
+    {
+      "id": "weak-strong",
+      "type": "compare",
+      "prompt": "Which sentence shows the meaning?",
+      "columns": [
+        {"label": "Weak version", "text": "Severity means serious."},
+        {"label": "Strong version", "text": "Vaccines reduced the severity of illness so fewer people became very sick."}
+      ],
+      "hint": "Look for an action and a result.",
+      "notes": "Frame: word + action + detail + because/so + result. Copy the habit, not the sentence."
+    },
+    {
+      "id": "pbd-routine",
+      "type": "steps",
+      "prompt": "How does PBD reading work?",
+      "items": [
+        "Open Module p.69. Eight readers read one paragraph each.",
+        "Listeners raise hands on their team's word.",
+        "Books collected after reading."
+      ],
+      "notes": "Passage stays in the book — slides only prime (book copyright). Evidence: fluency + one heard-word per listener. Record 8 readers separately; no names in artifacts."
+    },
+    {
+      "id": "exit-sentence",
+      "type": "writing",
+      "prompt": "One strong sentence",
+      "task": "Choose one of the six words. Write one strong sentence about your life or school that shows its meaning.",
+      "frame": "Word + action + detail + because / so + result.",
+      "notes": "5 min silent exit. Bridge: Thursday turns the p.70 handwashing essay into an information-transfer table. Collect short/long books after."
+    }
+  ]
+}

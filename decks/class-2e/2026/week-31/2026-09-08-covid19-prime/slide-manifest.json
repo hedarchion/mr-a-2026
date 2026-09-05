@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "evidence-habit",
+      "type": "prompt",
+      "initialWords": 7,
+      "hintWords": 15,
+      "revealedWords": 7
+    },
+    {
+      "id": "prime-changes",
+      "type": "steps",
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 24
+    },
+    {
+      "id": "words-illness",
+      "type": "reveal",
+      "initialWords": 6,
+      "hintWords": 6,
+      "revealedWords": 31
+    },
+    {
+      "id": "words-life",
+      "type": "reveal",
+      "initialWords": 7,
+      "hintWords": 7,
+      "revealedWords": 33
+    },
+    {
+      "id": "weak-strong",
+      "type": "compare",
+      "initialWords": 24,
+      "hintWords": 31,
+      "revealedWords": 24
+    },
+    {
+      "id": "pbd-routine",
+      "type": "steps",
+      "initialWords": 14,
+      "hintWords": 14,
+      "revealedWords": 25
+    },
+    {
+      "id": "exit-sentence",
+      "type": "writing",
+      "initialWords": 22,
+      "hintWords": 22,
+      "revealedWords": 33
+    }
+  ]
+}

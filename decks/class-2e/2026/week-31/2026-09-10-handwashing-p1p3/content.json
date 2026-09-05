@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "title": "Lift the Facts, Write It Yourself",
+  "viewport": "1280x665",
+  "slides": [
+    {
+      "id": "lift-today",
+      "type": "prompt",
+      "prompt": "Monday we chose whole sentences. What do we lift today?",
+      "hint": "Short facts, three words or fewer.",
+      "notes": "60-min Thu lesson, sl_h3. Outcomes (teacher-kept): complete 8 table fields with source-lifted answers; draft the p.70 paragraph with linkers and 3 phrases."
+    },
+    {
+      "id": "three-word-rule",
+      "type": "choice",
+      "prompt": "Field 19 — Rub hands for:",
+      "options": ["for at least 20 seconds", "20 seconds"],
+      "answer": "20 seconds",
+      "feedback": "Two words win. The table wants three or fewer.",
+      "notes": "Rule-first error analysis. Vote A or B, then ask where B came from in the passage. Fallback: fingers or mini-boards."
+    },
+    {
+      "id": "passage-one",
+      "type": "passage",
+      "prompt": "What are the first three steps?",
+      "text": "Washing our hands properly is one of the best ways to stay healthy. It helps prevent the spread of germs. First, wet your hands with clean, running water. Next, apply enough soap to cover all hand surfaces. Then, rub your hands together for at least 20 seconds. Wash the backs of your hands, between your fingers and under your nails.",
+      "hint": "Look for First, Next, Then.",
+      "notes": "Teacher-requested excerpt of the Module p.70 suggested answer, shortened. Expected: wet, soap, rub. No answer bolding."
+    },
+    {
+      "id": "passage-two",
+      "type": "passage",
+      "prompt": "How do we finish, and why does it matter?",
+      "text": "Finally, rinse your hands well under clean water and dry them with a tissue or an air dryer. By washing our hands properly, we can protect ourselves and others from getting sick.",
+      "hint": "Two waters and two dryers appear. The label decides.",
+      "notes": "Competing-information warning lives here and pays off in fields 22-23."
+    },
+    {
+      "id": "field-17",
+      "type": "cloze",
+      "prompt": "Field 17 — water to wet hands:",
+      "sentence": "Water to wet hands: {{blank}}.",
+      "options": ["clean, running water", "clean water"],
+      "answer": "clean, running water",
+      "feedback": "Chunk 1 names running water for wetting.",
+      "notes": "Click fills the blank inline; Reset clears it. Matches worksheet key."
+    },
+    {
+      "id": "field-18",
+      "type": "cloze",
+      "prompt": "Field 18 — soap must cover:",
+      "sentence": "Soap must cover: {{blank}}.",
+      "options": ["all hand surfaces", "enough soap"],
+      "answer": "all hand surfaces",
+      "feedback": "Cover needs a place. Enough tells amount.",
+      "notes": "Matches worksheet key."
+    },
+    {
+      "id": "field-19",
+      "type": "cloze",
+      "prompt": "Field 19 — rub hands for:",
+      "sentence": "Rub hands for: {{blank}}.",
+      "options": ["20 seconds", "for at least 20 seconds"],
+      "answer": "20 seconds",
+      "feedback": "Four words break the rule. Lift two.",
+      "notes": "Reinforces the rule slide. Matches worksheet key."
+    },
+    {
+      "id": "field-20",
+      "type": "cloze",
+      "prompt": "Field 20 — wash here (fingers):",
+      "sentence": "Wash here (fingers): {{blank}}.",
+      "options": ["between your fingers", "under your nails"],
+      "answer": "between your fingers",
+      "feedback": "Nails belong to field 21. Read the label.",
+      "notes": "Matches worksheet key."
+    },
+    {
+      "id": "field-21",
+      "type": "cloze",
+      "prompt": "Field 21 — wash here (nails):",
+      "sentence": "Wash here (nails): {{blank}}.",
+      "options": ["under your nails", "between your fingers"],
+      "answer": "under your nails",
+      "feedback": "Fingers were field 20. The label decides.",
+      "notes": "Matches worksheet key."
+    },
+    {
+      "id": "field-22",
+      "type": "cloze",
+      "prompt": "Field 22 — water to rinse:",
+      "sentence": "Water to rinse: {{blank}}.",
+      "options": ["clean water", "clean, running water"],
+      "answer": "clean water",
+      "feedback": "Running water was for wetting. Rinse takes clean water.",
+      "notes": "Competing-waters discrimination. Matches worksheet key."
+    },
+    {
+      "id": "field-23",
+      "type": "cloze",
+      "prompt": "Field 23 — dry hands with (one):",
+      "sentence": "Dry hands with one: {{blank}}.",
+      "options": ["tissue", "an air dryer"],
+      "answer": "tissue",
+      "feedback": "One dryer only. The key accepts tissue or air dryer.",
+      "notes": "Competing-dryers discrimination. Matches worksheet key."
+    },
+    {
+      "id": "field-24",
+      "type": "cloze",
+      "prompt": "Field 24 — final benefit:",
+      "sentence": "Final benefit: {{blank}}.",
+      "options": ["protect ourselves", "protect ourselves and others"],
+      "answer": "protect ourselves",
+      "feedback": "Four words break the rule. Lift two.",
+      "notes": "Matches worksheet key."
+    },
+    {
+      "id": "phrase-bank",
+      "type": "reveal",
+      "prompt": "Which 3 phrases will you steal?",
+      "answer": "prevent the spread, follow simple steps, apply soap, cover all surfaces, rub together, rinse well, stay healthy, protect ourselves.",
+      "feedback": "Circle 3 on paper. Steal phrases, not sentences.",
+      "hint": "Linkers to glue them: first, next, then, finally.",
+      "notes": "Migration trade-off: the legacy tap-counter bank has no v1 preset, so paper circling plus oral shortlist replaces it. Pupils still choose any 3 of 8."
+    },
+    {
+      "id": "p22-rebuild",
+      "type": "writing",
+      "prompt": "Rebuild the paragraph",
+      "task": "Rebuild the handwashing paragraph from the flow map in your own words. Use your 3 phrases and linkers.",
+      "frame": "Intro: why it matters. Steps: wet, soap, rub, rinse, dry. Ending: conclusion. Copying 3 model sentences in a row means restarting.",
+      "notes": "UASA formative P2.2. PBD readers after writing. Books collected at the door."
+    },
+    {
+      "id": "collect",
+      "type": "prompt",
+      "prompt": "Hand in. Show your 3 phrases.",
+      "hint": "P1P3 slip first. Underline 3 phrases.",
+      "notes": "Unfinished paragraphs continue next lesson. No Friday class for 2E."
+    }
+  ]
+}
