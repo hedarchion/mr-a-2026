@@ -76,7 +76,7 @@ Read [references/instructional-design.md](references/instructional-design.md) wh
 
 Reserve the first 5–10 minutes of a new lesson for 2–4 retrieval prompts, including at least one explanation or application. Bridge the evidence explicitly into the new objective rather than reteaching the prior lesson.
 
-Sequence prior knowledge → bridge → model → guided practice → check → explanatory correction → transfer. Give each slide one visible teaching move and one dominant learning question or action. Split dense ideas instead of shrinking type. Keep teacher talk tracks, wait time, anticipated responses, and transitions in `notes.md`.
+Sequence prior knowledge → bridge → model → guided practice → check → explanatory correction → transfer. Give each slide one visible teaching move and one dominant learning question or action. Split dense ideas instead of shrinking type. There is no maximum slide count: never treat an old deck's slide count as a cap, and never compress a lesson (for example, cramming a story and its vote into one slide) to preserve one. Keep teacher talk tracks, wait time, anticipated responses, and transitions in `notes.md`.
 
 ## Design the projected surface
 
