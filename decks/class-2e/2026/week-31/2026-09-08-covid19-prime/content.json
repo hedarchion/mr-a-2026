@@ -4,43 +4,75 @@
   "viewport": "1280x665",
   "slides": [
     {
-      "id": "evidence-habit",
+      "id": "hook",
       "type": "prompt",
-      "prompt": "What evidence habit do we reuse today?",
-      "hint": "Monday: 4 checks to find the missing link.",
-      "notes": "60-min Tue lesson, sl_t1. Monday one-liner only, no reteaching. Outcomes (teacher-kept): read the p.69 passage clearly for PBD; use 6 new words in own sentences."
+      "prompt": "How did Covid-19 change the world?",
+      "hint": "Monday we used 4 checks to find a missing link.",
+      "notes": "60-min Tue lesson, sl_t1. Opening hook for Module p.69. Monday one-liner only, no reteaching. Outcomes (teacher-kept): read the passage clearly for PBD; use 6 new words in own sentences."
     },
     {
       "id": "prime-changes",
       "type": "steps",
       "prompt": "Before we open the book — what changed?",
       "items": [
-        "It spread through tiny droplets.",
-        "Life was disrupted, but cooperation grew.",
-        "Hygiene and technology built resilience."
+        "Covid-19 spread through tiny droplets.",
+        "Life was disrupted, but people cooperated.",
+        "Hygiene and technology keep us connected."
       ],
-      "notes": "Prime Module p.69 ideas. Partner talk 1 min: which change still helps us today? Point and say why."
+      "notes": "Prime the passage ideas in its own vocabulary. Partner talk 1 min: which change still helps us today? Point and say why."
     },
     {
-      "id": "words-illness",
+      "id": "word-resilient",
       "type": "reveal",
-      "prompt": "What do these three words mean?",
-      "answer": "Resilient means strong again after difficulty. Severity means how serious an illness is. Droplet means a very tiny drop.",
+      "prompt": "What does resilient mean?",
+      "answer": "Strong again after a difficulty.",
+      "feedback": "Societies became resilient after Covid-19.",
+      "notes": "Elicit first, then reveal. Word 1 of 6."
+    },
+    {
+      "id": "word-severity",
+      "type": "reveal",
+      "prompt": "What does severity mean?",
+      "answer": "How serious an illness is.",
+      "feedback": "Vaccines reduced the severity of illness.",
+      "notes": "Word 2 of 6. Sets up the weak-vs-strong slide."
+    },
+    {
+      "id": "word-droplet",
+      "type": "reveal",
+      "prompt": "What does droplet mean?",
+      "answer": "A very tiny drop.",
       "feedback": "-let means small: droplet, booklet, leaflet.",
-      "notes": "Elicit meanings before revealing. -let spotlight: drop + -let, book + -let, leaf + -let."
+      "notes": "Word 3 of 6. -let spotlight per SOT: drop + -let, book + -let, leaf + -let."
     },
     {
-      "id": "words-life",
+      "id": "word-vital",
       "type": "reveal",
-      "prompt": "What do the next three words mean?",
-      "answer": "Vital means very important. Disruption means stopping normal life. Significant means very great or very large.",
-      "feedback": "Use each word in a new sentence, not its definition.",
-      "notes": "Module gloss for significant follows p.69. Misconception: pupils copy definitions — enforce show, don't repeat."
+      "prompt": "What does vital mean?",
+      "answer": "Very important.",
+      "feedback": "Technology played a vital role.",
+      "notes": "Word 4 of 6."
+    },
+    {
+      "id": "word-disruption",
+      "type": "reveal",
+      "prompt": "What does disruption mean?",
+      "answer": "Stopping normal life.",
+      "feedback": "The pandemic caused great disruption.",
+      "notes": "Word 5 of 6."
+    },
+    {
+      "id": "word-significant",
+      "type": "reveal",
+      "prompt": "What does significant mean?",
+      "answer": "Very great or very large.",
+      "feedback": "A significant event in history.",
+      "notes": "Word 6 of 6. Module gloss follows p.69. Misconception: pupils copy definitions — enforce show, don't repeat."
     },
     {
       "id": "weak-strong",
       "type": "compare",
-      "prompt": "Which sentence shows the meaning?",
+      "prompt": "Which sentence uses severity well?",
       "columns": [
         {"label": "Weak version", "text": "Severity means serious."},
         {"label": "Strong version", "text": "Vaccines reduced the severity of illness so fewer people became very sick."}
@@ -53,17 +85,17 @@
       "type": "steps",
       "prompt": "How does PBD reading work?",
       "items": [
-        "Open Module p.69. Eight readers read one paragraph each.",
+        "Open Module p.69. Eight readers take turns reading.",
         "Listeners raise hands on their team's word.",
         "Books collected after reading."
       ],
-      "notes": "Passage stays in the book — slides only prime (book copyright). Evidence: fluency + one heard-word per listener. Record 8 readers separately; no names in artifacts."
+      "notes": "Passage has six paragraphs, so readers take turns rather than one paragraph each. Passage stays in the book (copyright). Evidence: fluency + one heard-word per listener. Record 8 readers separately; no names in artifacts."
     },
     {
       "id": "exit-sentence",
       "type": "writing",
       "prompt": "One strong sentence",
-      "task": "Choose one of the six words. Write one strong sentence about your life or school that shows its meaning.",
+      "task": "Choose one word: resilient, severity, droplet, vital, disruption or significant. Write one strong sentence about your life or school that shows its meaning.",
       "frame": "Word + action + detail + because / so + result.",
       "notes": "5 min silent exit. Bridge: Thursday turns the p.70 handwashing essay into an information-transfer table. Collect short/long books after."
     }

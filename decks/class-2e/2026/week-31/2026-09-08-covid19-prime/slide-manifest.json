@@ -2,32 +2,60 @@
   "version": 1,
   "slides": [
     {
-      "id": "evidence-habit",
+      "id": "hook",
       "type": "prompt",
-      "initialWords": 7,
-      "hintWords": 15,
-      "revealedWords": 7
+      "initialWords": 6,
+      "hintWords": 16,
+      "revealedWords": 6
     },
     {
       "id": "prime-changes",
       "type": "steps",
       "initialWords": 13,
       "hintWords": 13,
-      "revealedWords": 24
+      "revealedWords": 25
     },
     {
-      "id": "words-illness",
+      "id": "word-resilient",
       "type": "reveal",
-      "initialWords": 6,
-      "hintWords": 6,
-      "revealedWords": 31
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 14
     },
     {
-      "id": "words-life",
+      "id": "word-severity",
       "type": "reveal",
-      "initialWords": 7,
-      "hintWords": 7,
-      "revealedWords": 33
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 15
+    },
+    {
+      "id": "word-droplet",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 14
+    },
+    {
+      "id": "word-vital",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 11
+    },
+    {
+      "id": "word-disruption",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 12
+    },
+    {
+      "id": "word-significant",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 14
     },
     {
       "id": "weak-strong",
@@ -39,16 +67,16 @@
     {
       "id": "pbd-routine",
       "type": "steps",
-      "initialWords": 14,
-      "hintWords": 14,
-      "revealedWords": 25
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 24
     },
     {
       "id": "exit-sentence",
       "type": "writing",
-      "initialWords": 22,
-      "hintWords": 22,
-      "revealedWords": 33
+      "initialWords": 26,
+      "hintWords": 26,
+      "revealedWords": 37
     }
   ]
 }
