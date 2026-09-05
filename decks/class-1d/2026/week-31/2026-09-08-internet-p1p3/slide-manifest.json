@@ -60,65 +60,65 @@
     {
       "id": "field-1",
       "type": "cloze",
-      "initialWords": 15,
-      "hintWords": 15,
-      "revealedWords": 22
+      "initialWords": 12,
+      "hintWords": 12,
+      "revealedWords": 19
     },
     {
       "id": "field-2",
       "type": "cloze",
-      "initialWords": 16,
-      "hintWords": 16,
-      "revealedWords": 24
+      "initialWords": 14,
+      "hintWords": 14,
+      "revealedWords": 22
     },
     {
       "id": "field-3",
       "type": "cloze",
-      "initialWords": 16,
-      "hintWords": 16,
-      "revealedWords": 21
+      "initialWords": 15,
+      "hintWords": 15,
+      "revealedWords": 20
     },
     {
       "id": "field-4",
       "type": "cloze",
-      "initialWords": 15,
-      "hintWords": 15,
-      "revealedWords": 23
+      "initialWords": 14,
+      "hintWords": 14,
+      "revealedWords": 22
     },
     {
       "id": "field-5",
       "type": "cloze",
-      "initialWords": 16,
-      "hintWords": 16,
-      "revealedWords": 23
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 20
     },
     {
       "id": "field-6",
       "type": "cloze",
-      "initialWords": 14,
-      "hintWords": 14,
-      "revealedWords": 24
+      "initialWords": 12,
+      "hintWords": 12,
+      "revealedWords": 22
     },
     {
       "id": "field-7",
       "type": "cloze",
-      "initialWords": 14,
-      "hintWords": 14,
-      "revealedWords": 21
+      "initialWords": 12,
+      "hintWords": 12,
+      "revealedWords": 19
     },
     {
       "id": "field-8",
       "type": "cloze",
-      "initialWords": 14,
-      "hintWords": 14,
-      "revealedWords": 18
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 17
     },
     {
       "id": "book-table",
       "type": "writing",
-      "initialWords": 23,
-      "hintWords": 23,
-      "revealedWords": 35
+      "initialWords": 20,
+      "hintWords": 20,
+      "revealedWords": 32
     }
   ]
 }

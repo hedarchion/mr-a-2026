@@ -119,6 +119,30 @@ button[hidden] {
 .blank.empty {
   border-bottom-color: transparent;
 }
+/* Gap stories insert whole sentences, so the blank may wrap. Single-word
+   cloze blanks keep nowrap above. */
+.passage .blank {
+  white-space: normal;
+}
+/* Gap slides stack a prompt, a 3-line story, and up to 3 sentence buttons
+   above a 76px footer. Measured at 1280x665: default rhythm overflows by
+   ~140px, so gap slides use tighter spacing. Type sizes for the story (46px)
+   and options (44px) are untouched; only the repeated one-line prompt,
+   padding, and gaps compact. Teacher-operated buttons, so 8px padding is
+   enough for the tap target. */
+#slide[data-type="gap"] {
+  padding: 16px 44px;
+  gap: 10px;
+}
+#slide[data-type="gap"] h1 {
+  font-size: 44px;
+}
+#slide[data-type="gap"] .choices {
+  gap: 10px;
+}
+#slide[data-type="gap"] .choices button {
+  padding: 8px 18px;
+}
 .compare {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -225,7 +249,7 @@ footer button {
 .list button:disabled {
   opacity: 1;
 }
-</style><body><main id="stage"><section id="slide" aria-label="Teaching slide"></section><div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div><footer><div><button id="hint">Hint</button><button id="reveal">Reveal</button><button id="reset">Reset</button></div><nav aria-label="Slides"><button id="prev" aria-label="Previous slide">←</button><span id="count"></span><button id="next" aria-label="Next slide">→</button></nav></footer></main><script type="application/json" id="deck-data">{"version":1,"title":"The Internet · Lift the Facts","viewport":"1280x665","slides":[{"id":"internet-use","type":"prompt","prompt":"What do you use the Internet for?","hint":"Chatting? Shopping? Gaming?"},{"id":"word-developed","type":"reveal","prompt":"What does developed mean?","answer":"Dibangunkan. Made or grown step by step.","feedback":"The Internet developed in the 1960s."},{"id":"word-coldwar","type":"reveal","prompt":"What was the Cold War?","answer":"Perang Dingin. A long fight without real war.","feedback":"Between the United States and the Soviet Union."},{"id":"word-launched","type":"reveal","prompt":"What does launched mean?","answer":"Dilancarkan. Started something new.","feedback":"ARPA launched ARPANET in 1969."},{"id":"word-expanded","type":"reveal","prompt":"What does expanded mean?","answer":"Berkembang. Grew bigger.","feedback":"It expanded across the US and globally."},{"id":"word-invented","type":"reveal","prompt":"What does invented mean?","answer":"Mencipta. Made something for the first time.","feedback":"Tim Berners-Lee invented the World Wide Web."},{"id":"word-billions","type":"reveal","prompt":"What does billions mean?","answer":"Bilion. A thousand millions.","feedback":"Billions of people use the Internet today."},{"id":"pbd-reading","type":"steps","prompt":"PBD round: read and lift facts.","items":["Teacher picks names with the randomizer.","Read your lines clearly.","Lift one fact in three words or fewer."]},{"id":"field-1","type":"cloze","prompt":"Field 1 — when it was developed:","sentence":"Developed in: {{blank}}.","options":["in the 1960s","in 1969"],"answer":"in the 1960s","feedback":"1969 is ARPANET. Developed means the 1960s."},{"id":"field-2","type":"cloze","prompt":"Field 2 — Cold War country, first:","sentence":"First country: {{blank}}.","options":["the United States","the Soviet Union"],"answer":"the United States","feedback":"The key accepts either country. Write one here."},{"id":"field-3","type":"cloze","prompt":"Field 3 — Cold War country, second:","sentence":"Second country: {{blank}}.","options":["the Soviet Union","the United States"],"answer":"the Soviet Union","feedback":"Write the other country here."},{"id":"field-4","type":"cloze","prompt":"Field 4 — first network linked globally:","sentence":"Linked globally: {{blank}}.","options":["by the 1970s","in 1969"],"answer":"by the 1970s","feedback":"1969 is the first link. Global came later."},{"id":"field-5","type":"cloze","prompt":"Field 5 — inventor of the World Wide Web:","sentence":"Inventor: {{blank}}.","options":["Tim Berners-Lee","the US government"],"answer":"Tim Berners-Lee","feedback":"The government needed it. Berners-Lee invented it."},{"id":"field-6","type":"cloze","prompt":"Field 6 — people use it for, first:","sentence":"Use number one: {{blank}}.","options":["chatting","gaming"],"answer":"chatting","feedback":"The key accepts chatting, shopping or gaming in any order."},{"id":"field-7","type":"cloze","prompt":"Field 7 — people use it for, second:","sentence":"Use number two: {{blank}}.","options":["shopping","chatting"],"answer":"shopping","feedback":"Pick a different one from field 6."},{"id":"field-8","type":"cloze","prompt":"Field 8 — people use it for, third:","sentence":"Use number three: {{blank}}.","options":["gaming","shopping"],"answer":"gaming","feedback":"The last one left."},{"id":"book-table","type":"writing","prompt":"The p33 table: your turn","task":"Complete the Module p33 table in your book. Lift three words or fewer from the text per field.","frame":"Field 1: in the 1960s. Fields 2 and 3: one country each."}]}</script><script>(() => {
+</style><body><main id="stage"><section id="slide" aria-label="Teaching slide"></section><div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div><footer><div><button id="hint">Hint</button><button id="reveal">Reveal</button><button id="reset">Reset</button></div><nav aria-label="Slides"><button id="prev" aria-label="Previous slide">←</button><span id="count"></span><button id="next" aria-label="Next slide">→</button></nav></footer></main><script type="application/json" id="deck-data">{"version":1,"title":"The Internet · Lift the Facts","viewport":"1280x665","slides":[{"id":"internet-use","type":"prompt","prompt":"What do you use the Internet for?","hint":"Chatting? Shopping? Gaming?"},{"id":"word-developed","type":"reveal","prompt":"What does developed mean?","answer":"Dibangunkan. Made or grown step by step.","feedback":"The Internet developed in the 1960s."},{"id":"word-coldwar","type":"reveal","prompt":"What was the Cold War?","answer":"Perang Dingin. A long fight without real war.","feedback":"Between the United States and the Soviet Union."},{"id":"word-launched","type":"reveal","prompt":"What does launched mean?","answer":"Dilancarkan. Started something new.","feedback":"ARPA launched ARPANET in 1969."},{"id":"word-expanded","type":"reveal","prompt":"What does expanded mean?","answer":"Berkembang. Grew bigger.","feedback":"It expanded across the US and globally."},{"id":"word-invented","type":"reveal","prompt":"What does invented mean?","answer":"Mencipta. Made something for the first time.","feedback":"Tim Berners-Lee invented the World Wide Web."},{"id":"word-billions","type":"reveal","prompt":"What does billions mean?","answer":"Bilion. A thousand millions.","feedback":"Billions of people use the Internet today."},{"id":"pbd-reading","type":"steps","prompt":"PBD round: read and lift facts.","items":["Teacher picks names with the randomizer.","Read your lines clearly.","Lift one fact in three words or fewer."]},{"id":"field-1","type":"cloze","prompt":"When was it developed?","sentence":"Developed in: {{blank}}.","options":["in the 1960s","in 1969"],"answer":"in the 1960s","feedback":"1969 is ARPANET. Developed means the 1960s."},{"id":"field-2","type":"cloze","prompt":"Name one Cold War country.","sentence":"First country: {{blank}}.","options":["the United States","the Soviet Union"],"answer":"the United States","feedback":"The key accepts either country. Write one here."},{"id":"field-3","type":"cloze","prompt":"Name the other Cold War country.","sentence":"Second country: {{blank}}.","options":["the Soviet Union","the United States"],"answer":"the Soviet Union","feedback":"Write the other country here."},{"id":"field-4","type":"cloze","prompt":"When did it link the world?","sentence":"Linked globally: {{blank}}.","options":["by the 1970s","in 1969"],"answer":"by the 1970s","feedback":"1969 is the first link. Global came later."},{"id":"field-5","type":"cloze","prompt":"Who invented the World Wide Web?","sentence":"Inventor: {{blank}}.","options":["Tim Berners-Lee","the US government"],"answer":"Tim Berners-Lee","feedback":"The government needed it. Berners-Lee invented it."},{"id":"field-6","type":"cloze","prompt":"Name one use of the Internet.","sentence":"Use number one: {{blank}}.","options":["chatting","gaming"],"answer":"chatting","feedback":"The key accepts chatting, shopping or gaming in any order."},{"id":"field-7","type":"cloze","prompt":"Name another use of the Internet.","sentence":"Use number two: {{blank}}.","options":["shopping","chatting"],"answer":"shopping","feedback":"Pick a different one from field 6."},{"id":"field-8","type":"cloze","prompt":"Name the last use of the Internet.","sentence":"Use number three: {{blank}}.","options":["gaming","shopping"],"answer":"gaming","feedback":"The last one left."},{"id":"book-table","type":"writing","prompt":"Your turn","task":"Complete the Module p33 table in your book. Lift three words or fewer from the text per field.","frame":"Field 1: in the 1960s. Fields 2 and 3: one country each."}]}</script><script>(() => {
   "use strict";
   const deck = JSON.parse(document.getElementById("deck-data").textContent),
     stage = document.getElementById("stage"),
@@ -284,7 +308,17 @@ footer button {
         document.createTextNode(b),
       );
     }
-    if (["choice", "cloze"].includes(s.type)) {
+    if (s.type === "gap") {
+      const n = add("p", undefined, "passage");
+      const [a, b] = s.text.split("{{blank}}");
+      const blankText = st.revealed ? s.answer : st.selected || "_____";
+      n.append(
+        document.createTextNode(a),
+        el("span", blankText, blankText === "_____" ? "blank empty" : "blank"),
+        document.createTextNode(b),
+      );
+    }
+    if (["choice", "cloze", "gap"].includes(s.type)) {
       const n = add("div", undefined, "choices");
       s.options.forEach((o) =>
         n.append(
@@ -392,7 +426,7 @@ footer button {
     hint.disabled = st.revealed;
     hint.textContent = st.hint ? "Hide hint" : "Hint";
     rev.hidden = !(
-      ["reveal", "choice", "cloze", "steps", "order", "sort"].includes(
+      ["reveal", "choice", "cloze", "gap", "steps", "order", "sort"].includes(
         s.type,
       ) ||
       (s.type === "writing" && s.frame)
@@ -460,7 +494,7 @@ footer button {
     else {
       st.revealed = true;
       st.hint = false;
-      if (["choice", "cloze"].includes(s.type)) st.selected = s.answer;
+      if (["choice", "cloze", "gap"].includes(s.type)) st.selected = s.answer;
       if (s.type === "sort")
         s.items.forEach((x, i) => (st.groups[i] = x.category));
       if (s.type === "order") st.order = s.items.map((_, i) => i);
@@ -490,19 +524,24 @@ footer button {
   document.getElementById("prev").onclick = () => move(-1);
   document.getElementById("next").onclick = () => move(1);
   document.addEventListener("keydown", (e) => {
-    if (e.altKey || e.ctrlKey || e.metaKey) return;
-    if (e.key === "ArrowRight") {
+    if (e.target.isContentEditable || e.target.closest("input,textarea,select"))
+      return;
+    const space = e.code === "Space" || e.key === " ";
+    if (space && e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey) {
       e.preventDefault();
-      move(1);
-    } else if (e.key === "ArrowLeft") {
+      if (!e.repeat) document.getElementById("reset").click();
+      return;
+    }
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
       e.preventDefault();
-      move(-1);
-    } else if (
-      e.code === "Space" &&
-      !e.target.closest("button,input,textarea,select")
-    ) {
+      if (!e.repeat) move(e.key === "ArrowRight" ? 1 : -1);
+    } else if (space) {
+      // Capture Space even when a choice or navigation button has focus.
+      // Enter remains the native way to activate the focused button.
       e.preventDefault();
-      move(1);
+      const control = document.getElementById("reveal");
+      if (!e.repeat && !control.hidden && !control.disabled) control.click();
     }
   });
   function scale() {

@@ -72,7 +72,7 @@
     {
       "id": "field-1",
       "type": "cloze",
-      "prompt": "Field 1 — when it was developed:",
+      "prompt": "When was it developed?",
       "sentence": "Developed in: {{blank}}.",
       "options": ["in the 1960s", "in 1969"],
       "answer": "in the 1960s",
@@ -82,7 +82,7 @@
     {
       "id": "field-2",
       "type": "cloze",
-      "prompt": "Field 2 — Cold War country, first:",
+      "prompt": "Name one Cold War country.",
       "sentence": "First country: {{blank}}.",
       "options": ["the United States", "the Soviet Union"],
       "answer": "the United States",
@@ -92,7 +92,7 @@
     {
       "id": "field-3",
       "type": "cloze",
-      "prompt": "Field 3 — Cold War country, second:",
+      "prompt": "Name the other Cold War country.",
       "sentence": "Second country: {{blank}}.",
       "options": ["the Soviet Union", "the United States"],
       "answer": "the Soviet Union",
@@ -102,7 +102,7 @@
     {
       "id": "field-4",
       "type": "cloze",
-      "prompt": "Field 4 — first network linked globally:",
+      "prompt": "When did it link the world?",
       "sentence": "Linked globally: {{blank}}.",
       "options": ["by the 1970s", "in 1969"],
       "answer": "by the 1970s",
@@ -112,7 +112,7 @@
     {
       "id": "field-5",
       "type": "cloze",
-      "prompt": "Field 5 — inventor of the World Wide Web:",
+      "prompt": "Who invented the World Wide Web?",
       "sentence": "Inventor: {{blank}}.",
       "options": ["Tim Berners-Lee", "the US government"],
       "answer": "Tim Berners-Lee",
@@ -122,7 +122,7 @@
     {
       "id": "field-6",
       "type": "cloze",
-      "prompt": "Field 6 — people use it for, first:",
+      "prompt": "Name one use of the Internet.",
       "sentence": "Use number one: {{blank}}.",
       "options": ["chatting", "gaming"],
       "answer": "chatting",
@@ -132,7 +132,7 @@
     {
       "id": "field-7",
       "type": "cloze",
-      "prompt": "Field 7 — people use it for, second:",
+      "prompt": "Name another use of the Internet.",
       "sentence": "Use number two: {{blank}}.",
       "options": ["shopping", "chatting"],
       "answer": "shopping",
@@ -142,7 +142,7 @@
     {
       "id": "field-8",
       "type": "cloze",
-      "prompt": "Field 8 — people use it for, third:",
+      "prompt": "Name the last use of the Internet.",
       "sentence": "Use number three: {{blank}}.",
       "options": ["gaming", "shopping"],
       "answer": "gaming",
@@ -152,7 +152,7 @@
     {
       "id": "book-table",
       "type": "writing",
-      "prompt": "The p33 table: your turn",
+      "prompt": "Your turn",
       "task": "Complete the Module p33 table in your book. Lift three words or fewer from the text per field.",
       "frame": "Field 1: in the 1960s. Fields 2 and 3: one country each.",
       "notes": "Individual bookwork after the slide fields modelled each answer. Oral read-out of one field each as plenary. Collect tables for PBD marks per teacher plan."

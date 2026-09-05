@@ -53,9 +53,9 @@
     {
       "id": "module-launch",
       "type": "writing",
-      "initialWords": 21,
-      "hintWords": 21,
-      "revealedWords": 40
+      "initialWords": 19,
+      "hintWords": 19,
+      "revealedWords": 38
     },
     {
       "id": "exit-pair",

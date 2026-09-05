@@ -1,40 +1,557 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>1D | My Daily Routine</title>
-<style>
-:root{--ink:#18324a;--paper:#fffaf1;--teal:#08786f;--mint:#dff6eb;--coral:#e96657;--sun:#ffd166;--sky:#e1efff;--red:#ffe3df;--muted:#536b7d}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#e8eef3;font-family:Inter,Arial,sans-serif;color:var(--ink)}#stage{width:1280px;height:665px;transform-origin:top left;position:relative;overflow:hidden;background:var(--paper)}.slide{display:none;height:589px;padding:27px 50px 18px;position:relative}.slide.active{display:block}.blob{position:absolute;width:360px;height:360px;right:-110px;top:-150px;border-radius:50%;background:var(--mint)}.content{position:relative;z-index:1}.tag{display:inline-block;padding:7px 12px;border-radius:999px;background:var(--mint);color:var(--teal);font-size:14px;font-weight:900;letter-spacing:.06em}.title{font-size:50px;line-height:1.05;margin:12px 0 9px;font-weight:950}.heading{font-size:41px;line-height:1.08;margin:12px 0;font-weight:950}.sub{font-size:26px;line-height:1.28;color:var(--muted);font-weight:650;margin:0}.prompt{background:var(--ink);color:#fff;border-radius:20px;padding:16px 22px;font-size:32px;line-height:1.18;font-weight:900}.grid{display:grid;gap:14px}.two{grid-template-columns:1fr 1fr}.three{grid-template-columns:repeat(3,1fr)}.four{grid-template-columns:repeat(4,1fr)}.board,.sentence{background:#fff;border:2px solid #d5e1df;border-radius:18px;box-shadow:0 5px 0 rgba(25,50,74,.07)}.board{padding:16px 19px}.sentence{padding:14px 18px;font-size:28px;line-height:1.25;font-weight:900}.choice,.btn,.card{font:inherit;color:inherit;cursor:pointer}.choice{border:2px solid #d5e1df;background:#fff;border-radius:16px;padding:16px;text-align:left;font-size:27px;font-weight:900;box-shadow:0 5px 0 rgba(25,50,74,.07)}.choice:hover,.choice:focus,.card:hover,.card:focus,.btn:focus{outline:4px solid var(--sun);outline-offset:2px}.choice.good{background:var(--mint);border-color:var(--teal)}.choice.bad{background:var(--red);border-color:var(--coral)}.feedback{min-height:34px;color:var(--teal);font-size:25px;font-weight:900;margin-top:12px}.hidden{visibility:hidden}.answer{display:none;background:var(--mint);color:var(--teal);border-radius:15px;padding:11px 16px;margin-top:12px;font-size:26px;font-weight:900;line-height:1.28}.show-answer .answer{display:block}.chunk{font-size:34px;font-weight:950;padding:16px 20px;border-radius:16px;background:#fff;border:2px solid #d5e1df;text-align:center}.formula{background:var(--ink);color:#fff;border-radius:20px;padding:16px;text-align:center;font-size:33px;font-weight:950;margin-top:18px}.linker{font-size:26px;font-weight:950;padding:13px 15px;border-radius:15px;text-align:center}.l1{background:var(--sun)}.l2{background:var(--mint);color:var(--teal)}.l3{background:var(--sky)}.l4{background:var(--red);color:#a33830}.order{display:flex;align-items:center;gap:12px;margin:11px 0}.num{width:46px;height:46px;display:grid;place-items:center;border-radius:50%;background:var(--teal);color:#fff;font-weight:950;font-size:25px;flex:none}.chrome{position:absolute;bottom:0;left:0;right:0;height:76px;background:rgba(255,250,241,.97);border-top:1px solid #d4dfe2;display:flex;justify-content:space-between;align-items:center;padding:0 28px;font-size:17px;font-weight:900}.btn{border:0;border-radius:13px;padding:12px 16px;background:#fff;box-shadow:0 4px 0 #cdd8e0;font-size:16px;font-weight:900;margin-left:6px}.primary{background:var(--teal);color:#fff;box-shadow:0 4px 0 #055b54}.big{font-size:68px;letter-spacing:10px;margin:22px 0 10px}.write{border-bottom:4px solid var(--ink);display:inline-block;min-width:376px;height:42px;vertical-align:bottom}.tiny{font-size:20px;color:var(--muted);font-weight:700}.callout{font-size:26px;font-weight:900;color:var(--teal);margin-top:14px}.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:20px}.card{border:2px solid #d5e1df;background:#fff;border-radius:17px;padding:16px;font-size:26px;font-weight:950;min-height:104px;box-shadow:0 5px 0 rgba(25,50,74,.07);text-align:center}.card span{display:none;color:var(--teal);font-size:22px;line-height:1.15}.card.open span{display:block}.card.open b{display:none}
-.timepill{display:inline-block;background:var(--sky);border-radius:999px;padding:6px 14px;font-size:25px;font-weight:900;margin:3px}
-.routine{font-size:26px;line-height:1.32}
-.blank{display:inline-block;min-width:140px;border-bottom:4px solid #fff;padding:2px 12px;margin:0 8px;text-align:center;background:rgba(255,255,255,.18);border-radius:6px 6px 0 0;color:#fff;transition:all .18s}.blank.filled{background:#fff;color:var(--ink);border-bottom-color:var(--sun)}
-</style></head><body><main id="stage" aria-label="Class 1D daily routine lesson">
-<!-- 1 Welcome -->
-<section class="slide active" data-title="Welcome"><div class="blob"></div><div class="content"><span class="tag">CLASS 1D · WEEK 31 · ISNIN, 31 OGOS 2026 · 2:20 PM</span><h1 class="title">My <span style="color:var(--teal)">daily routine</span></h1><p class="sub">From hobby phrases to what you do <b>every day</b>.</p><div class="big">⏰ 🛏️ 🪥 🍳 🏫 ⚽ 📚</div><div class="prompt">Today: say what you do every day — clearly and in order.</div><p class="tiny">Listen when I'm speaking · One idea per slide · Show with fingers or say aloud if no clicker.</p></div></section>
-<!-- 2 Retrieval hobby + time -->
-<section class="slide" data-title="Retrieval"><div class="blob"></div><div class="content"><span class="tag">RETRIEVAL · 1 MINUTE</span><h2 class="heading">Quick — what was our hobby phrase?</h2><div class="grid cards" style="grid-template-columns:repeat(5,1fr);gap:12px"><button class="card"><b>⚽<br>_____ football</b><span>play football</span></button><button class="card"><b>📚<br>_____ books</b><span>read books</span></button><button class="card"><b>🎧<br>_____ to music</b><span>listen to music</span></button><button class="card"><b>🏠<br>_____ home</b><span>at home</span></button><button class="card"><b>⏰<br>every _____</b><span>every evening</span></button></div><p class="callout">We used these in 4 sentences with <b>Firstly → Finally</b>. Today we need the same skills for daily routines.</p><div class="answer">We can reuse the chunks + add daily verbs. Tap Reveal to flip cards.</div></div></section>
-<!-- 3 Routine hook -->
-<section class="slide" data-title="Routine"><div class="blob"></div><div class="content"><span class="tag">WHAT IS A ROUTINE?</span><h2 class="heading">Hobby vs routine — what is the difference?</h2><div class="grid two" style="margin-top:18px"><div class="board"><b style="font-size:28px">🎨 Hobby</b><p class="sub" style="font-size:25px">what you <b>love</b> to do<br><i>play football, read books</i><br>sometimes / on weekends</p></div><div class="board" style="border-color:var(--teal);background:var(--mint)"><b style="font-size:28px">⏰ Daily routine</b><p class="sub" style="font-size:25px;color:var(--teal);font-weight:800">what you do <b>every day</b><br><i>wake up, brush teeth, go to school</i><br>every morning / every day</p></div></div><div class="answer">A routine = every day. We use <b>simple present</b> for routines: <i>I wake up at 6.30 a.m. every day.</i></div></div></section>
-<!-- 4 Simple present model -->
-<section class="slide" data-title="Simple present"><div class="blob"></div><div class="content"><span class="tag">SAY IT · SIMPLE PRESENT</span><h2 class="heading">We do it every day — so we say it like this</h2><div class="grid two" style="margin-top:16px"><div class="board"><b style="font-size:26px">I / You / We / They</b><div class="sentence" style="margin-top:10px;background:var(--mint)">I <b>wake up</b> at 6.30 a.m.</div><div class="sentence">They <b>play</b> football after school.</div></div><div class="board"><b style="font-size:26px">He / She</b><div class="sentence" style="margin-top:10px">He <b>wakes up</b> at 6.30 a.m.</div><div class="sentence">She <b>plays</b> football after school.</div><p class="tiny">He/She → add <b>-s</b></p></div></div><div class="answer">Routine = <b>present simple</b>. Not <i>is waking</i>. Just <i>wake / wakes</i>. ✓ I brush my teeth every morning.</div><p class="tiny">Non-digital: chorus after teacher. Fingers: 1 = I wake, 2 = He wakes.</p></div></section>
-<!-- 5 Choice -s -->
-<section class="slide" data-title="Choose verb"><div class="blob"></div><div class="content"><span class="tag">CHOOSE · SHOW 1-2-3 FINGERS</span><h2 class="heading">Which verb is correct?</h2><div class="prompt" style="margin-top:20px">She <span class="blank" id="blank-verb">_____</span> her teeth every morning.</div><div class="grid three" data-answer="0" data-blank="blank-verb" style="margin-top:18px"><button class="choice" data-value="brushes">A. brushes</button><button class="choice" data-value="brush">B. brush</button><button class="choice" data-value="brushing">C. brushing</button></div><div class="feedback hidden">✓ <b>A. brushes</b> — <b>She</b> → add <b>-es</b>. <i>brush → brushes</i>. We add <b>-es</b> after -sh. B is for I/you. C needs <i>is</i>.</div><p class="tiny">Listen for: <i>She brush</i> ✗ — needs -s. <i>She is brush</i> ✗ — no is.</p></div></section>
-<!-- 6 Adverbial position -->
-<section class="slide" data-title="Time and place"><div class="blob"></div><div class="content"><span class="tag">WHERE + WHEN GOES AT THE END</span><h2 class="heading">Where do we put the time and place?</h2><div class="sentence" style="margin-top:16px">I have breakfast <span style="background:var(--sky);padding:3px 10px;border-radius:999px">at home</span> <span style="background:var(--sun);padding:3px 10px;border-radius:999px">at 7 o'clock</span>.</div><p class="sub" style="margin-top:14px">Place <b>before</b> time: <b>at home → at 7 o'clock</b>. Not in the middle of the verb.</p><div class="grid three" style="margin-top:14px"><div class="chunk" style="border-color:var(--teal)">✓ at the park <b>in the evening</b></div><div class="chunk" style="border-color:var(--coral);opacity:.9">✗ at in the evening the park</div><div class="chunk">✗ I at home have breakfast</div></div><div class="answer">Put details at the <b>end</b>: <i>I go to school at 7 a.m. in the morning</i> OR at the <b>start</b>: <i>In the morning, I go to school.</i> Never: <i>I at 7 a.m. go school.</i></div></div></section>
-<!-- 7 Build 3 sentences -->
-<section class="slide" data-title="Mix and build"><div class="blob"></div><div class="content"><span class="tag">MIX AND BUILD · 3 SENTENCES</span><h2 class="heading">Make 3 true sentences</h2><div class="grid three" style="grid-template-columns:1.05fr 1.35fr 1.2fr;margin-top:14px"><div class="board"><b style="font-size:27px">VERB</b><p class="routine">wake up<br>have breakfast<br>go to school</p></div><div class="board"><b style="font-size:27px">WHERE</b><p class="routine">at home<br>at home<br>by bus</p></div><div class="board"><b style="font-size:27px">WHEN</b><p class="routine">at 6.30 a.m.<br>at 7 o'clock<br>at 7.30 a.m.</p></div></div><div class="answer">1. I wake up at 6.30 a.m. at home.<br>2. I have breakfast at home at 7 o'clock.<br>3. I go to school by bus at 7.30 a.m.</div><p class="tiny">Teacher talk: WHO + VERB + WHERE/WHEN. Place before time.</p></div></section>
-<!-- 8 because vs and -->
-<section class="slide" data-title="Because"><div class="blob"></div><div class="content"><span class="tag">AND vs BECAUSE</span><h2 class="heading">Add or give a reason?</h2><div class="prompt" style="margin-top:18px">I wake up early <span class="blank" id="blank-because">_____</span> I like morning assembly.</div><div class="grid three" data-answer="1" data-blank="blank-because" style="margin-top:18px"><button class="choice" data-value="and">A. and</button><button class="choice" data-value="because">B. because</button><button class="choice" data-value="but">C. but</button></div><div class="feedback hidden">✓ <b>B. because</b> = reason. <b>And</b> just adds an idea: <i>...early and have breakfast.</i> <b>But</b> = different/contrast.</div><div class="answer" style="display:block;background:#fff;border:2px dashed #d5e1df;color:var(--muted);margin-top:10px">Try: <i>I wake up early <b>and</b> brush my teeth.</i> (add) vs <i>I wake up early <b>because</b> I want to be on time.</i> (reason)</div></div></section>
-<!-- 9 Guide words -->
-<section class="slide" data-title="Guide words"><div class="blob"></div><div class="content"><span class="tag">HELP THE READER FOLLOW YOU</span><h2 class="heading">Same guide words as last Thursday</h2><div class="grid four" style="margin-top:16px"><div class="linker l1">Firstly,<br><small>first thing</small></div><div class="linker l2">Besides that,<br><small>add</small></div><div class="linker l3">Then,<br><small>next</small></div><div class="linker l4">Finally,<br><small>last thing</small></div></div><div class="answer">We move hobby → routine, but the guide words stay the same. Use at the <b>front</b> with a comma.</div><p class="sub" style="margin-top:12px">Front position is special in English — we put guide words first to organise the day.</p></div></section>
-<!-- 10 Order paragraph -->
-<section class="slide" data-title="Order"><div class="blob"></div><div class="content"><span class="tag">THIS DAY IS MIXED UP</span><h2 class="heading">Which idea should be first?</h2><div class="grid two" style="margin-top:14px"><div class="sentence">Then, I have breakfast at home because I need energy.</div><div class="sentence">Firstly, I wake up at 6.30 a.m. every day.</div><div class="sentence">Finally, I go to school at 7.30 a.m. and feel ready.</div><div class="sentence">Besides that, I brush my teeth at home at 6.45 a.m.</div></div><div class="answer">Firstly, I wake up… → Besides that, I brush… → Then, I have breakfast… → Finally, I go to school… (morning order = time order)</div><p class="tiny">Tap Reveal. Ask: why can't Finally be first? Because it means last.</p></div></section>
-<!-- 11 Our class paragraph -->
-<section class="slide" data-title="Class model"><div class="blob"></div><div class="content"><span class="tag">OUR CLASS PARAGRAPH</span><h2 class="heading">Let's build one together — Amira's morning</h2><div class="grid two" style="margin-top:12px"><div class="board"><b style="font-size:27px">⏰ Amira — 6.30 → 7.30 a.m.</b><p class="sub" style="font-size:24px">🛏️ wake up 6.30 a.m.<br>🪥 brush teeth / at home<br>🍳 breakfast — because hungry<br>🚌 go to school 7.30 a.m.</p></div><div class="board" style="font-size:26px;font-weight:900;line-height:1.5">Firstly, __________.<br>Besides that, __________.<br>Then, __________.<br>Finally, __________.</div></div><div class="answer">Firstly, Amira wakes up at 6.30 a.m. every day. Besides that, she brushes her teeth at home at 6.45 a.m. Then, she has breakfast at home because she needs energy. Finally, she goes to school at 7.30 a.m. and feels ready.</div><p class="tiny">Notice: <b>She wakes / brushes / has / goes</b> — -s for She.</p></div></section>
-<!-- 12 Spot the mistake -->
-<section class="slide" data-title="Fix it"><div class="blob"></div><div class="content"><span class="tag">SPOT THE MISTAKE · CHOOSE THE FIX</span><h2 class="heading">Which sentence is correct?</h2><div class="grid two" style="margin-top:16px;gap:16px" data-answer="2"><button class="choice">A. She at 7 o'clock have breakfast.</button><button class="choice">B. She have breakfast at 7 o'clock.</button><button class="choice">C. She has breakfast at 7 o'clock.</button><button class="choice" style="opacity:0;pointer-events:none"></button></div><div class="feedback hidden">✓ <b>C</b> — time at the <b>end</b>, and <b>She → has</b>. A puts time in the middle. B misses <b>-s</b>.</div><div class="answer">Typical errors to listen for today: <i>I at 7am go school</i> → move time to end. <i>She have</i> → <i>She has</i>.</div></div></section>
-<!-- 13 Partner talk -->
-<section class="slide" data-title="Partner talk"><div class="blob"></div><div class="content"><span class="tag">TELL YOUR PARTNER · 2 MINUTES</span><h2 class="heading">Say your morning — 4 sentences</h2><div class="grid two" style="margin-top:16px"><div class="sentence"><b>Firstly,</b> When do you wake up?</div><div class="sentence"><b>Besides that,</b> What do you do next? Where?</div><div class="sentence"><b>Then,</b> Breakfast? Why?</div><div class="sentence"><b>Finally,</b> How do you go to school & how do you feel?</div></div><div class="formula">Use present simple + time at the end + because if you can.</div><p class="tiny">Non-digital: A talks, B listens for -s and time place. Then switch.</p></div></section>
-<!-- 14 Exit ticket -->
-<section class="slide" data-title="Exit ticket"><div class="blob"></div><div class="content"><span class="tag">EXIT TICKET · NO MODEL · 5 MIN</span><h2 class="heading">My Daily Routine — morning</h2><p class="sub">Write 4 sentences. Use <b>3 guide words</b> and at least <b>1 because</b> or <b>and</b>.</p><div class="board" style="margin-top:16px;font-size:27px;font-weight:900;line-height:1.7">Firstly, <span class="write"></span><br>Besides that, <span class="write"></span><br>Then, <span class="write"></span><br>Finally, <span class="write"></span></div><p class="tiny">Look for: present simple correct, -s for he/she, time/place at end, guide words with comma.</p></div></section>
-<!-- 15 Finish -->
-<section class="slide" data-title="Finish"><div class="blob"></div><div class="content"><span class="tag">YOU CAN DO IT</span><h2 class="title">Routine = <span style="color:var(--teal)">every day</span><br>→ present simple</h2><div class="formula">WHO + VERB (+ -s) + WHERE + WHEN &nbsp;|&nbsp; because = reason</div><p class="sub" style="margin-top:20px">Next: add evening routine — play football, read books, listen to music — into one whole-day paragraph.</p><div style="margin-top:16px"><span class="timepill">at 6.30 a.m.</span><span class="timepill">at home</span><span class="timepill">every day</span><span class="timepill">after school</span><span class="timepill">in the evening</span></div></div></section>
-<div class="chrome"><div id="status">CLASS 1D · WELCOME · 1 / 15</div><div><button class="btn" id="prev">← Back</button><button class="btn primary" id="next">Next →</button><button class="btn" id="reveal">Reveal</button><button class="btn" id="reset">Reset</button></div></div></main>
-<script>const stage=document.querySelector('#stage'),slides=[...document.querySelectorAll('.slide')],status=document.querySelector('#status');let current=0;function fit(){let s=Math.min(innerWidth/1280,innerHeight/665);stage.style.transform=`scale(${s})`;stage.style.marginLeft=`${Math.max(0,(innerWidth-1280*s)/2)}px`;stage.style.marginTop=`${Math.max(0,(innerHeight-665*s)/2)}px`}function show(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((x,i)=>x.classList.toggle('active',i===current));status.textContent=`CLASS 1D · ${slides[current].dataset.title.toUpperCase()} · ${current+1} / ${slides.length}`;fit()}addEventListener('resize',fit);fit();document.querySelector('#prev').onclick=()=>show(current-1);document.querySelector('#next').onclick=()=>show(current+1);document.querySelectorAll('[data-answer]').forEach(g=>{const blankId=g.dataset.blank;g.querySelectorAll('.choice').forEach((b,i)=>b.onclick=()=>{g.querySelectorAll('.choice').forEach(x=>x.classList.remove('good','bad'));b.classList.add(i===+g.dataset.answer?'good':'bad');const f=g.parentElement.querySelector('.feedback');if(f)f.classList.remove('hidden');if(blankId){const blank=document.getElementById(blankId);if(blank){const val=b.dataset.value||b.textContent.replace(/^[A-C]\.\s*/,'').trim();blank.textContent=val;blank.classList.add('filled');}}})});document.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{b.parentElement.querySelectorAll('.choice').forEach(x=>x.classList.remove('good','bad'));b.classList.add(b.dataset.choice)});document.querySelectorAll('.card').forEach(c=>c.onclick=()=>c.classList.toggle('open'));function reveal(){let s=slides[current];s.classList.add('show-answer');s.querySelectorAll('.card').forEach(x=>x.classList.add('open'));let f=s.querySelector('.feedback.hidden');if(f)f.classList.remove('hidden');s.querySelectorAll('[data-answer][data-blank]').forEach(g=>{const blank=document.getElementById(g.dataset.blank);if(blank && !blank.classList.contains('filled')){const correct=g.querySelectorAll('.choice')[+g.dataset.answer];if(correct){const val=correct.dataset.value||correct.textContent.replace(/^[A-C]\.\s*/,'').trim();blank.textContent=val;blank.classList.add('filled');}}})}function reset(){let s=slides[current];s.classList.remove('show-answer');s.querySelectorAll('.card').forEach(x=>x.classList.remove('good','bad'));s.querySelectorAll('.card').forEach(x=>x.classList.remove('open'));s.querySelectorAll('.choice').forEach(x=>x.classList.remove('good','bad'));s.querySelectorAll('.feedback').forEach(x=>x.classList.add('hidden'));s.querySelectorAll('.blank').forEach(b=>{b.textContent='_____';b.classList.remove('filled');})}document.querySelector('#reveal').onclick=reveal;document.querySelector('#reset').onclick=reset;document.addEventListener('keydown',e=>{if(e.target.matches('button,input,textarea'))return;if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();show(current+1)}if(e.key==='ArrowLeft')show(current-1);if(e.key.toLowerCase()==='r')reveal()});</script></body></html>
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>My Daily Routine</title><style>:root {
+  color-scheme: light;
+  --ink: #172b36;
+  --paper: #fffdf8;
+  --accent: #07685f;
+  --line: #829894;
+  --soft: #e8f3ee;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #182b34;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+#stage {
+  position: absolute;
+  width: 1366px;
+  height: 768px;
+  background: var(--paper);
+  transform-origin: top left;
+  overflow: hidden;
+}
+#slide {
+  --text-expansion: 1;
+  height: calc(100% - 76px);
+  padding: 32px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  overflow-wrap: normal;
+}
+#slide > * {
+  flex-shrink: 0;
+}
+h1 {
+  font-size: calc(60px * var(--text-expansion));
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  margin: 0;
+  font-weight: 700;
+}
+p {
+  margin: 0;
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 2px solid var(--line);
+  background: transparent;
+  border-radius: 9px;
+  padding: 10px 18px;
+}
+button:hover {
+  border-color: var(--accent);
+}
+button:focus-visible {
+  outline: 4px solid #ab5100;
+  outline-offset: 4px;
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+button[hidden] {
+  display: none;
+}
+.hero {
+  font-size: calc(68px * var(--text-expansion));
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+}
+.body,
+.answer {
+  font-size: calc(48px * var(--text-expansion));
+  line-height: 1.22;
+}
+.passage {
+  font-size: calc(46px * var(--text-expansion));
+  line-height: 1.3;
+  white-space: pre-line;
+}
+.choices {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.choices button {
+  font-size: calc(44px * var(--text-expansion));
+  text-align: left;
+  padding: 18px 25px;
+}
+.selected {
+  border-color: var(--accent);
+  background: var(--soft);
+}
+.feedback,
+.hint {
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.22;
+  color: var(--accent);
+}
+.answer {
+  color: var(--accent);
+}
+.blank {
+  border-bottom: 4px solid var(--accent);
+  padding: 0 8px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.blank.empty {
+  border-bottom-color: transparent;
+}
+/* Gap stories insert whole sentences, so the blank may wrap. Single-word
+   cloze blanks keep nowrap above. */
+.passage .blank {
+  white-space: normal;
+}
+/* Gap slides stack a prompt, a 3-line story, and up to 3 sentence buttons
+   above a 76px footer. Measured at 1280x665: default rhythm overflows by
+   ~140px, so gap slides use tighter spacing. Type sizes for the story (46px)
+   and options (44px) are untouched; only the repeated one-line prompt,
+   padding, and gaps compact. Teacher-operated buttons, so 8px padding is
+   enough for the tap target. */
+#slide[data-type="gap"] {
+  padding: 16px 44px;
+  gap: 10px;
+}
+#slide[data-type="gap"] h1 {
+  font-size: 44px;
+}
+#slide[data-type="gap"] .choices {
+  gap: 10px;
+}
+#slide[data-type="gap"] .choices button {
+  padding: 8px 18px;
+}
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+.compare > div + div {
+  border-left: 2px solid var(--line);
+  padding-left: 36px;
+}
+.label {
+  font-size: calc(36px * var(--text-expansion));
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.list button,
+.step {
+  font-size: calc(40px * var(--text-expansion));
+  text-align: left;
+  line-height: 1.16;
+}
+.sort-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  font-size: calc(44px * var(--text-expansion));
+}
+.sort-row button {
+  font-size: calc(36px * var(--text-expansion));
+  padding: 12px 20px;
+}
+.sort-row .choices {
+  gap: 12px;
+}
+#slide[data-type="image"] {
+  justify-content: flex-start;
+}
+#slide .picture {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  align-self: stretch;
+}
+.prompt-only h1 {
+  font-size: calc(96px * var(--text-expansion));
+  line-height: 1.1;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+}
+footer > div,
+nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+footer button {
+  font-size: 24px;
+  min-height: 48px;
+  min-width: 52px;
+  padding: 9px 17px;
+}
+#count {
+  min-width: 82px;
+  text-align: center;
+  font-size: 24px;
+}
+#slide [hidden] {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.list button:disabled {
+  opacity: 1;
+}
+</style><body><main id="stage"><section id="slide" aria-label="Teaching slide"></section><div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div><footer><div><button id="hint">Hint</button><button id="reveal">Reveal</button><button id="reset">Reset</button></div><nav aria-label="Slides"><button id="prev" aria-label="Previous slide">←</button><span id="count"></span><button id="next" aria-label="Next slide">→</button></nav></footer></main><script type="application/json" id="deck-data">{"version":1,"title":"My Daily Routine","viewport":"1280x665","slides":[{"id":"welcome","type":"prompt","prompt":"What do you do every day?","hint":"Think about your morning."},{"id":"recall-verbs","type":"steps","prompt":"Say each hobby phrase.","items":["play football","read books","listen to music"]},{"id":"recall-where-when","type":"steps","prompt":"Say where and when.","items":["at home","every evening"]},{"id":"hobby-vs-routine","type":"compare","prompt":"What is different about a routine?","columns":[{"label":"Hobby","text":"What you love to do, sometimes."},{"label":"Daily routine","text":"What you do every day."}],"hint":"Think about how often."},{"id":"present-simple","type":"compare","prompt":"What changes with he and she?","columns":[{"label":"I and they","text":"I wake up at 6.30 a.m."},{"label":"He and she","text":"She wakes up at 6.30 a.m."}],"hint":"Look at the verb."},{"id":"she-brushes","type":"cloze","prompt":"Which word completes the sentence?","sentence":"She {{blank}} her teeth every morning.","options":["brushes","brush","brushing"],"answer":"brushes","feedback":"She needs -es. Brush ends with -sh.","hint":"She needs an -s verb."},{"id":"time-place","type":"reveal","prompt":"Where do the time and place go?","answer":"At the end: at home at 7 o'clock.","feedback":"Place comes before time.","hint":"Look at the end of the sentence."},{"id":"mix-build","type":"prompt","prompt":"Make three true sentences about your morning.","hint":"Use a verb with where and when."},{"id":"because-vs-and","type":"cloze","prompt":"Which word gives the reason?","sentence":"I wake up early {{blank}} I like morning assembly.","options":["and","because","but"],"answer":"because","feedback":"Because gives a reason. And only adds.","hint":"Do you add or explain why?"},{"id":"guide-words","type":"steps","prompt":"Say the four guide words in order.","items":["Firstly,","Besides that,","Then,","Finally,"]},{"id":"morning-order","type":"order","prompt":"Put the morning in time order.","items":["Firstly, I wake up at 6.30 a.m.","Besides that, I brush my teeth at 6.45 a.m.","Then, I have breakfast at home.","Finally, I go to school at 7.30 a.m."],"feedback":"Morning order is time order."},{"id":"amira-model","type":"writing","prompt":"Amira's morning","task":"Write four sentences about Amira's morning from 6.30 to 7.30. Use She and the four guide words.","frame":"Firstly, Amira ... Besides that, she ... Then, she ... Finally, she ..."},{"id":"spot-correct","type":"choice","prompt":"Which sentence is correct?","options":["She at 7 o'clock have breakfast.","She have breakfast at 7 o'clock.","She has breakfast at 7 o'clock."],"answer":"She has breakfast at 7 o'clock.","feedback":"Time goes at the end. She needs has.","hint":"Check the time and the verb."},{"id":"partner-talk","type":"prompt","prompt":"Tell your partner about your morning in four sentences.","hint":"Use Firstly, Besides that, Then, Finally."},{"id":"exit-ticket","type":"prompt","prompt":"Write four sentences about your morning.","hint":"Use three guide words and because or and once."},{"id":"review","type":"reveal","prompt":"What do we use for routines?","answer":"Present simple: She wakes up every day.","feedback":"Who plus verb plus where plus when."}]}</script><script>(() => {
+  "use strict";
+  const deck = JSON.parse(document.getElementById("deck-data").textContent),
+    stage = document.getElementById("stage"),
+    slide = document.getElementById("slide");
+  const [w, h] = (deck.viewport || "1366x768").split("x").map(Number);
+  stage.style.width = w + "px";
+  stage.style.height = h + "px";
+  let index = 0;
+  const states = deck.slides.map(() => ({
+    hint: false,
+    revealed: false,
+    step: 0,
+    selected: null,
+    order: [],
+    groups: {},
+  }));
+  const el = (tag, text, cls) => {
+    const n = document.createElement(tag);
+    if (text !== undefined) n.textContent = text;
+    if (cls) n.className = cls;
+    return n;
+  };
+  const button = (text, fn, selected = false) => {
+    const n = el("button", text, selected ? "selected" : "");
+    n.type = "button";
+    n.setAttribute("aria-pressed", String(selected));
+    n.onclick = fn;
+    return n;
+  };
+  function draw() {
+    const focused = document.activeElement;
+    const focusIndex = [...slide.querySelectorAll("button")].indexOf(focused);
+    const s = deck.slides[index],
+      st = states[index];
+    slide.style.setProperty("--text-expansion", "1");
+    slide.replaceChildren();
+    slide.className = ["prompt", "reveal"].includes(s.type)
+      ? "prompt-only"
+      : "";
+    slide.dataset.id = s.id;
+    slide.dataset.type = s.type;
+    slide.setAttribute("aria-label", s.prompt);
+    slide.append(el("h1", s.prompt));
+    const add = (tag, text, cls) => {
+      const n = el(tag, text, cls);
+      slide.append(n);
+      return n;
+    };
+    if (s.type === "cloze") {
+      const n = add("p", undefined, "hero");
+      const [a, b] = s.sentence.split("{{blank}}");
+      const blankText = st.revealed ? s.answer : st.selected || "_____";
+      n.append(
+        document.createTextNode(a),
+        el("span", blankText, blankText === "_____" ? "blank empty" : "blank"),
+        document.createTextNode(b),
+      );
+    }
+    if (s.type === "gap") {
+      const n = add("p", undefined, "passage");
+      const [a, b] = s.text.split("{{blank}}");
+      const blankText = st.revealed ? s.answer : st.selected || "_____";
+      n.append(
+        document.createTextNode(a),
+        el("span", blankText, blankText === "_____" ? "blank empty" : "blank"),
+        document.createTextNode(b),
+      );
+    }
+    if (["choice", "cloze", "gap"].includes(s.type)) {
+      const n = add("div", undefined, "choices");
+      s.options.forEach((o) =>
+        n.append(
+          button(
+            o,
+            () => {
+              st.selected = o;
+              st.revealed = false;
+              draw();
+              focusChoice(o);
+            },
+            st.selected === o,
+          ),
+        ),
+      );
+    }
+    if (s.type === "compare") {
+      const n = add("div", undefined, "compare");
+      s.columns.forEach((c) => {
+        const col = el("div");
+        col.append(el("p", c.label, "label"), el("p", c.text, "body"));
+        n.append(col);
+      });
+    }
+    if (s.type === "passage") add("p", s.text, "passage");
+    if (s.type === "writing") {
+      add("p", s.task, "body");
+      if (st.revealed && s.frame) add("p", s.frame, "answer");
+    }
+    if (s.type === "image") {
+      const n = add("img", undefined, "picture");
+      n.src = s.src;
+      n.alt = s.alt;
+    }
+    if (s.type === "steps") {
+      const n = add("div", undefined, "list");
+      s.items
+        .slice(0, Math.max(1, st.step + 1))
+        .forEach((t, i) => n.append(el("p", `${i + 1}. ${t}`, "step")));
+    }
+    if (s.type === "order") {
+      const n = add("div", undefined, "list");
+      const display = s.items.map((_, i) => i);
+      if (!st.revealed) display.reverse();
+      display.forEach((i) => {
+        const pos = st.order.indexOf(i);
+        n.append(
+          button(
+            `${pos < 0 ? "○" : pos + 1 + "."} ${s.items[i]}`,
+            () => {
+              if (st.revealed) return;
+              st.order =
+                pos < 0 ? [...st.order, i] : st.order.filter((x) => x !== i);
+              draw();
+            },
+            pos >= 0,
+          ),
+        );
+      });
+      if (st.revealed)
+        n.querySelectorAll("button").forEach((b) => (b.disabled = true));
+    }
+    if (s.type === "sort") {
+      const n = add("div", undefined, "list");
+      s.items.forEach((item, i) => {
+        const row = el("div", undefined, "sort-row"),
+          choices = el("div", undefined, "choices");
+        row.append(el("span", item.text));
+        choices.setAttribute("role", "group");
+        choices.setAttribute("aria-label", item.text);
+        s.categories.forEach((c) =>
+          choices.append(
+            button(
+              c,
+              () => {
+                st.groups[i] = c;
+                st.revealed = false;
+                draw();
+              },
+              st.groups[i] === c,
+            ),
+          ),
+        );
+        if (st.revealed)
+          choices.querySelectorAll("button").forEach((b) => {
+            if (b.getAttribute("aria-pressed") === "true")
+              b.textContent = "✓ " + b.textContent;
+          });
+        row.append(choices);
+        n.append(row);
+      });
+    }
+    if (st.hint && s.hint && !st.revealed) add("p", s.hint, "hint");
+    if (st.revealed) {
+      if (["reveal", "choice"].includes(s.type)) add("p", s.answer, "answer");
+      if (s.feedback) {
+        const f = add("p", s.feedback, "feedback");
+        f.setAttribute("role", "status");
+      }
+    }
+    expandContent(s.type);
+    const hint = document.getElementById("hint"),
+      rev = document.getElementById("reveal");
+    hint.hidden = !s.hint;
+    hint.disabled = st.revealed;
+    hint.textContent = st.hint ? "Hide hint" : "Hint";
+    rev.hidden = !(
+      ["reveal", "choice", "cloze", "gap", "steps", "order", "sort"].includes(
+        s.type,
+      ) ||
+      (s.type === "writing" && s.frame)
+    );
+    rev.textContent = s.type === "steps" ? "Next step" : "Reveal";
+    rev.disabled =
+      s.type === "steps" ? st.step >= s.items.length - 1 : st.revealed;
+    document.getElementById("reset").hidden = hint.hidden && rev.hidden;
+    document.getElementById("prev").disabled = index === 0;
+    document.getElementById("next").disabled = index === deck.slides.length - 1;
+    document.getElementById("count").textContent =
+      `${index + 1} / ${deck.slides.length}`;
+    if (focusIndex >= 0) slide.querySelectorAll("button")[focusIndex]?.focus();
+    document.getElementById("announcement").textContent =
+      `Slide ${index + 1} of ${deck.slides.length}. ${s.prompt}. ` +
+      (st.revealed
+        ? (s.answer || "") + " " + (s.feedback || "")
+        : st.hint
+          ? s.hint || ""
+          : st.selected || "");
+  }
+  // Enlarge sparse content to use the classroom canvas. Never shrink below
+  // the shared projection type scale; oversized content must be split in JSON.
+  function expandContent(type) {
+    if (type === "image") return;
+    const fits = () => {
+      const bounds = slide.getBoundingClientRect();
+      const ratio = bounds.width / slide.offsetWidth;
+      const style = getComputedStyle(slide);
+      const top = bounds.top + parseFloat(style.paddingTop) * ratio;
+      const bottom = bounds.bottom - parseFloat(style.paddingBottom) * ratio;
+      const left = bounds.left + parseFloat(style.paddingLeft) * ratio;
+      const right = bounds.right - parseFloat(style.paddingRight) * ratio;
+      return [...slide.querySelectorAll("*")].every((node) => {
+        const r = node.getBoundingClientRect();
+        return (
+          (!r.width && !r.height) ||
+          (r.top >= top - 1 &&
+            r.bottom <= bottom + 1 &&
+            r.left >= left - 1 &&
+            r.right <= right + 1 &&
+            node.scrollWidth <= node.clientWidth + 1)
+        );
+      });
+    };
+    let low = 1,
+      high = type === "prompt" || type === "reveal" ? 1.4 : 1.25;
+    for (let i = 0; i < 8; i++) {
+      const mid = (low + high) / 2;
+      slide.style.setProperty("--text-expansion", mid);
+      if (fits()) low = mid;
+      else high = mid;
+    }
+    slide.style.setProperty("--text-expansion", low.toFixed(3));
+  }
+  function focusChoice(text) {
+    [...slide.querySelectorAll("button")]
+      .find((n) => n.textContent === text)
+      ?.focus();
+  }
+  function reveal() {
+    const s = deck.slides[index],
+      st = states[index];
+    if (s.type === "steps") st.step = Math.min(st.step + 1, s.items.length - 1);
+    else {
+      st.revealed = true;
+      st.hint = false;
+      if (["choice", "cloze", "gap"].includes(s.type)) st.selected = s.answer;
+      if (s.type === "sort")
+        s.items.forEach((x, i) => (st.groups[i] = x.category));
+      if (s.type === "order") st.order = s.items.map((_, i) => i);
+    }
+    draw();
+  }
+  function move(n) {
+    index = Math.max(0, Math.min(deck.slides.length - 1, index + n));
+    draw();
+  }
+  document.getElementById("hint").onclick = () => {
+    states[index].hint = !states[index].hint;
+    draw();
+  };
+  document.getElementById("reveal").onclick = reveal;
+  document.getElementById("reset").onclick = () => {
+    states[index] = {
+      hint: false,
+      revealed: false,
+      step: 0,
+      selected: null,
+      order: [],
+      groups: {},
+    };
+    draw();
+  };
+  document.getElementById("prev").onclick = () => move(-1);
+  document.getElementById("next").onclick = () => move(1);
+  document.addEventListener("keydown", (e) => {
+    if (e.target.isContentEditable || e.target.closest("input,textarea,select"))
+      return;
+    const space = e.code === "Space" || e.key === " ";
+    if (space && e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey) {
+      e.preventDefault();
+      if (!e.repeat) document.getElementById("reset").click();
+      return;
+    }
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      if (!e.repeat) move(e.key === "ArrowRight" ? 1 : -1);
+    } else if (space) {
+      // Capture Space even when a choice or navigation button has focus.
+      // Enter remains the native way to activate the focused button.
+      e.preventDefault();
+      const control = document.getElementById("reveal");
+      if (!e.repeat && !control.hidden && !control.disabled) control.click();
+    }
+  });
+  function scale() {
+    const z = Math.min(innerWidth / w, innerHeight / h);
+    stage.style.transform = `scale(${z})`;
+    stage.style.left = (innerWidth - w * z) / 2 + "px";
+    stage.style.top = (innerHeight - h * z) / 2 + "px";
+  }
+  addEventListener("resize", scale);
+  scale();
+  draw();
+})();
+</script></body></html>

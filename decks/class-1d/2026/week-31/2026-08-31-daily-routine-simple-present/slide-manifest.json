@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "welcome",
+      "type": "prompt",
+      "initialWords": 6,
+      "hintWords": 10,
+      "revealedWords": 6
+    },
+    {
+      "id": "recall-verbs",
+      "type": "steps",
+      "initialWords": 6,
+      "hintWords": 6,
+      "revealedWords": 11
+    },
+    {
+      "id": "recall-where-when",
+      "type": "steps",
+      "initialWords": 6,
+      "hintWords": 6,
+      "revealedWords": 8
+    },
+    {
+      "id": "hobby-vs-routine",
+      "type": "compare",
+      "initialWords": 20,
+      "hintWords": 24,
+      "revealedWords": 20
+    },
+    {
+      "id": "present-simple",
+      "type": "compare",
+      "initialWords": 24,
+      "hintWords": 28,
+      "revealedWords": 24
+    },
+    {
+      "id": "she-brushes",
+      "type": "cloze",
+      "initialWords": 14,
+      "hintWords": 19,
+      "revealedWords": 21
+    },
+    {
+      "id": "time-place",
+      "type": "reveal",
+      "initialWords": 7,
+      "hintWords": 14,
+      "revealedWords": 19
+    },
+    {
+      "id": "mix-build",
+      "type": "prompt",
+      "initialWords": 7,
+      "hintWords": 14,
+      "revealedWords": 7
+    },
+    {
+      "id": "because-vs-and",
+      "type": "cloze",
+      "initialWords": 17,
+      "hintWords": 23,
+      "revealedWords": 24
+    },
+    {
+      "id": "guide-words",
+      "type": "steps",
+      "initialWords": 8,
+      "hintWords": 8,
+      "revealedWords": 12
+    },
+    {
+      "id": "morning-order",
+      "type": "order",
+      "initialWords": 36,
+      "hintWords": 36,
+      "revealedWords": 41
+    },
+    {
+      "id": "amira-model",
+      "type": "writing",
+      "initialWords": 19,
+      "hintWords": 19,
+      "revealedWords": 32
+    },
+    {
+      "id": "spot-correct",
+      "type": "choice",
+      "initialWords": 22,
+      "hintWords": 28,
+      "revealedWords": 36
+    },
+    {
+      "id": "partner-talk",
+      "type": "prompt",
+      "initialWords": 9,
+      "hintWords": 15,
+      "revealedWords": 9
+    },
+    {
+      "id": "exit-ticket",
+      "type": "prompt",
+      "initialWords": 6,
+      "hintWords": 15,
+      "revealedWords": 6
+    },
+    {
+      "id": "review",
+      "type": "reveal",
+      "initialWords": 6,
+      "hintWords": 6,
+      "revealedWords": 20
+    }
+  ]
+}

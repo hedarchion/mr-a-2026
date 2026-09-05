@@ -119,6 +119,30 @@ button[hidden] {
 .blank.empty {
   border-bottom-color: transparent;
 }
+/* Gap stories insert whole sentences, so the blank may wrap. Single-word
+   cloze blanks keep nowrap above. */
+.passage .blank {
+  white-space: normal;
+}
+/* Gap slides stack a prompt, a 3-line story, and up to 3 sentence buttons
+   above a 76px footer. Measured at 1280x665: default rhythm overflows by
+   ~140px, so gap slides use tighter spacing. Type sizes for the story (46px)
+   and options (44px) are untouched; only the repeated one-line prompt,
+   padding, and gaps compact. Teacher-operated buttons, so 8px padding is
+   enough for the tap target. */
+#slide[data-type="gap"] {
+  padding: 16px 44px;
+  gap: 10px;
+}
+#slide[data-type="gap"] h1 {
+  font-size: 44px;
+}
+#slide[data-type="gap"] .choices {
+  gap: 10px;
+}
+#slide[data-type="gap"] .choices button {
+  padding: 8px 18px;
+}
 .compare {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -284,7 +308,17 @@ footer button {
         document.createTextNode(b),
       );
     }
-    if (["choice", "cloze"].includes(s.type)) {
+    if (s.type === "gap") {
+      const n = add("p", undefined, "passage");
+      const [a, b] = s.text.split("{{blank}}");
+      const blankText = st.revealed ? s.answer : st.selected || "_____";
+      n.append(
+        document.createTextNode(a),
+        el("span", blankText, blankText === "_____" ? "blank empty" : "blank"),
+        document.createTextNode(b),
+      );
+    }
+    if (["choice", "cloze", "gap"].includes(s.type)) {
       const n = add("div", undefined, "choices");
       s.options.forEach((o) =>
         n.append(
@@ -392,7 +426,7 @@ footer button {
     hint.disabled = st.revealed;
     hint.textContent = st.hint ? "Hide hint" : "Hint";
     rev.hidden = !(
-      ["reveal", "choice", "cloze", "steps", "order", "sort"].includes(
+      ["reveal", "choice", "cloze", "gap", "steps", "order", "sort"].includes(
         s.type,
       ) ||
       (s.type === "writing" && s.frame)
@@ -460,7 +494,7 @@ footer button {
     else {
       st.revealed = true;
       st.hint = false;
-      if (["choice", "cloze"].includes(s.type)) st.selected = s.answer;
+      if (["choice", "cloze", "gap"].includes(s.type)) st.selected = s.answer;
       if (s.type === "sort")
         s.items.forEach((x, i) => (st.groups[i] = x.category));
       if (s.type === "order") st.order = s.items.map((_, i) => i);
@@ -490,19 +524,24 @@ footer button {
   document.getElementById("prev").onclick = () => move(-1);
   document.getElementById("next").onclick = () => move(1);
   document.addEventListener("keydown", (e) => {
-    if (e.altKey || e.ctrlKey || e.metaKey) return;
-    if (e.key === "ArrowRight") {
+    if (e.target.isContentEditable || e.target.closest("input,textarea,select"))
+      return;
+    const space = e.code === "Space" || e.key === " ";
+    if (space && e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey) {
       e.preventDefault();
-      move(1);
-    } else if (e.key === "ArrowLeft") {
+      if (!e.repeat) document.getElementById("reset").click();
+      return;
+    }
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
       e.preventDefault();
-      move(-1);
-    } else if (
-      e.code === "Space" &&
-      !e.target.closest("button,input,textarea,select")
-    ) {
+      if (!e.repeat) move(e.key === "ArrowRight" ? 1 : -1);
+    } else if (space) {
+      // Capture Space even when a choice or navigation button has focus.
+      // Enter remains the native way to activate the focused button.
       e.preventDefault();
-      move(1);
+      const control = document.getElementById("reveal");
+      if (!e.repeat && !control.hidden && !control.disabled) control.click();
     }
   });
   function scale() {

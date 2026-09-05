@@ -1,0 +1,164 @@
+{
+  "version": 1,
+  "title": "My Daily Routine",
+  "viewport": "1280x665",
+  "slides": [
+    {
+      "id": "welcome",
+      "type": "prompt",
+      "prompt": "What do you do every day?",
+      "hint": "Think about your morning.",
+      "notes": "60-min Mon lesson, 31 Aug, 2:20-3:20. Retrieval bridges Week 30 hobby phrases into daily routines. Outcome (teacher-kept): describe a morning routine in four connected simple-present sentences."
+    },
+    {
+      "id": "recall-verbs",
+      "type": "steps",
+      "prompt": "Say each hobby phrase.",
+      "items": [
+        "play football",
+        "read books",
+        "listen to music"
+      ],
+      "notes": "Retrieval of Week 30 verb phrases from 24/27 Aug decks. Reveal one step at a time; class choruses each phrase. Non-digital fallback: chorus."
+    },
+    {
+      "id": "recall-where-when",
+      "type": "steps",
+      "prompt": "Say where and when.",
+      "items": [
+        "at home",
+        "every evening"
+      ],
+      "notes": "Retrieval of Week 30 place/time chunks. Same scaffold reused for routines today so the language load is use, not new vocabulary."
+    },
+    {
+      "id": "hobby-vs-routine",
+      "type": "compare",
+      "prompt": "What is different about a routine?",
+      "columns": [
+        {"label": "Hobby", "text": "What you love to do, sometimes."},
+        {"label": "Daily routine", "text": "What you do every day."}
+      ],
+      "hint": "Think about how often.",
+      "notes": "Bridge: hobby (sometimes) vs routine (every day). Expected: routine means every day, so we use simple present. Grammar book: present simple for regular-basis actions."
+    },
+    {
+      "id": "present-simple",
+      "type": "compare",
+      "prompt": "What changes with he and she?",
+      "columns": [
+        {"label": "I and they", "text": "I wake up at 6.30 a.m."},
+        {"label": "He and she", "text": "She wakes up at 6.30 a.m."}
+      ],
+      "hint": "Look at the verb.",
+      "notes": "Model: He/She adds -s (wakes, plays). Routine is present simple, never is + -ing. Listen for I am wake up."
+    },
+    {
+      "id": "she-brushes",
+      "type": "cloze",
+      "prompt": "Which word completes the sentence?",
+      "sentence": "She {{blank}} her teeth every morning.",
+      "options": ["brushes", "brush", "brushing"],
+      "answer": "brushes",
+      "feedback": "She needs -es. Brush ends with -sh.",
+      "hint": "She needs an -s verb.",
+      "notes": "Click fills the blank inline; Reset clears it. B is for I/you. C needs is. Listen for She brush."
+    },
+    {
+      "id": "time-place",
+      "type": "reveal",
+      "prompt": "Where do the time and place go?",
+      "answer": "At the end: at home at 7 o'clock.",
+      "feedback": "Place comes before time.",
+      "hint": "Look at the end of the sentence.",
+      "notes": "Model: I have breakfast at home at 7 o'clock. Grammar book: phrasal time/place adverbials at end, place before time. Never in the middle of the verb."
+    },
+    {
+      "id": "mix-build",
+      "type": "prompt",
+      "prompt": "Make three true sentences about your morning.",
+      "hint": "Use a verb with where and when.",
+      "notes": "Elicit 3 oral sentences from verb x where x when grid: wake up / have breakfast / go to school; at home / by bus; at 6.30 a.m. / 7 o'clock / 7.30 a.m. Formula: who + verb + where + when."
+    },
+    {
+      "id": "because-vs-and",
+      "type": "cloze",
+      "prompt": "Which word gives the reason?",
+      "sentence": "I wake up early {{blank}} I like morning assembly.",
+      "options": ["and", "because", "but"],
+      "answer": "because",
+      "feedback": "Because gives a reason. And only adds.",
+      "hint": "Do you add or explain why?",
+      "notes": "Click fills the blank inline; Reset clears it. Grammar book: because marks reason; and marks addition. Listen for and-chaining."
+    },
+    {
+      "id": "guide-words",
+      "type": "steps",
+      "prompt": "Say the four guide words in order.",
+      "items": [
+        "Firstly,",
+        "Besides that,",
+        "Then,",
+        "Finally,"
+      ],
+      "notes": "Reuse of Week 30 linkers with fronted comma for time order. Reveal one step at a time; class choruses."
+    },
+    {
+      "id": "morning-order",
+      "type": "order",
+      "prompt": "Put the morning in time order.",
+      "items": [
+        "Firstly, I wake up at 6.30 a.m.",
+        "Besides that, I brush my teeth at 6.45 a.m.",
+        "Then, I have breakfast at home.",
+        "Finally, I go to school at 7.30 a.m."
+      ],
+      "feedback": "Morning order is time order.",
+      "notes": "Items shown reversed; pupils click in sequence, click again to remove. Reveal restores time order. Ask why Finally cannot be first."
+    },
+    {
+      "id": "amira-model",
+      "type": "writing",
+      "prompt": "Amira's morning",
+      "task": "Write four sentences about Amira's morning from 6.30 to 7.30. Use She and the four guide words.",
+      "frame": "Firstly, Amira ... Besides that, she ... Then, she ... Finally, she ...",
+      "notes": "Shared scaffold: Amira wakes up 6.30, brushes teeth at home 6.45, breakfast because she needs energy, school 7.30. Frame revealed on request. Watch She + -s throughout."
+    },
+    {
+      "id": "spot-correct",
+      "type": "choice",
+      "prompt": "Which sentence is correct?",
+      "options": [
+        "She at 7 o'clock have breakfast.",
+        "She have breakfast at 7 o'clock.",
+        "She has breakfast at 7 o'clock."
+      ],
+      "answer": "She has breakfast at 7 o'clock.",
+      "feedback": "Time goes at the end. She needs has.",
+      "hint": "Check the time and the verb.",
+      "notes": "Repair check: A puts time in the middle; B misses -s. Selection records attempt; Reveal explains."
+    },
+    {
+      "id": "partner-talk",
+      "type": "prompt",
+      "prompt": "Tell your partner about your morning in four sentences.",
+      "hint": "Use Firstly, Besides that, Then, Finally.",
+      "notes": "2-min partner talk. A talks, B listens for -s and time at the end, then switch. Formula: present simple + time at the end + because if you can."
+    },
+    {
+      "id": "exit-ticket",
+      "type": "prompt",
+      "prompt": "Write four sentences about your morning.",
+      "hint": "Use three guide words and because or and once.",
+      "notes": "5-min individual exit, no model. Expect 3 linkers and 1 because/and; look for present simple, -s for he/she, time/place at end. Copying the class model without personalising is not mastery."
+    },
+    {
+      "id": "review",
+      "type": "reveal",
+      "prompt": "What do we use for routines?",
+      "answer": "Present simple: She wakes up every day.",
+      "feedback": "Who plus verb plus where plus when.",
+      "notes": "Close: routine means every day, so present simple; because gives a reason. Forward bridge: add evening routine into one whole-day paragraph."
+    }
+  ]
+}
