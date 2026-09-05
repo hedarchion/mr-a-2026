@@ -82,15 +82,11 @@
     },
     {
       "id": "routine",
-      "type": "steps",
-      "prompt": "Found a gap? Do these 4 checks.",
-      "items": [
-        "Topic: what is this part about?",
-        "Who: who follows who?",
-        "Both sides: what must join up?",
-        "Predict the idea, then choose."
-      ],
-      "notes": "Rebuild the routine together, one check at a time. Leave visible during bookwork."
+      "type": "reveal",
+      "prompt": "Found a gap? What do you check?",
+      "answer": "1. Topic: what is this part about? 2. Who: who follows who? 3. Both sides: what must join up? 4. Predict the idea, then choose.",
+      "feedback": "Use all 4 on every gap.",
+      "notes": "Elicit the 4 checks orally first, then reveal to confirm. Leave this slide on screen during bookwork — come back to it while pupils work."
     },
     {
       "id": "module-format",

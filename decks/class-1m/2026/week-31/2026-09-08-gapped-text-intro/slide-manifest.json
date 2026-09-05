@@ -45,10 +45,10 @@
     },
     {
       "id": "routine",
-      "type": "steps",
-      "initialWords": 13,
-      "hintWords": 13,
-      "revealedWords": 28
+      "type": "reveal",
+      "initialWords": 7,
+      "hintWords": 7,
+      "revealedWords": 38
     },
     {
       "id": "module-format",

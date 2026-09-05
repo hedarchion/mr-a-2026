@@ -24,9 +24,9 @@ Check 4 (predict before options). 30-sec partner talk before voting: 'What does 
 
 Trap: keyword matching fails. Say: 'Don't ask same word. Ask: which idea connects?' Invention flavour links to Module p.36.
 
-## 7. routine (steps)
+## 7. routine (reveal)
 
-Rebuild the routine together, one check at a time. Leave visible during bookwork.
+Elicit the 4 checks orally first, then reveal to confirm. Leave this slide on screen during bookwork — come back to it while pupils work.
 
 ## 8. module-format (reveal)
 
