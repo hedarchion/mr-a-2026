@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "hook",
+      "type": "prompt",
+      "initialWords": 10,
+      "hintWords": 17,
+      "revealedWords": 10
+    },
+    {
+      "id": "clue-topic",
+      "type": "choice",
+      "initialWords": 35,
+      "hintWords": 40,
+      "revealedWords": 57
+    },
+    {
+      "id": "clue-chain",
+      "type": "choice",
+      "initialWords": 31,
+      "hintWords": 37,
+      "revealedWords": 48
+    },
+    {
+      "id": "clue-sides",
+      "type": "choice",
+      "initialWords": 34,
+      "hintWords": 40,
+      "revealedWords": 51
+    },
+    {
+      "id": "clue-predict",
+      "type": "choice",
+      "initialWords": 33,
+      "hintWords": 40,
+      "revealedWords": 51
+    },
+    {
+      "id": "trap-word",
+      "type": "choice",
+      "initialWords": 29,
+      "hintWords": 36,
+      "revealedWords": 48
+    },
+    {
+      "id": "routine",
+      "type": "steps",
+      "initialWords": 15,
+      "hintWords": 15,
+      "revealedWords": 36
+    },
+    {
+      "id": "module-format",
+      "type": "reveal",
+      "initialWords": 6,
+      "hintWords": 6,
+      "revealedWords": 29
+    },
+    {
+      "id": "module-launch",
+      "type": "writing",
+      "initialWords": 22,
+      "hintWords": 22,
+      "revealedWords": 36
+    },
+    {
+      "id": "exit-checks",
+      "type": "prompt",
+      "initialWords": 6,
+      "hintWords": 10,
+      "revealedWords": 6
+    }
+  ]
+}

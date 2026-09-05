@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "title": "Catch the Missing Sentence",
+  "viewport": "1280x665",
+  "slides": [
+    {
+      "id": "hook",
+      "type": "prompt",
+      "prompt": "Eight sentences fell out. How do we put them back?",
+      "hint": "Two stories: a light bulb and teleportation.",
+      "notes": "60-min Tue lesson, sl_t3 (time assumed 60 min). Module pp.36-37 gapped text (P1P5, marks collected). Outcomes (teacher-kept): use the 4 checks on every gap; complete gaps 1-8 in books. 1M notes: noisy class, avoid role mechanics and competitions; fingers voting + brief partner talk only."
+    },
+    {
+      "id": "clue-topic",
+      "type": "choice",
+      "prompt": "Alina wanted to build a robot. Which sentence fits?",
+      "options": [
+        "She joined a robotics workshop and practised every weekend.",
+        "Her school had a large science lab with new computers.",
+        "Many pupils enjoy watching robot videos online."
+      ],
+      "answer": "She joined a robotics workshop and practised every weekend.",
+      "feedback": "Same topic and same person doing the thing. B and C drift away.",
+      "hint": "Follow Alina, not the building.",
+      "notes": "CLUE 1 (topic) adapted from the 2E routine. Vote with fingers 1/2/3, then reveal. Module answers stay hidden for the marked activity."
+    },
+    {
+      "id": "clue-chain",
+      "type": "choice",
+      "prompt": "Mei adopted a stray kitten. Which sentence fits?",
+      "options": [
+        "She fed it milk in a warm box.",
+        "Kittens are playful animals that like string.",
+        "Her brother cycled to the market that morning."
+      ],
+      "answer": "She fed it milk in a warm box.",
+      "feedback": "She and it carry Mei and the kitten forward.",
+      "hint": "Who is she? What is it?",
+      "notes": "CLUE 2 (who/what chain). Expected chain talk: Mei to she, kitten to it."
+    },
+    {
+      "id": "clue-sides",
+      "type": "choice",
+      "prompt": "The hall was dark. Then lamps lit up. What fits?",
+      "options": [
+        "The electrician had fixed the old wires that morning.",
+        "Schools often hold ceremonies in big halls.",
+        "The lamps were made of glass and metal."
+      ],
+      "answer": "The electrician had fixed the old wires that morning.",
+      "feedback": "Only A explains dark before and light after.",
+      "hint": "Read before AND after the gap.",
+      "notes": "CLUE 3 (both sides). The important one: never read only the gap."
+    },
+    {
+      "id": "clue-predict",
+      "type": "choice",
+      "prompt": "Razak dreamed of travel with no traffic. Talk, then choose.",
+      "options": [
+        "He had imagined a teleportation machine the night before.",
+        "Buses in his town were always crowded.",
+        "Many people travel to work by bus."
+      ],
+      "answer": "He had imagined a teleportation machine the night before.",
+      "feedback": "Prediction first: a dream explains the slow bus after.",
+      "hint": "Partner talk 30 seconds: dream or real?",
+      "notes": "CLUE 4 (predict before options). Enforce talk-before-vote; teleportation flavour links to Module p37."
+    },
+    {
+      "id": "trap-word",
+      "type": "choice",
+      "prompt": "Hakim studied old bulbs. Which sentence fits?",
+      "options": [
+        "He sketched an old bulb at the museum.",
+        "Edison was a famous inventor from America.",
+        "The museum displayed many kinds of lamps."
+      ],
+      "answer": "He sketched an old bulb at the museum.",
+      "feedback": "Edison in B shares a word but follows the wrong idea.",
+      "hint": "Same word does not mean best answer.",
+      "notes": "TRAP adapted from the 2E routine. Ask: which idea connects bulbs to the prize notebook?"
+    },
+    {
+      "id": "routine",
+      "type": "steps",
+      "prompt": "When you see a gap, what do you check?",
+      "items": [
+        "Topic: what are we talking about?",
+        "Who or what: who are we following?",
+        "Before and after: what must connect both sides?",
+        "Predict the missing idea, then choose."
+      ],
+      "notes": "Rebuild the 4-check routine. Leave visible during bookwork."
+    },
+    {
+      "id": "module-format",
+      "type": "reveal",
+      "prompt": "How are the module pages organized?",
+      "answer": "Gaps 1 to 4 use sentences A to D. Gaps 5 to 8 use sentences E to H.",
+      "feedback": "Two banks. Never mix them.",
+      "notes": "Light Bulb p36 (LS 3.1.1/3.1.2) + Teleportation p37 (LS 3.1.1/3.1.2). No module answers revealed; books carry the activity."
+    },
+    {
+      "id": "module-launch",
+      "type": "writing",
+      "prompt": "Module pp.36-37: your turn",
+      "task": "Do gaps 1 to 8 in your book. Use the 4 checks on every gap. Submit for marks.",
+      "frame": "1 Topic? 2 Who or what? 3 Before + after? 4 Predict, then choose.",
+      "notes": "Individual marked activity (~20 min). P1P5, 8 marks. Collect books after."
+    },
+    {
+      "id": "exit-checks",
+      "type": "prompt",
+      "prompt": "Say the 4 checks from memory.",
+      "hint": "Topic, who, sides, predict.",
+      "notes": "Exit evidence, 2 min choral/oral. Gaps in recall reopen Thursday if needed."
+    }
+  ]
+}
