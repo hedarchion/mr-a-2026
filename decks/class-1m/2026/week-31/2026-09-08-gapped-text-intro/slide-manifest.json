@@ -4,72 +4,72 @@
     {
       "id": "hook",
       "type": "prompt",
-      "initialWords": 10,
+      "initialWords": 9,
       "hintWords": 17,
-      "revealedWords": 10
+      "revealedWords": 9
     },
     {
       "id": "clue-topic",
       "type": "choice",
-      "initialWords": 35,
-      "hintWords": 40,
+      "initialWords": 31,
+      "hintWords": 36,
       "revealedWords": 57
     },
     {
       "id": "clue-chain",
       "type": "choice",
-      "initialWords": 31,
-      "hintWords": 37,
-      "revealedWords": 48
+      "initialWords": 29,
+      "hintWords": 33,
+      "revealedWords": 50
     },
     {
       "id": "clue-sides",
       "type": "choice",
-      "initialWords": 34,
-      "hintWords": 40,
-      "revealedWords": 51
+      "initialWords": 33,
+      "hintWords": 39,
+      "revealedWords": 52
     },
     {
       "id": "clue-predict",
       "type": "choice",
-      "initialWords": 33,
-      "hintWords": 40,
-      "revealedWords": 51
+      "initialWords": 31,
+      "hintWords": 36,
+      "revealedWords": 50
     },
     {
       "id": "trap-word",
       "type": "choice",
-      "initialWords": 29,
-      "hintWords": 36,
-      "revealedWords": 48
+      "initialWords": 28,
+      "hintWords": 34,
+      "revealedWords": 46
     },
     {
       "id": "routine",
       "type": "steps",
-      "initialWords": 15,
-      "hintWords": 15,
-      "revealedWords": 36
+      "initialWords": 14,
+      "hintWords": 14,
+      "revealedWords": 31
     },
     {
       "id": "module-format",
       "type": "reveal",
-      "initialWords": 6,
-      "hintWords": 6,
-      "revealedWords": 29
+      "initialWords": 7,
+      "hintWords": 7,
+      "revealedWords": 33
     },
     {
       "id": "module-launch",
       "type": "writing",
-      "initialWords": 22,
-      "hintWords": 22,
+      "initialWords": 25,
+      "hintWords": 25,
       "revealedWords": 36
     },
     {
       "id": "exit-checks",
       "type": "prompt",
-      "initialWords": 6,
-      "hintWords": 10,
-      "revealedWords": 6
+      "initialWords": 7,
+      "hintWords": 11,
+      "revealedWords": 7
     }
   ]
 }
