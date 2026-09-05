@@ -14,6 +14,7 @@ Every interactive slide must provide a clear prompt, a visible way to respond, a
 | Order the steps | Procedural understanding | Show the correct order and name the dependency. |
 | Categorise | Concept boundaries | Explain the defining feature of each category. |
 | Error analysis | Diagnostic reasoning | Identify the exact faulty step, then repair it. |
+| PBD round | Live performance against a named standard | Teacher-operated randomizer pick; pupil performs the tested skill; standard recorded in notes, never projected as procedure. |
 | Confidence check | Readiness to proceed | Invite support or extension based on responses. |
 
 ## Implementation guidance

@@ -9,9 +9,9 @@ Build a deck for a teacher operating one shared classroom display. Treat slides 
 
 ## Resolve the operating frame
 
-Infer before asking. Use the explicit request, target lesson folder, recent same-class decks, `copu_classes_full.json`, timetable, and workspace defaults in that order. Establish the class, objective, prior learning, lesson date, duration, week, language level, target viewport, and requested deliverables. Ask one concise question only when unresolved ambiguity materially changes the result. Never invent a class.
+Infer before asking. Use the explicit request, the target week's Source of Truth plan, earlier same-class Source of Truth lessons and reflections, target lesson folder and same-class artifacts, `copu_classes_full.json`, and workspace defaults in that order. Read [references/source-of-truth.md](references/source-of-truth.md) before retrieval. Establish the exact class/date/slot, teacher's planned focus, objective, prior learning, duration, week, language level, target viewport, and requested deliverables. Ask one concise question only when unresolved ambiguity materially changes the result. Never invent a class or replace the teacher's current-week plan with an unrelated artifact sequence.
 
-Lesson continuity is part of the operating frame, not a decorative opener. Some lessons happen offline or outside this app, so local deck history may be incomplete. When the most recent same-class files do not clearly establish the previous lesson, ask the teacher what was taught before, what students seemed to understand, and what must be bridged into the new lesson.
+Lesson continuity is part of the operating frame, not a decorative opener. First read the current week's planned entries and resolve the exact target lesson. Then query recent earlier `lesson_plan_entries` and read `content`, `objectives`, and `reflection` together. Treat reflections about what happened as stronger evidence than an earlier plan. Use local decks and worksheets afterward for exact artifact content, visual conventions, and interaction history. Ask only when the target mapping or a material gap remains unresolved.
 
 Default to `1366 × 768`, 16:9. Continue at `1280 × 665` when the class's existing deck uses that viewport. Fix the canvas at the selected size, scale it to the browser window, and keep all essential content and controls above the fold.
 
@@ -32,19 +32,21 @@ Keep worksheets and keys aligned to the deck in the same lesson folder. Keep reu
 
 For every slide-deck or worksheet generation or revision, the main agent must first read and interpret all applicable skills and references, then delegate at least one concrete independent workstream to a subagent with `model: "gpt-5.6-luna"`. Use two or three Luna subagents by default when independent tracks exist, such as context or source retrieval, content and answer validation, visual or interaction inspection, and worksheet archive or catalog checks. Use a bounded `fork_turns` value compatible with the model override and give each subagent a precise task, inputs, output expectation, and file-ownership boundary so parallel edits do not collide.
 
-The main agent owns the lesson architecture, integration, conflict resolution, final viewport and cross-artifact verification, Longan Lesson Notes update, and user handoff. Subagent findings are inputs, not substitutes for the main agent's required skill reading or final judgment. If collaboration tools are unavailable, state that limitation and complete all required checks locally.
+The main agent owns the lesson architecture, integration, conflict resolution, final viewport and cross-artifact verification, Source of Truth update, and user handoff. Subagent findings are inputs, not substitutes for the main agent's required skill reading or final judgment. If collaboration tools are unavailable, state that limitation and complete all required checks locally.
 
-## Log the lesson plan in Longan
+When a Form 1 or Form 2 module-book page is named or materially used, also read [references/module-books.md](references/module-books.md). Use the requested printed page as the source scope, record a page-specific citation in `notes.md`, and use two independent Luna tracks for page retrieval and provenance/pedagogy validation.
 
-For teaching Week 31 of 2026 onward, finish each verified deck or worksheet workflow by updating the matching Longan **Lesson Notes** entry in the production Neon database. Use the lesson's `notes.md` and verified learner-facing artifacts as evidence, but write an apt planning summary rather than copying them wholesale.
+## Write back to Source of Truth
 
-Keep the entry concise and useful at teaching time. Include the lesson focus or objective, the main model/practice/application sequence, the purpose of any worksheet, and the intended evidence of learning or exit check. Do not include a slide-by-slide list, every worksheet item, answer keys, source-search details, build notes, or QA logs. When both slides and a worksheet belong to the same lesson, integrate them into one coherent lesson note. Preserve any teacher-written content and the separate reflection field when updating an existing row.
+For teaching Week 31 of 2026 onward, finish each verified deck or worksheet workflow by returning to the same Source of Truth record that supplied the current-week brief. Use `notes.md` and verified learner-facing artifacts as evidence. Preserve the teacher's rudimentary plan and add or update a concise **Implemented lesson notes** section rather than replacing the existing content.
 
-Resolve the class, date, and timetable slot from the lesson folder and the Longan schedule; never guess a missing mapping. After the local artifact passes verification, upsert only the corresponding Lesson Notes content and read it back to confirm the saved text. Treat this standing Week 31+ instruction as permission for that narrow database update, not for unrelated Neon changes.
+In the implemented section, include the verified materials, main model/practice/application sequence, worksheet purpose, and intended evidence of learning or exit check. Separately merge one to three concise, observable learner objectives as ordered `{ id, text, isCompleted }` records only when they are genuinely new. Preserve existing text, IDs, order, and completion states. Preserve the teacher-owned `reflection` field unchanged.
+
+Resolve the class, date, and timetable slot from the artifact and active schedule; never guess a missing mapping. After local verification, upsert only the corresponding `content` and `objectives`, then read both fields back. Treat this standing Week 31+ instruction as permission for that narrow database update, not for reflection edits or unrelated Neon changes.
 
 ## Build a compact context pack
 
-Before drafting, inspect the most recent relevant same-class deck and notes. Capture internally: objective, prerequisite knowledge, prior coverage, likely misconception, class-level scaffolding need, duration, display, source evidence, and durable preferences from `learning/user-preferences.md`. Do not make the user restate discoverable context.
+Before drafting, build the compact implementation brief defined in [references/source-of-truth.md](references/source-of-truth.md). Begin with the teacher's target-week plan and intended objectives, then add confirmed prior teaching, unfinished learning, reflection-based artifact feedback, class-specific adjustment, and a retrieval bridge. Inspect the most relevant local deck or worksheet afterward for exact artifact details. Also capture likely misconceptions, duration, display, source evidence, and durable preferences. Do not make the user restate discoverable context.
 
 Read [references/class-data.md](references/class-data.md) before using `copu_classes_full.json`. Use aggregate data only. Never embed rosters, names, individual scores, tiers, or the class JSON in a publishable deck. Use `teacher-tools/name-picker/index.html` in a private teacher window when needed.
 
@@ -64,7 +66,9 @@ If no relevant evidence appears after related terminology and misconception quer
 
 ## Ground non-grammar English pedagogy
 
-For English lessons or assessments outside grammar, such as listening, reading, writing, speaking, vocabulary, genre, comprehension, test design, or rubrics, do not rely on memory alone when the local materials do not cover the pedagogical decision. Search authoritative web sources, official curriculum or exam guidance, or reputable language-teaching references. Record sources in `notes.md`, then adapt the findings into concise A2-appropriate activities, prompts, and teacher notes.
+For English lessons or assessments outside grammar, such as listening, reading, writing, speaking, vocabulary, genre, comprehension, test design, or rubrics, do not rely on memory alone when the local materials do not cover the pedagogical decision. Search authoritative web sources, official curriculum or exam guidance, or reputable language-teaching references. Record sources in `notes.md`, then adapt the findings into concise A2-appropriate activities, prompts, and teacher notes. When an assessment passage itself is adapted from authentic web material, paraphrase rather than copy at the target CEFR level; the learner sheet carries only a short source line (publishers and date), while full URLs, access dates, and the no-verbatim-copy statement live in the key, content input, and `notes.md`.
+
+For A2 vocabulary selection, lexical-set planning, or checking whether a word or sense belongs to the August 2025 Cambridge A2 Key list, read [references/a2-key-vocabulary-2025.md](references/a2-key-vocabulary-2025.md). Never load or print the full JSON. Use `scripts/query-a2-vocabulary.mjs` for bounded retrieval: at most 20 compact candidates, normally 8–12 selected lesson records, and ID-only re-query for final verification. Check the intended sense, `pos_raw`, examples, regional note, and 2025 status. Record the JSON title/version plus relevant record IDs or Appendix list name in `notes.md`; do not paste raw retrieval output or publish the JSON and long source lists.
 
 ## Plan the learning sequence
 
@@ -76,7 +80,11 @@ Sequence prior knowledge → bridge → model → guided practice → check → 
 
 ## Design the projected surface
 
-Use the smallest visual system that makes the teaching move obvious. Prefer one composition, strong hierarchy, high contrast, and direct examples over decorative panels or generic chrome. Use Tailwind CSS for layout and state styling, with custom CSS only for canvas scaling, reusable behavior, and necessary animation.
+Use the smallest visual system that makes the teaching move obvious. Prefer one composition, strong hierarchy, high contrast, and direct examples over decorative panels or generic chrome. For supported teaching moves, write content JSON and reuse `templates/teacher-led-html/render.mjs`, its shared stylesheet and runtime; read `templates/teacher-led-html/README.md` before building. Do not recreate a slide shell or write per-lesson CSS/JavaScript. Add unsupported behavior as a named, validated and browser-tested reusable preset. Preserve existing legacy decks until migration is requested.
+
+Initially show only the essential prompt, example, or reading evidence. Keep hints and answers behind teacher-controlled reveals; move timings, objectives, repeated labels, and teacher directions to notes. This is the teacher’s explicit default, including when using older decks as references.
+
+The teacher projects student-facing slides via laptop HDMI to a smart TV or Imago smartboard, with the back row about 4–6 metres away. Spend spare canvas space on larger essential text and images. Avoid oversized margins, small centred content blocks, and unused fixed-height image regions. Retain safe edges and original image proportions. In the shared template, use the projection type scale and bounded enlargement; never shrink content below that scale to make it fit. Verify all reveal states at the actual canvas and include a full-HD display check. Physical screen size and room lighting remain unknown until classroom observation.
 
 Design for pupils who are nearsighted by default: at least 28 px body text, 34 px questions, and 38 px slide titles at the target viewport. Do not rely on color alone, muted gray, thin strokes, low-opacity text, or interaction below the navigation safe zone.
 
@@ -85,6 +93,8 @@ Support `ArrowLeft`, `ArrowRight`, and `Space`, plus visible previous/next contr
 ## Add formative interactions
 
 Read [references/formative-interactions.md](references/formative-interactions.md) when adding interactions. Use the smallest interaction that reveals useful thinking: predict/reveal, choose, order, categorise, complete, or error analysis.
+
+For PBD assessment moments, build one teacher-operated round: a prompt naming the tested skill, then steps for the randomizer pick and pupil performance. PBD means the teacher goes around with a name randomizer testing against specific learning standards — never write a pupil procedure or a "What is PBD?" explainer. Name the tested standard in `notes.md`.
 
 Every interaction needs a prompt, response path, teacher-controlled check or reveal, explanatory feedback, reset, keyboard access, and non-digital fallback. For any **gap-fill / cloze / complete-the-sentence** interaction where the prompt sentence contains a blank (`_____` or similar), selecting an answer must **update the blank inline within the sentence itself** — the chosen word or phrase appears in the blank — in addition to any choice highlighting (e.g., green/bordered) or separate explanatory feedback. Do not rely solely on colouring the correct choice or printing the answer elsewhere; the sentence display must show the selection in context, and Reset must clear the blank again. Visible controls that do not change state, or that leave the blank empty after a selection, are failed interactions, not decoration. Refactor inherited slide code or shared button handlers when needed so the actual click and keyboard paths update both the choice state and the in-sentence blank. Avoid scores, timers, confetti, accounts, and competitive mechanics unless they directly serve the objective.
 
@@ -116,4 +126,4 @@ For a worksheet, verify outcome coverage, item clarity, answer defensibility, di
 
 ## Learn from use
 
-When the user comments on an artifact or reports student response, read [references/feedback-learning.md](references/feedback-learning.md). Apply requested revisions, record the evidence, and update durable preferences without waiting for the phrase “update the skill.” Promote only well-supported, reusable lessons; do not turn one-off content choices into universal rules. Validate the skill after any change and briefly disclose durable improvements to the user.
+When the user comments on an artifact, reports student response, or records relevant criticism or outcomes in a Source of Truth reflection, read [references/feedback-learning.md](references/feedback-learning.md). Remove names, individual scores, sensitive narratives, and irrelevant remarks before recording anything. Apply the insight to the next same-class lesson, record privacy-safe actionable evidence, and update durable preferences when promotion rules are met. Do not turn one-off class events into universal rules. Validate the skill after any change and briefly disclose durable improvements to the user.

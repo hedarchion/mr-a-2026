@@ -6,6 +6,8 @@ These instructions apply to this folder and its subfolders.
 
 - For any slide-deck task, read `instructional-slide-decks/SKILL.md` and the installed `presentations` skill. The workspace route overrides the installed skill's PowerPoint implementation route: deliver HTML unless the user explicitly requests PowerPoint.
 - For any worksheet, quiz, exit ticket, marking guide, or assessment task, also read the installed `worksheet-assessment-design` skill.
+- For every slide-deck or worksheet generation or revision, use `gpt-5.6-luna` subagents to reduce turnaround time. After the main agent has personally read all required skills and references, spawn at least one Luna subagent for a concrete independent track; use two or three by default when the work separates cleanly into tracks such as context/source retrieval, content or answer validation, visual/interaction inspection, and archive/catalog checks. Set `model: "gpt-5.6-luna"` explicitly and use a bounded `fork_turns` value compatible with the model override. The main agent remains responsible for interpreting skill instructions, resolving conflicts, integrating edits, running final cross-artifact verification, updating Source of Truth, and obtaining publication permission. Do not skip Luna delegation merely because the deliverable seems small; if the collaboration runtime is unavailable, disclose the limitation and continue with the required local checks.
+- When the teacher specifies a Form 1 or Form 2 **module-book page**, read `instructional-slide-decks/references/module-books.md` and treat the requested printed page as the source scope. Use the local per-page working copy under `Modules/`; cite each material page in `notes.md` with its form, printed page, heading/task, use, and verified Markdown line range. For module-led work, use two Luna agents: one retrieves and scopes the page; the other independently validates the proposed scaffolding and citation. If the module materially shapes a Week 31+ lesson, include one concise Form-and-page source line in the matching Source of Truth content. Do not publish the book or its local path.
 - When the user requests English **Paper 1 Part 1**, **OAP**, or a **short-text multiple-choice** assessment, also read `paper-1-part-1-oap.md`. Treat it as the primary design reference for that assessment type, alongside `worksheet-assessment-design`.
 - When the user requests English **Paper 1 Part 2**, **lexico-grammar**, or **error correction**, also read `paper-1-part-2-lexico-grammar.md`. Treat it as the primary design reference for that assessment type, alongside `worksheet-assessment-design`.
 - When the user requests a Form 1 English **Paper 1 Part 3**, **“Part 3” assessment**, or an **“information transfer” assessment**, also read `paper-1-part-3-information-transfer.md`. Treat it as the primary design reference for that assessment type, alongside `worksheet-assessment-design`.
@@ -13,14 +15,15 @@ These instructions apply to this folder and its subfolders.
 - When the user requests an English **Paper 1 Part 5**, **“Part 5”**, or **“gapped text”** assessment, also read `paper-1-part-5-gapped-text.md`. Treat it as the primary design reference for this Form 1/Form 2 assessment type, alongside `worksheet-assessment-design`.
 - When the user requests English **Paper 2 Part 1** or a **short communicative message**, also read `paper-2-part-1-short-communicative-message.md`. Treat it as the primary design reference for that assessment type, alongside `worksheet-assessment-design`.
 - Treat Form 1 English **Notes Expansion** and **Paper 2 Part 2** as the same assessment type. When the user requests either name, including a model answer, lesson, or marking support, also read `paper-2-part-2-notes-expansion.md`. Treat it as the primary design reference for that assessment type, alongside `worksheet-assessment-design`.
+- When the user asks to draw a passage from authentic material, real-world sources, or the net — or when an assessment passage will be adapted from web sources — also read `skills/authentic-materials/SKILL.md` and follow its select → retrieve → paraphrase → two-level citation workflow.
 - Treat feedback such as “too crowded,” “make the questions harder,” “students could not read it,” or “I prefer this style” as a revision request and as learning evidence even when the user does not say “update the skill.” Follow the feedback-learning loop below.
 - Do not invoke slide or worksheet workflows for a simple factual answer about the existing files; inspect and answer directly.
 
 ## Minimize handholding
 
-Resolve context in this order: explicit request → current lesson files → same-class recent decks and notes → `copu_classes_full.json` → safe defaults. Ask only when unresolved ambiguity would materially change the lesson, assessment claim, privacy boundary, or requested output.
+Resolve context in this order: explicit request → target week's Source of Truth plan → earlier same-class Source of Truth lessons and reflections → current lesson files and same-class artifacts → `copu_classes_full.json` → safe defaults. Read `instructional-slide-decks/references/source-of-truth.md` before retrieving lesson history.
 
-Lesson continuity is a material requirement. Because some English lessons happen offline or outside this app, actively check for missing prior teaching before planning a new lesson. If the recent same-class files do not clearly show what was taught immediately before, ask the teacher one concise continuity question about the previous lesson, already-taught language, and what must be bridged. Do not pretend the local deck history is complete.
+The teacher's rudimentary plan for the target week is the primary implementation brief. Read the current week's entries and resolve the exact class/date/slot before creating materials. Then query the same class's recent earlier `lesson_plan_entries` and read `content`, `objectives`, and `reflection` together. Reflections about what actually happened override an earlier plan when they conflict. Use local decks and worksheets afterward for exact artifact details, not as the primary record of lesson history. Ask one concise question only when the target mapping or a material continuity gap remains unresolved.
 
 Safe defaults:
 
@@ -31,6 +34,11 @@ Safe defaults:
 - Date/week: infer from the user request, target folder, timetable, and current Malaysia date. Ask only if two plausible dates lead to different filing or lesson-continuity decisions.
 
 Never invent the class. If the class cannot be resolved from the request or nearby lesson context, ask one concise question.
+
+## PBD assessment rounds
+
+- PBD means the teacher goes around with a name randomizer, testing pupils against specific learning standards. It is never a pupil procedure and never needs a "What is PBD?" explainer on the slide.
+- Frame every PBD moment as a teacher-operated round: one prompt naming the tested skill, then steps (randomizer pick → pupil performs the tested skill). Record the tested standard in `notes.md` and the Source of Truth entry; never put answer keys in SOT.
 
 ## Root slide-library policy
 
@@ -46,12 +54,14 @@ When creating or revising the repository-root slide library:
 
 For a new or revised deliverable, inspect only the relevant material and summarize it internally as a compact context pack:
 
-1. class, level, schedule, lesson date, duration, and display;
+1. exact current-week Source of Truth plan, class/date/slot, intended objective, and any book reference;
 2. previous lesson, already-taught language, and likely bridge;
-3. objective, prerequisite knowledge, and likely misconceptions;
-4. source evidence retrieved from the grammar reference book when applicable;
-5. assessment purpose and default or user-specified administration conditions;
-6. durable user preferences from `learning/user-preferences.md`, if present.
+3. relevant reflection signals: unfinished learning, artifact criticism, aggregate learner response, and class-specific delivery adjustments;
+4. prerequisite knowledge and likely misconceptions;
+5. duration and display;
+6. source evidence retrieved from the grammar reference book and/or specified module-book page when applicable;
+7. assessment purpose and default or user-specified administration conditions;
+8. durable user preferences from `learning/user-preferences.md`, if present.
 
 Do not ask the user to repeat information that can be recovered from these sources. Do not expose private roster or individual assessment data in generated or published artifacts.
 
@@ -69,6 +79,7 @@ For any other Paper 1 or Paper 2 part assessment, follow its corresponding `pape
 
 - Create slides under `decks/<class-slug>/<YYYY>/week-<NN>/<YYYY-MM-DD>-<topic-slug>/`.
 - Put `index.html` at the lesson root. Keep assets local to `assets/` and teacher-facing objective, assumptions, slide map, answers, misconceptions, sources, and delivery notes in `notes.md`.
+- Beginning with teaching Week 31 of 2026, every verified slide deck or worksheet creation or revision must return to the exact Source of Truth class/date/slot record used as its brief. Preserve the teacher's rudimentary plan and add or update a concise **Implemented lesson notes** section covering the verified materials, main teaching and practice sequence, application task, and evidence of learning. Do not paste every slide, question, answer key, production detail, or QA log. Merge one to three concise observable objectives only when genuinely new, preserving existing objective text, IDs, order, and completion states. Preserve the separate teacher-owned `reflection` field exactly. Read back content and objectives after saving. This standing instruction authorizes only these Week 31+ content/objective upserts after local artifact verification; it does not authorize reflection edits or other Neon mutations.
 - Every class slide deck must ultimately be published as a GitHub Pages site. Treat publication as a required final stage of the slide-deck workflow, not as optional follow-up work.
 - Publishing changes external state and always requires the user's explicit permission first. After the local deck passes verification, ask the user for permission to publish; do not push, deploy, enable GitHub Pages, modify a publishing workflow, or otherwise make the deck public until the user clearly approves that specific publication.
 - If permission has not yet been granted, finish and verify the local deck, report that it is ready for GitHub Pages, and pause before any publishing action. A request to create, revise, preview, or verify a deck does not by itself count as permission to publish it.
@@ -87,6 +98,7 @@ For any other Paper 1 or Paper 2 part assessment, follow its corresponding `pape
 - Treat `2 in 1` as valid shorthand for a paper-saving worksheet output: when the worksheet content fits on one page, render two identical document pages so the teacher can select `2 pages per sheet` in the print dialog and cut the physical A4 sheet into two complete learner copies. Each detachable copy repeats its title and Name/Class/Date fields. Keep a single-copy override when requested.
 - For Paper 1 Part 2, reuse `templates/worksheet-html/paper-1-part-2/` and replace only the content input. Continue Paper 1 numbering with questions 9–16, keep `(0)` as the example, and make the answer-table number columns extremely narrow (about 7% per half) so most width is available for corrected words.
 - Use only the response lines needed for the expected answer length. Remove redundant rules, repeated labels, duplicate checklists, and other learner-facing text that does not improve instructions, accessibility, or assessment evidence.
+- When a worksheet passage is adapted from authentic web material, paraphrase rather than copy: write all item text originally at the target CEFR level, show a short learner-facing source line on the sheet (publishers and date, no URLs), and record full URLs with access dates plus a no-verbatim-copy statement in the key/rubric, content input, and `notes.md`.
 
 ## Grammar grounding
 
@@ -98,9 +110,21 @@ For grammar, tense, usage, sentence structure, punctuation, or parts-of-speech l
 4. Translate the teacher reference into concise, level-appropriate explanations and original examples. Do not publish the book or copy long passages.
 5. If relevant evidence cannot be retrieved after related terminology and misconception queries, inspect the book's table of contents and headings directly. Ask for another source or permission to proceed without book grounding only after both routes fail.
 
+## A2 vocabulary grounding
+
+For A2 vocabulary selection, lexical-set planning, or checking whether a word or sense belongs to the August 2025 Cambridge A2 Key list, read `instructional-slide-decks/references/a2-key-vocabulary-2025.md` and query the private workspace-root `a2_key_vocabulary_2025.json`.
+
+- Never load or print the complete JSON into model context. Use `node instructional-slide-decks/scripts/query-a2-vocabulary.mjs ...`; it projects compact fields and caps every record or Appendix page at 20 results. Direct `jq` is allowed only when the helper lacks a required relationship, and its output must project fields and use a hard result limit.
+- Retrieve in stages: cheap metadata/topic discovery, at most 20 candidates, normally 8–12 final lesson records, then 1–3 records when drafting an individual slide or worksheet item. Re-query chosen IDs for verification instead of repeating broad retrieval.
+- Use `vocabulary[]` for enriched headword records, including `pos_raw`, normalized `pos[]`, regional notes, examples, source page, topics, and the 2025 flag.
+- Use `topics` for the complete Appendix 2 word lists and `word_sets` for Appendix 1. Do not assume a `vocabulary[].topics` filter exactly reproduces an Appendix list.
+- Treat `id` as the stable identifier because a headword can have separate records. Check the intended sense and part of speech before using an item or accepting an answer.
+- Use source examples to verify sense and keys; prefer concise original learner examples in public artifacts. Preserve relevant Br/Am distinctions.
+- Record only the JSON title/version, selection purpose, and relevant record IDs or Appendix list name in `notes.md`. Do not paste raw query output, publish the copyrighted JSON or long source lists, or expose its local path.
+
 ## Lesson and assessment coherence
 
-- Review the most recent same-class deck before planning. Preserve established terminology, language level, successful interaction patterns, and visual conventions while avoiding needless repetition.
+- After building the Source of Truth continuity brief, review the most relevant same-class deck for exact terminology, language level, successful interaction patterns, and visual conventions while avoiding needless repetition.
 - Start a new lesson with 5–10 minutes of retrieval that samples essential prior learning and bridges into the new objective.
 - Use one visible teaching move per slide: orient, elicit, model, practise, check, correct, apply, or retrieve.
 - Build worksheet items from the same observable outcomes and taught examples, but require fresh application rather than copying slide questions.
@@ -121,6 +145,8 @@ Fix failures before handoff. Record material assumptions and unresolved limitati
 ## Feedback-learning loop
 
 Read `instructional-slide-decks/references/feedback-learning.md` whenever the user comments on a generated slide, worksheet, answer key, interaction, or lesson outcome.
+
+Also apply this loop to relevant teacher criticism and instructional outcomes found in Source of Truth reflections. First remove names, individual scores, sensitive narratives, and incidental remarks. Keep class-specific observations in the continuity brief; record privacy-safe actionable feedback and promote it only under the normal evidence rules.
 
 Without requiring a separate prompt:
 
