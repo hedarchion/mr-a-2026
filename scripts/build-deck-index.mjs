@@ -112,14 +112,14 @@ const days = [...new Set(lessons.map((l) => l.day))].sort(
 const json = JSON.stringify(lessons).replace(/</g, '\\u003c');
 const meta = JSON.stringify({ classes, weeks, days, generated: new Date().toISOString().slice(0, 10) }).replace(/</g, '\\u003c');
 
-// Concentric rings of curved text (SVG textPath) in Inter Black (900).
-// Typography-driven layout: radii grow geometrically (~20% per ring) and each
+// The library stays focused on the decks; no decorative animated background.
+/* Typography-driven layout: radii grow geometrically (~20% per ring) and each
 // ring's font size is derived from its circumference, so the phrase fills every
 // ring at ~100% with natural character spacing (no stretch, no gaps, no repeats).
 // Each ring has its own hue (teal -> amber across radii), opacity (inner fainter,
 // outer crisper = the hero ring), geared speed (inner fast, outer slow), staggered
 // phrase start angle, and a slow "breath" scale. Hover pauses the spin.
-const RULE_PHRASE = 'First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking';
+/*
 const RING_CX = 683;
 const RING_CY = 384;
 // Natural advance of the phrase in Manufacturing Consent, measured in-page
@@ -162,7 +162,7 @@ const ruleRingsMarkup = [
             <text font-size="${fs}"><textPath href="#rule-ring-${i + 1}" textLength="${Math.round(circ)}">${RULE_PHRASE}</textPath></text>
           </g>
         </g>`;
-}).join('\n');
+}).join('\n'); */
 
 const html = `<!doctype html>
 <html lang="en">
@@ -171,68 +171,46 @@ const html = `<!doctype html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mr. A's Class Slides</title>
     <style>
-      :root { color-scheme: light; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #13233a; background: #eef3f9; }
+      :root { color-scheme: light; font-family: Arial, Helvetica, sans-serif; color: #173331; background: #f5f1e9; }
       * { box-sizing: border-box; }
       body { margin: 0; overflow-x: hidden; }
-      .wrap { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
-      header h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.04em; margin: 0 0 .4rem; }
-      header p { margin: 0; color: #52657d; max-width: 60ch; }
-      .rule-waves { position: fixed; inset: 0; z-index: 0; overflow: hidden; opacity: .18; pointer-events: auto; user-select: none; }
-      .rule-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-      .rule-ring { transform-box: fill-box; transform-origin: center; will-change: transform; animation: ring-spin var(--dur, 120s) linear infinite; animation-direction: var(--dir, normal); animation-delay: var(--delay, 0s); }
-      .rule-breathe { transform-box: fill-box; transform-origin: center; will-change: transform; animation: breathe var(--bdur, 40s) ease-in-out infinite alternate; animation-delay: var(--bdelay, 0s); }
-      @font-face {
-        font-family: 'Manufacturing Consent';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url('assets/manufacturing-consent-latin.woff2') format('woff2');
-      }
-      @font-face {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 900;
-        font-display: swap;
-        src: url('assets/inter-900-latin.woff2') format('woff2');
-      }
-      .rule-ring text { font-family: 'Manufacturing Consent', 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 400; letter-spacing: normal; fill: currentColor; }
-      @keyframes ring-spin { to { transform: rotate(360deg); } }
-      @keyframes breathe { from { transform: scale(.985); } to { transform: scale(1.015); } }
-      .rule-waves:hover .rule-ring, .rule-waves:hover .rule-breathe { animation-play-state: paused; }
-      .filters { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1.75rem 0 1rem; }
+      .wrap { max-width: 1180px; margin: 0 auto; padding: 4.5rem 2rem 5rem; }
+      header { border-left: 7px solid #16817d; padding-left: 1.35rem; margin-bottom: 2.4rem; }
+      header h1 { font-size: clamp(2.3rem, 5vw, 4.3rem); letter-spacing: -.055em; line-height: .98; margin: 0 0 .65rem; }
+      header p { margin: 0; color: #5e6d69; max-width: 60ch; font-size: 1.05rem; }
+      .filters { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; margin: 0 0 1rem; }
       .filters select {
         appearance: none; -webkit-appearance: none; font: inherit; color: inherit; background-color: #fff;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='m1 1 6 6 6-6' fill='none' stroke='%231f5f9e' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E");
-        background-position: right .85rem center; background-repeat: no-repeat; border: 1px solid #c9d6e4; border-radius: .65rem; min-width: 9.6rem; padding: .58rem 2.75rem .58rem .82rem;
+        background-position: right .85rem center; background-repeat: no-repeat; border: 1px solid #b9cbc6; border-radius: .35rem; min-width: 9.6rem; padding: .68rem 2.75rem .68rem .82rem;
       }
       .filters select:focus-visible { outline: 3px solid #7db3e6; outline-offset: 2px; }
       .count { font-size: .9rem; color: #52657d; margin: 0 0 1rem; }
-      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.1rem; }
       .card {
-        background: #fff; border: 1px solid #dce6f0; border-radius: .9rem; padding: 1rem 1.1rem 1.1rem;
-        box-shadow: 0 8px 24px #173a6610; display: flex; flex-direction: column; gap: .6rem;
+        background: #fffdf9; border: 1px solid #d9dfd8; border-radius: .4rem; padding: 1.2rem 1.25rem 1.25rem;
+        box-shadow: 0 5px 16px #28433b0c; display: flex; flex-direction: column; gap: .7rem;
       }
       .card h2 { font-size: 1.06rem; line-height: 1.35; margin: 0; letter-spacing: -.01em; }
-      .card h2 a { color: #13233a; text-decoration: none; }
-      .card h2 a:hover { text-decoration: underline; text-decoration-color: #2f6fb2; text-underline-offset: 3px; }
+      .card h2 a { color: #173331; text-decoration: none; }
+      .card h2 a:hover { color: #16817d; }
       .badges { display: flex; flex-wrap: wrap; gap: .35rem; }
       .badge {
         font-size: .72rem; font-weight: 600; padding: .18rem .5rem; border-radius: 999px;
-        background: #e6eef8; color: #2c5583; border: 1px solid #cdddec;
+        background: #e7f1ee; color: #24625e; border: 1px solid #c4dcd5;
       }
-      .badge.new { background: #fff3d6; color: #8a5a00; border-color: #f2d98c; }
+      .badge.new { background: #f8e9ca; color: #805b1d; border-color: #e7cc93; }
       .meta { font-size: .85rem; color: #52657d; }
       .links { display: flex; margin-top: auto; padding-top: .2rem; }
       .links a {
         font-size: .82rem; font-weight: 600; text-decoration: none; border-radius: .5rem; padding: .38rem .7rem;
-        background: #eef4fb; color: #1f5f9e; border: 1px solid #cdddec;
+        background: transparent; color: #16817d; border: 1px solid #9fc5bb;
       }
-      .links a.primary { background: #1f5f9e; border-color: #1f5f9e; color: #fff; }
+      .links a.primary { background: #16817d; border-color: #16817d; color: #fff; }
       .links a:hover { filter: brightness(.96); }
       .empty { padding: 2.5rem 1rem; text-align: center; color: #52657d; background: #fff; border: 1px dashed #c9d6e4; border-radius: .9rem; }
       .reset { display: none; font: inherit; font-size: .85rem; background: #fff; border: 1px solid #c9d6e4; border-radius: .55rem; padding: .45rem .7rem; color: #1f5f9e; cursor: pointer; }
       .reset:hover { background: #eef4fb; }
-      @media (prefers-reduced-motion: reduce) { .rule-ring, .rule-breathe { animation: none; } }
     </style>
   </head>
   <body>
@@ -257,12 +235,6 @@ const html = `<!doctype html>
       <p id="count" class="count"></p>
       <div id="grid" class="grid"></div>
     </main>
-
-    <div class="rule-waves" aria-hidden="true">
-      <svg class="rule-svg" viewBox="0 0 1366 768" preserveAspectRatio="xMidYMid meet" role="presentation">
-${ruleRingsMarkup}
-      </svg>
-    </div>
 
     <script type="application/json" id="deck-data">${json}</script>
     <script type="application/json" id="deck-meta">${meta}</script>
@@ -305,7 +277,7 @@ ${ruleRingsMarkup}
           : 'Showing ' + list.length + ' of ' + DECKS.length + ' slide decks';
         els.reset.style.display = (state.cls || state.week || state.day) ? 'inline-block' : 'none';
         if (!list.length) {
-          els.grid.innerHTML = '<div class="empty">No lessons match. Clear a filter or try a different search.</div>';
+          els.grid.innerHTML = '<div class="empty">No lessons match. Clear a filter or try a different filter.</div>';
           return;
         }
         const latest = DECKS[0].date; // DECKS is pre-sorted newest first

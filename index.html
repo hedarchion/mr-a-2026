@@ -5,68 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mr. A's Class Slides</title>
     <style>
-      :root { color-scheme: light; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #13233a; background: #eef3f9; }
+      :root { color-scheme: light; font-family: Arial, Helvetica, sans-serif; color: #173331; background: #f5f1e9; }
       * { box-sizing: border-box; }
       body { margin: 0; overflow-x: hidden; }
-      .wrap { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
-      header h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.04em; margin: 0 0 .4rem; }
-      header p { margin: 0; color: #52657d; max-width: 60ch; }
-      .rule-waves { position: fixed; inset: 0; z-index: 0; overflow: hidden; opacity: .18; pointer-events: auto; user-select: none; }
-      .rule-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-      .rule-ring { transform-box: fill-box; transform-origin: center; will-change: transform; animation: ring-spin var(--dur, 120s) linear infinite; animation-direction: var(--dir, normal); animation-delay: var(--delay, 0s); }
-      .rule-breathe { transform-box: fill-box; transform-origin: center; will-change: transform; animation: breathe var(--bdur, 40s) ease-in-out infinite alternate; animation-delay: var(--bdelay, 0s); }
-      @font-face {
-        font-family: 'Manufacturing Consent';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url('assets/manufacturing-consent-latin.woff2') format('woff2');
-      }
-      @font-face {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 900;
-        font-display: swap;
-        src: url('assets/inter-900-latin.woff2') format('woff2');
-      }
-      .rule-ring text { font-family: 'Manufacturing Consent', 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 400; letter-spacing: normal; fill: currentColor; }
-      @keyframes ring-spin { to { transform: rotate(360deg); } }
-      @keyframes breathe { from { transform: scale(.985); } to { transform: scale(1.015); } }
-      .rule-waves:hover .rule-ring, .rule-waves:hover .rule-breathe { animation-play-state: paused; }
-      .filters { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1.75rem 0 1rem; }
+      .wrap { max-width: 1180px; margin: 0 auto; padding: 4.5rem 2rem 5rem; }
+      header { border-left: 7px solid #16817d; padding-left: 1.35rem; margin-bottom: 2.4rem; }
+      header h1 { font-size: clamp(2.3rem, 5vw, 4.3rem); letter-spacing: -.055em; line-height: .98; margin: 0 0 .65rem; }
+      header p { margin: 0; color: #5e6d69; max-width: 60ch; font-size: 1.05rem; }
+      .filters { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; margin: 0 0 1rem; }
       .filters select {
         appearance: none; -webkit-appearance: none; font: inherit; color: inherit; background-color: #fff;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='m1 1 6 6 6-6' fill='none' stroke='%231f5f9e' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E");
-        background-position: right .85rem center; background-repeat: no-repeat; border: 1px solid #c9d6e4; border-radius: .65rem; min-width: 9.6rem; padding: .58rem 2.75rem .58rem .82rem;
+        background-position: right .85rem center; background-repeat: no-repeat; border: 1px solid #b9cbc6; border-radius: .35rem; min-width: 9.6rem; padding: .68rem 2.75rem .68rem .82rem;
       }
       .filters select:focus-visible { outline: 3px solid #7db3e6; outline-offset: 2px; }
       .count { font-size: .9rem; color: #52657d; margin: 0 0 1rem; }
-      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.1rem; }
       .card {
-        background: #fff; border: 1px solid #dce6f0; border-radius: .9rem; padding: 1rem 1.1rem 1.1rem;
-        box-shadow: 0 8px 24px #173a6610; display: flex; flex-direction: column; gap: .6rem;
+        background: #fffdf9; border: 1px solid #d9dfd8; border-radius: .4rem; padding: 1.2rem 1.25rem 1.25rem;
+        box-shadow: 0 5px 16px #28433b0c; display: flex; flex-direction: column; gap: .7rem;
       }
       .card h2 { font-size: 1.06rem; line-height: 1.35; margin: 0; letter-spacing: -.01em; }
-      .card h2 a { color: #13233a; text-decoration: none; }
-      .card h2 a:hover { text-decoration: underline; text-decoration-color: #2f6fb2; text-underline-offset: 3px; }
+      .card h2 a { color: #173331; text-decoration: none; }
+      .card h2 a:hover { color: #16817d; }
       .badges { display: flex; flex-wrap: wrap; gap: .35rem; }
       .badge {
         font-size: .72rem; font-weight: 600; padding: .18rem .5rem; border-radius: 999px;
-        background: #e6eef8; color: #2c5583; border: 1px solid #cdddec;
+        background: #e7f1ee; color: #24625e; border: 1px solid #c4dcd5;
       }
-      .badge.new { background: #fff3d6; color: #8a5a00; border-color: #f2d98c; }
+      .badge.new { background: #f8e9ca; color: #805b1d; border-color: #e7cc93; }
       .meta { font-size: .85rem; color: #52657d; }
       .links { display: flex; margin-top: auto; padding-top: .2rem; }
       .links a {
         font-size: .82rem; font-weight: 600; text-decoration: none; border-radius: .5rem; padding: .38rem .7rem;
-        background: #eef4fb; color: #1f5f9e; border: 1px solid #cdddec;
+        background: transparent; color: #16817d; border: 1px solid #9fc5bb;
       }
-      .links a.primary { background: #1f5f9e; border-color: #1f5f9e; color: #fff; }
+      .links a.primary { background: #16817d; border-color: #16817d; color: #fff; }
       .links a:hover { filter: brightness(.96); }
       .empty { padding: 2.5rem 1rem; text-align: center; color: #52657d; background: #fff; border: 1px dashed #c9d6e4; border-radius: .9rem; }
       .reset { display: none; font: inherit; font-size: .85rem; background: #fff; border: 1px solid #c9d6e4; border-radius: .55rem; padding: .45rem .7rem; color: #1f5f9e; cursor: pointer; }
       .reset:hover { background: #eef4fb; }
-      @media (prefers-reduced-motion: reduce) { .rule-ring, .rule-breathe { animation: none; } }
     </style>
   </head>
   <body>
@@ -91,71 +69,6 @@
       <p id="count" class="count"></p>
       <div id="grid" class="grid"></div>
     </main>
-
-    <div class="rule-waves" aria-hidden="true">
-      <svg class="rule-svg" viewBox="0 0 1366 768" preserveAspectRatio="xMidYMid meet" role="presentation">
-        <g class="rule-ring" style="--dur: 60s; --dir: normal; --delay: -5s; opacity: 0.6; color: #0a8f8c;">
-          <g class="rule-breathe" style="--bdur: 34s; --bdelay: -2s;">
-            <path id="rule-ring-1" d="M 583.0 384.0 a 100 100 0 1 0 200.0 0.0 a 100 100 0 1 0 -200.0 0.0" fill="none" />
-            <text font-size="24"><textPath href="#rule-ring-1" textLength="628">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
-          </g>
-        </g>
-        <g class="rule-ring" style="--dur: 68s; --dir: reverse; --delay: -14s; opacity: 0.64; color: #1680a8;">
-          <g class="rule-breathe" style="--bdur: 42s; --bdelay: -11s;">
-            <path id="rule-ring-2" d="M 585.9 313.5 a 120 120 0 1 0 194.2 141.1 a 120 120 0 1 0 -194.2 -141.1" fill="none" />
-            <text font-size="29"><textPath href="#rule-ring-2" textLength="754">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
-          </g>
-        </g>
-        <g class="rule-ring" style="--dur: 76s; --dir: normal; --delay: -23s; opacity: 0.68; color: #1f6fb0;">
-          <g class="rule-breathe" style="--bdur: 29s; --bdelay: -5s;">
-            <path id="rule-ring-3" d="M 638.5 247.0 a 144 144 0 1 0 89.0 273.9 a 144 144 0 1 0 -89.0 -273.9" fill="none" />
-            <text font-size="35"><textPath href="#rule-ring-3" textLength="905">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
-          </g>
-        </g>
-        <g class="rule-ring" style="--dur: 84s; --dir: reverse; --delay: -32s; opacity: 0.72; color: #3363bc;">
-          <g class="rule-breathe" style="--bdur: 38s; --bdelay: -17s;">
-            <path id="rule-ring-4" d="M 736.5 219.5 a 173 173 0 1 0 -106.9 329.1 a 173 173 0 1 0 106.9 -329.1" fill="none" />
-            <text font-size="42"><textPath href="#rule-ring-4" textLength="1087">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
-          </g>
-        </g>
-        <g class="rule-ring" style="--dur: 92s; --dir: normal; --delay: -41s; opacity: 0.76; color: #4d55c4;">
-          <g class="rule-breathe" style="--bdur: 46s; --bdelay: -8s;">
-            <path id="rule-ring-5" d="M 850.5 262.3 a 207 207 0 1 0 -334.9 243.3 a 207 207 0 1 0 334.9 -243.3" fill="none" />
-            <text font-size="50"><textPath href="#rule-ring-5" textLength="1301">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
-          </g>
-        </g>
-        <g class="rule-ring" style="--dur: 100s; --dir: reverse; --delay: -50s; opacity: 0.8; color: #6a4cc8;">
-          <g class="rule-breathe" style="--bdur: 33s; --bdelay: -21s;">
-            <path id="rule-ring-6" d="M 932.0 384.0 a 249 249 0 1 0 -498.0 0.0 a 249 249 0 1 0 498.0 -0.0" fill="none" />
-            <text font-size="60"><textPath href="#rule-ring-6" textLength="1565">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
-          </g>
-        </g>
-        <g class="rule-ring" style="--dur: 108s; --dir: normal; --delay: -59s; opacity: 0.84; color: #8a44c4;">
-          <g class="rule-breathe" style="--bdur: 40s; --bdelay: -3s;">
-            <path id="rule-ring-7" d="M 924.9 559.7 a 299 299 0 1 0 -483.8 -351.5 a 299 299 0 1 0 483.8 351.5" fill="none" />
-            <text font-size="72"><textPath href="#rule-ring-7" textLength="1879">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
-          </g>
-        </g>
-        <g class="rule-ring" style="--dur: 116s; --dir: reverse; --delay: -68s; opacity: 0.88; color: #a644ae;">
-          <g class="rule-breathe" style="--bdur: 48s; --bdelay: -14s;">
-            <path id="rule-ring-8" d="M 793.6 724.5 a 358 358 0 1 0 -221.3 -681.0 a 358 358 0 1 0 221.3 681.0" fill="none" />
-            <text font-size="86"><textPath href="#rule-ring-8" textLength="2249">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
-          </g>
-        </g>
-        <g class="rule-ring" style="--dur: 124s; --dir: normal; --delay: -77s; opacity: 0.92; color: #bf4d8c;">
-          <g class="rule-breathe" style="--bdur: 36s; --bdelay: -25s;">
-            <path id="rule-ring-9" d="M 550.1 793.0 a 430 430 0 1 0 265.8 -817.9 a 430 430 0 1 0 -265.8 817.9" fill="none" />
-            <text font-size="103"><textPath href="#rule-ring-9" textLength="2702">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
-          </g>
-        </g>
-        <g class="rule-ring" style="--dur: 132s; --dir: reverse; --delay: -86s; opacity: 0.96; color: #cf6a3f;">
-          <g class="rule-breathe" style="--bdur: 44s; --bdelay: -7s;">
-            <path id="rule-ring-10" d="M 265.5 687.3 a 516 516 0 1 0 834.9 -606.6 a 516 516 0 1 0 -834.9 606.6" fill="none" />
-            <text font-size="124"><textPath href="#rule-ring-10" textLength="3242">First Rule of the Class is to Listen when <tspan fill="#d62828">Mr A</tspan> is speaking</textPath></text>
-          </g>
-        </g>
-      </svg>
-    </div>
 
     <script type="application/json" id="deck-data">[{"class":"1E","classSlug":"class-1e","year":"2026","week":"31","date":"2026-09-11","day":"Friday","topic":"Refresh: quantifiers and describing (Week 31, Jumaat)","topicSlug":"quantifiers-refresh","href":"decks/class-1e/2026/week-31/2026-09-11-quantifiers-refresh/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"31","date":"2026-09-10","day":"Thursday","topic":"Endangered Animals: Read and Answer (Week 31, Khamis)","topicSlug":"endangered-p1p4","href":"decks/class-1d/2026/week-31/2026-09-10-endangered-p1p4/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1E","classSlug":"class-1e","year":"2026","week":"31","date":"2026-09-10","day":"Thursday","topic":"Quantifiers: much, many and friends (Week 31, Khamis)","topicSlug":"quantifiers-much-many","href":"decks/class-1e/2026/week-31/2026-09-10-quantifiers-much-many/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"2E","classSlug":"class-2e","year":"2026","week":"31","date":"2026-09-10","day":"Thursday","topic":"Lift the Facts, Write It Yourself (W31-K, rebuilt)","topicSlug":"handwashing-p1p3","href":"decks/class-2e/2026/week-31/2026-09-10-handwashing-p1p3/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1E","classSlug":"class-1e","year":"2026","week":"31","date":"2026-09-09","day":"Wednesday","topic":"Advice for Raju: spending-tips email (Week 31, Rabu)","topicSlug":"email-spending-advice","href":"decks/class-1e/2026/week-31/2026-09-09-email-spending-advice/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"31","date":"2026-09-08","day":"Tuesday","topic":"The Internet: Lift the Facts (Week 31, Selasa)","topicSlug":"internet-p1p3","href":"decks/class-1d/2026/week-31/2026-09-08-internet-p1p3/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1M","classSlug":"class-1m","year":"2026","week":"31","date":"2026-09-08","day":"Tuesday","topic":"Find the Missing Sentence (Week 31, Selasa)","topicSlug":"gapped-text-intro","href":"decks/class-1m/2026/week-31/2026-09-08-gapped-text-intro/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"2E","classSlug":"class-2e","year":"2026","week":"31","date":"2026-09-08","day":"Tuesday","topic":"Small Words, Strong Sentences (W31-S)","topicSlug":"covid19-prime","href":"decks/class-2e/2026/week-31/2026-09-08-covid19-prime/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"31","date":"2026-09-07","day":"Monday","topic":"Every Day or Right Now (Week 31, Isnin)","topicSlug":"present-time-words","href":"decks/class-1d/2026/week-31/2026-09-07-present-time-words/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"2D","classSlug":"class-2d","year":"2026","week":"31","date":"2026-09-02","day":"Wednesday","topic":"My Family Paragraph","topicSlug":"family-paragraph","href":"decks/class-2d/2026/week-31/2026-09-02-family-paragraph/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"TUITION-YEAR4","classSlug":"tuition-year4","year":"2026","week":"31","date":"2026-09-01","day":"Tuesday","topic":"Year 4 Tuition — Session 1: Diagnose → Discover → Fix","topicSlug":"session-1-diagnose-discover-fix","href":"decks/tuition-year4/2026/week-31/2026-09-01-session-1-diagnose-discover-fix/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"31","date":"2026-08-31","day":"Monday","topic":"My Daily Routine: Simple Present + Time/Place (Week 31, Isnin)","topicSlug":"daily-routine-simple-present","href":"decks/class-1d/2026/week-31/2026-08-31-daily-routine-simple-present/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1E","classSlug":"class-1e","year":"2026","week":"30","date":"2026-08-28","day":"Friday","topic":"Personal Shopper Challenge (Read, Match, Prove)","topicSlug":"personal-shopper-challenge","href":"decks/class-1e/2026/week-30/2026-08-28-personal-shopper-challenge/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1M","classSlug":"class-1m","year":"2026","week":"30","date":"2026-08-28","day":"Friday","topic":"Personal Shopper Challenge (Read, Match, Prove)","topicSlug":"personal-shopper-challenge","href":"decks/class-1m/2026/week-30/2026-08-28-personal-shopper-challenge/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"30","date":"2026-08-27","day":"Thursday","topic":"My Favourite Hobby: From Phrases to Paragraphs","topicSlug":"my-favourite-hobby-paragraph","href":"decks/class-1d/2026/week-30/2026-08-27-my-favourite-hobby-paragraph/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"2D","classSlug":"class-2d","year":"2026","week":"30","date":"2026-08-27","day":"Thursday","topic":"Sentence Building with Pronouns: My Family","topicSlug":"sentence-building-pronouns-my-family","href":"decks/class-2d/2026/week-30/2026-08-27-sentence-building-pronouns-my-family/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"2E","classSlug":"class-2e","year":"2026","week":"30","date":"2026-08-27","day":"Thursday","topic":"Part 5: Find the Missing Link","topicSlug":"part-5-gapped-text","href":"decks/class-2e/2026/week-30/2026-08-27-part-5-gapped-text/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"2D","classSlug":"class-2d","year":"2026","week":"30","date":"2026-08-26","day":"Wednesday","topic":"My Family Day Pronouns","topicSlug":"fanboys-pronouns-p1p2","href":"decks/class-2d/2026/week-30/2026-08-26-fanboys-pronouns-p1p2/","hasSlides":true,"worksheet":"worksheet.html","worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"30","date":"2026-08-24","day":"Monday","topic":"My Favourite Hobby: Collocations + Conjunctions","topicSlug":"my-favourite-hobby-collocations-conjunctions","href":"decks/class-1d/2026/week-30/2026-08-24-my-favourite-hobby-collocations-conjunctions/","hasSlides":true,"worksheet":"worksheet.html","worksheetPdf":null,"notes":true},{"class":"1M","classSlug":"class-1m","year":"2026","week":"29","date":"2026-08-21","day":"Friday","topic":"Responsible AI Competition Preparation","topicSlug":"responsible-ai-competition-prep","href":"decks/class-1m/2026/week-29/2026-08-21-responsible-ai-competition-prep/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"2E","classSlug":"class-2e","year":"2026","week":"29","date":"2026-08-20","day":"Thursday","topic":"Supermarket Complaint Counter","topicSlug":"supermarket-complaint-counter","href":"decks/class-2e/2026/week-29/2026-08-20-supermarket-complaint-counter/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":false},{"class":"1D","classSlug":"class-1d","year":"2026","week":"29","date":"2026-08-18","day":"Tuesday","topic":"Present Continuous: What Are They Doing Right Now?","topicSlug":"present-continuous","href":"decks/class-1d/2026/week-29/2026-08-18-present-continuous/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"29","date":"2026-08-17","day":"Monday","topic":"National Day Collocations","topicSlug":"national-day-collocations","href":"decks/class-1d/2026/week-29/2026-08-17-national-day-collocations/","hasSlides":true,"worksheet":"worksheet.html","worksheetPdf":null,"notes":true},{"class":"2E","classSlug":"class-2e","year":"2026","week":"29","date":"2026-08-17","day":"Monday","topic":"Reading Detectives","topicSlug":"reading-detectives","href":"decks/class-2e/2026/week-29/2026-08-17-reading-detectives/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"28","date":"2026-08-14","day":"Friday","topic":"Simple Past, Part 2","topicSlug":"simple-past-tense-2","href":"decks/class-1d/2026/week-28/2026-08-14-simple-past-tense-2/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"28","date":"2026-08-14","day":"Friday","topic":"Simple Present Tense","topicSlug":"simple-present-tense","href":"decks/class-1d/2026/week-28/2026-08-14-simple-present-tense/","hasSlides":true,"worksheet":"worksheet.html","worksheetPdf":null,"notes":true},{"class":"1D","classSlug":"class-1d","year":"2026","week":"28","date":"2026-08-11","day":"Tuesday","topic":"Common Illness Past Tense","topicSlug":"common-illness-past-tense","href":"decks/class-1d/2026/week-28/2026-08-11-common-illness-past-tense/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true}]</script>
     <script type="application/json" id="deck-meta">{"classes":["1D","1E","1M","2D","2E","TUITION-YEAR4"],"weeks":["28","29","30","31"],"days":["Monday","Tuesday","Wednesday","Thursday","Friday"],"generated":"2026-09-05"}</script>
@@ -198,7 +111,7 @@
           : 'Showing ' + list.length + ' of ' + DECKS.length + ' slide decks';
         els.reset.style.display = (state.cls || state.week || state.day) ? 'inline-block' : 'none';
         if (!list.length) {
-          els.grid.innerHTML = '<div class="empty">No lessons match. Clear a filter or try a different search.</div>';
+          els.grid.innerHTML = '<div class="empty">No lessons match. Clear a filter or try a different filter.</div>';
           return;
         }
         const latest = DECKS[0].date; // DECKS is pre-sorted newest first
