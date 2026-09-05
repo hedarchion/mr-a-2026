@@ -1,0 +1,31 @@
+{
+  "lessonRelated": true,
+  "classAbbrev": "1E",
+  "weekNo": 31,
+  "date": "2026-09-11",
+  "paper": 1,
+  "part": 2,
+  "firstItem": 9,
+  "copies": 2,
+  "subtitle": "Error correction: mixed revision",
+  "marks": 8,
+  "instructions": "Read the text below and correct the underlined errors. For each question, write one correct word in the answer table.",
+  "focus": "Replace each underlined error with one correct word.",
+  "passageTitle": "My Best Friend Aiman",
+  "paragraphs": [
+    "My best friend is Aiman. He [[0:are]] tall and friendly. Every morning, he [[9:wake]] up at six o'clock. He brushes his teeth and eats breakfast with his family. He bought [[10:any]] storybooks: a mystery and a comic.",
+    "He goes to school [[11:with]] bus. He has [[12:much]] storybooks because he loves to read. There is not [[13:many]] noise in his house, so he reads [[14:loud]] every evening.",
+    "Last week, he helped [[15:I]] with my homework. He is [[16:a]] best friend anyone can have."
+  ],
+  "items": [
+    { "number": 0, "incorrect": "are", "answer": "is", "target": "worked example: subject-verb agreement" },
+    { "number": 9, "incorrect": "wake", "answer": "wakes", "target": "subject-verb agreement in present simple" },
+    { "number": 10, "incorrect": "any", "answer": "some", "target": "quantifier fixed by count clue (two named books)" },
+    { "number": 11, "incorrect": "with", "answer": "by", "target": "collocational preposition for transport" },
+    { "number": 12, "incorrect": "much", "answer": "many", "target": "quantifier with plural countable noun" },
+    { "number": 13, "incorrect": "many", "answer": "much", "target": "quantifier with uncountable noun in negative" },
+    { "number": 14, "incorrect": "loud", "answer": "loudly", "target": "adverb form for how an action is done" },
+    { "number": 15, "incorrect": "I", "answer": "me", "target": "object pronoun after verb" },
+    { "number": 16, "incorrect": "a", "answer": "the", "target": "article with superlative" }
+  ]
+}

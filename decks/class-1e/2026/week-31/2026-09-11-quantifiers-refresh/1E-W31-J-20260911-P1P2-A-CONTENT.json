@@ -1,0 +1,31 @@
+{
+  "lessonRelated": true,
+  "classAbbrev": "1E",
+  "weekNo": 31,
+  "date": "2026-09-11",
+  "paper": 1,
+  "part": 2,
+  "firstItem": 9,
+  "copies": 2,
+  "subtitle": "Error correction: quantifiers (much, many, some, any)",
+  "marks": 8,
+  "instructions": "Read the text below and correct the underlined errors. For each question, write one correct word in the answer table.",
+  "focus": "Replace each underlined error with one correct word.",
+  "passageTitle": "Saturday at the Market",
+  "paragraphs": [
+    "Every Saturday, Mei and her mother go to the morning market. They buy [[0:much]] fresh vegetables. There are [[9:much]] red apples on the first table. There are [[10:much]] friendly sellers there.",
+    "Mei wants [[11:much]] mangoes, but they are expensive today. They do not spend [[12:many]] money because they know the best stalls. There are too [[13:much]] people at the fish stall, so they walk past it.",
+    "They did not buy [[14:many]] cooking oil because a bottle is still full at home. They go home happy with [[15:much]] cheap things. She does not need [[16:some]] help to carry the bags."
+  ],
+  "items": [
+    { "number": 0, "incorrect": "much", "answer": "many", "target": "worked example: quantifier with plural countable noun" },
+    { "number": 9, "incorrect": "much", "answer": "many", "target": "quantifier with plural countable noun" },
+    { "number": 10, "incorrect": "much", "answer": "many", "target": "quantifier with plural countable noun" },
+    { "number": 11, "incorrect": "much", "answer": "many", "target": "quantifier with plural countable noun" },
+    { "number": 12, "incorrect": "many", "answer": "much", "target": "quantifier with uncountable noun in negative" },
+    { "number": 13, "incorrect": "much", "answer": "many", "target": "quantifier after too with plural countable noun" },
+    { "number": 14, "incorrect": "many", "answer": "much", "target": "quantifier with uncountable noun in negative" },
+    { "number": 15, "incorrect": "much", "answer": "many", "target": "quantifier with plural countable noun" },
+    { "number": 16, "incorrect": "some", "answer": "any", "target": "quantifier with negative verb" }
+  ]
+}
