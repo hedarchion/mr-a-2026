@@ -4,30 +4,30 @@
     {
       "id": "hook",
       "type": "prompt",
-      "initialWords": 9,
+      "initialWords": 8,
       "hintWords": 17,
-      "revealedWords": 9
+      "revealedWords": 8
     },
     {
       "id": "clue-topic",
       "type": "choice",
-      "initialWords": 31,
-      "hintWords": 36,
-      "revealedWords": 57
+      "initialWords": 32,
+      "hintWords": 37,
+      "revealedWords": 58
     },
     {
       "id": "clue-chain",
       "type": "choice",
-      "initialWords": 29,
-      "hintWords": 33,
-      "revealedWords": 50
+      "initialWords": 30,
+      "hintWords": 36,
+      "revealedWords": 56
     },
     {
       "id": "clue-sides",
       "type": "choice",
-      "initialWords": 33,
-      "hintWords": 39,
-      "revealedWords": 52
+      "initialWords": 34,
+      "hintWords": 42,
+      "revealedWords": 57
     },
     {
       "id": "clue-predict",
@@ -39,36 +39,36 @@
     {
       "id": "trap-word",
       "type": "choice",
-      "initialWords": 28,
-      "hintWords": 34,
-      "revealedWords": 46
+      "initialWords": 29,
+      "hintWords": 36,
+      "revealedWords": 47
     },
     {
       "id": "routine",
       "type": "steps",
-      "initialWords": 14,
-      "hintWords": 14,
-      "revealedWords": 31
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 28
     },
     {
       "id": "module-format",
       "type": "reveal",
-      "initialWords": 7,
-      "hintWords": 7,
-      "revealedWords": 33
+      "initialWords": 5,
+      "hintWords": 5,
+      "revealedWords": 28
     },
     {
       "id": "module-launch",
       "type": "writing",
-      "initialWords": 25,
-      "hintWords": 25,
-      "revealedWords": 36
+      "initialWords": 17,
+      "hintWords": 17,
+      "revealedWords": 28
     },
     {
       "id": "exit-checks",
       "type": "prompt",
       "initialWords": 7,
-      "hintWords": 11,
+      "hintWords": 10,
       "revealedWords": 7
     }
   ]

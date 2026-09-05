@@ -84,6 +84,8 @@ Use the smallest visual system that makes the teaching move obvious. Prefer one 
 
 Initially show only the essential prompt, example, or reading evidence. Keep hints and answers behind teacher-controlled reveals; move timings, objectives, repeated labels, and teacher directions to notes. This is the teacher’s explicit default, including when using older decks as references.
 
+Write every projected line as sayable presenter copy, not document copy. Prompts name the job in words the teacher can read aloud verbatim (“Which one is BEST?”), never worksheet rubrics, quiz-show riddles, sentence fragments, slang, or page-number bookkeeping. Feedback explains the mechanism and contrasts each distractor; hints are rescue lines the teacher can voice. Full spoken sentences, page numbers, timings, and administration live in notes only.
+
 The teacher projects student-facing slides via laptop HDMI to a smart TV or Imago smartboard, with the back row about 4–6 metres away. Spend spare canvas space on larger essential text and images. Avoid oversized margins, small centred content blocks, and unused fixed-height image regions. Retain safe edges and original image proportions. In the shared template, use the projection type scale and bounded enlargement; never shrink content below that scale to make it fit. Verify all reveal states at the actual canvas and include a full-HD display check. Physical screen size and room lighting remain unknown until classroom observation.
 
 Design for pupils who are nearsighted by default: at least 28 px body text, 34 px questions, and 38 px slide titles at the target viewport. Do not rely on color alone, muted gray, thin strokes, low-opacity text, or interaction below the navigation safe zone.
