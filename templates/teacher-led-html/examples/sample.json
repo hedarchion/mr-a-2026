@@ -1,0 +1,154 @@
+{
+ "version": 1,
+ "title": "A day together · Template sample",
+ "viewport": "1366x768",
+ "slides": [
+  {
+   "id": "conversation",
+   "type": "prompt",
+   "prompt": "What do you enjoy doing with your family?",
+   "hint": "Think about one thing you did together.",
+   "notes": "Template demonstration, not a scheduled lesson. Invite an oral response. The hint is optional. No learner names or responses are stored."
+  },
+  {
+   "id": "picture",
+   "type": "image",
+   "prompt": "What can you see?",
+   "src": "assets/family-day-scene.png",
+   "alt": "Illustrated family cooking, reading, playing and talking at home",
+   "hint": "Describe one person or action.",
+   "notes": "Existing locally generated illustration reused from the 2D family paragraph deck. Accept different descriptions supported by the image."
+  },
+  {
+   "id": "model",
+   "type": "reveal",
+   "prompt": "How could you describe a family activity?",
+   "answer": "We play games together on Sundays.",
+   "feedback": "The example names the activity and when it happens.",
+   "notes": "Elicit an example before revealing one possible response. This is an illustrative content sample, not new grammar instruction."
+  },
+  {
+   "id": "choice",
+   "type": "choice",
+   "prompt": "Which sentence tells us when?",
+   "options": [
+    "We play in the park.",
+    "We play on Sundays."
+   ],
+   "answer": "We play on Sundays.",
+   "feedback": "“On Sundays” tells us when. “In the park” tells us where.",
+   "hint": "Look for a time.",
+   "notes": "Selection records an attempt without grading it. Reveal provides the answer. Ask pupils to explain orally."
+  },
+  {
+   "id": "gap",
+   "type": "cloze",
+   "prompt": "Complete the sentence.",
+   "sentence": "An umbrella helps us stay {{blank}} in the rain.",
+   "options": [
+    "dry",
+    "wet"
+   ],
+   "answer": "dry",
+   "feedback": "An umbrella keeps the rain off us.",
+   "hint": "Think about keeping the rain off.",
+   "notes": "Click either answer to fill the blank inline. Reveal supplies the answer. Reset clears both the choice and blank. An illustrative template check, not an assessment."
+  },
+  {
+   "id": "contrast",
+   "type": "compare",
+   "prompt": "What does the second sentence add?",
+   "columns": [
+    {
+     "label": "First version",
+     "text": "We cook together."
+    },
+    {
+     "label": "More detail",
+     "text": "We cook dinner together on Saturdays."
+    }
+   ],
+   "hint": "Look for the meal and the day.",
+   "notes": "Accept meal and day. Keep the two examples together because the comparison is the teaching move."
+  },
+  {
+   "id": "sequence",
+   "type": "steps",
+   "prompt": "How can we plan a picnic?",
+   "items": [
+    "Choose a place.",
+    "Pack food and water.",
+    "Travel to the picnic spot."
+   ],
+   "notes": "Reveal one step at a time. First step is initially visible. Discuss other sensible planning actions orally."
+  },
+  {
+   "id": "reading",
+   "type": "passage",
+   "prompt": "Why did the family go home?",
+   "text": "On Saturday, a family went to the park. They took sandwiches and a ball. After lunch, they played a game near the trees. Then dark clouds filled the sky. They packed their bags and went home before the rain started.",
+   "hint": "Read the last two sentences.",
+   "notes": "The passage is the essential evidence and remains visible as a whole. Expected inference: they wanted to avoid the rain. No answer needs to appear unless the teacher chooses a separate reveal slide."
+  },
+  {
+   "id": "order",
+   "type": "order",
+   "prompt": "Put the picnic events in order.",
+   "items": [
+    "The family ate lunch.",
+    "They played a game.",
+    "They saw dark clouds.",
+    "They went home."
+   ],
+   "feedback": "Lunch comes before the game. The clouds appear before they leave.",
+   "notes": "Click sentences in order. Click a selected sentence to remove it. Reveal shows the canonical sequence; Reset clears it."
+  },
+  {
+   "id": "sort",
+   "type": "sort",
+   "prompt": "Is it a place or an activity?",
+   "categories": [
+    "Place",
+    "Activity"
+   ],
+   "items": [
+    {
+     "text": "the park",
+     "category": "Place"
+    },
+    {
+     "text": "playing a game",
+     "category": "Activity"
+    },
+    {
+     "text": "the kitchen",
+     "category": "Place"
+    }
+   ],
+   "feedback": "A place tells us where. An activity tells us what people do.",
+   "notes": "Teacher selects the category proposed by the class. Reveal fills the canonical categories; selections have no scores."
+  },
+  {
+   "id": "write",
+   "type": "writing",
+   "prompt": "A day together",
+   "task": "Write three sentences about an activity with your family. Say what you do, where, and why you enjoy it.",
+   "frame": "We … together. We go to … . I enjoy it because … .",
+   "notes": "The frame is optional and hidden initially. This demonstrates a writing preset, not a worksheet or assessment. Pupils could write on paper; teacher listens for relevant details."
+  },
+  {
+   "id": "story-gap",
+   "type": "gap",
+   "prompt": "Read the story. Try each sentence in the gap.",
+   "text": "Mei brought home a small kitten.\n{{blank}}\nSoon it slept in a warm box beside her bed.",
+   "options": [
+    "She fed it milk every morning.",
+    "Her brother walks to school."
+   ],
+   "answer": "She fed it milk every morning.",
+   "feedback": "She is Mei and it is the kitten.",
+   "hint": "Who is she? What is it?",
+   "notes": "Tap a candidate to drop it into the gap and read the story with it inside. Reveal supplies the answer. Reset clears the blank. An illustrative template check, not an assessment."
+  }
+ ]
+}

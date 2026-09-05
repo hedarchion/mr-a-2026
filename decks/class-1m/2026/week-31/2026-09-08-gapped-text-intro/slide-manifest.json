@@ -9,18 +9,11 @@
       "revealedWords": 12
     },
     {
-      "id": "hook-story",
-      "type": "passage",
-      "initialWords": 39,
-      "hintWords": 39,
-      "revealedWords": 39
-    },
-    {
-      "id": "hook-vote",
-      "type": "choice",
-      "initialWords": 28,
-      "hintWords": 34,
-      "revealedWords": 54
+      "id": "hook-test",
+      "type": "gap",
+      "initialWords": 48,
+      "hintWords": 54,
+      "revealedWords": 66
     },
     {
       "id": "clue1-teach",
@@ -45,10 +38,10 @@
     },
     {
       "id": "clue2-test",
-      "type": "choice",
-      "initialWords": 22,
-      "hintWords": 28,
-      "revealedWords": 40
+      "type": "gap",
+      "initialWords": 41,
+      "hintWords": 47,
+      "revealedWords": 53
     },
     {
       "id": "clue3-teach",
@@ -59,27 +52,27 @@
     },
     {
       "id": "clue3-test",
-      "type": "choice",
-      "initialWords": 28,
-      "hintWords": 36,
-      "revealedWords": 45
+      "type": "gap",
+      "initialWords": 50,
+      "hintWords": 58,
+      "revealedWords": 59
     },
     {
       "id": "clue4-teach",
       "type": "passage",
-      "initialWords": 36,
-      "hintWords": 36,
-      "revealedWords": 36
+      "initialWords": 35,
+      "hintWords": 35,
+      "revealedWords": 35
     },
     {
       "id": "clue4-test",
-      "type": "choice",
-      "initialWords": 29,
-      "hintWords": 34,
-      "revealedWords": 50
+      "type": "gap",
+      "initialWords": 50,
+      "hintWords": 55,
+      "revealedWords": 62
     },
     {
-      "id": "trap-story",
+      "id": "trap-teach",
       "type": "passage",
       "initialWords": 33,
       "hintWords": 33,
@@ -87,10 +80,10 @@
     },
     {
       "id": "trap-test",
-      "type": "choice",
-      "initialWords": 27,
-      "hintWords": 34,
-      "revealedWords": 50
+      "type": "gap",
+      "initialWords": 50,
+      "hintWords": 57,
+      "revealedWords": 65
     },
     {
       "id": "routine",
