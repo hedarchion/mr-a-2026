@@ -4,160 +4,98 @@
   "viewport": "1280x665",
   "slides": [
     {
-      "id": "hook",
-      "type": "prompt",
-      "prompt": "Part 5 Gapped Text: choose the sentence that makes the ideas flow.",
-      "hint": "Two stories today: the light bulb, and fast travel.",
-      "notes": "SET INDUCTION. 60-min Tue lesson 8 Sep 2026, sl_t3 17:50-18:50. Say: 'Eight sentences fell out of two stories. Our job: put back the one that makes the ideas flow.' Module pp.36-37 gapped text (P1P5, marks collected). Outcomes (teacher-kept): use the 4 checks on every gap; complete gaps 1-8 in books. 1M: noisy class, no roles or competitions; partner talk + test-driving only."
-    },
-    {
-      "id": "hook-test",
-      "type": "gap",
-      "prompt": "Try Edison's gap.",
-      "text": "Edison wanted a bulb that lasts a long time.\n{{blank}}\nIt burned for many hours.",
+      "id": "retrieve-link",
+      "type": "choice",
+      "prompt": "Ali lost his bag. Which one is BEST next?",
       "options": [
-        "He tested thousands of materials, one after another.",
-        "His laboratory was a large building in America.",
-        "Many people use bright lamps today."
+        "He found it behind the door.",
+        "Nasi lemak is my favourite food.",
+        "The library opens at eight."
       ],
-      "answer": "He tested thousands of materials, one after another.",
-      "feedback": "A tells why the bulb lasted. B and C do not.",
-      "hint": "Are B and C bad English?",
-      "notes": "TEST-DRIVE the whole job by instinct before teaching the checks. Tap B — read the story with B inside. Does it flow? Tap C — same question. Then tap A and Reveal. Say: 'B and C are good English, wrong job. C fits lamps, but it does not connect his goal and result.'"
-    },
-    {
-      "id": "clue1-teach",
-      "type": "passage",
-      "prompt": "Check 1: what are we talking about?",
-      "text": "Topic words: bulbs, wires, bright rooms, safe light. Hakim joined the school science club last month. [ GAP ] He now enjoys building simple machines with his friends.",
-      "notes": "INTRODUCE Check 1 (topic). Say: 'First ask: what are we talking about?' Point at the topic words together. Do not vote yet."
-    },
-    {
-      "id": "clue1-test",
-      "type": "reveal",
-      "prompt": "Hakim's story. Which sentences survive the topic check?",
-      "answer": "All three survive: each fits Hakim or the club.",
-      "feedback": "Topic is a first filter, not the final answer.",
-      "notes": "TEST Check 1. Discuss each candidate (A: club taught him; B: sister draws pictures; C: learnt the tools safely), then reveal: all three survive, so topic alone cannot finish the job."
-    },
-    {
-      "id": "clue2-teach",
-      "type": "passage",
-      "prompt": "Check 2: who or what are we following?",
-      "text": "Chain it: Mei → she. Kitten → it. Mei brought home a small kitten. [ GAP ] It slept in a warm box.",
-      "notes": "INTRODUCE Check 2 (who/what chain). Point at each link as you say it: Mei to she, kitten to it."
-    },
-    {
-      "id": "clue2-test",
-      "type": "gap",
-      "prompt": "Try Mei's gap.",
-      "text": "Mei brought home a small kitten.\n{{blank}}\nIt slept in a warm box.",
-      "options": [
-        "She fed it milk every morning.",
-        "Kittens often play with string.",
-        "Her brother walks to school."
-      ],
-      "answer": "She fed it milk every morning.",
-      "feedback": "A: Mei → she; kitten → it. We follow the same pair.",
-      "hint": "Who is she? What is it?",
-      "notes": "TEST Check 2. Tap B — read it inside: about kittens, but it drops THIS kitten. Tap C — drops them both. Tap A and Reveal."
-    },
-    {
-      "id": "clue3-teach",
-      "type": "passage",
-      "prompt": "Check 3: do not read only the gap.",
-      "text": "Read BEFORE. Read AFTER. Razak had a bus to catch this morning. [ GAP ] The driver waited for him.",
-      "notes": "INTRODUCE Check 3 (both sides). The important one: cover the gap with your hand and show that neither side alone is enough."
-    },
-    {
-      "id": "clue3-test",
-      "type": "gap",
-      "prompt": "Try Razak's gap.",
-      "text": "Razak had a bus to catch this morning.\n{{blank}}\nThe driver waited for him.",
-      "options": [
-        "Heavy rain flooded the road near his house.",
-        "Razak carried a heavy bag to school.",
-        "Buses in his town were usually blue."
-      ],
-      "answer": "Heavy rain flooded the road near his house.",
-      "feedback": "A bridges both sides: late bus, flood, driver waited.",
-      "hint": "Use the sentence before AND after the gap.",
-      "notes": "TEST Check 3. Tap B — fits Razak, but does it explain the waiting driver? Tap C — fits buses, connects to nothing. Tap A and Reveal."
-    },
-    {
-      "id": "clue4-teach",
-      "type": "passage",
-      "prompt": "Check 4: what kind of idea is missing?",
-      "text": "Predict first, then test the choices. Lina dreamed of visiting her grandmother in seconds. [ GAP ] She woke up smiling.",
-      "notes": "INTRODUCE Check 4 (predict before options). Partner talk 30 seconds: 'What probably happened in the middle?' Take two answers, then move to the test."
-    },
-    {
-      "id": "clue4-test",
-      "type": "gap",
-      "prompt": "Try Lina's gap.",
-      "text": "Lina dreamed of visiting her grandmother in seconds.\n{{blank}}\nShe woke up smiling.",
-      "options": [
-        "In the dream, she used a glowing travel machine.",
-        "She liked eating noodles with her grandmother.",
-        "Travelling by car takes a long time."
-      ],
-      "answer": "In the dream, she used a glowing travel machine.",
-      "feedback": "A stays in the dream. B and C leave it.",
-      "hint": "Guess the missing idea first.",
-      "notes": "TEST Check 4. Compare predictions against each tap. Teleportation flavour links to Module p.37 without revealing answers."
-    },
-    {
-      "id": "trap-teach",
-      "type": "passage",
-      "prompt": "Trap: all three make sense. Why is only one best?",
-      "text": "The inventor showed the pupils his first lamp. [ GAP ] They clapped when it lit up.",
-      "notes": "Read aloud, point at the gap. Let them feel all three fitting before the test."
-    },
-    {
-      "id": "trap-test",
-      "type": "gap",
-      "prompt": "Try the lamp gap.",
-      "text": "The inventor showed the pupils his first lamp.\n{{blank}}\nThey clapped when it lit up.",
-      "options": [
-        "He had fixed its broken wire that morning.",
-        "Thomas Edison was a famous inventor.",
-        "The museum keeps many old lamps."
-      ],
-      "answer": "He had fixed its broken wire that morning.",
-      "feedback": "A explains the clapping. B is only a fact.",
-      "hint": "Same word? Wrong question. Which idea connects?",
-      "notes": "TEST the trap. Tap B — a true fact, but read it inside: does it explain the clapping? Tap C — a museum is the wrong place entirely. Say: 'Don't ask same word. Ask: which idea connects?' Invention flavour links to Module p.36."
+      "answer": "He found it behind the door.",
+      "feedback": "A finishes the story. B changes topic. C tells time.",
+      "hint": "Which sentence still talks about the lost bag?",
+      "notes": "RETRIEVAL + BRIDGE (~5 min). Partner whisper 30s, then cold-call. Many pick C because library repeats: name it — same word is not enough, same story is the rule. Bridge: every gap today asks which sentence keeps the story going. 60-min Tue 8 Sep, sl_t3."
     },
     {
       "id": "routine",
-      "type": "reveal",
-      "prompt": "Found a gap? What do you check?",
-      "answer": "1. Topic: what is this part about? 2. Who: who follows who? 3. Both sides: what must join up? 4. Predict the idea, then choose.",
-      "feedback": "Only then: look at the choices. Do not hunt for one repeated word.",
-      "notes": "LESSON DEVELOPMENT close. Elicit the 4 checks orally first, then reveal to confirm. Leave this slide on screen during bookwork — come back to it while pupils work."
+      "type": "steps",
+      "prompt": "Fill a gap in 4 checks.",
+      "items": [
+        "Same topic as the story?",
+        "Same person or thing?",
+        "Fits before AND after?",
+        "Say the idea first, then choose."
+      ],
+      "notes": "NAME THE ROUTINE (~5 min). Adapts 2E routine (topic, who/what chain, both sides, predict-then-choose) in Form 1 A2 words. Read each check with a finger point. Correct options-first habit: idea first, options second. Pupils repeat the 4 back."
     },
     {
-      "id": "module-format",
-      "type": "reveal",
-      "prompt": "Two stories. Two small sets.",
-      "answer": "Gaps 1 to 4 use sentences A to D. Gaps 5 to 8 use sentences E to H.",
-      "feedback": "Never mix the two banks.",
-      "notes": "Say: 'First story, first set. Second story, second set.' Then name it: open Module pages 36 and 37. Light Bulb p.36 + Teleportation p.37 (LS 3.1.1/3.1.2). No module answers on slides; books carry the marked activity."
+      "id": "model-fan",
+      "type": "gap",
+      "prompt": "Try the hot room gap.",
+      "text": "The classroom was very hot.\n{{blank}}\nNow every class has a fan.",
+      "options": [
+        "A fan moves air and cools the room.",
+        "My uncle sells rice in the market.",
+        "The bell rings at one o'clock daily."
+      ],
+      "answer": "A fan moves air and cools the room.",
+      "feedback": "A links hot lessons to cool fans. B and C change the topic.",
+      "hint": "What must explain the new fans?",
+      "notes": "MODEL (~10 min, only full think-aloud). Script: Check 1 hot classroom — B market out, C bell time out. Check 2 fan and room — only A. Check 3 fits before and after. Check 4: I said something cools the room before looking. Pupils whisper the idea first. Invention parallel to p.36, no bank content."
     },
     {
-      "id": "module-launch",
+      "id": "guide-boat",
+      "type": "gap",
+      "prompt": "Try the boat gap.",
+      "text": "Aiman takes a boat to school.\n{{blank}}\nHe arrives on time every day.",
+      "options": [
+        "The boat crosses the river in ten minutes.",
+        "His sister likes fried noodles for lunch.",
+        "The boat is blue and very pretty."
+      ],
+      "answer": "The boat crosses the river in ten minutes.",
+      "feedback": "A explains on time. B leaves travel. C only describes.",
+      "hint": "Bridge closed, still on time — what happened?",
+      "notes": "GUIDED (~10 min). Cover options; pupils predict the travel result first (the boat is fast), then test. Correct C-pickers: C names the boat but gives no result — Check 3 fails. Chain: Aiman, boat, river, on time. Travel parallel to p.37, no bank content."
+    },
+    {
+      "id": "trap-bicycle",
+      "type": "gap",
+      "prompt": "Try the saving gap.",
+      "text": "Mei saves money for a bicycle.\n{{blank}}\nShe rides to school with her brother.",
+      "options": [
+        "She counts the box every night.",
+        "She buys the bicycle after six months.",
+        "Her brother likes chicken rice."
+      ],
+      "answer": "She buys the bicycle after six months.",
+      "feedback": "B explains the ride. A fits saving but not the ride.",
+      "hint": "Which answer lets her ride to school?",
+      "notes": "TRAP (~8 min, last invented example). Many pick A first (coins/box words). Live correction: A fits before — read after: she rides. Counting never buys the bicycle. Pupils point at the after-line and read it aloud. Bridge: module gaps need the same both-sides test."
+    },
+    {
+      "id": "bookwork-36",
       "type": "writing",
-      "prompt": "Your turn: fill the gaps.",
-      "task": "Do gaps 1 to 8. Use the 4 checks on every gap.",
-      "frame": "1 Topic? 2 Who? 3 Both sides? 4 Predict, then choose.",
-      "notes": "ACTIVITY (teacher-specified: module bookwork). Say: 'Silent work. Show me the 4 checks on every gap.' About 20 min. P1P5, 8 marks. Collect books at the door."
+      "prompt": "Your turn: gaps 1 to 4.",
+      "task": "Open your books. Do gaps 1 to 4. Say the idea first, then choose.",
+      "frame": "1 Same topic? 2 Same person? 3 Both sides? 4 Idea first.",
+      "notes": "BOOKWORK p.36 (~10 min, silent individual, teacher-marked, formative). Module p.36 The Light Bulb, gaps 1-4, bank A-D. No answers on screen. Teacher walks, checks predictions. Early finishers re-check with Check 3. Watch name-matching (Edison/Davy): prompt topic + after-line."
+    },
+    {
+      "id": "bookwork-37",
+      "type": "writing",
+      "prompt": "Now gaps 5 to 8.",
+      "task": "Do gaps 5 to 8. Same 4 checks. Bring your book to the door.",
+      "frame": "1 Same topic? 2 Same person? 3 Both sides? 4 Idea first.",
+      "notes": "BOOKWORK p.37 (~10 min) + SUBMIT. Module p.37 Teleportation, gaps 5-8, bank E-H. Collect books at the door, no queues or role jobs (1M noise history). If noise rises, stop partner talk, silent individual. Close (teacher talk): we used 4 checks; I return books and we fix the hardest gap together."
     },
     {
       "id": "exit-checks",
       "type": "prompt",
-      "prompt": "Without looking: what are the 4 checks?",
-      "hint": "Start with: Topic…",
-      "notes": "Exit evidence, 2 min: eyes off the screen, tell your partner. Gaps in recall reopen next lesson."
+      "prompt": "Without looking: say the 4 checks.",
+      "hint": "Start with: Same topic…",
+      "notes": "EXIT (~2 min). Eyes off screen, tell your partner. Gaps in recall reopen next lesson (9 Sep P1P2 diagnostic)."
     }
   ]
 }

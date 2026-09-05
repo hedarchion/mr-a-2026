@@ -1,65 +1,33 @@
 # Find the Missing Sentence — slide notes
 
-## 1. hook (prompt)
+## 1. retrieve-link (choice)
 
-SET INDUCTION. 60-min Tue lesson 8 Sep 2026, sl_t3 17:50-18:50. Say: 'Eight sentences fell out of two stories. Our job: put back the one that makes the ideas flow.' Module pp.36-37 gapped text (P1P5, marks collected). Outcomes (teacher-kept): use the 4 checks on every gap; complete gaps 1-8 in books. 1M: noisy class, no roles or competitions; partner talk + test-driving only.
+RETRIEVAL + BRIDGE (~5 min). Partner whisper 30s, then cold-call. Many pick C because library repeats: name it — same word is not enough, same story is the rule. Bridge: every gap today asks which sentence keeps the story going. 60-min Tue 8 Sep, sl_t3.
 
-## 2. hook-test (gap)
+## 2. routine (steps)
 
-TEST-DRIVE the whole job by instinct before teaching the checks. Tap B — read the story with B inside. Does it flow? Tap C — same question. Then tap A and Reveal. Say: 'B and C are good English, wrong job. C fits lamps, but it does not connect his goal and result.'
+NAME THE ROUTINE (~5 min). Adapts 2E routine (topic, who/what chain, both sides, predict-then-choose) in Form 1 A2 words. Read each check with a finger point. Correct options-first habit: idea first, options second. Pupils repeat the 4 back.
 
-## 3. clue1-teach (passage)
+## 3. model-fan (gap)
 
-INTRODUCE Check 1 (topic). Say: 'First ask: what are we talking about?' Point at the topic words together. Do not vote yet.
+MODEL (~10 min, only full think-aloud). Script: Check 1 hot classroom — B market out, C bell time out. Check 2 fan and room — only A. Check 3 fits before and after. Check 4: I said something cools the room before looking. Pupils whisper the idea first. Invention parallel to p.36, no bank content.
 
-## 4. clue1-test (reveal)
+## 4. guide-boat (gap)
 
-TEST Check 1. Discuss each candidate (A: club taught him; B: sister draws pictures; C: learnt the tools safely), then reveal: all three survive, so topic alone cannot finish the job.
+GUIDED (~10 min). Cover options; pupils predict the travel result first (the boat is fast), then test. Correct C-pickers: C names the boat but gives no result — Check 3 fails. Chain: Aiman, boat, river, on time. Travel parallel to p.37, no bank content.
 
-## 5. clue2-teach (passage)
+## 5. trap-bicycle (gap)
 
-INTRODUCE Check 2 (who/what chain). Point at each link as you say it: Mei to she, kitten to it.
+TRAP (~8 min, last invented example). Many pick A first (coins/box words). Live correction: A fits before — read after: she rides. Counting never buys the bicycle. Pupils point at the after-line and read it aloud. Bridge: module gaps need the same both-sides test.
 
-## 6. clue2-test (gap)
+## 6. bookwork-36 (writing)
 
-TEST Check 2. Tap B — read it inside: about kittens, but it drops THIS kitten. Tap C — drops them both. Tap A and Reveal.
+BOOKWORK p.36 (~10 min, silent individual, teacher-marked, formative). Module p.36 The Light Bulb, gaps 1-4, bank A-D. No answers on screen. Teacher walks, checks predictions. Early finishers re-check with Check 3. Watch name-matching (Edison/Davy): prompt topic + after-line.
 
-## 7. clue3-teach (passage)
+## 7. bookwork-37 (writing)
 
-INTRODUCE Check 3 (both sides). The important one: cover the gap with your hand and show that neither side alone is enough.
+BOOKWORK p.37 (~10 min) + SUBMIT. Module p.37 Teleportation, gaps 5-8, bank E-H. Collect books at the door, no queues or role jobs (1M noise history). If noise rises, stop partner talk, silent individual. Close (teacher talk): we used 4 checks; I return books and we fix the hardest gap together.
 
-## 8. clue3-test (gap)
+## 8. exit-checks (prompt)
 
-TEST Check 3. Tap B — fits Razak, but does it explain the waiting driver? Tap C — fits buses, connects to nothing. Tap A and Reveal.
-
-## 9. clue4-teach (passage)
-
-INTRODUCE Check 4 (predict before options). Partner talk 30 seconds: 'What probably happened in the middle?' Take two answers, then move to the test.
-
-## 10. clue4-test (gap)
-
-TEST Check 4. Compare predictions against each tap. Teleportation flavour links to Module p.37 without revealing answers.
-
-## 11. trap-teach (passage)
-
-Read aloud, point at the gap. Let them feel all three fitting before the test.
-
-## 12. trap-test (gap)
-
-TEST the trap. Tap B — a true fact, but read it inside: does it explain the clapping? Tap C — a museum is the wrong place entirely. Say: 'Don't ask same word. Ask: which idea connects?' Invention flavour links to Module p.36.
-
-## 13. routine (reveal)
-
-LESSON DEVELOPMENT close. Elicit the 4 checks orally first, then reveal to confirm. Leave this slide on screen during bookwork — come back to it while pupils work.
-
-## 14. module-format (reveal)
-
-Say: 'First story, first set. Second story, second set.' Then name it: open Module pages 36 and 37. Light Bulb p.36 + Teleportation p.37 (LS 3.1.1/3.1.2). No module answers on slides; books carry the marked activity.
-
-## 15. module-launch (writing)
-
-ACTIVITY (teacher-specified: module bookwork). Say: 'Silent work. Show me the 4 checks on every gap.' About 20 min. P1P5, 8 marks. Collect books at the door.
-
-## 16. exit-checks (prompt)
-
-Exit evidence, 2 min: eyes off the screen, tell your partner. Gaps in recall reopen next lesson.
+EXIT (~2 min). Eyes off screen, tell your partner. Gaps in recall reopen next lesson (9 Sep P1P2 diagnostic).

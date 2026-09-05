@@ -2,116 +2,60 @@
   "version": 1,
   "slides": [
     {
-      "id": "hook",
-      "type": "prompt",
-      "initialWords": 12,
-      "hintWords": 21,
-      "revealedWords": 12
-    },
-    {
-      "id": "hook-test",
-      "type": "gap",
-      "initialWords": 40,
-      "hintWords": 46,
-      "revealedWords": 51
-    },
-    {
-      "id": "clue1-teach",
-      "type": "passage",
-      "initialWords": 35,
-      "hintWords": 35,
-      "revealedWords": 35
-    },
-    {
-      "id": "clue1-test",
-      "type": "reveal",
-      "initialWords": 8,
-      "hintWords": 8,
-      "revealedWords": 26
-    },
-    {
-      "id": "clue2-teach",
-      "type": "passage",
-      "initialWords": 31,
-      "hintWords": 31,
-      "revealedWords": 31
-    },
-    {
-      "id": "clue2-test",
-      "type": "gap",
-      "initialWords": 32,
-      "hintWords": 38,
-      "revealedWords": 44
-    },
-    {
-      "id": "clue3-teach",
-      "type": "passage",
-      "initialWords": 28,
-      "hintWords": 28,
-      "revealedWords": 28
-    },
-    {
-      "id": "clue3-test",
-      "type": "gap",
-      "initialWords": 39,
-      "hintWords": 47,
-      "revealedWords": 48
-    },
-    {
-      "id": "clue4-teach",
-      "type": "passage",
-      "initialWords": 29,
-      "hintWords": 29,
-      "revealedWords": 29
-    },
-    {
-      "id": "clue4-test",
-      "type": "gap",
-      "initialWords": 39,
-      "hintWords": 44,
-      "revealedWords": 49
-    },
-    {
-      "id": "trap-teach",
-      "type": "passage",
-      "initialWords": 27,
-      "hintWords": 27,
-      "revealedWords": 27
-    },
-    {
-      "id": "trap-test",
-      "type": "gap",
-      "initialWords": 39,
-      "hintWords": 46,
-      "revealedWords": 48
+      "id": "retrieve-link",
+      "type": "choice",
+      "initialWords": 26,
+      "hintWords": 34,
+      "revealedWords": 42
     },
     {
       "id": "routine",
-      "type": "reveal",
-      "initialWords": 7,
-      "hintWords": 7,
-      "revealedWords": 45
+      "type": "steps",
+      "initialWords": 11,
+      "hintWords": 11,
+      "revealedWords": 25
     },
     {
-      "id": "module-format",
-      "type": "reveal",
-      "initialWords": 5,
-      "hintWords": 5,
-      "revealedWords": 28
+      "id": "model-fan",
+      "type": "gap",
+      "initialWords": 39,
+      "hintWords": 45,
+      "revealedWords": 52
     },
     {
-      "id": "module-launch",
+      "id": "guide-boat",
+      "type": "gap",
+      "initialWords": 39,
+      "hintWords": 47,
+      "revealedWords": 49
+    },
+    {
+      "id": "trap-bicycle",
+      "type": "gap",
+      "initialWords": 36,
+      "hintWords": 43,
+      "revealedWords": 47
+    },
+    {
+      "id": "bookwork-36",
       "type": "writing",
-      "initialWords": 17,
-      "hintWords": 17,
-      "revealedWords": 28
+      "initialWords": 20,
+      "hintWords": 20,
+      "revealedWords": 32
+    },
+    {
+      "id": "bookwork-37",
+      "type": "writing",
+      "initialWords": 19,
+      "hintWords": 19,
+      "revealedWords": 31
     },
     {
       "id": "exit-checks",
       "type": "prompt",
-      "initialWords": 7,
+      "initialWords": 6,
       "hintWords": 10,
-      "revealedWords": 7
+      "revealedWords": 6
     }
   ]
 }
