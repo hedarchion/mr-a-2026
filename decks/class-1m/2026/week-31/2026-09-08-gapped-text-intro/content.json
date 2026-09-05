@@ -13,15 +13,15 @@
     {
       "id": "hook-test",
       "type": "gap",
-      "prompt": "Edison's story. Try each sentence in the gap.",
-      "text": "Edison wanted a bulb that lasted a long time.\n{{blank}}\nFinally, his new bulb burned for many hours.",
+      "prompt": "Try Edison's gap.",
+      "text": "Edison wanted a bulb that lasts a long time.\n{{blank}}\nIt burned for many hours.",
       "options": [
         "He tested thousands of materials, one after another.",
         "His laboratory was a large building in America.",
         "Many people use bright lamps today."
       ],
       "answer": "He tested thousands of materials, one after another.",
-      "feedback": "A connects his goal to the result. B fits the topic, but it does not explain the result.",
+      "feedback": "A tells why the bulb lasted. B and C do not.",
       "hint": "Are B and C bad English?",
       "notes": "TEST-DRIVE the whole job by instinct before teaching the checks. Tap B — read the story with B inside. Does it flow? Tap C — same question. Then tap A and Reveal. Say: 'B and C are good English, wrong job. C fits lamps, but it does not connect his goal and result.'"
     },
@@ -44,14 +44,14 @@
       "id": "clue2-teach",
       "type": "passage",
       "prompt": "Check 2: who or what are we following?",
-      "text": "Chain it: Mei → she. Kitten → it. Mei brought home a small kitten. [ GAP ] Soon it slept in a warm box beside her bed.",
+      "text": "Chain it: Mei → she. Kitten → it. Mei brought home a small kitten. [ GAP ] It slept in a warm box.",
       "notes": "INTRODUCE Check 2 (who/what chain). Point at each link as you say it: Mei to she, kitten to it."
     },
     {
       "id": "clue2-test",
       "type": "gap",
-      "prompt": "Mei's story. Try each sentence in the gap.",
-      "text": "Mei brought home a small kitten.\n{{blank}}\nSoon it slept in a warm box beside her bed.",
+      "prompt": "Try Mei's gap.",
+      "text": "Mei brought home a small kitten.\n{{blank}}\nIt slept in a warm box.",
       "options": [
         "She fed it milk every morning.",
         "Kittens often play with string.",
@@ -66,14 +66,14 @@
       "id": "clue3-teach",
       "type": "passage",
       "prompt": "Check 3: do not read only the gap.",
-      "text": "Read BEFORE. Read AFTER. Razak had an important bus to catch that morning. [ GAP ] Luckily, the driver waited and he reached school on time.",
+      "text": "Read BEFORE. Read AFTER. Razak had a bus to catch this morning. [ GAP ] The driver waited for him.",
       "notes": "INTRODUCE Check 3 (both sides). The important one: cover the gap with your hand and show that neither side alone is enough."
     },
     {
       "id": "clue3-test",
       "type": "gap",
-      "prompt": "Razak's story. Try each sentence in the gap.",
-      "text": "Razak had an important bus to catch that morning.\n{{blank}}\nLuckily, the driver waited and he reached school on time.",
+      "prompt": "Try Razak's gap.",
+      "text": "Razak had a bus to catch this morning.\n{{blank}}\nThe driver waited for him.",
       "options": [
         "Heavy rain flooded the road near his house.",
         "Razak carried a heavy bag to school.",
@@ -88,21 +88,21 @@
       "id": "clue4-teach",
       "type": "passage",
       "prompt": "Check 4: what kind of idea is missing?",
-      "text": "Predict first, then test the choices. Lina dreamed of visiting her grandmother in seconds. [ GAP ] When she woke up, she smiled at the wonderful dream.",
+      "text": "Predict first, then test the choices. Lina dreamed of visiting her grandmother in seconds. [ GAP ] She woke up smiling.",
       "notes": "INTRODUCE Check 4 (predict before options). Partner talk 30 seconds: 'What probably happened in the middle?' Take two answers, then move to the test."
     },
     {
       "id": "clue4-test",
       "type": "gap",
-      "prompt": "Lina's story. Try each sentence in the gap.",
-      "text": "Lina dreamed of visiting her grandmother in seconds.\n{{blank}}\nWhen she woke up, she smiled at the wonderful dream.",
+      "prompt": "Try Lina's gap.",
+      "text": "Lina dreamed of visiting her grandmother in seconds.\n{{blank}}\nShe woke up smiling.",
       "options": [
         "In the dream, she used a glowing travel machine.",
         "She liked eating noodles with her grandmother.",
         "Travelling by car takes a long time."
       ],
       "answer": "In the dream, she used a glowing travel machine.",
-      "feedback": "A: dream trip, then awake smiling. B and C leave the dream.",
+      "feedback": "A stays in the dream. B and C leave it.",
       "hint": "Guess the missing idea first.",
       "notes": "TEST Check 4. Compare predictions against each tap. Teleportation flavour links to Module p.37 without revealing answers."
     },
@@ -110,23 +110,23 @@
       "id": "trap-teach",
       "type": "passage",
       "prompt": "Trap: all three make sense. Why is only one best?",
-      "text": "The old inventor showed the pupils his first lamp. [ GAP ] The pupils clapped when the lamp lit up the dark room.",
+      "text": "The inventor showed the pupils his first lamp. [ GAP ] They clapped when it lit up.",
       "notes": "Read aloud, point at the gap. Let them feel all three fitting before the test."
     },
     {
       "id": "trap-test",
       "type": "gap",
-      "prompt": "The lamp story. Try each sentence in the gap.",
-      "text": "The old inventor showed the pupils his first lamp.\n{{blank}}\nThe pupils clapped when the lamp lit up the dark room.",
+      "prompt": "Try the lamp gap.",
+      "text": "The inventor showed the pupils his first lamp.\n{{blank}}\nThey clapped when it lit up.",
       "options": [
         "He had fixed its broken wire that morning.",
         "Thomas Edison was a famous inventor.",
         "The museum keeps many old lamps."
       ],
       "answer": "He had fixed its broken wire that morning.",
-      "feedback": "A links the lamp to the clapping. B shares a name but drops this lamp.",
+      "feedback": "A explains the clapping. B is only a fact.",
       "hint": "Same word? Wrong question. Which idea connects?",
-      "notes": "TEST the trap. Tap B — a true fact, but read it inside: does it explain the clapping? Say: 'Don't ask same word. Ask: which idea connects?' Invention flavour links to Module p.36."
+      "notes": "TEST the trap. Tap B — a true fact, but read it inside: does it explain the clapping? Tap C — a museum is the wrong place entirely. Say: 'Don't ask same word. Ask: which idea connects?' Invention flavour links to Module p.36."
     },
     {
       "id": "routine",

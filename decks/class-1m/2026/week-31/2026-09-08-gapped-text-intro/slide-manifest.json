@@ -11,9 +11,9 @@
     {
       "id": "hook-test",
       "type": "gap",
-      "initialWords": 48,
-      "hintWords": 54,
-      "revealedWords": 66
+      "initialWords": 40,
+      "hintWords": 46,
+      "revealedWords": 51
     },
     {
       "id": "clue1-teach",
@@ -32,58 +32,58 @@
     {
       "id": "clue2-teach",
       "type": "passage",
-      "initialWords": 35,
-      "hintWords": 35,
-      "revealedWords": 35
+      "initialWords": 31,
+      "hintWords": 31,
+      "revealedWords": 31
     },
     {
       "id": "clue2-test",
       "type": "gap",
-      "initialWords": 41,
-      "hintWords": 47,
-      "revealedWords": 53
+      "initialWords": 32,
+      "hintWords": 38,
+      "revealedWords": 44
     },
     {
       "id": "clue3-teach",
       "type": "passage",
-      "initialWords": 34,
-      "hintWords": 34,
-      "revealedWords": 34
+      "initialWords": 28,
+      "hintWords": 28,
+      "revealedWords": 28
     },
     {
       "id": "clue3-test",
       "type": "gap",
-      "initialWords": 50,
-      "hintWords": 58,
-      "revealedWords": 59
+      "initialWords": 39,
+      "hintWords": 47,
+      "revealedWords": 48
     },
     {
       "id": "clue4-teach",
       "type": "passage",
-      "initialWords": 35,
-      "hintWords": 35,
-      "revealedWords": 35
+      "initialWords": 29,
+      "hintWords": 29,
+      "revealedWords": 29
     },
     {
       "id": "clue4-test",
       "type": "gap",
-      "initialWords": 50,
-      "hintWords": 55,
-      "revealedWords": 62
+      "initialWords": 39,
+      "hintWords": 44,
+      "revealedWords": 49
     },
     {
       "id": "trap-teach",
       "type": "passage",
-      "initialWords": 33,
-      "hintWords": 33,
-      "revealedWords": 33
+      "initialWords": 27,
+      "hintWords": 27,
+      "revealedWords": 27
     },
     {
       "id": "trap-test",
       "type": "gap",
-      "initialWords": 50,
-      "hintWords": 57,
-      "revealedWords": 65
+      "initialWords": 39,
+      "hintWords": 46,
+      "revealedWords": 48
     },
     {
       "id": "routine",

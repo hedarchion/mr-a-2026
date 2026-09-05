@@ -122,7 +122,10 @@ export function validate(d) {
       require(typeof s.text === "string" &&
         s.text.split("{{blank}}").length === 2 &&
         words(s.text) <=
-          40, `${p}: story needs exactly one {{blank}}, max 40 words`);
+          30, `${p}: story needs exactly one {{blank}}, max 30 words`);
+    if (s.type === "gap")
+      require(s.prompt.length <=
+        48, `${p}: gap prompt must stay on one short line (max 48 chars)`);
     if (["steps", "order"].includes(s.type))
       require(Array.isArray(s.items) &&
         s.items.length >= 2 &&

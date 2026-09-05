@@ -44,7 +44,7 @@ All text is plain text, rendered safely as text nodes. Do not pass HTML, CSS, a 
 | `reveal` | `answer`, `feedback` | Model, explanation, error repair after thinking |
 | `choice` | 2–4 `options`, exact `answer`, `feedback` | Choose, then discuss and reveal |
 | `cloze` | `sentence` with one `{{blank}}`, `options`, `answer`, `feedback` | Selection fills the blank inline immediately |
-| `gap` | story `text` with one `{{blank}}` (max 40 words), 2–4 `options`, exact `answer`, `feedback` | Tap a candidate to test-drive it inside the story gap, then reveal |
+| `gap` | story `text` with one `{{blank}}` (max 30 words), one-line `prompt` (max 48 chars), 2–4 `options`, exact `answer`, `feedback` | Tap a candidate to test-drive it inside the story gap, then reveal |
 | `compare` | Two `columns`, each with `label` and `text` | One meaningful contrast |
 | `steps` | 2–4 short `items` | First item visible; Next step adds one at a time |
 | `passage` | `text` | Complete short reading evidence with one question |

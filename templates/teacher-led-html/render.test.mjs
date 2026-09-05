@@ -42,8 +42,13 @@ test("gap stories need exactly one inline blank", () => {
   assert.throws(() => validate(d), /exactly one/);
   d.slides[11].text = "{{blank}} {{blank}}";
   assert.throws(() => validate(d), /exactly one/);
-  d.slides[11].text = Array(41).fill("word").join(" ") + " {{blank}}";
-  assert.throws(() => validate(d), /max 40/);
+  d.slides[11].text = Array(31).fill("word").join(" ") + " {{blank}}";
+  assert.throws(() => validate(d), /max 30/);
+});
+test("gap prompts stay on one short line", () => {
+  const d = sample();
+  d.slides[11].prompt = Array(10).fill("very long prompt indeed").join(" ");
+  assert.throws(() => validate(d), /one short line/);
 });
 test("gap answers must match an option", () => {
   const d = sample();

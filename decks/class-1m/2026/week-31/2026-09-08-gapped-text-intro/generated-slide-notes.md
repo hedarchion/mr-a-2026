@@ -46,7 +46,7 @@ Read aloud, point at the gap. Let them feel all three fitting before the test.
 
 ## 12. trap-test (gap)
 
-TEST the trap. Tap B — a true fact, but read it inside: does it explain the clapping? Say: 'Don't ask same word. Ask: which idea connects?' Invention flavour links to Module p.36.
+TEST the trap. Tap B — a true fact, but read it inside: does it explain the clapping? Tap C — a museum is the wrong place entirely. Say: 'Don't ask same word. Ask: which idea connects?' Invention flavour links to Module p.36.
 
 ## 13. routine (reveal)
 

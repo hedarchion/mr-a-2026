@@ -124,6 +124,25 @@ button[hidden] {
 .passage .blank {
   white-space: normal;
 }
+/* Gap slides stack a prompt, a 3-line story, and up to 3 sentence buttons
+   above a 76px footer. Measured at 1280x665: default rhythm overflows by
+   ~140px, so gap slides use tighter spacing. Type sizes for the story (46px)
+   and options (44px) are untouched; only the repeated one-line prompt,
+   padding, and gaps compact. Teacher-operated buttons, so 8px padding is
+   enough for the tap target. */
+#slide[data-type="gap"] {
+  padding: 16px 44px;
+  gap: 10px;
+}
+#slide[data-type="gap"] h1 {
+  font-size: 44px;
+}
+#slide[data-type="gap"] .choices {
+  gap: 10px;
+}
+#slide[data-type="gap"] .choices button {
+  padding: 8px 18px;
+}
 .compare {
   display: grid;
   grid-template-columns: 1fr 1fr;
