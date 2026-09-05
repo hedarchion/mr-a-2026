@@ -6,87 +6,137 @@
     {
       "id": "hook",
       "type": "prompt",
-      "prompt": "Choose the sentence that makes the ideas flow.",
+      "prompt": "Part 5 Gapped Text: choose the sentence that makes the ideas flow.",
       "hint": "Two stories today: the light bulb, and fast travel.",
-      "notes": "60-min Tue lesson 8 Sep 2026, sl_t3 17:50-18:50. Say: 'Eight sentences fell out of two stories. Our job: put back the one that makes the ideas flow.' Module pp.36-37 gapped text (P1P5, marks collected). Outcomes (teacher-kept): use the 4 checks on every gap; complete gaps 1-8 in books. 1M: noisy class, no roles or competitions; fingers vote + brief partner talk only."
+      "notes": "SET INDUCTION. 60-min Tue lesson 8 Sep 2026, sl_t3 17:50-18:50. Say: 'Eight sentences fell out of two stories. Our job: put back the one that makes the ideas flow.' Module pp.36-37 gapped text (P1P5, marks collected). Outcomes (teacher-kept): use the 4 checks on every gap; complete gaps 1-8 in books. 1M: noisy class, no roles or competitions; fingers vote + brief partner talk only."
     },
     {
-      "id": "clue-topic",
-      "type": "choice",
-      "prompt": "Alina wants to build a robot. Which one is BEST?",
-      "options": [
-        "She joins a robotics class and practises every week.",
-        "Her school has a new computer lab.",
-        "Many pupils watch robot videos online."
-      ],
-      "answer": "She joins a robotics class and practises every week.",
-      "feedback": "A connects her goal to the result. B is about the school. C is about other pupils.",
-      "hint": "Which one follows Alina's goal?",
-      "notes": "Check 1 (topic). Fingers vote 1/2/3, then reveal. Ask: 'Are B and C bad English?' No — good English, wrong job. Module answers stay hidden for the marked bookwork."
+      "id": "hook-story",
+      "type": "passage",
+      "prompt": "Read Edison's story. One sentence is missing.",
+      "text": "Edison wanted a bulb that lasted a long time. [ GAP ] Finally, his new bulb burned for many hours. Vote next: 1 finger for A, 2 for B, 3 for C.",
+      "notes": "Set induction continues. Read the story aloud, point at the gap. Then move to the vote."
     },
     {
-      "id": "clue-chain",
+      "id": "hook-vote",
       "type": "choice",
-      "prompt": "Mei brings home a small kitten. Which one is BEST?",
+      "prompt": "Edison's story. Which sentence is BEST?",
       "options": [
-        "She feeds it milk in a warm box.",
-        "Kittens like string and soft toys.",
-        "Her brother walks to the market."
+        "He tested thousands of materials, one after another.",
+        "His laboratory was a large building in America.",
+        "Many people use bright lamps today."
       ],
-      "answer": "She feeds it milk in a warm box.",
-      "feedback": "A follows Mei and the kitten: she is Mei, it is the kitten. B and C drop them.",
+      "answer": "He tested thousands of materials, one after another.",
+      "feedback": "A connects his goal to the result. B fits the topic, but it does not explain the result.",
+      "hint": "Are B and C bad English?",
+      "notes": "TEST the whole job by instinct before teaching the checks. Fingers vote, then reveal. Say: 'No — good English, wrong job. C fits lamps, but it does not connect his goal and result.'"
+    },
+    {
+      "id": "clue1-teach",
+      "type": "passage",
+      "prompt": "Check 1: what are we talking about?",
+      "text": "Topic words: bulbs, wires, bright rooms, safe light. Hakim joined the school science club last month. [ GAP ] He now enjoys building simple machines with his friends.",
+      "notes": "INTRODUCE Check 1 (topic). Say: 'First ask: what are we talking about? Circle the topic words with me.' Do not vote yet."
+    },
+    {
+      "id": "clue1-test",
+      "type": "reveal",
+      "prompt": "Hakim's story. Which sentences survive the topic check?",
+      "answer": "All three survive: each fits Hakim or the club.",
+      "feedback": "Topic is a first filter, not the final answer.",
+      "notes": "TEST Check 1. Take a fingers vote first (A: club taught him; B: sister draws pictures; C: learnt the tools safely), then reveal: all three survive, so topic alone cannot finish the job."
+    },
+    {
+      "id": "clue2-teach",
+      "type": "passage",
+      "prompt": "Check 2: who or what are we following?",
+      "text": "Chain it: Mei → she. Kitten → it. Mei brought home a small kitten. [ GAP ] Soon it slept in a warm box beside her bed.",
+      "notes": "INTRODUCE Check 2 (who/what chain). Point at each link as you say it: Mei to she, kitten to it."
+    },
+    {
+      "id": "clue2-test",
+      "type": "choice",
+      "prompt": "Mei's story. Which one is BEST?",
+      "options": [
+        "She fed it milk every morning.",
+        "Kittens often play with string.",
+        "Her brother walks to school."
+      ],
+      "answer": "She fed it milk every morning.",
+      "feedback": "A: Mei → she; kitten → it. We follow the same pair.",
       "hint": "Who is she? What is it?",
-      "notes": "Check 2 (who/what chain). Point at she and it as you say them."
+      "notes": "TEST Check 2. Fingers vote, then reveal. Say: 'B is about kittens, but it drops THIS kitten. C drops them both.'"
     },
     {
-      "id": "clue-sides",
+      "id": "clue3-teach",
+      "type": "passage",
+      "prompt": "Check 3: do not read only the gap.",
+      "text": "Read BEFORE. Read AFTER. Razak had an important bus to catch that morning. [ GAP ] Luckily, the driver waited and he reached school on time.",
+      "notes": "INTRODUCE Check 3 (both sides). The important one: cover the gap with your hand and show that neither side alone is enough."
+    },
+    {
+      "id": "clue3-test",
       "type": "choice",
-      "prompt": "The hall was dark. Then the lamps lit up. Which one is BEST?",
+      "prompt": "Razak's story. Which one is BEST?",
       "options": [
-        "The electrician had fixed the wires that morning.",
-        "Schools hold big events in the hall.",
-        "The lamps were made of glass."
+        "Heavy rain flooded the road near his house.",
+        "Razak carried a heavy bag to school.",
+        "Buses in his town were usually blue."
       ],
-      "answer": "The electrician had fixed the wires that morning.",
-      "feedback": "A explains the change: dark before, light after. B and C only describe the hall.",
+      "answer": "Heavy rain flooded the road near his house.",
+      "feedback": "A bridges both sides: late bus, flood, driver waited.",
       "hint": "Use the sentence before AND after the gap.",
-      "notes": "Check 3 (both sides). The key habit: never read only one side of the gap."
+      "notes": "TEST Check 3. Fingers vote, then reveal. Say: 'B fits Razak, but it does not explain the waiting driver. C fits buses, but it connects to nothing.'"
     },
     {
-      "id": "clue-predict",
+      "id": "clue4-teach",
+      "type": "passage",
+      "prompt": "Check 4: what kind of idea is missing?",
+      "text": "Predict first, then look at the choices. Lina dreamed of visiting her grandmother in seconds. [ GAP ] When she woke up, she smiled at the wonderful dream.",
+      "notes": "INTRODUCE Check 4 (predict before options). Partner talk 30 seconds: 'What probably happened in the middle?' Take two answers, then move to the vote."
+    },
+    {
+      "id": "clue4-test",
       "type": "choice",
-      "prompt": "Razak hates traffic jams. What is his wish?",
+      "prompt": "Lina's story. Which one is BEST?",
       "options": [
-        "He imagines a machine that moves people instantly.",
-        "Buses in his town are old and slow.",
-        "Many people take the bus to work."
+        "In the dream, she used a glowing travel machine.",
+        "She liked eating noodles with her grandmother.",
+        "Travelling by car takes a long time."
       ],
-      "answer": "He imagines a machine that moves people instantly.",
-      "feedback": "Predict first: he wants instant travel. Only A gives that wish.",
+      "answer": "In the dream, she used a glowing travel machine.",
+      "feedback": "A: dream trip, then awake smiling. B and C leave the dream.",
       "hint": "Guess the missing idea first.",
-      "notes": "Check 4 (predict before options). 30-sec partner talk before voting: 'What does Razak wish for?' Teleportation flavour links to Module p.37 without revealing answers."
+      "notes": "TEST Check 4. Fingers vote, then reveal. Teleportation flavour links to Module p.37 without revealing answers."
     },
     {
-      "id": "trap-word",
+      "id": "trap-story",
+      "type": "passage",
+      "prompt": "Trap: all three make sense. Why is only one best?",
+      "text": "The old inventor showed the pupils his first lamp. [ GAP ] The pupils clapped when the lamp lit up the dark room.",
+      "notes": "Read aloud, point at the gap. Let them feel all three fitting before the vote."
+    },
+    {
+      "id": "trap-test",
       "type": "choice",
-      "prompt": "Hakim studies old light bulbs. Which one is BEST?",
+      "prompt": "The lamp story. Which one is BEST?",
       "options": [
-        "He draws one bulb in his notebook.",
-        "Edison was a famous American inventor.",
-        "The museum shows many kinds of lamps."
+        "He had fixed its broken wire that morning.",
+        "Thomas Edison was a famous inventor.",
+        "The museum keeps many old lamps."
       ],
-      "answer": "He draws one bulb in his notebook.",
-      "feedback": "A follows Hakim's work. B shares a name but drops Hakim.",
+      "answer": "He had fixed its broken wire that morning.",
+      "feedback": "A links the lamp to the clapping. B shares a name but drops this lamp.",
       "hint": "Same word? Wrong question. Which idea connects?",
-      "notes": "Trap: keyword matching fails. Say: 'Don't ask same word. Ask: which idea connects?' Invention flavour links to Module p.36."
+      "notes": "TEST the trap. Say: 'Don't ask same word. Ask: which idea connects?' C fits lamps, but it does not connect to the clapping pupils. Invention flavour links to Module p.36."
     },
     {
       "id": "routine",
       "type": "reveal",
       "prompt": "Found a gap? What do you check?",
       "answer": "1. Topic: what is this part about? 2. Who: who follows who? 3. Both sides: what must join up? 4. Predict the idea, then choose.",
-      "feedback": "Use all 4 on every gap.",
-      "notes": "Elicit the 4 checks orally first, then reveal to confirm. Leave this slide on screen during bookwork — come back to it while pupils work."
+      "feedback": "Only then: look at the choices. Do not hunt for one repeated word.",
+      "notes": "LESSON DEVELOPMENT close. Elicit the 4 checks orally first, then reveal to confirm. Leave this slide on screen during bookwork — come back to it while pupils work."
     },
     {
       "id": "module-format",
@@ -102,7 +152,7 @@
       "prompt": "Your turn: fill the gaps.",
       "task": "Do gaps 1 to 8. Use the 4 checks on every gap.",
       "frame": "1 Topic? 2 Who? 3 Both sides? 4 Predict, then choose.",
-      "notes": "Say: 'Silent work. Show me the 4 checks on every gap.' Individual marked bookwork, about 20 min. P1P5, 8 marks. Collect books at the door."
+      "notes": "ACTIVITY (teacher-specified: module bookwork). Say: 'Silent work. Show me the 4 checks on every gap.' About 20 min. P1P5, 8 marks. Collect books at the door."
     },
     {
       "id": "exit-checks",
