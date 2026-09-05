@@ -61,13 +61,13 @@
     {
       "id": "pbd-reading",
       "type": "steps",
-      "prompt": "How does PBD reading work?",
+      "prompt": "PBD round: read and lift facts.",
       "items": [
-        "Open Module p33. Readers take turns reading.",
-        "Listeners raise hands on Internet words.",
-        "Table work after reading."
+        "Teacher picks names with the randomizer.",
+        "Read your lines clearly.",
+        "Lift one fact in three words or fewer."
       ],
-      "notes": "Passage stays in the book. Evidence: fluency + one heard-word per listener. Record readers separately; no names in artifacts."
+      "notes": "Teacher goes around testing against LS 3.1.2. Passage stays in the book. No names in artifacts."
     },
     {
       "id": "field-1",
@@ -150,11 +150,12 @@
       "notes": "Matches Module p33 key; any order accepted."
     },
     {
-      "id": "exit-field",
-      "type": "prompt",
-      "prompt": "Read out one field and its words.",
-      "hint": "Say the field, then up to three words.",
-      "notes": "Exit evidence, 3 min. Collect tables for PBD marks per teacher plan."
+      "id": "book-table",
+      "type": "writing",
+      "prompt": "The p33 table: your turn",
+      "task": "Complete the Module p33 table in your book. Lift three words or fewer from the text per field.",
+      "frame": "Field 1: in the 1960s. Fields 2 and 3: one country each.",
+      "notes": "Individual bookwork after the slide fields modelled each answer. Oral read-out of one field each as plenary. Collect tables for PBD marks per teacher plan."
     }
   ]
 }

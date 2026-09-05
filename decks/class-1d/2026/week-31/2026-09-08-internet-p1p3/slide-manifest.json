@@ -55,7 +55,7 @@
       "type": "steps",
       "initialWords": 12,
       "hintWords": 12,
-      "revealedWords": 22
+      "revealedWords": 24
     },
     {
       "id": "field-1",
@@ -114,11 +114,11 @@
       "revealedWords": 18
     },
     {
-      "id": "exit-field",
-      "type": "prompt",
-      "initialWords": 7,
-      "hintWords": 15,
-      "revealedWords": 7
+      "id": "book-table",
+      "type": "writing",
+      "initialWords": 23,
+      "hintWords": 23,
+      "revealedWords": 35
     }
   ]
 }

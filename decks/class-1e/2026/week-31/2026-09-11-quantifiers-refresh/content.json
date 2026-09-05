@@ -68,6 +68,17 @@
       "notes": "Administration: brief, individual, formative, ungraded, teacher-marked, ordinary supports. Teacher goes table to table for PBD. Reveal the 3-step frame if pupils stall."
     },
     {
+      "id": "pbd-round",
+      "type": "steps",
+      "prompt": "PBD round: show your table.",
+      "items": [
+        "Teacher comes to your table.",
+        "Read one answer with its reason.",
+        "Fix it on the spot if needed."
+      ],
+      "notes": "Teacher goes table to table during worksheet time, testing worksheet answers with noun-kind reasons. Collect sheets for marks after."
+    },
+    {
       "id": "exit-proud",
       "type": "prompt",
       "prompt": "Read out one answer you are sure about.",

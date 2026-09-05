@@ -54,8 +54,12 @@ Migration trade-off: the legacy tap-counter bank has no v1 preset, so paper circ
 
 ## 14. p22-rebuild (writing)
 
-UASA formative P2.2. PBD readers after writing. Books collected at the door.
+UASA formative P2.2. PBD round slide follows for the go-around. Books collected at the door.
 
-## 15. collect (prompt)
+## 15. pbd-round (steps)
+
+Teacher goes around testing against LS 4.1.5 and 4.2.1 (P2.2 paragraph in own words). No names in artifacts.
+
+## 16. collect (prompt)
 
 Unfinished paragraphs continue next lesson. No Friday class for 2E.

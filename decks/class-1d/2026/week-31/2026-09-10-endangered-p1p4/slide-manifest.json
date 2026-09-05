@@ -60,9 +60,9 @@
     {
       "id": "pbd-reading",
       "type": "steps",
-      "initialWords": 12,
-      "hintWords": 12,
-      "revealedWords": 23
+      "initialWords": 11,
+      "hintWords": 11,
+      "revealedWords": 27
     },
     {
       "id": "exit-action",

@@ -51,6 +51,13 @@
       "revealedWords": 35
     },
     {
+      "id": "pbd-round",
+      "type": "steps",
+      "initialWords": 10,
+      "hintWords": 10,
+      "revealedWords": 23
+    },
+    {
       "id": "exit-proud",
       "type": "prompt",
       "initialWords": 8,

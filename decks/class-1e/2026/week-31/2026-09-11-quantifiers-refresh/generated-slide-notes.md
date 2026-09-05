@@ -28,6 +28,10 @@ Combined item modelling worksheet 2's mixed format. Adjective does not change th
 
 Administration: brief, individual, formative, ungraded, teacher-marked, ordinary supports. Teacher goes table to table for PBD. Reveal the 3-step frame if pupils stall.
 
-## 8. exit-proud (prompt)
+## 8. pbd-round (steps)
+
+Teacher goes table to table during worksheet time, testing worksheet answers with noun-kind reasons. Collect sheets for marks after.
+
+## 9. exit-proud (prompt)
 
 Plenary evidence, 5 min. Collect sheets for marks per SOT. Note insecure items for next week's planning.

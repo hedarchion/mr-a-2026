@@ -70,13 +70,14 @@
     {
       "id": "pbd-reading",
       "type": "steps",
-      "prompt": "How does PBD reading work?",
+      "prompt": "PBD round: read and answer.",
       "items": [
-        "Open Module p34. Readers take turns reading.",
-        "Listeners hunt one animal word.",
+        "Teacher picks names with the randomizer.",
+        "Read your lines clearly.",
+        "Answer one question from the text.",
         "Answer p35 in books after reading."
       ],
-      "notes": "Passage stays in the book. Evidence: fluency + one heard-word per listener. Then pupils do Module p35 Q1-8 (True/False + short answers up to five words) individually."
+      "notes": "Teacher goes around testing against LS 3.1.1, 3.1.2 and 3.2.2. Passage stays in the book. No names in artifacts."
     },
     {
       "id": "exit-action",

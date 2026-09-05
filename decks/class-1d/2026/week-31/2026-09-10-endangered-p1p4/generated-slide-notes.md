@@ -34,7 +34,7 @@ Models the Q1-4 True/False move: check the claim against the text, not memory.
 
 ## 9. pbd-reading (steps)
 
-Passage stays in the book. Evidence: fluency + one heard-word per listener. Then pupils do Module p35 Q1-8 (True/False + short answers up to five words) individually.
+Teacher goes around testing against LS 3.1.1, 3.1.2 and 3.2.2. Passage stays in the book. No names in artifacts.
 
 ## 10. exit-action (prompt)
 

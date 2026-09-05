@@ -100,6 +100,13 @@
       "revealedWords": 42
     },
     {
+      "id": "pbd-round",
+      "type": "steps",
+      "initialWords": 11,
+      "hintWords": 11,
+      "revealedWords": 20
+    },
+    {
       "id": "collect",
       "type": "prompt",
       "initialWords": 6,

@@ -130,7 +130,18 @@
       "prompt": "Rebuild the paragraph",
       "task": "Rebuild the handwashing paragraph from the flow map in your own words. Use your 3 phrases and linkers.",
       "frame": "Intro: why it matters. Steps: wet, soap, rub, rinse, dry. Ending: conclusion. Copying 3 model sentences in a row means restarting.",
-      "notes": "UASA formative P2.2. PBD readers after writing. Books collected at the door."
+      "notes": "UASA formative P2.2. PBD round slide follows for the go-around. Books collected at the door."
+    },
+    {
+      "id": "pbd-round",
+      "type": "steps",
+      "prompt": "PBD round: read your paragraph.",
+      "items": [
+        "Teacher picks names with the randomizer.",
+        "Read your paragraph clearly.",
+        "Show your 3 underlined phrases."
+      ],
+      "notes": "Teacher goes around testing against LS 4.1.5 and 4.2.1 (P2.2 paragraph in own words). No names in artifacts."
     },
     {
       "id": "collect",

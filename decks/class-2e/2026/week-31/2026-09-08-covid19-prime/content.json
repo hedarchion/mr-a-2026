@@ -83,13 +83,13 @@
     {
       "id": "pbd-routine",
       "type": "steps",
-      "prompt": "How does PBD reading work?",
+      "prompt": "PBD round: read clearly, use the word.",
       "items": [
-        "Open Module p.69. Eight readers take turns reading.",
-        "Listeners raise hands on their team's word.",
-        "Books collected after reading."
+        "Teacher picks names with the randomizer.",
+        "Read your paragraph clearly.",
+        "Use one word in your own sentence."
       ],
-      "notes": "Passage has six paragraphs, so readers take turns rather than one paragraph each. Passage stays in the book (copyright). Evidence: fluency + one heard-word per listener. Record 8 readers separately; no names in artifacts."
+      "notes": "Teacher goes around testing against LS 3.1.5 (read the article) and LS 3.1.4 (word meanings); about 8 readers. Passage stays in the book (copyright). No names in artifacts."
     },
     {
       "id": "exit-sentence",

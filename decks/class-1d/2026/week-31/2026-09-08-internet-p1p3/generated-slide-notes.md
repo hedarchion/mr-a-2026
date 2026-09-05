@@ -30,7 +30,7 @@ Word 6 of 6. Bridges to fields 6-8 (today's uses).
 
 ## 8. pbd-reading (steps)
 
-Passage stays in the book. Evidence: fluency + one heard-word per listener. Record readers separately; no names in artifacts.
+Teacher goes around testing against LS 3.1.2. Passage stays in the book. No names in artifacts.
 
 ## 9. field-1 (cloze)
 
@@ -64,6 +64,6 @@ Matches Module p33 key; any order accepted.
 
 Matches Module p33 key; any order accepted.
 
-## 17. exit-field (prompt)
+## 17. book-table (writing)
 
-Exit evidence, 3 min. Collect tables for PBD marks per teacher plan.
+Individual bookwork after the slide fields modelled each answer. Oral read-out of one field each as plenary. Collect tables for PBD marks per teacher plan.

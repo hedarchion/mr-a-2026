@@ -38,7 +38,7 @@ Frame: word + action + detail + because/so + result. Copy the habit, not the sen
 
 ## 10. pbd-routine (steps)
 
-Passage has six paragraphs, so readers take turns rather than one paragraph each. Passage stays in the book (copyright). Evidence: fluency + one heard-word per listener. Record 8 readers separately; no names in artifacts.
+Teacher goes around testing against LS 3.1.5 (read the article) and LS 3.1.4 (word meanings); about 8 readers. Passage stays in the book (copyright). No names in artifacts.
 
 ## 11. exit-sentence (writing)
 
