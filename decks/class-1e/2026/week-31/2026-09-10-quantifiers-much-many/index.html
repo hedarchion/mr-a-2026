@@ -116,6 +116,9 @@ button[hidden] {
   color: var(--accent);
   white-space: nowrap;
 }
+.blank.empty {
+  border-bottom-color: transparent;
+}
 .compare {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -274,9 +277,10 @@ footer button {
     if (s.type === "cloze") {
       const n = add("p", undefined, "hero");
       const [a, b] = s.sentence.split("{{blank}}");
+      const blankText = st.revealed ? s.answer : st.selected || "_____";
       n.append(
         document.createTextNode(a),
-        el("span", st.revealed ? s.answer : st.selected || "_____", "blank"),
+        el("span", blankText, blankText === "_____" ? "blank empty" : "blank"),
         document.createTextNode(b),
       );
     }
