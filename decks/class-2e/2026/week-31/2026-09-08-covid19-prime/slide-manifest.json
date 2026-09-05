@@ -60,9 +60,9 @@
     {
       "id": "weak-strong",
       "type": "compare",
-      "initialWords": 24,
-      "hintWords": 31,
-      "revealedWords": 24
+      "initialWords": 22,
+      "hintWords": 29,
+      "revealedWords": 22
     },
     {
       "id": "pbd-routine",

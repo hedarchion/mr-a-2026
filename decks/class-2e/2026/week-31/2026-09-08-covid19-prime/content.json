@@ -74,8 +74,8 @@
       "type": "compare",
       "prompt": "Which sentence uses severity well?",
       "columns": [
-        {"label": "Weak version", "text": "Severity means serious."},
-        {"label": "Strong version", "text": "Vaccines reduced the severity of illness so fewer people became very sick."}
+        {"label": "A", "text": "Severity means serious."},
+        {"label": "B", "text": "Vaccines reduced the severity of illness so fewer people became very sick."}
       ],
       "hint": "Look for an action and a result.",
       "notes": "Frame: word + action + detail + because/so + result. Copy the habit, not the sentence."
