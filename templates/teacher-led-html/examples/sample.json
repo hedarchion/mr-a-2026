@@ -129,6 +129,18 @@
    "notes": "Teacher selects the category proposed by the class. Reveal fills the canonical categories; selections have no scores."
   },
   {
+   "id": "wordmix",
+   "type": "wordmix",
+   "prompt": "Mix a word with an idea",
+   "pairs": [
+    {"word": "resilient", "meaning": "strong again after difficulty"},
+    {"word": "vital", "meaning": "very important"}
+   ],
+   "ideas": ["our class", "a community"],
+   "frame": "Use because or so to show the meaning.",
+   "notes": "Select one word and one idea. The choices remain neutral because several original sentences may be valid."
+  },
+  {
    "id": "write",
    "type": "writing",
    "prompt": "A day together",
@@ -149,6 +161,24 @@
    "feedback": "She is Mei and it is the kitten.",
    "hint": "Who is she? What is it?",
    "notes": "Tap a candidate to drop it into the gap and read the story with it inside. Reveal supplies the answer. Reset clears the blank. An illustrative template check, not an assessment."
+  },
+  {
+   "id": "diagnostic",
+   "type": "diagnostic",
+   "prompt": "Quick diagnostic",
+   "visual": {"src": "assets/clipboard-check.svg", "alt": "Clipboard check", "instruction": "Write answers on paper."},
+   "sections": [
+    {"heading": "Language", "items": [{"id": "1", "prompt": "She ___ every day.", "options": ["run", "runs"], "answer": "runs"}, {"id": "2", "prompt": "They ___ ready.", "options": ["is", "are"], "answer": "are"}]},
+    {"heading": "Format", "items": [{"id": "3", "prompt": "Part 1 uses:", "options": ["MCQ", "a story"], "answer": "MCQ"}, {"id": "4", "prompt": "Subject tells the email:", "options": ["topic", "sign-off"], "answer": "topic"}]}
+   ],
+   "notes": "Diagnostic preset fixture."
+  },
+  {
+   "id": "review",
+   "type": "review",
+   "prompt": "Review answers",
+   "reviewIds": ["diagnostic"],
+   "notes": "Review preset fixture."
   }
  ]
 }

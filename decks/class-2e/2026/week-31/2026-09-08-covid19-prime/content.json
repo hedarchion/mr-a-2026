@@ -7,26 +7,34 @@
       "id": "hook",
       "type": "prompt",
       "prompt": "How did Covid-19 change the world?",
-      "hint": "Monday we used 4 checks to find a missing link.",
+      "hint": "On Monday, we used four checks to choose a missing sentence.",
       "notes": "60-min Tue lesson, sl_t1. Opening hook for Module p.69. Monday one-liner only, no reteaching. Outcomes (teacher-kept): read the passage clearly for PBD; use 6 new words in own sentences."
     },
     {
       "id": "prime-changes",
       "type": "steps",
-      "prompt": "Before we open the book — what changed?",
+      "prompt": "What changed during Covid-19?",
       "items": [
         "Covid-19 spread through tiny droplets.",
-        "Life was disrupted, but people cooperated.",
-        "Hygiene and technology keep us connected."
+        "Daily life changed, and people helped one another.",
+        "Good hygiene and technology still help us stay connected."
       ],
-      "notes": "Prime the passage ideas in its own vocabulary. Partner talk 1 min: which change still helps us today? Point and say why."
+      "notes": "Prime the passage ideas in simple vocabulary. Partner talk 1 min: which change still helps us today? Point and say why."
+    },
+    {
+      "id": "connected-home",
+      "type": "image",
+      "prompt": "What does this family scene show about staying connected?",
+      "src": "assets/family-day-scene.png",
+      "alt": "A family spending time together at home",
+      "notes": "PURPOSEFUL VISUAL (~2 min). Reused local family scene as a concrete bridge to cooperation and staying connected at home. It supports discussion but does not reveal any target-word answer."
     },
     {
       "id": "word-resilient",
       "type": "reveal",
       "prompt": "What does resilient mean?",
-      "answer": "Strong again after a difficulty.",
-      "feedback": "Societies became resilient after Covid-19.",
+      "answer": "Strong again after a difficult time.",
+      "feedback": "People and communities can become resilient after a difficult time.",
       "notes": "Elicit first, then reveal. Word 1 of 6."
     },
     {
@@ -34,15 +42,15 @@
       "type": "reveal",
       "prompt": "What does severity mean?",
       "answer": "How serious an illness is.",
-      "feedback": "Vaccines reduced the severity of illness.",
+      "feedback": "Vaccines can reduce the severity of an illness.",
       "notes": "Word 2 of 6. Sets up the weak-vs-strong slide."
     },
     {
       "id": "word-droplet",
       "type": "reveal",
       "prompt": "What does droplet mean?",
-      "answer": "A very tiny drop.",
-      "feedback": "-let means small: droplet, booklet, leaflet.",
+      "answer": "A very small drop.",
+      "feedback": "The ending -let can mean small: droplet, booklet, leaflet.",
       "notes": "Word 3 of 6. -let spotlight per SOT: drop + -let, book + -let, leaf + -let."
     },
     {
@@ -57,8 +65,8 @@
       "id": "word-disruption",
       "type": "reveal",
       "prompt": "What does disruption mean?",
-      "answer": "Stopping normal life.",
-      "feedback": "The pandemic caused great disruption.",
+      "answer": "A break in normal life.",
+      "feedback": "The pandemic caused a break in normal life.",
       "notes": "Word 5 of 6."
     },
     {
@@ -66,36 +74,57 @@
       "type": "reveal",
       "prompt": "What does significant mean?",
       "answer": "Very great or very large.",
-      "feedback": "A significant event in history.",
+      "feedback": "The pandemic was a significant event in history.",
       "notes": "Word 6 of 6. Module gloss follows p.69. Misconception: pupils copy definitions — enforce show, don't repeat."
+    },
+    {
+      "id": "all-words-mix",
+      "type": "wordmix",
+      "prompt": "Mix a word with an idea. Make a sentence.",
+      "pairs": [
+        {"word": "resilient", "meaning": "strong again after a difficult time"},
+        {"word": "severity", "meaning": "how serious an illness is"},
+        {"word": "droplet", "meaning": "a very small drop"},
+        {"word": "vital", "meaning": "very important"},
+        {"word": "disruption", "meaning": "a break in normal life"},
+        {"word": "significant", "meaning": "very great or very large"}
+      ],
+      "ideas": [
+        "an illness",
+        "school closures",
+        "online learning",
+        "our community"
+      ],
+      "frame": "Use because or so. Your sentence must show the word's meaning.",
+      "notes": "Required all-words synthesis. Keep all six word–meaning pairs visible. Select any word and idea, then invite pupils to accept, improve or reject the combination with a reason. Some combinations need imaginative context; that judgement is part of the mix-and-match task."
     },
     {
       "id": "weak-strong",
       "type": "compare",
-      "prompt": "Which sentence uses severity well?",
+      "prompt": "Which sentence shows the meaning of severity?",
       "columns": [
         {"label": "A", "text": "Severity means serious."},
-        {"label": "B", "text": "Vaccines reduced the severity of illness so fewer people became very sick."}
+        {"label": "B", "text": "Vaccines reduced the severity of illness, so fewer people became very sick."}
       ],
       "hint": "Look for an action and a result.",
-      "notes": "Frame: word + action + detail + because/so + result. Copy the habit, not the sentence."
+      "notes": "Frame: word + action + detail + because/so + result. Explain that A gives a definition but does not show the word in use. Copy the habit, not the sentence."
     },
     {
       "id": "pbd-routine",
       "type": "steps",
-      "prompt": "PBD round: read clearly, use the word.",
+      "prompt": "Reading and word check",
       "items": [
-        "Teacher picks names with the randomizer.",
-        "Read your paragraph clearly.",
-        "Use one word in your own sentence."
+        "The teacher chooses pupils with the randomizer.",
+        "Read one passage paragraph clearly.",
+        "Use one target word in your own sentence."
       ],
       "notes": "Teacher goes around testing against LS 3.1.5 (read the article) and LS 3.1.4 (word meanings); about 8 readers. Passage stays in the book (copyright). No names in artifacts."
     },
     {
       "id": "exit-sentence",
       "type": "writing",
-      "prompt": "One strong sentence",
-      "task": "Choose one word: resilient, severity, droplet, vital, disruption or significant. Write one strong sentence about your life or school that shows its meaning.",
+      "prompt": "Write one sentence that shows a word's meaning",
+      "task": "Choose one word: resilient, severity, droplet, vital, disruption or significant. Write one sentence about your life or school that shows its meaning.",
       "frame": "Word + action + detail + because / so + result.",
       "notes": "5 min silent exit. Bridge: Thursday turns the p.70 handwashing essay into an information-transfer table. Collect short/long books after."
     }

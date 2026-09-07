@@ -38,21 +38,22 @@ test("requires exactly one inline gap", () => {
 });
 test("gap stories need exactly one inline blank", () => {
   const d = sample();
-  d.slides[11].text = "No gap here.";
+  const gap = d.slides.find((s) => s.type === "gap");
+  gap.text = "No gap here.";
   assert.throws(() => validate(d), /exactly one/);
-  d.slides[11].text = "{{blank}} {{blank}}";
+  gap.text = "{{blank}} {{blank}}";
   assert.throws(() => validate(d), /exactly one/);
-  d.slides[11].text = Array(31).fill("word").join(" ") + " {{blank}}";
+  gap.text = Array(31).fill("word").join(" ") + " {{blank}}";
   assert.throws(() => validate(d), /max 30/);
 });
 test("gap prompts stay on one short line", () => {
   const d = sample();
-  d.slides[11].prompt = Array(10).fill("very long prompt indeed").join(" ");
+  d.slides.find((s) => s.type === "gap").prompt = "This deliberately long gap prompt exceeds the permitted character limit";
   assert.throws(() => validate(d), /one short line/);
 });
 test("gap answers must match an option", () => {
   const d = sample();
-  d.slides[11].answer = "Something else entirely";
+  d.slides.find((s) => s.type === "gap").answer = "Something else entirely";
   assert.throws(() => validate(d), /match an option/);
 });
 test("rejects oversized copy instead of shrinking", () => {
@@ -82,6 +83,15 @@ test("categorisation needs recoverable canonical categories", () => {
   const d = sample();
   d.slides[9].items[0].category = "Other";
   assert.throws(() => validate(d), /canonical categories/);
+});
+test("wordmix requires concise unique words and ideas", () => {
+  const d = sample();
+  const mix = d.slides.find((s) => s.type === "wordmix");
+  mix.pairs[1].word = mix.pairs[0].word;
+  assert.throws(() => validate(d), /unique words/);
+  mix.pairs[1].word = "vital";
+  mix.ideas = ["one idea"];
+  assert.throws(() => validate(d), /2–4 unique short ideas/);
 });
 test("rejects malformed objects with useful diagnostics", () => {
   for (const d of [null, [], 42])

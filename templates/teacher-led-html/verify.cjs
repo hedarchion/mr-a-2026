@@ -166,11 +166,11 @@ async function testSlide(page, viewport, i, total) {
     if (!(await b.isVisible())) continue;
     const before = await page.locator("#count").textContent();
     await b.focus();
-    await page.keyboard.press("Space");
+    await page.keyboard.press("Enter");
     const after = await page.locator("#count").textContent();
     if (before !== after)
       fail(
-        `${viewport.width}: Space on focused content button navigated slide ${i + 1}`,
+        `${viewport.width}: Enter on focused content button navigated slide ${i + 1}`,
       );
     await measure(
       page,
@@ -183,22 +183,48 @@ async function testSlide(page, viewport, i, total) {
   if (await page.locator("#reset").isVisible())
     await page.locator("#reset").click();
   if (type === "cloze" || type === "gap") {
-    const options = page.locator("#slide .choices button");
-    for (let j = 0; j < (await options.count()); j++) {
-      await options.nth(j).click();
-      const value = await page.locator(".blank").textContent();
-      const expected = await options.nth(j).textContent();
-      if (value.trim() !== expected.trim())
-        fail(
-          `${viewport.width}: ${type} click did not fill exact option on slide ${i + 1}`,
-        );
-    }
+    let options = page.locator("#slide .choices button");
+    const optionTexts = await options.allTextContents();
+    const wrongIndex = optionTexts.findIndex((text) => text !== spec.answer);
+    await options.nth(wrongIndex).click();
+    const value = await page.locator(".blank").textContent();
+    if (value.trim() !== optionTexts[wrongIndex].trim())
+      fail(
+        `${viewport.width}: ${type} click did not fill exact option on slide ${i + 1}`,
+      );
     await page.locator("#reveal").click();
     const answer = await page.locator(".blank").textContent();
     if (answer.trim() !== spec.answer)
       fail(`${viewport.width}: ${type} Reveal left blank on slide ${i + 1}`);
+    const wrong = page.locator("#slide .choices button.incorrect");
+    const correct = page.locator("#slide .choices button.correct");
+    if ((await wrong.count()) !== 1 ||
+        !(await wrong.textContent()).startsWith("✕ Incorrect") ||
+        !(await wrong.textContent()).includes(optionTexts[wrongIndex]))
+      fail(`${viewport.width}: ${type} did not retain the wrong attempt on slide ${i + 1}`);
+    if ((await correct.count()) !== 1 ||
+        !(await correct.textContent()).startsWith("✓ Correct") ||
+        !(await correct.textContent()).includes(spec.answer))
+      fail(`${viewport.width}: ${type} did not mark the canonical answer on slide ${i + 1}`);
+    if (!(await page.locator("#announcement").textContent()).includes("Incorrect."))
+      fail(`${viewport.width}: ${type} did not announce the wrong result on slide ${i + 1}`);
+    await measure(page, `${viewport.width}x${viewport.height} slide ${i + 1} incorrect`);
+    await screenshot(page, viewport, i + 1, "incorrect");
+    await page.locator("#reset").click();
+    options = page.locator("#slide .choices button");
+    const correctIndex = optionTexts.indexOf(spec.answer);
+    await options.nth(correctIndex).focus();
+    await page.keyboard.press("Enter");
+    await page.locator("#reveal").click();
+    if ((await page.locator("#slide .choices button.correct[aria-pressed='true']").count()) !== 1)
+      fail(`${viewport.width}: ${type} keyboard path did not retain the correct attempt on slide ${i + 1}`);
+    if (!(await page.locator("#announcement").textContent()).includes("Correct."))
+      fail(`${viewport.width}: ${type} did not announce the correct result on slide ${i + 1}`);
   } else if (type === "choice") {
-    const first = page.locator("#slide .choices button").first();
+    let options = page.locator("#slide .choices button");
+    const optionTexts = await options.allTextContents();
+    const wrongIndex = optionTexts.findIndex((text) => text !== spec.answer);
+    const first = options.nth(wrongIndex);
     await first.focus();
     await page.keyboard.press("Enter");
     if ((await first.getAttribute("aria-pressed")) !== "true")
@@ -206,23 +232,69 @@ async function testSlide(page, viewport, i, total) {
     await page.locator("#reveal").click();
     if (!(await page.locator(".answer").count()))
       fail(`${viewport.width}: choice Reveal missing answer on slide ${i + 1}`);
+    const wrong = page.locator("#slide .choices button.incorrect");
+    if ((await wrong.count()) !== 1 ||
+        !(await wrong.textContent()).startsWith("✕ Incorrect") ||
+        !(await wrong.textContent()).includes(optionTexts[wrongIndex]))
+      fail(`${viewport.width}: choice did not show an explicit wrong state on slide ${i + 1}`);
+    const correct = page.locator("#slide .choices button.correct");
+    if ((await correct.count()) !== 1 ||
+        !(await correct.textContent()).startsWith("✓ Correct") ||
+        !(await correct.textContent()).includes(spec.answer))
+      fail(`${viewport.width}: choice did not show the canonical answer on slide ${i + 1}`);
+    if (!(await page.locator("#announcement").textContent()).includes("Incorrect."))
+      fail(`${viewport.width}: choice did not announce the wrong result on slide ${i + 1}`);
+    await measure(page, `${viewport.width}x${viewport.height} slide ${i + 1} incorrect`);
+    await screenshot(page, viewport, i + 1, "incorrect");
+    await page.locator("#reset").click();
+    options = page.locator("#slide .choices button");
+    await options.nth(optionTexts.indexOf(spec.answer)).click();
+    await page.locator("#reveal").click();
+    if ((await page.locator("#slide .choices button.correct[aria-pressed='true']").count()) !== 1)
+      fail(`${viewport.width}: choice did not retain the correct attempt on slide ${i + 1}`);
+    if (!(await page.locator("#announcement").textContent()).includes("Correct."))
+      fail(`${viewport.width}: choice did not announce the correct result on slide ${i + 1}`);
   } else if (type === "sort") {
     const rows = page.locator(".sort-row");
+    const testedWrongCategories = [];
     for (let j = 0; j < (await rows.count()); j++) {
       const cats = rows.nth(j).locator("button");
-      await cats.last().click();
+      const labels = await cats.allTextContents();
+      const wrongIndex = labels.findIndex((label) => label !== spec.items[j].category);
+      await cats.nth(wrongIndex).click();
+      testedWrongCategories[j] = labels[wrongIndex];
     }
     await page.locator("#reveal").click();
     for (let j = 0; j < spec.items.length; j++) {
-      const selected = await rows
-        .nth(j)
-        .locator('button[aria-pressed="true"]')
-        .textContent();
-      if (selected.replace(/^✓ /, "") !== spec.items[j].category)
-        fail(`sort canonical mismatch: ${spec.id} item ${j}`);
+      const wrong = rows.nth(j).locator("button.incorrect[aria-pressed='true']");
+      if ((await wrong.count()) !== 1 ||
+          !(await wrong.textContent()).startsWith("✕ Incorrect") ||
+          !(await wrong.textContent()).includes(testedWrongCategories[j]))
+        fail(`sort wrong attempt missing: ${spec.id} item ${j}`);
+      const correct = await rows.nth(j).locator("button.correct").textContent();
+      if (!correct.startsWith("✓ Correct") || !correct.includes(spec.items[j].category))
+        fail(`sort canonical answer missing: ${spec.id} item ${j}`);
     }
+    if (!(await page.locator("#announcement").textContent()).includes("Incorrect."))
+      fail(`${viewport.width}: sort did not announce the wrong result on slide ${i + 1}`);
+    await measure(page, `${viewport.width}x${viewport.height} slide ${i + 1} incorrect`);
+    await screenshot(page, viewport, i + 1, "incorrect");
+    await page.locator("#reset").click();
+    for (let j = 0; j < spec.items.length; j++) {
+      const correct = page.locator(".sort-row").nth(j).locator("button", {
+        hasText: spec.items[j].category,
+      });
+      await correct.focus();
+      await page.keyboard.press("Enter");
+    }
+    await page.keyboard.press("Space");
+    if ((await page.locator(".sort-row button.incorrect").count()) !== 0 ||
+        (await page.locator(".sort-row button.correct[aria-pressed='true']").count()) !== spec.items.length)
+      fail(`${viewport.width}: sort keyboard path did not show the correct checked state on slide ${i + 1}`);
+    if (!(await page.locator("#announcement").textContent()).includes("Correct."))
+      fail(`${viewport.width}: sort did not announce the correct result on slide ${i + 1}`);
   } else if (type === "order") {
-    const buttons = page.locator("#slide .list button");
+    let buttons = page.locator("#slide .list button");
     for (let j = 0; j < (await buttons.count()); j++)
       await buttons.nth(j).click();
     const selected = await page
@@ -241,11 +313,55 @@ async function testSlide(page, viewport, i, total) {
       fail(
         `${viewport.width}: order deselect did not clear marker on slide ${i + 1}`,
       );
+    await page.locator("#reset").click();
+    buttons = page.locator("#slide .list button");
+    for (let j = 0; j < (await buttons.count()); j++)
+      await buttons.nth(j).click();
+    const expectedWrong = spec.items
+      .slice()
+      .reverse()
+      .map((item, position) => `${position + 1}. ${item}`)
+      .join("  ");
     await page.locator("#reveal").click();
-    for (let j = 0; j < spec.items.length; j++) {
-      if ((await buttons.nth(j).textContent()) !== `${j + 1}. ${spec.items[j]}`)
-        fail(`order canonical mismatch ${spec.id}`);
+    if ((await page.locator(".order-result.incorrect").count()) !== 1)
+      fail(`${viewport.width}: order did not retain an explicit wrong sequence on slide ${i + 1}`);
+    if ((await page.locator(".order-result.correct").count()) !== 1)
+      fail(`${viewport.width}: order did not show the canonical sequence on slide ${i + 1}`);
+    if ((await page.locator(".order-result.incorrect .result-status").textContent()) !== "✕ Incorrect order" ||
+        (await page.locator(".order-result.correct .result-status").textContent()) !== "✓ Correct order")
+      fail(`${viewport.width}: order did not show explicit visible result labels on slide ${i + 1}`);
+    if ((await page.locator(".order-result.incorrect .result-sequence").textContent()) !== expectedWrong)
+      fail(`${viewport.width}: order did not retain the attempted sequence on slide ${i + 1}`);
+    if (!(await page.locator("#announcement").textContent()).includes("Incorrect order."))
+      fail(`${viewport.width}: order did not announce the wrong result on slide ${i + 1}`);
+    await measure(page, `${viewport.width}x${viewport.height} slide ${i + 1} incorrect`);
+    await screenshot(page, viewport, i + 1, "incorrect");
+    await page.locator("#reset").click();
+    for (const item of spec.items) {
+      const next = page.locator("#slide .list button", { hasText: item });
+      await next.focus();
+      await page.keyboard.press("Enter");
     }
+    await page.keyboard.press("Space");
+    if ((await page.locator(".order-result.correct").count()) !== 1 ||
+        (await page.locator(".order-result.incorrect").count()) !== 0)
+      fail(`${viewport.width}: order did not show the correct checked state on slide ${i + 1}`);
+    if ((await page.locator(".order-result.correct .result-status").textContent()) !== "✓ Correct order")
+      fail(`${viewport.width}: order correct state lacked a visible status label on slide ${i + 1}`);
+    if (!(await page.locator("#announcement").textContent()).includes("Correct order."))
+      fail(`${viewport.width}: order did not announce the correct result on slide ${i + 1}`);
+  } else if (type === "wordmix") {
+    const wordButtons = page.locator(".wordmix-row button");
+    const ideaButtons = page.locator(".wordmix-ideas button");
+    await wordButtons.first().focus();
+    await page.keyboard.press("Enter");
+    await ideaButtons.last().click();
+    if ((await page.locator(".wordmix-row button[aria-pressed='true']").count()) !== 1 ||
+        (await page.locator(".wordmix-ideas button[aria-pressed='true']").count()) !== 1)
+      fail(`${viewport.width}: wordmix did not retain one word and one idea on slide ${i + 1}`);
+    const selection = await page.locator(".wordmix-selection").textContent();
+    if (!selection.includes(spec.pairs[0].word) || !selection.includes(spec.ideas.at(-1)))
+      fail(`${viewport.width}: wordmix selection did not update on slide ${i + 1}`);
   } else if (type === "steps") {
     const expected = await page.locator("#slide .list .step").count();
     let clicks = 0;
@@ -282,6 +398,11 @@ async function testSlide(page, viewport, i, total) {
       fail(
         `${viewport.width}: Reset changed base slide unexpectedly on slide ${i + 1}`,
       );
+    if ((await page.locator("#slide .correct,#slide .incorrect,#slide .order-result").count()) !== 0)
+      fail(`${viewport.width}: Reset left a checked result state on slide ${i + 1}`);
+    const resetAnnouncement = await page.locator("#announcement").textContent();
+    if (/\b(?:Correct|Incorrect)(?: answer| order)?\b/.test(resetAnnouncement))
+      fail(`${viewport.width}: Reset left a stale result announcement on slide ${i + 1}`);
     await screenshot(page, viewport, i + 1, "reset");
   }
   if (i < total - 1) {

@@ -5,6 +5,8 @@
   --accent: #07685f;
   --line: #829894;
   --soft: #e8f3ee;
+  --wrong: #9f1d1d;
+  --wrong-soft: #fff0ee;
 }
 * {
   box-sizing: border-box;
@@ -46,6 +48,22 @@ h1 {
   margin: 0;
   font-weight: 700;
 }
+.question-label,
+.instruction {
+  font-size: calc(30px * var(--text-expansion));
+  line-height: 1.15;
+  color: var(--accent);
+  margin: 0;
+}
+.question-label {
+  margin-bottom: -12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+}
+.instruction {
+  max-width: 980px;
+}
 p {
   margin: 0;
 }
@@ -82,10 +100,22 @@ button[hidden] {
   font-size: calc(48px * var(--text-expansion));
   line-height: 1.22;
 }
+.stimulus {
+  font-size: 42px;
+  line-height: 1.25;
+  white-space: pre-line;
+  max-width: 1120px;
+  padding-left: 24px;
+  border-left: 5px solid var(--accent);
+}
 .passage {
   font-size: calc(46px * var(--text-expansion));
   line-height: 1.3;
   white-space: pre-line;
+}
+#slide[data-type="passage"] .instruction {
+  font-size: calc(30px * var(--text-expansion));
+  color: var(--muted);
 }
 .choices {
   display: flex;
@@ -100,6 +130,33 @@ button[hidden] {
 .selected {
   border-color: var(--accent);
   background: var(--soft);
+}
+.choices button.correct,
+.order-result.correct {
+  border: 4px solid var(--accent);
+  background: var(--soft);
+  font-weight: 700;
+}
+.choices button.incorrect,
+.order-result.incorrect {
+  border: 4px solid var(--wrong);
+  background: var(--wrong-soft);
+  color: var(--wrong);
+  font-weight: 700;
+}
+.order-result {
+  padding: 16px 20px;
+  border-radius: 9px;
+}
+.result-status {
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.1;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.result-sequence {
+  font-size: calc(40px * var(--text-expansion));
+  line-height: 1.18;
 }
 .feedback,
 .hint {
@@ -152,6 +209,9 @@ button[hidden] {
   border-left: 2px solid var(--line);
   padding-left: 36px;
 }
+.compare .body {
+  white-space: pre-line;
+}
 .label {
   font-size: calc(36px * var(--text-expansion));
   color: var(--accent);
@@ -181,6 +241,57 @@ button[hidden] {
 }
 .sort-row .choices {
   gap: 12px;
+}
+#slide[data-type="wordmix"] {
+  justify-content: flex-start;
+  gap: 12px;
+  padding-top: 20px;
+}
+#slide[data-type="wordmix"] h1 {
+  font-size: calc(48px * var(--text-expansion));
+}
+.wordmix-reference {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+}
+.wordmix-row {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.1;
+}
+.wordmix-row button,
+.wordmix-ideas button {
+  font-size: calc(36px * var(--text-expansion));
+  font-weight: 700;
+  padding: 8px 12px;
+}
+.wordmix-builder {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px 20px;
+  padding-top: 8px;
+  border-top: 2px solid var(--line);
+}
+.wordmix-ideas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.wordmix-selection {
+  font-size: calc(36px * var(--text-expansion));
+  color: var(--accent);
+  font-weight: 700;
+}
+.wordmix-frame {
+  grid-column: 1 / -1;
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.1;
 }
 #slide[data-type="image"] {
   justify-content: flex-start;
@@ -249,7 +360,120 @@ footer button {
 .list button:disabled {
   opacity: 1;
 }
-</style><body><main id="stage"><section id="slide" aria-label="Teaching slide"></section><div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div><footer><div><button id="hint">Hint</button><button id="reveal">Reveal</button><button id="reset">Reset</button></div><nav aria-label="Slides"><button id="prev" aria-label="Previous slide">←</button><span id="count"></span><button id="next" aria-label="Next slide">→</button></nav></footer></main><script type="application/json" id="deck-data">{"version":1,"title":"Small Words, Strong Sentences","viewport":"1280x665","slides":[{"id":"hook","type":"prompt","prompt":"How did Covid-19 change the world?","hint":"Monday we used 4 checks to find a missing link."},{"id":"prime-changes","type":"steps","prompt":"Before we open the book — what changed?","items":["Covid-19 spread through tiny droplets.","Life was disrupted, but people cooperated.","Hygiene and technology keep us connected."]},{"id":"word-resilient","type":"reveal","prompt":"What does resilient mean?","answer":"Strong again after a difficulty.","feedback":"Societies became resilient after Covid-19."},{"id":"word-severity","type":"reveal","prompt":"What does severity mean?","answer":"How serious an illness is.","feedback":"Vaccines reduced the severity of illness."},{"id":"word-droplet","type":"reveal","prompt":"What does droplet mean?","answer":"A very tiny drop.","feedback":"-let means small: droplet, booklet, leaflet."},{"id":"word-vital","type":"reveal","prompt":"What does vital mean?","answer":"Very important.","feedback":"Technology played a vital role."},{"id":"word-disruption","type":"reveal","prompt":"What does disruption mean?","answer":"Stopping normal life.","feedback":"The pandemic caused great disruption."},{"id":"word-significant","type":"reveal","prompt":"What does significant mean?","answer":"Very great or very large.","feedback":"A significant event in history."},{"id":"weak-strong","type":"compare","prompt":"Which sentence uses severity well?","columns":[{"label":"A","text":"Severity means serious."},{"label":"B","text":"Vaccines reduced the severity of illness so fewer people became very sick."}],"hint":"Look for an action and a result."},{"id":"pbd-routine","type":"steps","prompt":"PBD round: read clearly, use the word.","items":["Teacher picks names with the randomizer.","Read your paragraph clearly.","Use one word in your own sentence."]},{"id":"exit-sentence","type":"writing","prompt":"One strong sentence","task":"Choose one word: resilient, severity, droplet, vital, disruption or significant. Write one strong sentence about your life or school that shows its meaning.","frame":"Word + action + detail + because / so + result."}]}</script><script>(() => {
+.diagnostic-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: -8px;
+}
+.diagnostic-mark {
+  width: 34px;
+  height: 34px;
+  filter: invert(32%) sepia(35%) saturate(800%) hue-rotate(125deg);
+}
+.diagnostic-instruction {
+  font-size: 24px;
+  line-height: 1.15;
+  color: var(--accent);
+}
+#slide[data-type="diagnostic"] {
+  justify-content: flex-start;
+  gap: 8px;
+  padding-top: 22px;
+}
+#slide[data-type="diagnostic"] h1 {
+  font-size: 42px;
+  line-height: 1;
+}
+.diagnostic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  min-height: 0;
+}
+.diagnostic-section {
+  border-left: 4px solid var(--accent);
+  padding-left: 12px;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 12px;
+  row-gap: 5px;
+  align-content: start;
+}
+.diagnostic-heading {
+  margin: 0 0 6px;
+  font-size: 25px;
+  line-height: 1.05;
+  color: var(--accent);
+  grid-column: 1 / -1;
+}
+.diagnostic-item {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.08;
+}
+.diagnostic-prompt {
+  font-weight: 600;
+}
+.diagnostic-options {
+  margin-top: 2px;
+  color: #263d45;
+  font-size: 14px;
+  line-height: 1.06;
+}
+.diagnostic-answer {
+  margin-top: 2px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px 18px;
+  align-content: start;
+}
+#slide[data-type="review"] {
+  justify-content: flex-start;
+  gap: 12px;
+}
+#slide[data-type="review"] h1 {
+  font-size: 48px;
+}
+.review-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  font-size: 18px;
+}
+.review-number {
+  min-width: 24px;
+  font-weight: 700;
+}
+.review-item button {
+  min-width: 0;
+  flex: 1 1 auto;
+  padding: 7px 8px;
+  font-size: 16px;
+  text-align: left;
+  white-space: normal;
+}
+.review-choices {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.review-choices button {
+  font-size: 15px;
+  padding: 4px 8px;
+  min-height: 32px;
+}
+.review-paper {
+  color: var(--accent);
+  font-size: 16px;
+}
+</style><body><main id="stage"><section id="slide" aria-label="Teaching slide"></section><div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div><footer><div><button id="hint">Hint</button><button id="reveal">Reveal</button><button id="reset">Reset</button><button id="export-json" hidden>Export JSON</button></div><nav aria-label="Slides"><button id="prev" aria-label="Previous slide">←</button><span id="count"></span><button id="next" aria-label="Next slide">→</button></nav></footer></main><script type="application/json" id="deck-data">{"version":1,"title":"Small Words, Strong Sentences","viewport":"1280x665","mode":"teaching","slides":[{"id":"hook","type":"prompt","prompt":"How did Covid-19 change the world?","hint":"On Monday, we used four checks to choose a missing sentence."},{"id":"prime-changes","type":"steps","prompt":"What changed during Covid-19?","items":["Covid-19 spread through tiny droplets.","Daily life changed, and people helped one another.","Good hygiene and technology still help us stay connected."]},{"id":"connected-home","type":"image","prompt":"What does this family scene show about staying connected?","src":"assets/family-day-scene.png","alt":"A family spending time together at home"},{"id":"word-resilient","type":"reveal","prompt":"What does resilient mean?","answer":"Strong again after a difficult time.","feedback":"People and communities can become resilient after a difficult time."},{"id":"word-severity","type":"reveal","prompt":"What does severity mean?","answer":"How serious an illness is.","feedback":"Vaccines can reduce the severity of an illness."},{"id":"word-droplet","type":"reveal","prompt":"What does droplet mean?","answer":"A very small drop.","feedback":"The ending -let can mean small: droplet, booklet, leaflet."},{"id":"word-vital","type":"reveal","prompt":"What does vital mean?","answer":"Very important.","feedback":"Technology played a vital role."},{"id":"word-disruption","type":"reveal","prompt":"What does disruption mean?","answer":"A break in normal life.","feedback":"The pandemic caused a break in normal life."},{"id":"word-significant","type":"reveal","prompt":"What does significant mean?","answer":"Very great or very large.","feedback":"The pandemic was a significant event in history."},{"id":"all-words-mix","type":"wordmix","prompt":"Mix a word with an idea. Make a sentence.","pairs":[{"word":"resilient","meaning":"strong again after a difficult time"},{"word":"severity","meaning":"how serious an illness is"},{"word":"droplet","meaning":"a very small drop"},{"word":"vital","meaning":"very important"},{"word":"disruption","meaning":"a break in normal life"},{"word":"significant","meaning":"very great or very large"}],"ideas":["an illness","school closures","online learning","our community"],"frame":"Use because or so. Your sentence must show the word's meaning."},{"id":"weak-strong","type":"compare","prompt":"Which sentence shows the meaning of severity?","columns":[{"label":"A","text":"Severity means serious."},{"label":"B","text":"Vaccines reduced the severity of illness, so fewer people became very sick."}],"hint":"Look for an action and a result."},{"id":"pbd-routine","type":"steps","prompt":"Reading and word check","items":["The teacher chooses pupils with the randomizer.","Read one passage paragraph clearly.","Use one target word in your own sentence."]},{"id":"exit-sentence","type":"writing","prompt":"Write one sentence that shows a word's meaning","task":"Choose one word: resilient, severity, droplet, vital, disruption or significant. Write one sentence about your life or school that shows its meaning.","frame":"Word + action + detail + because / so + result."}]}</script><script>(() => {
   "use strict";
   const deck = JSON.parse(document.getElementById("deck-data").textContent),
     stage = document.getElementById("stage"),
@@ -258,6 +482,7 @@ footer button {
   stage.style.width = w + "px";
   stage.style.height = h + "px";
   let index = 0;
+  const responseLog = new Map();
   const states = deck.slides.map(() => ({
     hint: false,
     revealed: false,
@@ -265,6 +490,7 @@ footer button {
     selected: null,
     order: [],
     groups: {},
+    mix: {},
   }));
   const el = (tag, text, cls) => {
     const n = document.createElement(tag);
@@ -272,17 +498,31 @@ footer button {
     if (cls) n.className = cls;
     return n;
   };
-  const button = (text, fn, selected = false) => {
-    const n = el("button", text, selected ? "selected" : "");
+  const button = (text, fn, selected = false, result = "") => {
+    const classes = [selected ? "selected" : "", result].filter(Boolean);
+    const n = el("button", text, classes.join(" "));
     n.type = "button";
     n.setAttribute("aria-pressed", String(selected));
+    if (result) n.dataset.result = result;
     n.onclick = fn;
     return n;
   };
+  function recordChoice(sourceIndex, option) {
+    const source = deck.slides[sourceIndex];
+    states[sourceIndex].selected = option;
+    responseLog.set(source.id, {
+      slideId: source.id,
+      slideNumber: sourceIndex + 1,
+      prompt: source.prompt,
+      response: option,
+      responseType: "teacher-recorded-spoken-choice",
+      recordedAt: new Date().toISOString(),
+    });
+  }
   function draw() {
     const focused = document.activeElement;
     const focusIndex = [...slide.querySelectorAll("button")].indexOf(focused);
-    const s = deck.slides[index],
+      const s = deck.slides[index],
       st = states[index];
     slide.style.setProperty("--text-expansion", "1");
     slide.replaceChildren();
@@ -292,12 +532,69 @@ footer button {
     slide.dataset.id = s.id;
     slide.dataset.type = s.type;
     slide.setAttribute("aria-label", s.prompt);
-    slide.append(el("h1", s.prompt));
     const add = (tag, text, cls) => {
       const n = el(tag, text, cls);
       slide.append(n);
       return n;
     };
+    if (s.label) add("p", s.label, "question-label");
+    slide.append(el("h1", s.prompt));
+    if (s.instruction) add("p", s.instruction, "instruction");
+    if (s.stimulus) add("p", s.stimulus, "stimulus");
+    if (s.visual && s.type !== "diagnostic") {
+      const meta = add("div", undefined, "diagnostic-meta");
+      const mark = el("img", undefined, "diagnostic-mark");
+      mark.src = s.visual.src;
+      mark.alt = s.visual.alt || "";
+      mark.setAttribute("aria-hidden", "true");
+      meta.append(mark, el("span", s.visual.instruction || "", "diagnostic-instruction"));
+    }
+    if (s.type === "review") {
+      const intro = add("p", "Check the recorded answers. Click an option to change it, then export the JSON.", "diagnostic-instruction");
+      const reviewGrid = add("div", undefined, "review-grid");
+      s.reviewIds.forEach((id) => {
+        const sourceIndex = deck.slides.findIndex((candidate) => candidate.id === id);
+        const source = deck.slides[sourceIndex];
+        if (!source) return;
+        const row = el("div", undefined, "review-item");
+        row.append(el("span", `${source.id.replace("q-", "")}.`, "review-number"));
+        if (source.options) {
+          const current = states[sourceIndex].selected;
+          const currentIndex = current ? source.options.indexOf(current) : -1;
+          row.append(button(`${current ? `Recorded: ${current}` : "No response"}`, () => {
+            recordChoice(sourceIndex, source.options[(currentIndex + 1) % source.options.length]);
+            draw();
+          }, Boolean(current)));
+        } else {
+          row.append(el("span", states[sourceIndex].selected || "paper response", "review-paper"));
+        }
+        reviewGrid.append(row);
+      });
+    }
+    if (s.type === "diagnostic") {
+      const header = add("div", undefined, "diagnostic-meta");
+      if (s.visual) {
+        const mark = el("img", undefined, "diagnostic-mark");
+        mark.src = s.visual.src;
+        mark.alt = s.visual.alt || "";
+        mark.setAttribute("aria-hidden", "true");
+        header.append(mark);
+      }
+      header.append(el("span", s.visual?.instruction || "Answer on paper. Do not call out answers yet.", "diagnostic-instruction"));
+      const grid = add("div", undefined, "diagnostic-grid");
+      s.sections.forEach((section) => {
+        const col = el("section", undefined, "diagnostic-section");
+        col.append(el("h2", section.heading, "diagnostic-heading"));
+        section.items.forEach((item) => {
+          const row = el("div", undefined, "diagnostic-item");
+          row.append(el("div", `${item.id}. ${item.prompt}`, "diagnostic-prompt"));
+          if (item.options) row.append(el("div", item.options.map((o, i) => `${String.fromCharCode(65 + i)} ${o}`).join("   "), "diagnostic-options"));
+          if (st.revealed) row.append(el("div", `Answer: ${item.answer}`, "diagnostic-answer"));
+          col.append(row);
+        });
+        grid.append(col);
+      });
+    }
     if (s.type === "cloze") {
       const n = add("p", undefined, "hero");
       const [a, b] = s.sentence.split("{{blank}}");
@@ -320,20 +617,38 @@ footer button {
     }
     if (["choice", "cloze", "gap"].includes(s.type)) {
       const n = add("div", undefined, "choices");
-      s.options.forEach((o) =>
+      s.options.forEach((o) => {
+        const selected = st.selected === o;
+        const result = deck.mode === "answering" ? "" : st.revealed
+          ? o === s.answer
+            ? "correct"
+            : selected
+              ? "incorrect"
+              : ""
+          : "";
+        const label = deck.mode === "answering" && selected
+          ? `Selected — ${o}`
+          :
+          result === "correct"
+            ? `✓ Correct — ${o}`
+            : result === "incorrect"
+              ? `✕ Incorrect — ${o}`
+              : o;
         n.append(
           button(
-            o,
+            label,
             () => {
+              if (st.revealed) return;
               st.selected = o;
-              st.revealed = false;
+              if (deck.mode === "answering") recordChoice(index, o);
               draw();
-              focusChoice(o);
+              if (deck.mode !== "answering") focusChoice(o);
             },
-            st.selected === o,
+            selected,
+            result,
           ),
-        ),
-      );
+        );
+      });
     }
     if (s.type === "compare") {
       const n = add("div", undefined, "compare");
@@ -361,25 +676,51 @@ footer button {
     }
     if (s.type === "order") {
       const n = add("div", undefined, "list");
-      const display = s.items.map((_, i) => i);
-      if (!st.revealed) display.reverse();
-      display.forEach((i) => {
-        const pos = st.order.indexOf(i);
-        n.append(
-          button(
-            `${pos < 0 ? "○" : pos + 1 + "."} ${s.items[i]}`,
-            () => {
-              if (st.revealed) return;
-              st.order =
-                pos < 0 ? [...st.order, i] : st.order.filter((x) => x !== i);
-              draw();
-            },
-            pos >= 0,
+      if (st.revealed) {
+        const correct =
+          st.order.length === s.items.length &&
+          st.order.every((itemIndex, position) => itemIndex === position);
+        const attempt = el("div", undefined, `order-result ${correct ? "correct" : "incorrect"}`);
+        attempt.append(
+          el("p", correct ? "✓ Correct order" : "✕ Incorrect order", "result-status"),
+          el(
+            "p",
+            st.order.length
+              ? st.order.map((itemIndex, position) => `${position + 1}. ${s.items[itemIndex]}`).join("  ")
+              : "No order selected",
+            "result-sequence",
           ),
         );
-      });
-      if (st.revealed)
-        n.querySelectorAll("button").forEach((b) => (b.disabled = true));
+        n.append(attempt);
+        if (!correct) {
+          const canonical = el("div", undefined, "order-result correct");
+          canonical.append(
+            el("p", "✓ Correct order", "result-status"),
+            el(
+              "p",
+              s.items.map((item, position) => `${position + 1}. ${item}`).join("  "),
+              "result-sequence",
+            ),
+          );
+          n.append(canonical);
+        }
+      } else {
+        const display = s.items.map((_, i) => i).reverse();
+        display.forEach((i) => {
+          const pos = st.order.indexOf(i);
+          n.append(
+            button(
+              `${pos < 0 ? "○" : pos + 1 + "."} ${s.items[i]}`,
+              () => {
+                st.order =
+                  pos < 0 ? [...st.order, i] : st.order.filter((x) => x !== i);
+                draw();
+              },
+              pos >= 0,
+            ),
+          );
+        });
+      }
     }
     if (s.type === "sort") {
       const n = add("div", undefined, "list");
@@ -389,27 +730,79 @@ footer button {
         row.append(el("span", item.text));
         choices.setAttribute("role", "group");
         choices.setAttribute("aria-label", item.text);
-        s.categories.forEach((c) =>
+        s.categories.forEach((c) => {
+          const selected = st.groups[i] === c;
+          const result = st.revealed
+            ? c === item.category
+              ? "correct"
+              : selected
+                ? "incorrect"
+                : ""
+            : "";
+          const label =
+            result === "correct"
+              ? `✓ Correct — ${c}`
+              : result === "incorrect"
+                ? `✕ Incorrect — ${c}`
+                : c;
           choices.append(
             button(
-              c,
+              label,
               () => {
+                if (st.revealed) return;
                 st.groups[i] = c;
-                st.revealed = false;
                 draw();
               },
-              st.groups[i] === c,
+              selected,
+              result,
             ),
-          ),
-        );
-        if (st.revealed)
-          choices.querySelectorAll("button").forEach((b) => {
-            if (b.getAttribute("aria-pressed") === "true")
-              b.textContent = "✓ " + b.textContent;
-          });
+          );
+        });
         row.append(choices);
         n.append(row);
       });
+    }
+    if (s.type === "wordmix") {
+      const reference = add("div", undefined, "wordmix-reference");
+      s.pairs.forEach((pair) => {
+        const selected = st.mix.word === pair.word;
+        const row = el("div", undefined, "wordmix-row");
+        row.append(
+          button(
+            pair.word,
+            () => {
+              st.mix.word = st.mix.word === pair.word ? null : pair.word;
+              draw();
+            },
+            selected,
+          ),
+          el("span", pair.meaning),
+        );
+        reference.append(row);
+      });
+      const builder = add("div", undefined, "wordmix-builder");
+      const ideaChoices = el("div", undefined, "wordmix-ideas");
+      ideaChoices.setAttribute("role", "group");
+      ideaChoices.setAttribute("aria-label", "Ideas");
+      s.ideas.forEach((idea) => {
+        ideaChoices.append(
+          button(
+            idea,
+            () => {
+              st.mix.idea = st.mix.idea === idea ? null : idea;
+              draw();
+            },
+            st.mix.idea === idea,
+          ),
+        );
+      });
+      const selection = el(
+        "p",
+        `${st.mix.word || "Choose a word"} + ${st.mix.idea || "choose an idea"}`,
+        "wordmix-selection",
+      );
+      selection.setAttribute("aria-live", "polite");
+      builder.append(ideaChoices, selection, el("p", s.frame, "wordmix-frame"));
     }
     if (st.hint && s.hint && !st.revealed) add("p", s.hint, "hint");
     if (st.revealed) {
@@ -425,8 +818,8 @@ footer button {
     hint.hidden = !s.hint;
     hint.disabled = st.revealed;
     hint.textContent = st.hint ? "Hide hint" : "Hint";
-    rev.hidden = !(
-      ["reveal", "choice", "cloze", "gap", "steps", "order", "sort"].includes(
+    rev.hidden = deck.mode === "answering" || !(
+      ["reveal", "choice", "cloze", "gap", "steps", "order", "sort", "diagnostic"].includes(
         s.type,
       ) ||
       (s.type === "writing" && s.frame)
@@ -434,7 +827,11 @@ footer button {
     rev.textContent = s.type === "steps" ? "Next step" : "Reveal";
     rev.disabled =
       s.type === "steps" ? st.step >= s.items.length - 1 : st.revealed;
-    document.getElementById("reset").hidden = hint.hidden && rev.hidden;
+    document.getElementById("reset").hidden =
+      deck.mode !== "answering" && hint.hidden && rev.hidden && s.type !== "wordmix";
+    const exportButton = document.getElementById("export-json");
+    exportButton.hidden = deck.mode !== "answering" || s.type !== "review";
+    exportButton.textContent = deck.mode === "answering" ? `Export JSON (${responseLog.size})` : "Export JSON";
     document.getElementById("prev").disabled = index === 0;
     document.getElementById("next").disabled = index === deck.slides.length - 1;
     document.getElementById("count").textContent =
@@ -443,7 +840,7 @@ footer button {
     document.getElementById("announcement").textContent =
       `Slide ${index + 1} of ${deck.slides.length}. ${s.prompt}. ` +
       (st.revealed
-        ? (s.answer || "") + " " + (s.feedback || "")
+        ? checkedAnnouncement(s, st)
         : st.hint
           ? s.hint || ""
           : st.selected || "");
@@ -487,6 +884,28 @@ footer button {
       .find((n) => n.textContent === text)
       ?.focus();
   }
+  function checkedAnnouncement(s, st) {
+    if (["choice", "cloze", "gap"].includes(s.type)) {
+      if (!st.selected)
+        return `Correct answer: ${s.answer}. ${s.feedback || ""}`;
+      return st.selected === s.answer
+        ? `Correct. ${s.answer}. ${s.feedback || ""}`
+        : `Incorrect. You chose ${st.selected}. Correct answer: ${s.answer}. ${s.feedback || ""}`;
+    }
+    if (s.type === "sort") {
+      const wrong = s.items.filter((item, i) => st.groups[i] !== item.category).length;
+      return wrong
+        ? `Incorrect. ${wrong} ${wrong === 1 ? "item needs" : "items need"} correction. ${s.feedback || ""}`
+        : `Correct. ${s.feedback || ""}`;
+    }
+    if (s.type === "order") {
+      const correct =
+        st.order.length === s.items.length &&
+        st.order.every((itemIndex, position) => itemIndex === position);
+      return `${correct ? "Correct" : "Incorrect"} order. ${s.feedback || ""}`;
+    }
+    return (s.answer || "") + " " + (s.feedback || "");
+  }
   function reveal() {
     const s = deck.slides[index],
       st = states[index];
@@ -494,10 +913,6 @@ footer button {
     else {
       st.revealed = true;
       st.hint = false;
-      if (["choice", "cloze", "gap"].includes(s.type)) st.selected = s.answer;
-      if (s.type === "sort")
-        s.items.forEach((x, i) => (st.groups[i] = x.category));
-      if (s.type === "order") st.order = s.items.map((_, i) => i);
     }
     draw();
   }
@@ -511,6 +926,7 @@ footer button {
   };
   document.getElementById("reveal").onclick = reveal;
   document.getElementById("reset").onclick = () => {
+    responseLog.delete(deck.slides[index].id);
     states[index] = {
       hint: false,
       revealed: false,
@@ -518,11 +934,34 @@ footer button {
       selected: null,
       order: [],
       groups: {},
+      mix: {},
     };
     draw();
   };
   document.getElementById("prev").onclick = () => move(-1);
   document.getElementById("next").onclick = () => move(1);
+  document.getElementById("export-json").onclick = () => {
+    const currentSlide = deck.slides[index];
+    const payload = {
+      schema: "teacher-answering-responses-v1",
+      deckTitle: deck.title,
+      mode: deck.mode || "teaching",
+      exportedAt: new Date().toISOString(),
+      responses: [...responseLog.values()].sort((a, b) => a.slideNumber - b.slideNumber),
+      unansweredSlideIds: deck.slides
+        .filter((slide) => (currentSlide.reviewIds || []).includes(slide.id) && !responseLog.has(slide.id))
+        .map((slide) => slide.id),
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2) + "\n"], {type: "application/json"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    const safeTitle = String(deck.title).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    link.download = `${safeTitle || "diagnostic"}-${new Date().toISOString().slice(0, 10)}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+    document.getElementById("announcement").textContent = `Exported ${payload.responses.length} recorded responses as JSON. ${payload.unansweredSlideIds.length} response items remain unanswered.`;
+  };
   document.addEventListener("keydown", (e) => {
     if (e.target.isContentEditable || e.target.closest("input,textarea,select"))
       return;

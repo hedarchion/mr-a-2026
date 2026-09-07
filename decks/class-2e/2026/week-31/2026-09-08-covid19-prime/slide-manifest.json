@@ -5,36 +5,43 @@
       "id": "hook",
       "type": "prompt",
       "initialWords": 6,
-      "hintWords": 16,
+      "hintWords": 17,
       "revealedWords": 6
     },
     {
       "id": "prime-changes",
       "type": "steps",
-      "initialWords": 13,
-      "hintWords": 13,
-      "revealedWords": 25
+      "initialWords": 9,
+      "hintWords": 9,
+      "revealedWords": 26
+    },
+    {
+      "id": "connected-home",
+      "type": "image",
+      "initialWords": 9,
+      "hintWords": 9,
+      "revealedWords": 9
     },
     {
       "id": "word-resilient",
       "type": "reveal",
       "initialWords": 4,
       "hintWords": 4,
-      "revealedWords": 14
+      "revealedWords": 20
     },
     {
       "id": "word-severity",
       "type": "reveal",
       "initialWords": 4,
       "hintWords": 4,
-      "revealedWords": 15
+      "revealedWords": 17
     },
     {
       "id": "word-droplet",
       "type": "reveal",
       "initialWords": 4,
       "hintWords": 4,
-      "revealedWords": 14
+      "revealedWords": 17
     },
     {
       "id": "word-vital",
@@ -48,35 +55,42 @@
       "type": "reveal",
       "initialWords": 4,
       "hintWords": 4,
-      "revealedWords": 12
+      "revealedWords": 17
     },
     {
       "id": "word-significant",
       "type": "reveal",
       "initialWords": 4,
       "hintWords": 4,
-      "revealedWords": 14
+      "revealedWords": 17
+    },
+    {
+      "id": "all-words-mix",
+      "type": "wordmix",
+      "initialWords": 61,
+      "hintWords": 61,
+      "revealedWords": 61
     },
     {
       "id": "weak-strong",
       "type": "compare",
-      "initialWords": 22,
-      "hintWords": 29,
-      "revealedWords": 22
+      "initialWords": 24,
+      "hintWords": 31,
+      "revealedWords": 24
     },
     {
       "id": "pbd-routine",
       "type": "steps",
-      "initialWords": 13,
-      "hintWords": 13,
+      "initialWords": 11,
+      "hintWords": 11,
       "revealedWords": 24
     },
     {
       "id": "exit-sentence",
       "type": "writing",
-      "initialWords": 26,
-      "hintWords": 26,
-      "revealedWords": 37
+      "initialWords": 30,
+      "hintWords": 30,
+      "revealedWords": 41
     }
   ]
 }

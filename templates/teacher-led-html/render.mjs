@@ -19,8 +19,11 @@ export const types = [
   "passage",
   "order",
   "sort",
+  "wordmix",
   "image",
   "writing",
+  "diagnostic",
+  "review",
 ];
 const words = (s) =>
   String(s || "")
@@ -36,10 +39,21 @@ export function contentCounts(s) {
     body.push(...s.columns.flatMap((c) => [c.label, c.text]));
   if (s.type === "passage") body.push(s.text);
   if (s.type === "writing") body.push(s.task);
+  if (s.type === "diagnostic") body.push(...s.sections.flatMap((section) => [section.heading, ...section.items.flatMap((item) => [item.prompt, ...(item.options || [])]) ]));
+  if (s.type === "review") body.push(...(s.reviewIds || []));
+  if (s.stimulus) body.push(s.stimulus);
+  if (s.label) body.push(s.label);
+  if (s.instruction) body.push(s.instruction);
   if (s.type === "steps") body.push(s.items[0]);
   if (s.type === "order") body.push(...s.items);
   if (s.type === "sort")
     body.push(...s.items.flatMap((x) => [x.text, ...s.categories]));
+  if (s.type === "wordmix")
+    body.push(
+      ...s.pairs.flatMap((x) => [x.word, x.meaning]),
+      ...s.ideas,
+      s.frame,
+    );
   const initial = words([s.prompt, ...body].join(" "));
   let revealed = initial;
   if (["reveal", "choice"].includes(s.type)) revealed += words(s.answer);
@@ -67,6 +81,7 @@ export function validate(d) {
   };
   require(d.version === 1, "version must be 1");
   require(typeof d.title === "string" && d.title.trim(), "title required");
+  require(!d.mode || ["answering", "teaching"].includes(d.mode), "mode must be answering or teaching");
   require(Array.isArray(d.slides) &&
     d.slides.length > 0, "slides must be a nonempty array");
   require(!d.viewport ||
@@ -156,6 +171,18 @@ export function validate(d) {
           (typeof s.frame === "string" &&
             words(s.frame) <=
               30)), `${p}: concise task and optional frame required`);
+    if (s.type === "diagnostic") {
+      require(Array.isArray(s.sections) && s.sections.length >= 2 && s.sections.length <= 5, `${p}: diagnostic needs 2–5 sections`);
+      require(s.sections.every((section) => section && typeof section.heading === "string" && Array.isArray(section.items) && section.items.length >= 2), `${p}: diagnostic sections need headings and items`);
+      const itemIds = new Set();
+      for (const section of s.sections || []) for (const item of section.items || []) {
+        require(item && typeof item.id === "string" && !itemIds.has(item.id), `${p}: diagnostic item ids must be unique`);
+        itemIds.add(item.id);
+        require(typeof item.prompt === "string" && item.prompt.trim(), `${p}: diagnostic item prompt required`);
+        require(typeof item.answer === "string" && item.answer.trim(), `${p}: diagnostic item answer required`);
+        if (item.options) require(Array.isArray(item.options) && item.options.length >= 2 && item.options.length <= 4 && item.options.includes(item.answer), `${p}: diagnostic options must include answer`);
+      }
+    }
     if (s.type === "sort") {
       require(Array.isArray(s.categories) &&
         s.categories.length >= 2 &&
@@ -176,12 +203,40 @@ export function validate(d) {
             s.categories.includes(x.category),
         ), `${p}: 2–4 short items with canonical categories`);
     }
+    if (s.type === "wordmix") {
+      require(Array.isArray(s.pairs) &&
+        s.pairs.length >= 2 &&
+        s.pairs.length <= 6 &&
+        new Set(s.pairs.map((x) => x.word)).size === s.pairs.length &&
+        s.pairs.every(
+          (x) =>
+            x &&
+            typeof x.word === "string" &&
+            words(x.word) <= 3 &&
+            typeof x.meaning === "string" &&
+            words(x.meaning) <= 9,
+        ), `${p}: wordmix needs 2–6 unique words with concise meanings`);
+      require(Array.isArray(s.ideas) &&
+        s.ideas.length >= 2 &&
+        s.ideas.length <= 4 &&
+        new Set(s.ideas).size === s.ideas.length &&
+        s.ideas.every((x) => typeof x === "string" && words(x) <= 4),
+      `${p}: wordmix needs 2–4 unique short ideas`);
+      require(typeof s.frame === "string" &&
+        s.frame.trim() &&
+        words(s.frame) <= 12,
+      `${p}: wordmix needs a concise sentence frame`);
+    }
     if (s.type === "image")
       require(typeof s.src === "string" &&
         /^assets\/[\w./-]+$/.test(s.src) &&
         !s.src.includes("..") &&
         typeof s.alt === "string" &&
         s.alt.trim(), `${p}: local assets path and alt required`);
+    if (s.type === "diagnostic" && s.visual)
+      require(typeof s.visual.src === "string" && /^assets\/[\w./-]+$/.test(s.visual.src) && !s.visual.src.includes(".."), `${p}: diagnostic visual needs a local asset path`);
+    if (s.type === "review")
+      require(Array.isArray(s.reviewIds) && s.reviewIds.length > 0 && s.reviewIds.every((id) => typeof id === "string"), `${p}: review needs source slide IDs`);
     const allowed = [
       "id",
       "type",
@@ -197,8 +252,16 @@ export function validate(d) {
       "task",
       "frame",
       "categories",
+      "pairs",
+      "ideas",
       "src",
       "alt",
+      "sections",
+      "visual",
+      "reviewIds",
+      "stimulus",
+      "label",
+      "instruction",
       "notes",
     ];
     for (const k of Object.keys(s))
@@ -207,11 +270,15 @@ export function validate(d) {
   if (errors.length) throw new Error(errors.join("\n"));
   for (const s of d.slides) {
     const c = contentCounts(s),
-      budget = s.type === "passage" ? 110 : 65;
+      budget = ["diagnostic", "review"].includes(s.type)
+        ? 650
+        : ["passage", "wordmix"].includes(s.type)
+          ? 110
+          : 65;
     require(c.initialWords <=
       budget, `${s.id}: initial content exceeds ${budget} words; split the teaching move`);
     require(Math.max(c.hintWords, c.revealedWords) <=
-      110, `${s.id}: hint/reveal state exceeds 110 words`);
+      ["diagnostic", "review"].includes(s.type) ? 720 : 110, `${s.id}: hint/reveal state exceeds 110 words`);
   }
   if (errors.length) throw new Error(errors.join("\n"));
   return d;
@@ -224,6 +291,7 @@ export function render(d) {
     version: d.version,
     title: d.title,
     viewport: d.viewport,
+    mode: d.mode || "teaching",
     slides: d.slides.map(({ notes, ...s }) => s),
   };
   const json = JSON.stringify(publicData)
@@ -237,7 +305,7 @@ export function render(d) {
         c
       ],
   );
-  return `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title><style>${readFileSync(base + "/theme.css", "utf8")}</style><body><main id="stage"><section id="slide" aria-label="Teaching slide"></section><div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div><footer><div><button id="hint">Hint</button><button id="reveal">Reveal</button><button id="reset">Reset</button></div><nav aria-label="Slides"><button id="prev" aria-label="Previous slide">←</button><span id="count"></span><button id="next" aria-label="Next slide">→</button></nav></footer></main><script type="application/json" id="deck-data">${json}</script><script>${readFileSync(base + "/runtime.js", "utf8")}</script></body></html>`;
+  return `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title><style>${readFileSync(base + "/theme.css", "utf8")}</style><body><main id="stage"><section id="slide" aria-label="Teaching slide"></section><div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div><footer><div><button id="hint">Hint</button><button id="reveal">Reveal</button><button id="reset">Reset</button><button id="export-json" hidden>Export JSON</button></div><nav aria-label="Slides"><button id="prev" aria-label="Previous slide">←</button><span id="count"></span><button id="next" aria-label="Next slide">→</button></nav></footer></main><script type="application/json" id="deck-data">${json}</script><script>${readFileSync(base + "/runtime.js", "utf8")}</script></body></html>`;
 }
 if (
   process.argv[1] &&
@@ -248,14 +316,15 @@ if (
     throw Error("Usage: node render.mjs lesson.json output/index.html");
   const d = JSON.parse(readFileSync(input, "utf8"));
   const html = render(d);
-  for (const s of d.slides.filter((s) => s.type === "image")) {
-    const src = resolve(dirname(input), s.src);
+  const assetSources = d.slides.flatMap((s) => s.type === "image" ? [s.src] : s.type === "diagnostic" && s.visual?.src ? [s.visual.src] : []);
+  for (const srcRel of assetSources) {
+    const src = resolve(dirname(input), srcRel);
     if (!existsSync(src)) throw Error(`Missing asset: ${src}`);
   }
   mkdirSync(dirname(output), { recursive: true });
-  for (const s of d.slides.filter((s) => s.type === "image")) {
-    const src = resolve(dirname(input), s.src),
-      dst = resolve(dirname(output), s.src);
+  for (const srcRel of assetSources) {
+    const src = resolve(dirname(input), srcRel),
+      dst = resolve(dirname(output), srcRel);
     mkdirSync(dirname(dst), { recursive: true });
     if (src !== dst) copyFileSync(src, dst);
   }
