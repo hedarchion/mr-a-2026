@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "welcome",
+      "type": "prompt",
+      "initialWords": 19,
+      "hintWords": 19,
+      "revealedWords": 19
+    },
+    {
+      "id": "q-1",
+      "type": "choice",
+      "initialWords": 16,
+      "hintWords": 16,
+      "revealedWords": 23
+    },
+    {
+      "id": "q-2",
+      "type": "choice",
+      "initialWords": 16,
+      "hintWords": 16,
+      "revealedWords": 23
+    },
+    {
+      "id": "q-3",
+      "type": "choice",
+      "initialWords": 26,
+      "hintWords": 26,
+      "revealedWords": 40
+    },
+    {
+      "id": "q-4",
+      "type": "choice",
+      "initialWords": 16,
+      "hintWords": 16,
+      "revealedWords": 24
+    },
+    {
+      "id": "q-5",
+      "type": "choice",
+      "initialWords": 49,
+      "hintWords": 49,
+      "revealedWords": 57
+    },
+    {
+      "id": "q-6",
+      "type": "choice",
+      "initialWords": 49,
+      "hintWords": 49,
+      "revealedWords": 54
+    },
+    {
+      "id": "q-7",
+      "type": "choice",
+      "initialWords": 49,
+      "hintWords": 49,
+      "revealedWords": 56
+    },
+    {
+      "id": "q-8",
+      "type": "choice",
+      "initialWords": 49,
+      "hintWords": 49,
+      "revealedWords": 56
+    },
+    {
+      "id": "q-9",
+      "type": "short",
+      "initialWords": 40,
+      "hintWords": 44,
+      "revealedWords": 49
+    },
+    {
+      "id": "q-10",
+      "type": "short",
+      "initialWords": 40,
+      "hintWords": 45,
+      "revealedWords": 51
+    },
+    {
+      "id": "q-11",
+      "type": "short",
+      "initialWords": 40,
+      "hintWords": 44,
+      "revealedWords": 47
+    },
+    {
+      "id": "q-12",
+      "type": "short",
+      "initialWords": 41,
+      "hintWords": 47,
+      "revealedWords": 49
+    },
+    {
+      "id": "q-13",
+      "type": "choice",
+      "initialWords": 56,
+      "hintWords": 56,
+      "revealedWords": 64
+    },
+    {
+      "id": "q-14",
+      "type": "choice",
+      "initialWords": 56,
+      "hintWords": 56,
+      "revealedWords": 64
+    },
+    {
+      "id": "q-15",
+      "type": "choice",
+      "initialWords": 56,
+      "hintWords": 56,
+      "revealedWords": 66
+    },
+    {
+      "id": "q-16",
+      "type": "short",
+      "initialWords": 25,
+      "hintWords": 29,
+      "revealedWords": 31
+    },
+    {
+      "id": "q-17",
+      "type": "short",
+      "initialWords": 26,
+      "hintWords": 30,
+      "revealedWords": 33
+    },
+    {
+      "id": "q-18",
+      "type": "short",
+      "initialWords": 25,
+      "hintWords": 29,
+      "revealedWords": 32
+    },
+    {
+      "id": "response-review",
+      "type": "review",
+      "initialWords": 21,
+      "hintWords": 21,
+      "revealedWords": 21
+    },
+    {
+      "id": "writing-a",
+      "type": "writing",
+      "initialWords": 39,
+      "hintWords": 39,
+      "revealedWords": 39
+    },
+    {
+      "id": "writing-b",
+      "type": "writing",
+      "initialWords": 45,
+      "hintWords": 45,
+      "revealedWords": 45
+    },
+    {
+      "id": "conference",
+      "type": "prompt",
+      "initialWords": 11,
+      "hintWords": 24,
+      "revealedWords": 11
+    },
+    {
+      "id": "repair-model",
+      "type": "compare",
+      "initialWords": 29,
+      "hintWords": 29,
+      "revealedWords": 29
+    },
+    {
+      "id": "exit-challenge",
+      "type": "writing",
+      "initialWords": 22,
+      "hintWords": 22,
+      "revealedWords": 22
+    },
+    {
+      "id": "reflection",
+      "type": "prompt",
+      "initialWords": 5,
+      "hintWords": 11,
+      "revealedWords": 5
+    }
+  ]
+}
