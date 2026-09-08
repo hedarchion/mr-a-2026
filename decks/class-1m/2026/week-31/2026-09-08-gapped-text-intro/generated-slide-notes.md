@@ -1,33 +1,41 @@
-# Find the Missing Sentence — slide notes
+# The Missing Puzzle Piece — slide notes
 
-## 1. retrieve-link (choice)
+## 1. b1-puzzle (image)
 
-RETRIEVAL + BRIDGE (~5 min). Partner whisper 30s, then cold-call. Many pick C because library repeats: name it — same word is not enough, same story is the rule. Bridge: every gap today asks which sentence keeps the story going. 60-min Tue 8 Sep, sl_t3.
+ORIENT (~5 min, whole class, no partner talk). Sayable: a comic lost a few sentences; detectives put them back. Correct the one-word myth: not one word, one whole sentence. Practices today use short stories with 2 choices; official UASA has 8 gaps (notes.md). Tue 8 Sep, sl_t3, 60 min.
 
-## 2. routine (steps)
+## 2. b2-bridge (steps)
 
-NAME THE ROUTINE (~5 min). Adapts 2E routine (topic, who/what chain, both sides, predict-then-choose) in Form 1 A2 words. Read each check with a finger point. Correct options-first habit: idea first, options second. Pupils repeat the 4 back.
+MODEL Skill 1 (~6 min). Sayable model (teacher talk): Lina baked cookies in the morning, gap, she gave every cookie to neighbours. Bridge example: she put the hot cookies in a red box. Counter one-side reading: one side is not enough, a bridge touches both sides. Mime a bridge with hands.
 
-## 3. model-fan (gap)
+## 3. b3-aina (gap)
 
-MODEL (~10 min, only full think-aloud). Script: Check 1 hot classroom — B market out, C bell time out. Check 2 fan and room — only A. Check 3 fits before and after. Check 4: I said something cools the room before looking. Pupils whisper the idea first. Invention parallel to p.36, no bank content.
+PRACTISE Skill 1 (~6 min: 1 min silent, 30 s whisper, reveal why). Most pick A; B-choices signal one-side reading. Follow-up: what word joins before (cake/desserts)? What joins after (slice/cake)? Long sentence is not the rule; joins-both-sides is.
 
-## 4. guide-boat (gap)
+## 4. b4-pronoun (steps)
 
-GUIDED (~10 min). Cover options; pupils predict the travel result first (the boat is fast), then test. Correct C-pickers: C names the boat but gives no result — Check 3 fails. Chain: Aiman, boat, river, on time. Travel parallel to p.37, no bank content.
+MODEL Skill 2 (~6 min). Choral substitution: It = the kite. Sayable: pronouns are magnets sticking to the sentence before. They can be two cats or books, not only people. This/these covered orally (this cake = the cake told about); split the beat if review requires.
 
-## 5. trap-bicycle (gap)
+## 5. b5-bicycle (gap)
 
-TRAP (~8 min, last invented example). Many pick A first (coins/box words). Live correction: A fits before — read after: she rides. Counting never buys the bicycle. Pupils point at the after-line and read it aloud. Bridge: module gaps need the same both-sides test.
+PRACTISE Skill 2 (~6 min). Ask: who is He (Encik Hassan)? What is it (bicycle)? B-pickers match park/field place only: same place is not enough, the pronoun must match.
 
-## 6. bookwork-36 (writing)
+## 6. b6-signal (steps)
 
-BOOKWORK p.36 (~10 min, silent individual, teacher-marked, formative). Module p.36 The Light Bulb, gaps 1-4, bank A-D. No answers on screen. Teacher walks, checks predictions. Early finishers re-check with Check 3. Watch name-matching (Edison/Davy): prompt topic + after-line.
+MODEL Skill 3 (~7 min, choral repeat of 3 groups). Sayable: However turns, As a result continues to a result. Mini-check: it was raining, however... the next part must turn, not sunny. Counter: However and As a result point opposite ways; one must be wrong.
 
-## 7. bookwork-37 (writing)
+## 7. b7-meiling (gap)
 
-BOOKWORK p.37 (~10 min) + SUBMIT. Module p.37 Teleportation, gaps 5-8, bank E-H. Collect books at the door, no queues or role jobs (1M noise history). If noise rises, stop partner talk, silent individual. Close (teacher talk): we used 4 checks; I return books and we fix the hardest gap together.
+PRACTISE Skill 3 (~6 min). Thumbs check: twist or result (result). A-pickers like the exam story: true in life, wrong here; the middle must lead up to top marks, not down.
 
-## 8. exit-checks (prompt)
+## 8. b8-toolkit (steps)
 
-EXIT (~2 min). Eyes off screen, tell your partner. Gaps in recall reopen next lesson (9 Sep P1P2 diagnostic).
+SYNTHESIS (~5 min, reference only, no new teaching, no pending answer). Choral read once, then finger match: Aina = 1, Hassan = 2, Mei Ling = 3. Sayable: good detectives use all three checks on every gap. Keep this card in mind for the two Master Challenges.
+
+## 9. b9-kitten (gap)
+
+APPLY (~7 min: 2 min silent, 30 s whisper, reveal why). Withhold hint until after silent try. B-pickers take plausible life event: plausible is not enough, the after-sentence needs an animal. Ask which check helped most; accept bridge or pronoun.
+
+## 10. b10-camping (gap)
+
+APPLY + EXIT EVIDENCE (~6 min: 2 min silent, reveal why, 1 min close). Scan fingers/boards; A-choosers match before only and need twist reteaching. Close sayable: bridge both sides, follow the pronoun, follow the signal. Next time: longer UASA gaps.

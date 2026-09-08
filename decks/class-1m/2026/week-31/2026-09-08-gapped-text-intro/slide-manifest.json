@@ -2,60 +2,74 @@
   "version": 1,
   "slides": [
     {
-      "id": "retrieve-link",
-      "type": "choice",
-      "initialWords": 26,
-      "hintWords": 34,
-      "revealedWords": 42
+      "id": "b1-puzzle",
+      "type": "image",
+      "initialWords": 16,
+      "hintWords": 24,
+      "revealedWords": 16
     },
     {
-      "id": "routine",
+      "id": "b2-bridge",
+      "type": "steps",
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 25
+    },
+    {
+      "id": "b3-aina",
+      "type": "gap",
+      "initialWords": 34,
+      "hintWords": 47,
+      "revealedWords": 43
+    },
+    {
+      "id": "b4-pronoun",
+      "type": "steps",
+      "initialWords": 20,
+      "hintWords": 20,
+      "revealedWords": 43
+    },
+    {
+      "id": "b5-bicycle",
+      "type": "gap",
+      "initialWords": 37,
+      "hintWords": 52,
+      "revealedWords": 53
+    },
+    {
+      "id": "b6-signal",
+      "type": "steps",
+      "initialWords": 9,
+      "hintWords": 9,
+      "revealedWords": 20
+    },
+    {
+      "id": "b7-meiling",
+      "type": "gap",
+      "initialWords": 35,
+      "hintWords": 43,
+      "revealedWords": 48
+    },
+    {
+      "id": "b8-toolkit",
       "type": "steps",
       "initialWords": 11,
       "hintWords": 11,
       "revealedWords": 25
     },
     {
-      "id": "model-fan",
+      "id": "b9-kitten",
       "type": "gap",
-      "initialWords": 39,
-      "hintWords": 45,
-      "revealedWords": 52
+      "initialWords": 44,
+      "hintWords": 56,
+      "revealedWords": 56
     },
     {
-      "id": "guide-boat",
+      "id": "b10-camping",
       "type": "gap",
-      "initialWords": 39,
-      "hintWords": 47,
-      "revealedWords": 49
-    },
-    {
-      "id": "trap-bicycle",
-      "type": "gap",
-      "initialWords": 36,
-      "hintWords": 43,
-      "revealedWords": 47
-    },
-    {
-      "id": "bookwork-36",
-      "type": "writing",
-      "initialWords": 20,
-      "hintWords": 20,
-      "revealedWords": 32
-    },
-    {
-      "id": "bookwork-37",
-      "type": "writing",
-      "initialWords": 19,
-      "hintWords": 19,
-      "revealedWords": 31
-    },
-    {
-      "id": "exit-checks",
-      "type": "prompt",
-      "initialWords": 6,
-      "hintWords": 10,
-      "revealedWords": 6
+      "initialWords": 37,
+      "hintWords": 50,
+      "revealedWords": 42
     }
   ]
 }

@@ -1,101 +1,131 @@
 {
   "version": 1,
-  "title": "Find the Missing Sentence",
+  "title": "The Missing Puzzle Piece",
   "viewport": "1280x665",
   "slides": [
     {
-      "id": "retrieve-link",
-      "type": "choice",
-      "prompt": "Ali lost his bag. Which one is BEST next?",
-      "options": [
-        "He found it behind the door.",
-        "Nasi lemak is my favourite food.",
-        "The library opens at eight."
-      ],
-      "answer": "He found it behind the door.",
-      "feedback": "A finishes the story. B changes topic. C tells time.",
-      "hint": "Which sentence still talks about the lost bag?",
-      "notes": "RETRIEVAL + BRIDGE (~5 min). Partner whisper 30s, then cold-call. Many pick C because library repeats: name it — same word is not enough, same story is the rule. Bridge: every gap today asks which sentence keeps the story going. 60-min Tue 8 Sep, sl_t3."
+      "id": "b1-puzzle",
+      "type": "image",
+      "prompt": "Find the missing sentence. A story lost one sentence. UASA: put 8 back. Learn 3 skills.",
+      "src": "assets/puzzle.svg",
+      "alt": "A puzzle piece outline for the missing sentence",
+      "hint": "Ask: what story is this? What is missing?",
+      "notes": "ORIENT (~5 min, whole class, no partner talk). Sayable: a comic lost a few sentences; detectives put them back. Correct the one-word myth: not one word, one whole sentence. Practices today use short stories with 2 choices; official UASA has 8 gaps (notes.md). Tue 8 Sep, sl_t3, 60 min."
     },
     {
-      "id": "routine",
+      "id": "b2-bridge",
       "type": "steps",
-      "prompt": "Fill a gap in 4 checks.",
+      "prompt": "Bridge the gap. Read before AND after.",
       "items": [
-        "Same topic as the story?",
-        "Same person or thing?",
-        "Fits before AND after?",
-        "Say the idea first, then choose."
+        "Read the sentence BEFORE the gap.",
+        "Read the sentence AFTER the gap.",
+        "Choose the one joining BOTH sides."
       ],
-      "notes": "NAME THE ROUTINE (~5 min). Adapts 2E routine (topic, who/what chain, both sides, predict-then-choose) in Form 1 A2 words. Read each check with a finger point. Correct options-first habit: idea first, options second. Pupils repeat the 4 back."
+      "notes": "MODEL Skill 1 (~6 min). Sayable model (teacher talk): Lina baked cookies in the morning, gap, she gave every cookie to neighbours. Bridge example: she put the hot cookies in a red box. Counter one-side reading: one side is not enough, a bridge touches both sides. Mime a bridge with hands."
     },
     {
-      "id": "model-fan",
+      "id": "b3-aina",
       "type": "gap",
-      "prompt": "Try the hot room gap.",
-      "text": "The classroom was very hot.\n{{blank}}\nNow every class has a fan.",
+      "prompt": "Which sentence bridges both sides?",
+      "text": "Aina bakes desserts on weekends.\n{{blank}}\nHer family ate every slice in ten minutes.",
       "options": [
-        "A fan moves air and cools the room.",
-        "My uncle sells rice in the market.",
-        "The bell rings at one o'clock daily."
+        "Last Saturday she baked a delicious chocolate cake.",
+        "She dislikes going to the busy supermarket."
       ],
-      "answer": "A fan moves air and cools the room.",
-      "feedback": "A links hot lessons to cool fans. B and C change the topic.",
-      "hint": "What must explain the new fans?",
-      "notes": "MODEL (~10 min, only full think-aloud). Script: Check 1 hot classroom — B market out, C bell time out. Check 2 fan and room — only A. Check 3 fits before and after. Check 4: I said something cools the room before looking. Pupils whisper the idea first. Invention parallel to p.36, no bank content."
+      "answer": "Last Saturday she baked a delicious chocolate cake.",
+      "feedback": "A joins baking to eating. B misses both sides.",
+      "hint": "Point at baked. Point at ate. Which choice names the baked food eaten?",
+      "notes": "PRACTISE Skill 1 (~6 min: 1 min silent, 30 s whisper, reveal why). Most pick A; B-choices signal one-side reading. Follow-up: what word joins before (cake/desserts)? What joins after (slice/cake)? Long sentence is not the rule; joins-both-sides is."
     },
     {
-      "id": "guide-boat",
+      "id": "b4-pronoun",
+      "type": "steps",
+      "prompt": "Follow the pronoun. Who does it point to?",
+      "items": [
+        "he = a boy or man; she = a girl or woman.",
+        "it = one thing; they = more than one.",
+        "Rule: it points to the sentence BEFORE.",
+        "Danial bought a kite. It flew high."
+      ],
+      "notes": "MODEL Skill 2 (~6 min). Choral substitution: It = the kite. Sayable: pronouns are magnets sticking to the sentence before. They can be two cats or books, not only people. This/these covered orally (this cake = the cake told about); split the beat if review requires."
+    },
+    {
+      "id": "b5-bicycle",
       "type": "gap",
-      "prompt": "Try the boat gap.",
-      "text": "Aiman takes a boat to school.\n{{blank}}\nHe arrives on time every day.",
+      "prompt": "Follow the pronoun. Which fits?",
+      "text": "Encik Hassan bought a brand-new bicycle yesterday.\n{{blank}}\nHe rides it to the park every evening.",
       "options": [
-        "The boat crosses the river in ten minutes.",
-        "His sister likes fried noodles for lunch.",
-        "The boat is blue and very pretty."
+        "It has bright yellow paint and a silver bell.",
+        "They were playing football in the field."
       ],
-      "answer": "The boat crosses the river in ten minutes.",
-      "feedback": "A explains on time. B leaves travel. C only describes.",
-      "hint": "Bridge closed, still on time — what happened?",
-      "notes": "GUIDED (~10 min). Cover options; pupils predict the travel result first (the boat is fast), then test. Correct C-pickers: C names the boat but gives no result — Check 3 fails. Chain: Aiman, boat, river, on time. Travel parallel to p.37, no bank content."
+      "answer": "It has bright yellow paint and a silver bell.",
+      "feedback": "A fits: It is the bicycle from before. B fails: They needs more than one person.",
+      "hint": "Cover the gap. Read it in the last line. Which choice names that one thing?",
+      "notes": "PRACTISE Skill 2 (~6 min). Ask: who is He (Encik Hassan)? What is it (bicycle)? B-pickers match park/field place only: same place is not enough, the pronoun must match."
     },
     {
-      "id": "trap-bicycle",
+      "id": "b6-signal",
+      "type": "steps",
+      "prompt": "Follow the signal. Which direction?",
+      "items": [
+        "Twist: However, But, Although.",
+        "Result: So, Because, As a result.",
+        "Order: First, Then, Next, Finally."
+      ],
+      "notes": "MODEL Skill 3 (~7 min, choral repeat of 3 groups). Sayable: However turns, As a result continues to a result. Mini-check: it was raining, however... the next part must turn, not sunny. Counter: However and As a result point opposite ways; one must be wrong."
+    },
+    {
+      "id": "b7-meiling",
       "type": "gap",
-      "prompt": "Try the saving gap.",
-      "text": "Mei saves money for a bicycle.\n{{blank}}\nShe rides to school with her brother.",
+      "prompt": "Turn or result? Which fits?",
+      "text": "Mei Ling studied hard for two weeks before the exam.\n{{blank}}\nShe scored top marks.",
       "options": [
-        "She counts the box every night.",
-        "She buys the bicycle after six months.",
-        "Her brother likes chicken rice."
+        "However, she forgot to set her alarm.",
+        "As a result, she passed with flying colours."
       ],
-      "answer": "She buys the bicycle after six months.",
-      "feedback": "B explains the ride. A fits saving but not the ride.",
-      "hint": "Which answer lets her ride to school?",
-      "notes": "TRAP (~8 min, last invented example). Many pick A first (coins/box words). Live correction: A fits before — read after: she rides. Counting never buys the bicycle. Pupils point at the after-line and read it aloud. Bridge: module gaps need the same both-sides test."
+      "answer": "As a result, she passed with flying colours.",
+      "feedback": "B continues studied hard to top marks. A turns bad, fighting top marks.",
+      "hint": "Studied hard, then top marks. Turn or result?",
+      "notes": "PRACTISE Skill 3 (~6 min). Thumbs check: twist or result (result). A-pickers like the exam story: true in life, wrong here; the middle must lead up to top marks, not down."
     },
     {
-      "id": "bookwork-36",
-      "type": "writing",
-      "prompt": "Your turn: gaps 1 to 4.",
-      "task": "Open your books. Do gaps 1 to 4. Say the idea first, then choose.",
-      "frame": "1 Same topic? 2 Same person? 3 Both sides? 4 Idea first.",
-      "notes": "BOOKWORK p.36 (~10 min, silent individual, teacher-marked, formative). Module p.36 The Light Bulb, gaps 1-4, bank A-D. No answers on screen. Teacher walks, checks predictions. Early finishers re-check with Check 3. Watch name-matching (Edison/Davy): prompt topic + after-line."
+      "id": "b8-toolkit",
+      "type": "steps",
+      "prompt": "Detective toolkit. Three checks.",
+      "items": [
+        "Bridge: does it join before AND after?",
+        "Pronoun: who do he, she, it, they point to?",
+        "Signal: does the direction fit?"
+      ],
+      "notes": "SYNTHESIS (~5 min, reference only, no new teaching, no pending answer). Choral read once, then finger match: Aina = 1, Hassan = 2, Mei Ling = 3. Sayable: good detectives use all three checks on every gap. Keep this card in mind for the two Master Challenges."
     },
     {
-      "id": "bookwork-37",
-      "type": "writing",
-      "prompt": "Now gaps 5 to 8.",
-      "task": "Do gaps 5 to 8. Same 4 checks. Bring your book to the door.",
-      "frame": "1 Same topic? 2 Same person? 3 Both sides? 4 Idea first.",
-      "notes": "BOOKWORK p.37 (~10 min) + SUBMIT. Module p.37 Teleportation, gaps 5-8, bank E-H. Collect books at the door, no queues or role jobs (1M noise history). If noise rises, stop partner talk, silent individual. Close (teacher talk): we used 4 checks; I return books and we fix the hardest gap together."
+      "id": "b9-kitten",
+      "type": "gap",
+      "prompt": "Master challenge 1. Which fits?",
+      "text": "Adam heard a quiet noise in the bushes.\n{{blank}}\nHe wrapped the shivering animal in a towel and took it home.",
+      "options": [
+        "He found a tiny wet kitten crying under a leaf.",
+        "He quickly bought a cold bottle of juice."
+      ],
+      "answer": "He found a tiny wet kitten crying under a leaf.",
+      "feedback": "A names the kitten in the towel. B names juice, no animal.",
+      "hint": "Who is He? Which choice names the shivering animal needing a towel?",
+      "notes": "APPLY (~7 min: 2 min silent, 30 s whisper, reveal why). Withhold hint until after silent try. B-pickers take plausible life event: plausible is not enough, the after-sentence needs an animal. Ask which check helped most; accept bridge or pronoun."
     },
     {
-      "id": "exit-checks",
-      "type": "prompt",
-      "prompt": "Without looking: say the 4 checks.",
-      "hint": "Start with: Same topic…",
-      "notes": "EXIT (~2 min). Eyes off screen, tell your partner. Gaps in recall reopen next lesson (9 Sep P1P2 diagnostic)."
+      "id": "b10-camping",
+      "type": "gap",
+      "prompt": "Challenge 2: turn or continue?",
+      "text": "Our camping trip started with clear blue skies.\n{{blank}}\nWe packed our tents and went home early.",
+      "options": [
+        "So everyone put on sunglasses and sunblock.",
+        "However, a sudden storm hit an hour later."
+      ],
+      "answer": "However, a sudden storm hit an hour later.",
+      "feedback": "Storm explains leaving; sunglasses cannot.",
+      "hint": "Good start, bad end. Which word turns the story from sunny to stormy?",
+      "notes": "APPLY + EXIT EVIDENCE (~6 min: 2 min silent, reveal why, 1 min close). Scan fingers/boards; A-choosers match before only and need twist reteaching. Close sayable: bridge both sides, follow the pronoun, follow the signal. Next time: longer UASA gaps."
     }
   ]
 }
