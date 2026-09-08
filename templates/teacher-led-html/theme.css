@@ -473,3 +473,75 @@ footer button {
   color: var(--accent);
   font-size: 16px;
 }
+/* Typable short-answer preset: teacher-typed capture on the teacher machine.
+   Same 44px tier as choices; result states reuse the choice correct/incorrect
+   treatment (border + symbol + words, never colour alone). */
+.short-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 980px;
+}
+.short-input {
+  font: inherit;
+  font-size: calc(44px * var(--text-expansion));
+  line-height: 1.2;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: 9px;
+  padding: 18px 25px;
+  width: 100%;
+}
+.short-input.filled {
+  border-color: var(--accent);
+  background: var(--soft);
+}
+.short-input:focus-visible {
+  outline: 4px solid #ab5100;
+  outline-offset: 4px;
+}
+.short-input.correct,
+.short-status.correct {
+  border-color: var(--accent);
+}
+.short-status {
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.22;
+  margin: 0;
+  min-height: 1.22em;
+}
+.short-status.correct {
+  color: var(--accent);
+  font-weight: 700;
+}
+.short-status.incorrect {
+  color: var(--wrong);
+  font-weight: 700;
+}
+.short-status.empty {
+  color: var(--accent);
+}
+#slide .short-input.incorrect {
+  border: 4px solid var(--wrong);
+  background: var(--wrong-soft);
+}
+#slide .short-input.correct {
+  border: 4px solid var(--accent);
+  background: var(--soft);
+}
+.review-item .review-input {
+  font: inherit;
+  font-size: 16px;
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 2px solid var(--line);
+  border-radius: 9px;
+  padding: 7px 8px;
+  color: var(--ink);
+  background: #fff;
+}
+.review-item .review-input:focus-visible {
+  outline: 4px solid #ab5100;
+  outline-offset: 2px;
+}

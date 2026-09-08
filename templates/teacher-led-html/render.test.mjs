@@ -24,16 +24,18 @@ test("rejects duplicate IDs and unknown presets", () => {
 });
 test("rejects ambiguous or missing canonical choice", () => {
   const d = sample();
-  d.slides[3].answer = "Neither";
+  const choice = d.slides.find((s) => s.type === "choice");
+  choice.answer = "Neither";
   assert.throws(() => validate(d), /match an option/);
-  d.slides[3].options = ["Neither", "Neither"];
+  choice.options = ["Neither", "Neither"];
   assert.throws(() => validate(d), /duplicate options/);
 });
 test("requires exactly one inline gap", () => {
   const d = sample();
-  d.slides[4].sentence = "No gap";
+  const cloze = d.slides.find((s) => s.type === "cloze");
+  cloze.sentence = "No gap";
   assert.throws(() => validate(d), /exactly one/);
-  d.slides[4].sentence = "{{blank}} {{blank}}";
+  cloze.sentence = "{{blank}} {{blank}}";
   assert.throws(() => validate(d), /exactly one/);
 });
 test("gap stories need exactly one inline blank", () => {
@@ -55,6 +57,28 @@ test("gap answers must match an option", () => {
   const d = sample();
   d.slides.find((s) => s.type === "gap").answer = "Something else entirely";
   assert.throws(() => validate(d), /match an option/);
+});
+test("short answers need a canonical answer, feedback and clean variants", () => {
+  const d = sample();
+  const short = d.slides.find((s) => s.type === "short");
+  short.answer = "";
+  assert.throws(() => validate(d), /answer required/);
+  short.answer = "the park";
+  short.feedback = "";
+  assert.throws(() => validate(d), /explanatory feedback required/);
+  short.feedback = "The notice names the park directly.";
+  short.acceptedVariants = ["the park"];
+  assert.throws(() => validate(d), /acceptedVariants/);
+  short.acceptedVariants = ["park", "park"];
+  assert.throws(() => validate(d), /acceptedVariants/);
+  short.acceptedVariants = ["park"];
+  short.options = ["park", "lake"];
+  assert.throws(() => validate(d), /short uses prompt/);
+  delete short.options;
+  short.placeholder = Array(11).fill("word").join(" ");
+  assert.throws(() => validate(d), /placeholder/);
+  delete short.placeholder;
+  validate(d);
 });
 test("rejects oversized copy instead of shrinking", () => {
   const d = sample();
@@ -81,7 +105,7 @@ test("teacher notes are absent and text cannot break out of JSON", () => {
 });
 test("categorisation needs recoverable canonical categories", () => {
   const d = sample();
-  d.slides[9].items[0].category = "Other";
+  d.slides.find((s) => s.type === "sort").items[0].category = "Other";
   assert.throws(() => validate(d), /canonical categories/);
 });
 test("wordmix requires concise unique words and ideas", () => {

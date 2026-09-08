@@ -150,7 +150,7 @@ async function testSlide(page, viewport, i, total) {
   if (!initial.id || initial.type == null)
     fail(`${viewport.width}: slide ${i + 1} missing id/type`);
   const content = page.locator("#slide button");
-  const contentCount = await content.count();
+  const contentCount = initial.type === "review" ? 0 : await content.count();
 
   if (!initial.hintHidden) {
     await page.locator("#hint").click();
@@ -192,6 +192,24 @@ async function testSlide(page, viewport, i, total) {
       fail(
         `${viewport.width}: ${type} click did not fill exact option on slide ${i + 1}`,
       );
+    if (!(await page.locator("#reveal").isVisible())) {
+      // Answering mode: neutral capture, no Reveal. The attempt stays
+      // unmarked, reset clears the blank, revisit preserves the attempt.
+      if ((await page.locator("#slide .choices button.incorrect,#slide .choices button.correct").count()) !== 0)
+        fail(`${viewport.width}: ${type} marked an attempt without Reveal on slide ${i + 1}`);
+      await page.locator("#reset").click();
+      if ((await page.locator(".blank").textContent()).trim() !== "_____")
+        fail(`${viewport.width}: ${type} Reset did not clear the blank on slide ${i + 1}`);
+      options = page.locator("#slide .choices button");
+      await options.nth(wrongIndex).click();
+      if (i < total - 1) {
+        await page.locator("#next").click();
+        await page.keyboard.press("ArrowLeft");
+        if ((await page.locator(".blank").textContent()).trim() !== optionTexts[wrongIndex].trim())
+          fail(`${viewport.width}: ${type} attempt lost on revisit of slide ${i + 1}`);
+        await page.locator("#reset").click();
+      }
+    } else {
     await page.locator("#reveal").click();
     const answer = await page.locator(".blank").textContent();
     if (answer.trim() !== spec.answer)
@@ -220,6 +238,7 @@ async function testSlide(page, viewport, i, total) {
       fail(`${viewport.width}: ${type} keyboard path did not retain the correct attempt on slide ${i + 1}`);
     if (!(await page.locator("#announcement").textContent()).includes("Correct."))
       fail(`${viewport.width}: ${type} did not announce the correct result on slide ${i + 1}`);
+    }
   } else if (type === "choice") {
     let options = page.locator("#slide .choices button");
     const optionTexts = await options.allTextContents();
@@ -229,6 +248,27 @@ async function testSlide(page, viewport, i, total) {
     await page.keyboard.press("Enter");
     if ((await first.getAttribute("aria-pressed")) !== "true")
       fail(`${viewport.width}: Enter did not select choice on slide ${i + 1}`);
+    if (!(await page.locator("#reveal").isVisible())) {
+      // Answering mode: neutral teacher-recorded attempt, no Reveal.
+      if ((await page.locator("#slide .choices button.incorrect,#slide .choices button.correct").count()) !== 0)
+        fail(`${viewport.width}: choice marked an attempt without Reveal on slide ${i + 1}`);
+      if (!(await page.locator("#announcement").textContent()).includes(optionTexts[wrongIndex]))
+        fail(`${viewport.width}: choice did not announce the recorded attempt on slide ${i + 1}`);
+      await measure(page, `${viewport.width}x${viewport.height} slide ${i + 1} recorded`);
+      await screenshot(page, viewport, i + 1, "recorded");
+      await page.locator("#reset").click();
+      if ((await page.locator('#slide .choices button[aria-pressed="true"]').count()) !== 0)
+        fail(`${viewport.width}: choice Reset did not clear the recorded attempt on slide ${i + 1}`);
+      options = page.locator("#slide .choices button");
+      await options.nth(optionTexts.indexOf(spec.answer)).click();
+      if (i < total - 1) {
+        await page.locator("#next").click();
+        await page.keyboard.press("ArrowLeft");
+        if ((await page.locator('#slide .choices button[aria-pressed="true"]').count()) !== 1)
+          fail(`${viewport.width}: choice recorded attempt lost on revisit of slide ${i + 1}`);
+        await page.locator("#reset").click();
+      }
+    } else {
     await page.locator("#reveal").click();
     if (!(await page.locator(".answer").count()))
       fail(`${viewport.width}: choice Reveal missing answer on slide ${i + 1}`);
@@ -254,6 +294,47 @@ async function testSlide(page, viewport, i, total) {
       fail(`${viewport.width}: choice did not retain the correct attempt on slide ${i + 1}`);
     if (!(await page.locator("#announcement").textContent()).includes("Correct."))
       fail(`${viewport.width}: choice did not announce the correct result on slide ${i + 1}`);
+    }
+  } else if (type === "short") {
+    const input = page.locator("#slide .short-input");
+    await input.fill("12 September");
+    if ((await input.inputValue()) !== "12 September")
+      fail(`${viewport.width}: short typing did not retain text on slide ${i + 1}`);
+    const stayId = await page.locator("#slide").getAttribute("data-id");
+    await input.press("Space");
+    if ((await input.inputValue()) !== "12 September ")
+      fail(`${viewport.width}: short Space did not type a space on slide ${i + 1}`);
+    if ((await page.locator("#slide").getAttribute("data-id")) !== stayId)
+      fail(`${viewport.width}: short Space navigated away from slide ${i + 1}`);
+    await input.press("ArrowRight");
+    if ((await page.locator("#slide").getAttribute("data-id")) !== stayId)
+      fail(`${viewport.width}: short arrow key navigated away from slide ${i + 1}`);
+    if (await page.locator("#reveal").isVisible()) {
+      await input.fill("Saturday");
+      await page.locator("#reveal").click();
+      const wrong = page.locator("#slide .short-status.incorrect");
+      if ((await wrong.count()) !== 1 ||
+          !(await wrong.textContent()).startsWith("✕ Incorrect") ||
+          !(await wrong.textContent()).includes("Saturday") ||
+          !(await wrong.textContent()).includes(spec.answer))
+        fail(`${viewport.width}: short did not retain the wrong attempt plus the canonical answer on slide ${i + 1}`);
+      if (!(await page.locator("#announcement").textContent()).includes("Incorrect."))
+        fail(`${viewport.width}: short did not announce the wrong result on slide ${i + 1}`);
+      await measure(page, `${viewport.width}x${viewport.height} slide ${i + 1} incorrect`);
+      await screenshot(page, viewport, i + 1, "incorrect");
+      await page.locator("#reset").click();
+      await page.locator("#slide .short-input").fill(spec.answer);
+      await page.locator("#reveal").click();
+      if ((await page.locator("#slide .short-status.correct").count()) !== 1)
+        fail(`${viewport.width}: short did not show the correct checked state on slide ${i + 1}`);
+      if (!(await page.locator("#announcement").textContent()).includes("Correct."))
+        fail(`${viewport.width}: short did not announce the correct result on slide ${i + 1}`);
+    } else if (i < total - 1) {
+      await page.locator("#next").click();
+      await page.keyboard.press("ArrowLeft");
+      if ((await page.locator("#slide .short-input").inputValue()) !== "12 September ")
+        fail(`${viewport.width}: short typed text lost on revisit of slide ${i + 1}`);
+    }
   } else if (type === "sort") {
     const rows = page.locator(".sort-row");
     const testedWrongCategories = [];
@@ -374,8 +455,23 @@ async function testSlide(page, viewport, i, total) {
       fail(
         `${viewport.width}: steps Reveal did not reach all items on slide ${i + 1}`,
       );
-  } else if (["reveal", "writing"].includes(type))
-    await page.locator("#reveal").click();
+  } else if (["reveal", "writing"].includes(type)) {
+    if (await page.locator("#reveal").isVisible())
+      await page.locator("#reveal").click();
+  } else if (type === "review") {
+    // Read-only checks: the grid edits live response data, so any click or
+    // keystroke here would change the slide text that later reset/revisit
+    // assertions compare against. Edit-through is covered by the short-slide
+    // branch plus the keyboard verifier.
+    const reviewIds = spec.reviewIds || [];
+    if ((await page.locator("#slide .review-item").count()) !== reviewIds.length)
+      fail(`${viewport.width}: review row count does not match reviewIds on slide ${i + 1}`);
+    const deckMode = await page.evaluate(() => JSON.parse(document.getElementById("deck-data").textContent).mode || "teaching");
+    if (deckMode === "answering" && !(await page.locator("#export-json").isVisible()))
+      fail(`${viewport.width}: review slide hides Export JSON in answering mode on slide ${i + 1}`);
+    if ((await page.locator("#slide .review-input").count()) === 0 && reviewIds.some((id) => id.startsWith("q-")))
+      fail(`${viewport.width}: review slide shows no editable short-answer inputs on slide ${i + 1}`);
+  }
 
   if (!["prompt", "compare", "passage", "image"].includes(type)) {
     await measure(

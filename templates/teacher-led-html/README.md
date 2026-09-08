@@ -40,6 +40,8 @@ All text is plain text, rendered safely as text nodes. Do not pass HTML, CSS, a 
 
 For diagnostic and tutoring decks, use one question per slide. Optional semantic fields `label`, `instruction` and `stimulus` render respectively as a subordinate task label, a subordinate administration instruction, and same-slide evidence beneath the dominant question. Use root `"mode": "answering"` for neutral teacher-operated response capture; place a `review` slide with `reviewIds` after the full question set so response review and JSON export happen once at the end.
 
+The `short` preset is the typable short-answer question for diagnostic decks. The teacher types the learner's spoken or paper-written response into the on-slide input (neutral capture: typing never marks right/wrong). `acceptedVariants` lists advisory spelling/punctuation alternatives shown only in the teacher key logic for display comparison; the export always carries the raw typed string and never a `correct` boolean, so variant policy never destroys evidence. Comparison normalises case, whitespace and trailing full stops. Typing inside any input keeps native behaviour (Space types a space, arrows move the caret) and never navigates or reveals. `short` answers ship in the deck JSON like every other preset: this is a teacher-led surface, not a secure test, and never a pupil self-entry device.
+
 | Preset | Required content | Classroom use |
 |---|---|---|
 | `prompt` | `prompt` | Retrieval, discussion, exit question, a single instruction |
@@ -55,6 +57,7 @@ For diagnostic and tutoring decks, use one question per slide. Optional semantic
 | `wordmix` | 2–6 `pairs` with `word` and `meaning`, 2–4 `ideas`, `frame` | Keep a complete vocabulary set visible while choosing a word and idea for an original sentence |
 | `image` | Local `src` (`assets/...`), descriptive `alt` | One image with one question |
 | `writing` | `task`, optional `frame` | Application; optional frame hidden until Reveal |
+| `short` | `answer`, `feedback`, optional `stimulus`, `acceptedVariants`, `placeholder` | Teacher-typed short answer; neutral capture, review + export |
 
 Use `reveal` for error repair, `order` for sentence chunks, `steps` for a gradually built model, and `prompt` for partner talk or exit questions. These do not need separate visual designs. Rich multi-gap reading, audio and video, hotspots, timed activities and freeform annotation are not yet supported. Add a named reusable preset with validation and browser tests when one is needed; do not hide custom markup in JSON or rebuild a lesson shell.
 

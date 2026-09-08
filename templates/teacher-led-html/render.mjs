@@ -24,6 +24,7 @@ export const types = [
   "writing",
   "diagnostic",
   "review",
+  "short",
 ];
 const words = (s) =>
   String(s || "")
@@ -56,11 +57,11 @@ export function contentCounts(s) {
     );
   const initial = words([s.prompt, ...body].join(" "));
   let revealed = initial;
-  if (["reveal", "choice"].includes(s.type)) revealed += words(s.answer);
+  if (["reveal", "choice", "short"].includes(s.type)) revealed += words(s.answer);
   if (s.type === "steps")
     revealed += s.items.slice(1).reduce((a, x) => a + words(x), 0);
   if (s.type === "writing") revealed += words(s.frame);
-  if (["reveal", "choice", "cloze", "gap", "order", "sort"].includes(s.type))
+  if (["reveal", "choice", "cloze", "gap", "order", "sort", "short"].includes(s.type))
     revealed += words(s.feedback);
   return {
     id: s.id,
@@ -106,10 +107,10 @@ export function validate(d) {
       if (s[k])
         require(typeof s[k] === "string" &&
           words(s[k]) <= 24, `${p}: ${k} exceeds 24 words`);
-    if (["reveal", "choice", "cloze", "gap", "order", "sort"].includes(s.type))
+    if (["reveal", "choice", "cloze", "gap", "order", "sort", "short"].includes(s.type))
       require(typeof s.feedback === "string" &&
         s.feedback.trim(), `${p}: explanatory feedback required`);
-    if (["reveal", "choice", "cloze", "gap"].includes(s.type))
+    if (["reveal", "choice", "cloze", "gap", "short"].includes(s.type))
       require(typeof s.answer === "string" &&
         s.answer.trim(), `${p}: answer required`);
     if (s.answer)
@@ -183,6 +184,27 @@ export function validate(d) {
         if (item.options) require(Array.isArray(item.options) && item.options.length >= 2 && item.options.length <= 4 && item.options.includes(item.answer), `${p}: diagnostic options must include answer`);
       }
     }
+    if (s.type === "short") {
+      if (s.stimulus !== undefined)
+        require(typeof s.stimulus === "string" && words(s.stimulus) <= 85, `${p}: stimulus max 85 words; keep same-slide evidence readable`);
+      if (s.acceptedVariants !== undefined)
+        require(Array.isArray(s.acceptedVariants) &&
+          s.acceptedVariants.length <= 6 &&
+          new Set(s.acceptedVariants.map((x) => String(x).toLowerCase())).size ===
+            s.acceptedVariants.length &&
+          s.acceptedVariants.every(
+            (x) => typeof x === "string" && x.trim() && words(x) <= 10 &&
+              x.trim().toLowerCase() !== String(s.answer).trim().toLowerCase(),
+          ), `${p}: acceptedVariants must be 0–6 unique short strings different from the answer`);
+      if (s.placeholder !== undefined)
+        require(typeof s.placeholder === "string" &&
+          s.placeholder.trim() && words(s.placeholder) <= 10, `${p}: placeholder must be a short affordance`);
+      require(s.options === undefined && s.sentence === undefined && s.text === undefined &&
+        s.items === undefined && s.columns === undefined && s.task === undefined &&
+        s.frame === undefined && s.categories === undefined && s.pairs === undefined &&
+        s.ideas === undefined && s.src === undefined && s.sections === undefined &&
+        s.reviewIds === undefined, `${p}: short uses prompt/stimulus/answer/variants only`);
+    }
     if (s.type === "sort") {
       require(Array.isArray(s.categories) &&
         s.categories.length >= 2 &&
@@ -235,6 +257,8 @@ export function validate(d) {
         s.alt.trim(), `${p}: local assets path and alt required`);
     if (s.type === "diagnostic" && s.visual)
       require(typeof s.visual.src === "string" && /^assets\/[\w./-]+$/.test(s.visual.src) && !s.visual.src.includes(".."), `${p}: diagnostic visual needs a local asset path`);
+    if (s.visual && s.type !== "diagnostic")
+      require(typeof s.visual.src === "string" && /^assets\/[\w./-]+$/.test(s.visual.src) && !s.visual.src.includes(".."), `${p}: visual needs a local asset path`);
     if (s.type === "review")
       require(Array.isArray(s.reviewIds) && s.reviewIds.length > 0 && s.reviewIds.every((id) => typeof id === "string"), `${p}: review needs source slide IDs`);
     const allowed = [
@@ -263,6 +287,8 @@ export function validate(d) {
       "label",
       "instruction",
       "notes",
+      "acceptedVariants",
+      "placeholder",
     ];
     for (const k of Object.keys(s))
       require(allowed.includes(k), `${p}: unsupported field ${k}`);
@@ -316,7 +342,7 @@ if (
     throw Error("Usage: node render.mjs lesson.json output/index.html");
   const d = JSON.parse(readFileSync(input, "utf8"));
   const html = render(d);
-  const assetSources = d.slides.flatMap((s) => s.type === "image" ? [s.src] : s.type === "diagnostic" && s.visual?.src ? [s.visual.src] : []);
+  const assetSources = d.slides.flatMap((s) => s.type === "image" ? [s.src] : s.visual?.src ? [s.visual.src] : []);
   for (const srcRel of assetSources) {
     const src = resolve(dirname(input), srcRel);
     if (!existsSync(src)) throw Error(`Missing asset: ${src}`);

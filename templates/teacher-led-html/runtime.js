@@ -13,6 +13,7 @@
     revealed: false,
     step: 0,
     selected: null,
+    typed: "",
     order: [],
     groups: {},
     mix: {},
@@ -44,9 +45,36 @@
       recordedAt: new Date().toISOString(),
     });
   }
+  function recordShort(sourceIndex, typedText) {
+    const source = deck.slides[sourceIndex];
+    const v = String(typedText ?? "").trim();
+    if (!v) {
+      responseLog.delete(source.id);
+      return;
+    }
+    responseLog.set(source.id, {
+      slideId: source.id,
+      slideNumber: sourceIndex + 1,
+      prompt: source.prompt,
+      response: v,
+      responseType: "teacher-typed-short-answer",
+      recordedAt: new Date().toISOString(),
+    });
+  }
+  // Compare a typed attempt against the canonical answer and accepted
+  // variants. Display and announcement only; the export keeps raw text.
+  function normaliseShort(v) {
+    return String(v ?? "").trim().replace(/\s+/g, " ").replace(/[.]+$/, "").toLowerCase();
+  }
+  function shortMatches(source, typedText) {
+    const t = normaliseShort(typedText);
+    if (!t) return false;
+    if (t === normaliseShort(source.answer)) return true;
+    return (source.acceptedVariants || []).some((a) => normaliseShort(a) === t);
+  }
   function draw() {
     const focused = document.activeElement;
-    const focusIndex = [...slide.querySelectorAll("button")].indexOf(focused);
+    const focusIndex = [...slide.querySelectorAll("button,input")].indexOf(focused);
       const s = deck.slides[index],
       st = states[index];
     slide.style.setProperty("--text-expansion", "1");
@@ -90,6 +118,21 @@
             recordChoice(sourceIndex, source.options[(currentIndex + 1) % source.options.length]);
             draw();
           }, Boolean(current)));
+        } else if (source.type === "short") {
+          const input = document.createElement("input");
+          input.type = "text";
+          input.className = "review-input";
+          input.value = states[sourceIndex].typed || "";
+          input.placeholder = source.placeholder || "Type the answer";
+          input.setAttribute("aria-label", `${source.id.replace("q-", "Q")}: ${source.prompt} — recorded answer`);
+          const status = el("span", states[sourceIndex].typed ? "Recorded" : "No response", "review-paper");
+          // Update state directly without a full redraw so focus and caret survive typing.
+          input.addEventListener("input", () => {
+            states[sourceIndex].typed = input.value;
+            recordShort(sourceIndex, input.value);
+            status.textContent = input.value.trim() ? "Recorded" : "No response";
+          });
+          row.append(input, status);
         } else {
           row.append(el("span", states[sourceIndex].selected || "paper response", "review-paper"));
         }
@@ -174,6 +217,52 @@
           ),
         );
       });
+    }
+    if (s.type === "short") {
+      const wrap = add("div", undefined, "short-wrap");
+      const input = document.createElement("input");
+      input.type = "text";
+      input.id = `short-input-${s.id}`;
+      input.className = "short-input" + (st.typed ? " filled" : "");
+      input.value = st.typed || "";
+      input.placeholder = s.placeholder || "Type the answer here";
+      input.setAttribute("aria-label", `${s.prompt} — teacher-typed answer`);
+      const inputLabel = document.createElement("label");
+      inputLabel.className = "sr-only";
+      inputLabel.setAttribute("for", input.id);
+      inputLabel.textContent = `${s.prompt} — teacher-typed answer`;
+      const status = el("p", "", "short-status");
+      status.setAttribute("role", "status");
+      const updateShortStatus = () => {
+        input.classList.toggle("filled", Boolean(input.value) && !st.revealed);
+        input.classList.remove("correct", "incorrect");
+        if (!st.revealed) {
+          status.textContent = "";
+          status.className = "short-status";
+          return;
+        }
+        if (!String(st.typed).trim()) {
+          status.textContent = `Correct answer: ${s.answer}.`;
+          status.className = "short-status empty";
+        } else if (shortMatches(s, st.typed)) {
+          status.textContent = `✓ Correct — you typed "${String(st.typed).trim()}".`;
+          status.className = "short-status correct";
+          input.classList.add("correct");
+        } else {
+          status.textContent = `✕ Incorrect — you typed "${String(st.typed).trim()}". Correct answer: ${s.answer}.`;
+          status.className = "short-status incorrect";
+          input.classList.add("incorrect");
+        }
+      };
+      // Neutral capture: typing records without redrawing, so focus and
+      // caret survive. Checking happens only on Reveal.
+      input.addEventListener("input", () => {
+        st.typed = input.value;
+        recordShort(index, input.value);
+        updateShortStatus();
+      });
+      updateShortStatus();
+      wrap.append(inputLabel, input, status);
     }
     if (s.type === "compare") {
       const n = add("div", undefined, "compare");
@@ -344,7 +433,7 @@
     hint.disabled = st.revealed;
     hint.textContent = st.hint ? "Hide hint" : "Hint";
     rev.hidden = deck.mode === "answering" || !(
-      ["reveal", "choice", "cloze", "gap", "steps", "order", "sort", "diagnostic"].includes(
+      ["reveal", "choice", "cloze", "gap", "steps", "order", "sort", "short", "diagnostic"].includes(
         s.type,
       ) ||
       (s.type === "writing" && s.frame)
@@ -361,14 +450,14 @@
     document.getElementById("next").disabled = index === deck.slides.length - 1;
     document.getElementById("count").textContent =
       `${index + 1} / ${deck.slides.length}`;
-    if (focusIndex >= 0) slide.querySelectorAll("button")[focusIndex]?.focus();
+    if (focusIndex >= 0) slide.querySelectorAll("button,input")[focusIndex]?.focus();
     document.getElementById("announcement").textContent =
       `Slide ${index + 1} of ${deck.slides.length}. ${s.prompt}. ` +
       (st.revealed
         ? checkedAnnouncement(s, st)
         : st.hint
           ? s.hint || ""
-          : st.selected || "");
+          : st.selected || st.typed || "");
   }
   // Enlarge sparse content to use the classroom canvas. Never shrink below
   // the shared projection type scale; oversized content must be split in JSON.
@@ -410,6 +499,13 @@
       ?.focus();
   }
   function checkedAnnouncement(s, st) {
+    if (s.type === "short") {
+      if (!String(st.typed).trim())
+        return `Correct answer: ${s.answer}. ${s.feedback || ""}`;
+      return shortMatches(s, st.typed)
+        ? `Correct. You typed ${String(st.typed).trim()}. ${s.feedback || ""}`
+        : `Incorrect. You typed ${String(st.typed).trim()}. Correct answer: ${s.answer}. ${s.feedback || ""}`;
+    }
     if (["choice", "cloze", "gap"].includes(s.type)) {
       if (!st.selected)
         return `Correct answer: ${s.answer}. ${s.feedback || ""}`;
@@ -457,6 +553,7 @@
       revealed: false,
       step: 0,
       selected: null,
+      typed: "",
       order: [],
       groups: {},
       mix: {},

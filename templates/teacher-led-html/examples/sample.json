@@ -27,8 +27,22 @@
    "feedback": "The example names the activity and when it happens.",
    "notes": "Elicit an example before revealing one possible response. This is an illustrative content sample, not new grammar instruction."
   },
-  {
-   "id": "choice",
+   {
+    "id": "short",
+    "type": "short",
+    "label": "Short answer",
+    "prompt": "Where did the family go?",
+    "stimulus": "On Saturday, a family went to the park near the lake.",
+    "instruction": "Type the learner's spoken answer.",
+    "answer": "the park",
+    "acceptedVariants": ["park", "to the park"],
+    "placeholder": "Type the answer here",
+    "feedback": "The notice names the park directly.",
+    "hint": "Look for the place word.",
+    "notes": "Teacher types the response neutrally; Reveal compares without overwriting the attempt. Typing never navigates."
+   },
+   {
+    "id": "choice",
    "type": "choice",
    "prompt": "Which sentence tells us when?",
    "options": [
@@ -173,12 +187,12 @@
    ],
    "notes": "Diagnostic preset fixture."
   },
-  {
-   "id": "review",
-   "type": "review",
-   "prompt": "Review answers",
-   "reviewIds": ["diagnostic"],
-   "notes": "Review preset fixture."
-  }
+   {
+    "id": "review",
+    "type": "review",
+    "prompt": "Review answers",
+    "reviewIds": ["diagnostic", "short"],
+    "notes": "Review preset fixture."
+   }
  ]
 }
