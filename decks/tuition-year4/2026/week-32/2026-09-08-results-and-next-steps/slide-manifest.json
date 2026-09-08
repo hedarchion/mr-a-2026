@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "welcome-back",
+      "type": "prompt",
+      "initialWords": 23,
+      "hintWords": 23,
+      "revealedWords": 23
+    },
+    {
+      "id": "strengths-next",
+      "type": "compare",
+      "initialWords": 37,
+      "hintWords": 37,
+      "revealedWords": 37
+    },
+    {
+      "id": "fix-with",
+      "type": "reveal",
+      "initialWords": 13,
+      "hintWords": 20,
+      "revealedWords": 29
+    },
+    {
+      "id": "fix-his",
+      "type": "reveal",
+      "initialWords": 7,
+      "hintWords": 16,
+      "revealedWords": 29
+    },
+    {
+      "id": "spell-bakery",
+      "type": "reveal",
+      "initialWords": 9,
+      "hintWords": 16,
+      "revealedWords": 25
+    },
+    {
+      "id": "learn-clinic",
+      "type": "reveal",
+      "initialWords": 10,
+      "hintWords": 17,
+      "revealedWords": 28
+    },
+    {
+      "id": "session-2-plan",
+      "type": "prompt",
+      "initialWords": 20,
+      "hintWords": 20,
+      "revealedWords": 20
+    }
+  ]
+}

@@ -1,0 +1,1165 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Year 4 Tuition · Results and Next Steps</title><style>:root {
+  color-scheme: light;
+  --ink: #172b36;
+  --paper: #fffdf8;
+  --accent: #07685f;
+  --line: #829894;
+  --soft: #e8f3ee;
+  --wrong: #9f1d1d;
+  --wrong-soft: #fff0ee;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #182b34;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+#stage {
+  position: absolute;
+  width: 1366px;
+  height: 768px;
+  background: var(--paper);
+  transform-origin: top left;
+  overflow: hidden;
+}
+#slide {
+  --text-expansion: 1;
+  height: calc(100% - 76px);
+  padding: 32px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  overflow-wrap: normal;
+}
+#slide > * {
+  flex-shrink: 0;
+}
+h1 {
+  font-size: calc(60px * var(--text-expansion));
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  margin: 0;
+  font-weight: 700;
+}
+.question-label,
+.instruction {
+  font-size: calc(30px * var(--text-expansion));
+  line-height: 1.15;
+  color: var(--accent);
+  margin: 0;
+}
+.question-label {
+  margin-bottom: -12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+}
+.instruction {
+  max-width: 980px;
+}
+p {
+  margin: 0;
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 2px solid var(--line);
+  background: transparent;
+  border-radius: 9px;
+  padding: 10px 18px;
+}
+button:hover {
+  border-color: var(--accent);
+}
+button:focus-visible {
+  outline: 4px solid #ab5100;
+  outline-offset: 4px;
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+button[hidden] {
+  display: none;
+}
+.hero {
+  font-size: calc(68px * var(--text-expansion));
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+}
+.body,
+.answer {
+  font-size: calc(48px * var(--text-expansion));
+  line-height: 1.22;
+}
+.stimulus {
+  font-size: 42px;
+  line-height: 1.25;
+  white-space: pre-line;
+  max-width: 1120px;
+  padding-left: 24px;
+  border-left: 5px solid var(--accent);
+}
+.passage {
+  font-size: calc(46px * var(--text-expansion));
+  line-height: 1.3;
+  white-space: pre-line;
+}
+#slide[data-type="passage"] .instruction {
+  font-size: calc(30px * var(--text-expansion));
+  color: var(--muted);
+}
+.choices {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.choices button {
+  font-size: calc(44px * var(--text-expansion));
+  text-align: left;
+  padding: 18px 25px;
+}
+.selected {
+  border-color: var(--accent);
+  background: var(--soft);
+}
+.choices button.correct,
+.order-result.correct {
+  border: 4px solid var(--accent);
+  background: var(--soft);
+  font-weight: 700;
+}
+.choices button.incorrect,
+.order-result.incorrect {
+  border: 4px solid var(--wrong);
+  background: var(--wrong-soft);
+  color: var(--wrong);
+  font-weight: 700;
+}
+.order-result {
+  padding: 16px 20px;
+  border-radius: 9px;
+}
+.result-status {
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.1;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.result-sequence {
+  font-size: calc(40px * var(--text-expansion));
+  line-height: 1.18;
+}
+.feedback,
+.hint {
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.22;
+  color: var(--accent);
+}
+.answer {
+  color: var(--accent);
+}
+.blank {
+  border-bottom: 4px solid var(--accent);
+  padding: 0 8px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.blank.empty {
+  border-bottom-color: transparent;
+}
+/* Gap stories insert whole sentences, so the blank may wrap. Single-word
+   cloze blanks keep nowrap above. */
+.passage .blank {
+  white-space: normal;
+}
+/* Gap slides stack a prompt, a 3-line story, and up to 3 sentence buttons
+   above a 76px footer. Measured at 1280x665: default rhythm overflows by
+   ~140px, so gap slides use tighter spacing. Type sizes for the story (46px)
+   and options (44px) are untouched; only the repeated one-line prompt,
+   padding, and gaps compact. Teacher-operated buttons, so 8px padding is
+   enough for the tap target. */
+#slide[data-type="gap"] {
+  padding: 16px 44px;
+  gap: 10px;
+}
+#slide[data-type="gap"] h1 {
+  font-size: 44px;
+}
+#slide[data-type="gap"] .choices {
+  gap: 10px;
+}
+#slide[data-type="gap"] .choices button {
+  padding: 8px 18px;
+}
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+.compare > div + div {
+  border-left: 2px solid var(--line);
+  padding-left: 36px;
+}
+.compare .body {
+  white-space: pre-line;
+}
+.label {
+  font-size: calc(36px * var(--text-expansion));
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.list button,
+.step {
+  font-size: calc(40px * var(--text-expansion));
+  text-align: left;
+  line-height: 1.16;
+}
+.sort-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  font-size: calc(44px * var(--text-expansion));
+}
+.sort-row button {
+  font-size: calc(36px * var(--text-expansion));
+  padding: 12px 20px;
+}
+.sort-row .choices {
+  gap: 12px;
+}
+#slide[data-type="wordmix"] {
+  justify-content: flex-start;
+  gap: 12px;
+  padding-top: 20px;
+}
+#slide[data-type="wordmix"] h1 {
+  font-size: calc(48px * var(--text-expansion));
+}
+.wordmix-reference {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+}
+.wordmix-row {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.1;
+}
+.wordmix-row button,
+.wordmix-ideas button {
+  font-size: calc(36px * var(--text-expansion));
+  font-weight: 700;
+  padding: 8px 12px;
+}
+.wordmix-builder {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px 20px;
+  padding-top: 8px;
+  border-top: 2px solid var(--line);
+}
+.wordmix-ideas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.wordmix-selection {
+  font-size: calc(36px * var(--text-expansion));
+  color: var(--accent);
+  font-weight: 700;
+}
+.wordmix-frame {
+  grid-column: 1 / -1;
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.1;
+}
+#slide[data-type="image"] {
+  justify-content: flex-start;
+}
+#slide .picture {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  align-self: stretch;
+}
+.prompt-only h1 {
+  font-size: calc(96px * var(--text-expansion));
+  line-height: 1.1;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+}
+footer > div,
+nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+footer button {
+  font-size: 24px;
+  min-height: 48px;
+  min-width: 52px;
+  padding: 9px 17px;
+}
+#count {
+  min-width: 82px;
+  text-align: center;
+  font-size: 24px;
+}
+#slide [hidden] {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.list button:disabled {
+  opacity: 1;
+}
+.diagnostic-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: -8px;
+}
+.diagnostic-mark {
+  width: 34px;
+  height: 34px;
+  filter: invert(32%) sepia(35%) saturate(800%) hue-rotate(125deg);
+}
+.diagnostic-instruction {
+  font-size: 24px;
+  line-height: 1.15;
+  color: var(--accent);
+}
+#slide[data-type="diagnostic"] {
+  justify-content: flex-start;
+  gap: 8px;
+  padding-top: 22px;
+}
+#slide[data-type="diagnostic"] h1 {
+  font-size: 42px;
+  line-height: 1;
+}
+.diagnostic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  min-height: 0;
+}
+.diagnostic-section {
+  border-left: 4px solid var(--accent);
+  padding-left: 12px;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 12px;
+  row-gap: 5px;
+  align-content: start;
+}
+.diagnostic-heading {
+  margin: 0 0 6px;
+  font-size: 25px;
+  line-height: 1.05;
+  color: var(--accent);
+  grid-column: 1 / -1;
+}
+.diagnostic-item {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.08;
+}
+.diagnostic-prompt {
+  font-weight: 600;
+}
+.diagnostic-options {
+  margin-top: 2px;
+  color: #263d45;
+  font-size: 14px;
+  line-height: 1.06;
+}
+.diagnostic-answer {
+  margin-top: 2px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px 18px;
+  align-content: start;
+}
+#slide[data-type="review"] {
+  justify-content: flex-start;
+  gap: 12px;
+}
+#slide[data-type="review"] h1 {
+  font-size: 48px;
+}
+.review-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  font-size: 18px;
+}
+.review-number {
+  min-width: 24px;
+  font-weight: 700;
+}
+.review-item button {
+  min-width: 0;
+  flex: 1 1 auto;
+  padding: 7px 8px;
+  font-size: 16px;
+  text-align: left;
+  white-space: normal;
+}
+.review-choices {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.review-choices button {
+  font-size: 15px;
+  padding: 4px 8px;
+  min-height: 32px;
+}
+.review-paper {
+  color: var(--accent);
+  font-size: 16px;
+}
+/* Typable short-answer preset: teacher-typed capture on the teacher machine.
+   Same 44px tier as choices; result states reuse the choice correct/incorrect
+   treatment (border + symbol + words, never colour alone). */
+.short-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 980px;
+}
+.short-input {
+  font: inherit;
+  font-size: calc(44px * var(--text-expansion));
+  line-height: 1.2;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: 9px;
+  padding: 18px 25px;
+  width: 100%;
+}
+.short-input.filled {
+  border-color: var(--accent);
+  background: var(--soft);
+}
+.short-input:focus-visible {
+  outline: 4px solid #ab5100;
+  outline-offset: 4px;
+}
+.short-input.correct,
+.short-status.correct {
+  border-color: var(--accent);
+}
+.short-status {
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.22;
+  margin: 0;
+  min-height: 1.22em;
+}
+.short-status.correct {
+  color: var(--accent);
+  font-weight: 700;
+}
+.short-status.incorrect {
+  color: var(--wrong);
+  font-weight: 700;
+}
+.short-status.empty {
+  color: var(--accent);
+}
+#slide .short-input.incorrect {
+  border: 4px solid var(--wrong);
+  background: var(--wrong-soft);
+}
+#slide .short-input.correct {
+  border: 4px solid var(--accent);
+  background: var(--soft);
+}
+.review-item .review-input {
+  font: inherit;
+  font-size: 16px;
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 2px solid var(--line);
+  border-radius: 9px;
+  padding: 7px 8px;
+  color: var(--ink);
+  background: #fff;
+}
+.review-item .review-input:focus-visible {
+  outline: 4px solid #ab5100;
+  outline-offset: 2px;
+}
+</style><body><main id="stage"><section id="slide" aria-label="Teaching slide"></section><div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div><footer><div><button id="hint">Hint</button><button id="reveal">Reveal</button><button id="reset">Reset</button><button id="export-json" hidden>Export JSON</button></div><nav aria-label="Slides"><button id="prev" aria-label="Previous slide">←</button><span id="count"></span><button id="next" aria-label="Next slide">→</button></nav></footer></main><script type="application/json" id="deck-data">{"version":1,"title":"Year 4 Tuition · Results and Next Steps","viewport":"1366x768","mode":"teaching","slides":[{"id":"welcome-back","instruction":"We keep what is strong. We fix small things together.","prompt":"This check shows your starting point. What do you want to grow next?","type":"prompt","visual":{"alt":"Sparkles for a new start","instruction":"One thing you want to grow.","src":"assets/sparkles.svg"}},{"columns":[{"label":"Strong now","text":"You read short texts well. You found details. You used went and bought."},{"label":"Grow next","text":"Small words with and his. Spelling bakery. New word clinic."}],"id":"strengths-next","prompt":"Look at the two lists. Where are you strong now?","type":"compare","visual":{"alt":"Trophy for strengths","instruction":"Point to one grow-item.","src":"assets/trophy.svg"}},{"answer":"I went with my mother. With = together.","feedback":"With shows together. From shows where, not who.","hint":"Think: together, not from. Which small word?","id":"fix-with","prompt":"Who did you go to the shop with?","stimulus":"I went ___ my mother.","type":"reveal","visual":{"alt":"Shopping basket","instruction":"Say the line with the small word.","src":"assets/shopping-basket.svg"}},{"answer":"The boy lost his bag. His shows the boy owns it.","feedback":"Him is for the boy after a verb. His shows owning.","hint":"Boy = his. Girl = her. Which one here?","id":"fix-his","prompt":"Complete it: The boy lost ___ bag.","type":"reveal","visual":{"alt":"Two people together","instruction":"Say the line with the owning word.","src":"assets/users.svg"}},{"answer":"bakery. Not bakers. -ery is the shop.","feedback":"Bakers are people. Bakery is the shop. Check -ery.","hint":"Listen: bak-er-y. Three parts. How many letters?","id":"spell-bakery","prompt":"Say and spell it: Where do we buy bread?","type":"reveal","visual":{"alt":"Croissant for the bread shop","instruction":"Say it, then spell it.","src":"assets/croissant.svg"}},{"answer":"clinic. A clean place to see a doctor.","feedback":"Clinic is new. Clap its sounds: clin-ic. Use it soon.","hint":"It starts with cl. Think: doctor place.","id":"learn-clinic","prompt":"Where do you see a doctor? Say the new word.","type":"reveal","visual":{"alt":"Stethoscope for the doctor place","instruction":"Say the new word.","src":"assets/stethoscope.svg"}},{"id":"session-2-plan","instruction":"We use with, his, bakery, clinic in fun tasks.","prompt":"Next time we fix small words and spelling. Ready to practise?","type":"prompt","visual":{"alt":"Sparkles for the next step","instruction":"Name one target for next time.","src":"assets/sparkles.svg"}}]}</script><script>(() => {
+  "use strict";
+  const deck = JSON.parse(document.getElementById("deck-data").textContent),
+    stage = document.getElementById("stage"),
+    slide = document.getElementById("slide");
+  const [w, h] = (deck.viewport || "1366x768").split("x").map(Number);
+  stage.style.width = w + "px";
+  stage.style.height = h + "px";
+  let index = 0;
+  const responseLog = new Map();
+  const states = deck.slides.map(() => ({
+    hint: false,
+    revealed: false,
+    step: 0,
+    selected: null,
+    typed: "",
+    order: [],
+    groups: {},
+    mix: {},
+  }));
+  const el = (tag, text, cls) => {
+    const n = document.createElement(tag);
+    if (text !== undefined) n.textContent = text;
+    if (cls) n.className = cls;
+    return n;
+  };
+  const button = (text, fn, selected = false, result = "") => {
+    const classes = [selected ? "selected" : "", result].filter(Boolean);
+    const n = el("button", text, classes.join(" "));
+    n.type = "button";
+    n.setAttribute("aria-pressed", String(selected));
+    if (result) n.dataset.result = result;
+    n.onclick = fn;
+    return n;
+  };
+  function recordChoice(sourceIndex, option) {
+    const source = deck.slides[sourceIndex];
+    states[sourceIndex].selected = option;
+    responseLog.set(source.id, {
+      slideId: source.id,
+      slideNumber: sourceIndex + 1,
+      prompt: source.prompt,
+      response: option,
+      responseType: "teacher-recorded-spoken-choice",
+      recordedAt: new Date().toISOString(),
+    });
+  }
+  function recordShort(sourceIndex, typedText) {
+    const source = deck.slides[sourceIndex];
+    const v = String(typedText ?? "").trim();
+    if (!v) {
+      responseLog.delete(source.id);
+      return;
+    }
+    responseLog.set(source.id, {
+      slideId: source.id,
+      slideNumber: sourceIndex + 1,
+      prompt: source.prompt,
+      response: v,
+      responseType: "teacher-typed-short-answer",
+      recordedAt: new Date().toISOString(),
+    });
+  }
+  // Compare a typed attempt against the canonical answer and accepted
+  // variants. Display and announcement only; the export keeps raw text.
+  function normaliseShort(v) {
+    return String(v ?? "").trim().replace(/\s+/g, " ").replace(/[.]+$/, "").toLowerCase();
+  }
+  function shortMatches(source, typedText) {
+    const t = normaliseShort(typedText);
+    if (!t) return false;
+    if (t === normaliseShort(source.answer)) return true;
+    return (source.acceptedVariants || []).some((a) => normaliseShort(a) === t);
+  }
+  function draw() {
+    const focused = document.activeElement;
+    const focusIndex = [...slide.querySelectorAll("button,input")].indexOf(focused);
+      const s = deck.slides[index],
+      st = states[index];
+    slide.style.setProperty("--text-expansion", "1");
+    slide.replaceChildren();
+    slide.className = ["prompt", "reveal"].includes(s.type)
+      ? "prompt-only"
+      : "";
+    slide.dataset.id = s.id;
+    slide.dataset.type = s.type;
+    slide.setAttribute("aria-label", s.prompt);
+    const add = (tag, text, cls) => {
+      const n = el(tag, text, cls);
+      slide.append(n);
+      return n;
+    };
+    if (s.label) add("p", s.label, "question-label");
+    slide.append(el("h1", s.prompt));
+    if (s.instruction) add("p", s.instruction, "instruction");
+    if (s.stimulus) add("p", s.stimulus, "stimulus");
+    if (s.visual && s.type !== "diagnostic") {
+      const meta = add("div", undefined, "diagnostic-meta");
+      const mark = el("img", undefined, "diagnostic-mark");
+      mark.src = s.visual.src;
+      mark.alt = s.visual.alt || "";
+      mark.setAttribute("aria-hidden", "true");
+      meta.append(mark, el("span", s.visual.instruction || "", "diagnostic-instruction"));
+    }
+    if (s.type === "review") {
+      const intro = add("p", "Check the recorded answers. Click an option to change it, then export the JSON.", "diagnostic-instruction");
+      const reviewGrid = add("div", undefined, "review-grid");
+      s.reviewIds.forEach((id) => {
+        const sourceIndex = deck.slides.findIndex((candidate) => candidate.id === id);
+        const source = deck.slides[sourceIndex];
+        if (!source) return;
+        const row = el("div", undefined, "review-item");
+        row.append(el("span", `${source.id.replace("q-", "")}.`, "review-number"));
+        if (source.options) {
+          const current = states[sourceIndex].selected;
+          const currentIndex = current ? source.options.indexOf(current) : -1;
+          row.append(button(`${current ? `Recorded: ${current}` : "No response"}`, () => {
+            recordChoice(sourceIndex, source.options[(currentIndex + 1) % source.options.length]);
+            draw();
+          }, Boolean(current)));
+        } else if (source.type === "short") {
+          const input = document.createElement("input");
+          input.type = "text";
+          input.className = "review-input";
+          input.value = states[sourceIndex].typed || "";
+          input.placeholder = source.placeholder || "Type the answer";
+          input.setAttribute("aria-label", `${source.id.replace("q-", "Q")}: ${source.prompt} — recorded answer`);
+          const status = el("span", states[sourceIndex].typed ? "Recorded" : "No response", "review-paper");
+          // Update state directly without a full redraw so focus and caret survive typing.
+          input.addEventListener("input", () => {
+            states[sourceIndex].typed = input.value;
+            recordShort(sourceIndex, input.value);
+            status.textContent = input.value.trim() ? "Recorded" : "No response";
+          });
+          row.append(input, status);
+        } else {
+          row.append(el("span", states[sourceIndex].selected || "paper response", "review-paper"));
+        }
+        reviewGrid.append(row);
+      });
+    }
+    if (s.type === "diagnostic") {
+      const header = add("div", undefined, "diagnostic-meta");
+      if (s.visual) {
+        const mark = el("img", undefined, "diagnostic-mark");
+        mark.src = s.visual.src;
+        mark.alt = s.visual.alt || "";
+        mark.setAttribute("aria-hidden", "true");
+        header.append(mark);
+      }
+      header.append(el("span", s.visual?.instruction || "Answer on paper. Do not call out answers yet.", "diagnostic-instruction"));
+      const grid = add("div", undefined, "diagnostic-grid");
+      s.sections.forEach((section) => {
+        const col = el("section", undefined, "diagnostic-section");
+        col.append(el("h2", section.heading, "diagnostic-heading"));
+        section.items.forEach((item) => {
+          const row = el("div", undefined, "diagnostic-item");
+          row.append(el("div", `${item.id}. ${item.prompt}`, "diagnostic-prompt"));
+          if (item.options) row.append(el("div", item.options.map((o, i) => `${String.fromCharCode(65 + i)} ${o}`).join("   "), "diagnostic-options"));
+          if (st.revealed) row.append(el("div", `Answer: ${item.answer}`, "diagnostic-answer"));
+          col.append(row);
+        });
+        grid.append(col);
+      });
+    }
+    if (s.type === "cloze") {
+      const n = add("p", undefined, "hero");
+      const [a, b] = s.sentence.split("{{blank}}");
+      const blankText = st.revealed ? s.answer : st.selected || "_____";
+      n.append(
+        document.createTextNode(a),
+        el("span", blankText, blankText === "_____" ? "blank empty" : "blank"),
+        document.createTextNode(b),
+      );
+    }
+    if (s.type === "gap") {
+      const n = add("p", undefined, "passage");
+      const [a, b] = s.text.split("{{blank}}");
+      const blankText = st.revealed ? s.answer : st.selected || "_____";
+      n.append(
+        document.createTextNode(a),
+        el("span", blankText, blankText === "_____" ? "blank empty" : "blank"),
+        document.createTextNode(b),
+      );
+    }
+    if (["choice", "cloze", "gap"].includes(s.type)) {
+      const n = add("div", undefined, "choices");
+      s.options.forEach((o) => {
+        const selected = st.selected === o;
+        const result = deck.mode === "answering" ? "" : st.revealed
+          ? o === s.answer
+            ? "correct"
+            : selected
+              ? "incorrect"
+              : ""
+          : "";
+        const label = deck.mode === "answering" && selected
+          ? `Selected — ${o}`
+          :
+          result === "correct"
+            ? `✓ Correct — ${o}`
+            : result === "incorrect"
+              ? `✕ Incorrect — ${o}`
+              : o;
+        n.append(
+          button(
+            label,
+            () => {
+              if (st.revealed) return;
+              st.selected = o;
+              if (deck.mode === "answering") recordChoice(index, o);
+              draw();
+              if (deck.mode !== "answering") focusChoice(o);
+            },
+            selected,
+            result,
+          ),
+        );
+      });
+    }
+    if (s.type === "short") {
+      const wrap = add("div", undefined, "short-wrap");
+      const input = document.createElement("input");
+      input.type = "text";
+      input.id = `short-input-${s.id}`;
+      input.className = "short-input" + (st.typed ? " filled" : "");
+      input.value = st.typed || "";
+      input.placeholder = s.placeholder || "Type the answer here";
+      input.setAttribute("aria-label", `${s.prompt} — teacher-typed answer`);
+      const inputLabel = document.createElement("label");
+      inputLabel.className = "sr-only";
+      inputLabel.setAttribute("for", input.id);
+      inputLabel.textContent = `${s.prompt} — teacher-typed answer`;
+      const status = el("p", "", "short-status");
+      status.setAttribute("role", "status");
+      const updateShortStatus = () => {
+        input.classList.toggle("filled", Boolean(input.value) && !st.revealed);
+        input.classList.remove("correct", "incorrect");
+        if (!st.revealed) {
+          status.textContent = "";
+          status.className = "short-status";
+          return;
+        }
+        if (!String(st.typed).trim()) {
+          status.textContent = `Correct answer: ${s.answer}.`;
+          status.className = "short-status empty";
+        } else if (shortMatches(s, st.typed)) {
+          status.textContent = `✓ Correct — you typed "${String(st.typed).trim()}".`;
+          status.className = "short-status correct";
+          input.classList.add("correct");
+        } else {
+          status.textContent = `✕ Incorrect — you typed "${String(st.typed).trim()}". Correct answer: ${s.answer}.`;
+          status.className = "short-status incorrect";
+          input.classList.add("incorrect");
+        }
+      };
+      // Neutral capture: typing records without redrawing, so focus and
+      // caret survive. Checking happens only on Reveal.
+      input.addEventListener("input", () => {
+        st.typed = input.value;
+        recordShort(index, input.value);
+        updateShortStatus();
+      });
+      updateShortStatus();
+      wrap.append(inputLabel, input, status);
+    }
+    if (s.type === "compare") {
+      const n = add("div", undefined, "compare");
+      s.columns.forEach((c) => {
+        const col = el("div");
+        col.append(el("p", c.label, "label"), el("p", c.text, "body"));
+        n.append(col);
+      });
+    }
+    if (s.type === "passage") add("p", s.text, "passage");
+    if (s.type === "writing") {
+      add("p", s.task, "body");
+      if (st.revealed && s.frame) add("p", s.frame, "answer");
+    }
+    if (s.type === "image") {
+      const n = add("img", undefined, "picture");
+      n.src = s.src;
+      n.alt = s.alt;
+    }
+    if (s.type === "steps") {
+      const n = add("div", undefined, "list");
+      s.items
+        .slice(0, Math.max(1, st.step + 1))
+        .forEach((t, i) => n.append(el("p", `${i + 1}. ${t}`, "step")));
+    }
+    if (s.type === "order") {
+      const n = add("div", undefined, "list");
+      if (st.revealed) {
+        const correct =
+          st.order.length === s.items.length &&
+          st.order.every((itemIndex, position) => itemIndex === position);
+        const attempt = el("div", undefined, `order-result ${correct ? "correct" : "incorrect"}`);
+        attempt.append(
+          el("p", correct ? "✓ Correct order" : "✕ Incorrect order", "result-status"),
+          el(
+            "p",
+            st.order.length
+              ? st.order.map((itemIndex, position) => `${position + 1}. ${s.items[itemIndex]}`).join("  ")
+              : "No order selected",
+            "result-sequence",
+          ),
+        );
+        n.append(attempt);
+        if (!correct) {
+          const canonical = el("div", undefined, "order-result correct");
+          canonical.append(
+            el("p", "✓ Correct order", "result-status"),
+            el(
+              "p",
+              s.items.map((item, position) => `${position + 1}. ${item}`).join("  "),
+              "result-sequence",
+            ),
+          );
+          n.append(canonical);
+        }
+      } else {
+        const display = s.items.map((_, i) => i).reverse();
+        display.forEach((i) => {
+          const pos = st.order.indexOf(i);
+          n.append(
+            button(
+              `${pos < 0 ? "○" : pos + 1 + "."} ${s.items[i]}`,
+              () => {
+                st.order =
+                  pos < 0 ? [...st.order, i] : st.order.filter((x) => x !== i);
+                draw();
+              },
+              pos >= 0,
+            ),
+          );
+        });
+      }
+    }
+    if (s.type === "sort") {
+      const n = add("div", undefined, "list");
+      s.items.forEach((item, i) => {
+        const row = el("div", undefined, "sort-row"),
+          choices = el("div", undefined, "choices");
+        row.append(el("span", item.text));
+        choices.setAttribute("role", "group");
+        choices.setAttribute("aria-label", item.text);
+        s.categories.forEach((c) => {
+          const selected = st.groups[i] === c;
+          const result = st.revealed
+            ? c === item.category
+              ? "correct"
+              : selected
+                ? "incorrect"
+                : ""
+            : "";
+          const label =
+            result === "correct"
+              ? `✓ Correct — ${c}`
+              : result === "incorrect"
+                ? `✕ Incorrect — ${c}`
+                : c;
+          choices.append(
+            button(
+              label,
+              () => {
+                if (st.revealed) return;
+                st.groups[i] = c;
+                draw();
+              },
+              selected,
+              result,
+            ),
+          );
+        });
+        row.append(choices);
+        n.append(row);
+      });
+    }
+    if (s.type === "wordmix") {
+      const reference = add("div", undefined, "wordmix-reference");
+      s.pairs.forEach((pair) => {
+        const selected = st.mix.word === pair.word;
+        const row = el("div", undefined, "wordmix-row");
+        row.append(
+          button(
+            pair.word,
+            () => {
+              st.mix.word = st.mix.word === pair.word ? null : pair.word;
+              draw();
+            },
+            selected,
+          ),
+          el("span", pair.meaning),
+        );
+        reference.append(row);
+      });
+      const builder = add("div", undefined, "wordmix-builder");
+      const ideaChoices = el("div", undefined, "wordmix-ideas");
+      ideaChoices.setAttribute("role", "group");
+      ideaChoices.setAttribute("aria-label", "Ideas");
+      s.ideas.forEach((idea) => {
+        ideaChoices.append(
+          button(
+            idea,
+            () => {
+              st.mix.idea = st.mix.idea === idea ? null : idea;
+              draw();
+            },
+            st.mix.idea === idea,
+          ),
+        );
+      });
+      const selection = el(
+        "p",
+        `${st.mix.word || "Choose a word"} + ${st.mix.idea || "choose an idea"}`,
+        "wordmix-selection",
+      );
+      selection.setAttribute("aria-live", "polite");
+      builder.append(ideaChoices, selection, el("p", s.frame, "wordmix-frame"));
+    }
+    if (st.hint && s.hint && !st.revealed) add("p", s.hint, "hint");
+    if (st.revealed) {
+      if (["reveal", "choice"].includes(s.type)) add("p", s.answer, "answer");
+      if (s.feedback) {
+        const f = add("p", s.feedback, "feedback");
+        f.setAttribute("role", "status");
+      }
+    }
+    expandContent(s.type);
+    const hint = document.getElementById("hint"),
+      rev = document.getElementById("reveal");
+    hint.hidden = !s.hint;
+    hint.disabled = st.revealed;
+    hint.textContent = st.hint ? "Hide hint" : "Hint";
+    rev.hidden = deck.mode === "answering" || !(
+      ["reveal", "choice", "cloze", "gap", "steps", "order", "sort", "short", "diagnostic"].includes(
+        s.type,
+      ) ||
+      (s.type === "writing" && s.frame)
+    );
+    rev.textContent = s.type === "steps" ? "Next step" : "Reveal";
+    rev.disabled =
+      s.type === "steps" ? st.step >= s.items.length - 1 : st.revealed;
+    document.getElementById("reset").hidden =
+      deck.mode !== "answering" && hint.hidden && rev.hidden && s.type !== "wordmix";
+    const exportButton = document.getElementById("export-json");
+    exportButton.hidden = deck.mode !== "answering" || s.type !== "review";
+    exportButton.textContent = deck.mode === "answering" ? `Export JSON (${responseLog.size})` : "Export JSON";
+    document.getElementById("prev").disabled = index === 0;
+    document.getElementById("next").disabled = index === deck.slides.length - 1;
+    document.getElementById("count").textContent =
+      `${index + 1} / ${deck.slides.length}`;
+    if (focusIndex >= 0) slide.querySelectorAll("button,input")[focusIndex]?.focus();
+    document.getElementById("announcement").textContent =
+      `Slide ${index + 1} of ${deck.slides.length}. ${s.prompt}. ` +
+      (st.revealed
+        ? checkedAnnouncement(s, st)
+        : st.hint
+          ? s.hint || ""
+          : st.selected || st.typed || "");
+  }
+  // Enlarge sparse content to use the classroom canvas. Never shrink below
+  // the shared projection type scale; oversized content must be split in JSON.
+  function expandContent(type) {
+    if (type === "image") return;
+    const fits = () => {
+      const bounds = slide.getBoundingClientRect();
+      const ratio = bounds.width / slide.offsetWidth;
+      const style = getComputedStyle(slide);
+      const top = bounds.top + parseFloat(style.paddingTop) * ratio;
+      const bottom = bounds.bottom - parseFloat(style.paddingBottom) * ratio;
+      const left = bounds.left + parseFloat(style.paddingLeft) * ratio;
+      const right = bounds.right - parseFloat(style.paddingRight) * ratio;
+      return [...slide.querySelectorAll("*")].every((node) => {
+        const r = node.getBoundingClientRect();
+        return (
+          (!r.width && !r.height) ||
+          (r.top >= top - 1 &&
+            r.bottom <= bottom + 1 &&
+            r.left >= left - 1 &&
+            r.right <= right + 1 &&
+            node.scrollWidth <= node.clientWidth + 1)
+        );
+      });
+    };
+    let low = 1,
+      high = type === "prompt" || type === "reveal" ? 1.4 : 1.25;
+    for (let i = 0; i < 8; i++) {
+      const mid = (low + high) / 2;
+      slide.style.setProperty("--text-expansion", mid);
+      if (fits()) low = mid;
+      else high = mid;
+    }
+    slide.style.setProperty("--text-expansion", low.toFixed(3));
+  }
+  function focusChoice(text) {
+    [...slide.querySelectorAll("button")]
+      .find((n) => n.textContent === text)
+      ?.focus();
+  }
+  function checkedAnnouncement(s, st) {
+    if (s.type === "short") {
+      if (!String(st.typed).trim())
+        return `Correct answer: ${s.answer}. ${s.feedback || ""}`;
+      return shortMatches(s, st.typed)
+        ? `Correct. You typed ${String(st.typed).trim()}. ${s.feedback || ""}`
+        : `Incorrect. You typed ${String(st.typed).trim()}. Correct answer: ${s.answer}. ${s.feedback || ""}`;
+    }
+    if (["choice", "cloze", "gap"].includes(s.type)) {
+      if (!st.selected)
+        return `Correct answer: ${s.answer}. ${s.feedback || ""}`;
+      return st.selected === s.answer
+        ? `Correct. ${s.answer}. ${s.feedback || ""}`
+        : `Incorrect. You chose ${st.selected}. Correct answer: ${s.answer}. ${s.feedback || ""}`;
+    }
+    if (s.type === "sort") {
+      const wrong = s.items.filter((item, i) => st.groups[i] !== item.category).length;
+      return wrong
+        ? `Incorrect. ${wrong} ${wrong === 1 ? "item needs" : "items need"} correction. ${s.feedback || ""}`
+        : `Correct. ${s.feedback || ""}`;
+    }
+    if (s.type === "order") {
+      const correct =
+        st.order.length === s.items.length &&
+        st.order.every((itemIndex, position) => itemIndex === position);
+      return `${correct ? "Correct" : "Incorrect"} order. ${s.feedback || ""}`;
+    }
+    return (s.answer || "") + " " + (s.feedback || "");
+  }
+  function reveal() {
+    const s = deck.slides[index],
+      st = states[index];
+    if (s.type === "steps") st.step = Math.min(st.step + 1, s.items.length - 1);
+    else {
+      st.revealed = true;
+      st.hint = false;
+    }
+    draw();
+  }
+  function move(n) {
+    index = Math.max(0, Math.min(deck.slides.length - 1, index + n));
+    draw();
+  }
+  document.getElementById("hint").onclick = () => {
+    states[index].hint = !states[index].hint;
+    draw();
+  };
+  document.getElementById("reveal").onclick = reveal;
+  document.getElementById("reset").onclick = () => {
+    responseLog.delete(deck.slides[index].id);
+    states[index] = {
+      hint: false,
+      revealed: false,
+      step: 0,
+      selected: null,
+      typed: "",
+      order: [],
+      groups: {},
+      mix: {},
+    };
+    draw();
+  };
+  document.getElementById("prev").onclick = () => move(-1);
+  document.getElementById("next").onclick = () => move(1);
+  document.getElementById("export-json").onclick = () => {
+    const currentSlide = deck.slides[index];
+    const payload = {
+      schema: "teacher-answering-responses-v1",
+      deckTitle: deck.title,
+      mode: deck.mode || "teaching",
+      exportedAt: new Date().toISOString(),
+      responses: [...responseLog.values()].sort((a, b) => a.slideNumber - b.slideNumber),
+      unansweredSlideIds: deck.slides
+        .filter((slide) => (currentSlide.reviewIds || []).includes(slide.id) && !responseLog.has(slide.id))
+        .map((slide) => slide.id),
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2) + "\n"], {type: "application/json"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    const safeTitle = String(deck.title).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    link.download = `${safeTitle || "diagnostic"}-${new Date().toISOString().slice(0, 10)}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+    document.getElementById("announcement").textContent = `Exported ${payload.responses.length} recorded responses as JSON. ${payload.unansweredSlideIds.length} response items remain unanswered.`;
+  };
+  document.addEventListener("keydown", (e) => {
+    if (e.target.isContentEditable || e.target.closest("input,textarea,select"))
+      return;
+    const space = e.code === "Space" || e.key === " ";
+    if (space && e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey) {
+      e.preventDefault();
+      if (!e.repeat) document.getElementById("reset").click();
+      return;
+    }
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      if (!e.repeat) move(e.key === "ArrowRight" ? 1 : -1);
+    } else if (space) {
+      // Capture Space even when a choice or navigation button has focus.
+      // Enter remains the native way to activate the focused button.
+      e.preventDefault();
+      const control = document.getElementById("reveal");
+      if (!e.repeat && !control.hidden && !control.disabled) control.click();
+    }
+  });
+  function scale() {
+    const z = Math.min(innerWidth / w, innerHeight / h);
+    stage.style.transform = `scale(${z})`;
+    stage.style.left = (innerWidth - w * z) / 2 + "px";
+    stage.style.top = (innerHeight - h * z) / 2 + "px";
+  }
+  addEventListener("resize", scale);
+  scale();
+  draw();
+})();
+</script></body></html>
