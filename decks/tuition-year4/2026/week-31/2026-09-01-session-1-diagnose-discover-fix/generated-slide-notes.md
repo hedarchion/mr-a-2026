@@ -82,11 +82,11 @@ Single review slide for the 18 diagnostic items only. Check every captured choic
 
 ## 21. writing-a (writing)
 
-Writing A: Part 6 short message, post-diagnostic and unscored. Expect three content points plus greeting and closing. Do not intervene on missed jobs now; count them at conference.
+Writing A: Part 6 short message, post-diagnostic and unscored. Expect three content points plus greeting and closing. Do not intervene on missed jobs now; count them at conference. Collect the unaided baseline FIRST (5 min, papers down); click Hint only afterwards for the repair pass. Expected misuse: copies both can-or-cannot without deleting one.
 
 ## 22. writing-b (writing)
 
-Writing B: abbreviated Part 7 notes-expansion, post-diagnostic and unscored. Expect greeting, invitation, two to three expanded notes, and closing in 4–5 sentences. Copying notes as a list without connection is the key pattern to log. Do not apply the full formal rubric to this baseline.
+Writing B: abbreviated Part 7 notes-expansion, post-diagnostic and unscored. Collect the unaided baseline FIRST (5 min, papers down); click Hint only afterwards for the repair pass. running race = the competition in the notes (confirm orally). Expected misuse: It is water / It is running race (noun for feeling word) — offer fun or exciting.
 
 ## 23. conference (prompt)
 

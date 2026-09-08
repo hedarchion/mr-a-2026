@@ -145,14 +145,14 @@
       "id": "writing-a",
       "type": "writing",
       "initialWords": 39,
-      "hintWords": 39,
+      "hintWords": 57,
       "revealedWords": 39
     },
     {
       "id": "writing-b",
       "type": "writing",
       "initialWords": 45,
-      "hintWords": 45,
+      "hintWords": 68,
       "revealedWords": 45
     },
     {
