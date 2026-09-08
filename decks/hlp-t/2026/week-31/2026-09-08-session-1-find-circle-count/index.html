@@ -1,0 +1,996 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>See the Clues and Count the Answers · Session 1</title><style>:root {
+  color-scheme: light;
+  --ink: #172b36;
+  --paper: #fffdf8;
+  --accent: #07685f;
+  --line: #829894;
+  --soft: #e8f3ee;
+  --wrong: #9f1d1d;
+  --wrong-soft: #fff0ee;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #182b34;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+#stage {
+  position: absolute;
+  width: 1366px;
+  height: 768px;
+  background: var(--paper);
+  transform-origin: top left;
+  overflow: hidden;
+}
+#slide {
+  --text-expansion: 1;
+  height: calc(100% - 76px);
+  padding: 32px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  overflow-wrap: normal;
+}
+#slide > * {
+  flex-shrink: 0;
+}
+h1 {
+  font-size: calc(60px * var(--text-expansion));
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  margin: 0;
+  font-weight: 700;
+}
+.question-label,
+.instruction {
+  font-size: calc(30px * var(--text-expansion));
+  line-height: 1.15;
+  color: var(--accent);
+  margin: 0;
+}
+.question-label {
+  margin-bottom: -12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+}
+.instruction {
+  max-width: 980px;
+}
+p {
+  margin: 0;
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 2px solid var(--line);
+  background: transparent;
+  border-radius: 9px;
+  padding: 10px 18px;
+}
+button:hover {
+  border-color: var(--accent);
+}
+button:focus-visible {
+  outline: 4px solid #ab5100;
+  outline-offset: 4px;
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+button[hidden] {
+  display: none;
+}
+.hero {
+  font-size: calc(68px * var(--text-expansion));
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+}
+.body,
+.answer {
+  font-size: calc(48px * var(--text-expansion));
+  line-height: 1.22;
+}
+.stimulus {
+  font-size: 42px;
+  line-height: 1.25;
+  white-space: pre-line;
+  max-width: 1120px;
+  padding-left: 24px;
+  border-left: 5px solid var(--accent);
+}
+.passage {
+  font-size: calc(46px * var(--text-expansion));
+  line-height: 1.3;
+  white-space: pre-line;
+}
+#slide[data-type="passage"] .instruction {
+  font-size: calc(30px * var(--text-expansion));
+  color: var(--muted);
+}
+.choices {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.choices button {
+  font-size: calc(44px * var(--text-expansion));
+  text-align: left;
+  padding: 18px 25px;
+}
+.selected {
+  border-color: var(--accent);
+  background: var(--soft);
+}
+.choices button.correct,
+.order-result.correct {
+  border: 4px solid var(--accent);
+  background: var(--soft);
+  font-weight: 700;
+}
+.choices button.incorrect,
+.order-result.incorrect {
+  border: 4px solid var(--wrong);
+  background: var(--wrong-soft);
+  color: var(--wrong);
+  font-weight: 700;
+}
+.order-result {
+  padding: 16px 20px;
+  border-radius: 9px;
+}
+.result-status {
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.1;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.result-sequence {
+  font-size: calc(40px * var(--text-expansion));
+  line-height: 1.18;
+}
+.feedback,
+.hint {
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.22;
+  color: var(--accent);
+}
+.answer {
+  color: var(--accent);
+}
+.blank {
+  border-bottom: 4px solid var(--accent);
+  padding: 0 8px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.blank.empty {
+  border-bottom-color: transparent;
+}
+/* Gap stories insert whole sentences, so the blank may wrap. Single-word
+   cloze blanks keep nowrap above. */
+.passage .blank {
+  white-space: normal;
+}
+/* Gap slides stack a prompt, a 3-line story, and up to 3 sentence buttons
+   above a 76px footer. Measured at 1280x665: default rhythm overflows by
+   ~140px, so gap slides use tighter spacing. Type sizes for the story (46px)
+   and options (44px) are untouched; only the repeated one-line prompt,
+   padding, and gaps compact. Teacher-operated buttons, so 8px padding is
+   enough for the tap target. */
+#slide[data-type="gap"] {
+  padding: 16px 44px;
+  gap: 10px;
+}
+#slide[data-type="gap"] h1 {
+  font-size: 44px;
+}
+#slide[data-type="gap"] .choices {
+  gap: 10px;
+}
+#slide[data-type="gap"] .choices button {
+  padding: 8px 18px;
+}
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+.compare > div + div {
+  border-left: 2px solid var(--line);
+  padding-left: 36px;
+}
+.compare .body {
+  white-space: pre-line;
+}
+.label {
+  font-size: calc(36px * var(--text-expansion));
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.list button,
+.step {
+  font-size: calc(40px * var(--text-expansion));
+  text-align: left;
+  line-height: 1.16;
+}
+.sort-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  font-size: calc(44px * var(--text-expansion));
+}
+.sort-row button {
+  font-size: calc(36px * var(--text-expansion));
+  padding: 12px 20px;
+}
+.sort-row .choices {
+  gap: 12px;
+}
+#slide[data-type="wordmix"] {
+  justify-content: flex-start;
+  gap: 12px;
+  padding-top: 20px;
+}
+#slide[data-type="wordmix"] h1 {
+  font-size: calc(48px * var(--text-expansion));
+}
+.wordmix-reference {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+}
+.wordmix-row {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.1;
+}
+.wordmix-row button,
+.wordmix-ideas button {
+  font-size: calc(36px * var(--text-expansion));
+  font-weight: 700;
+  padding: 8px 12px;
+}
+.wordmix-builder {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px 20px;
+  padding-top: 8px;
+  border-top: 2px solid var(--line);
+}
+.wordmix-ideas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.wordmix-selection {
+  font-size: calc(36px * var(--text-expansion));
+  color: var(--accent);
+  font-weight: 700;
+}
+.wordmix-frame {
+  grid-column: 1 / -1;
+  font-size: calc(36px * var(--text-expansion));
+  line-height: 1.1;
+}
+#slide[data-type="image"] {
+  justify-content: flex-start;
+}
+#slide .picture {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  align-self: stretch;
+}
+.prompt-only h1 {
+  font-size: calc(96px * var(--text-expansion));
+  line-height: 1.1;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+}
+footer > div,
+nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+footer button {
+  font-size: 24px;
+  min-height: 48px;
+  min-width: 52px;
+  padding: 9px 17px;
+}
+#count {
+  min-width: 82px;
+  text-align: center;
+  font-size: 24px;
+}
+#slide [hidden] {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.list button:disabled {
+  opacity: 1;
+}
+.diagnostic-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: -8px;
+}
+.diagnostic-mark {
+  width: 34px;
+  height: 34px;
+  filter: invert(32%) sepia(35%) saturate(800%) hue-rotate(125deg);
+}
+.diagnostic-instruction {
+  font-size: 24px;
+  line-height: 1.15;
+  color: var(--accent);
+}
+#slide[data-type="diagnostic"] {
+  justify-content: flex-start;
+  gap: 8px;
+  padding-top: 22px;
+}
+#slide[data-type="diagnostic"] h1 {
+  font-size: 42px;
+  line-height: 1;
+}
+.diagnostic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  min-height: 0;
+}
+.diagnostic-section {
+  border-left: 4px solid var(--accent);
+  padding-left: 12px;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 12px;
+  row-gap: 5px;
+  align-content: start;
+}
+.diagnostic-heading {
+  margin: 0 0 6px;
+  font-size: 25px;
+  line-height: 1.05;
+  color: var(--accent);
+  grid-column: 1 / -1;
+}
+.diagnostic-item {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.08;
+}
+.diagnostic-prompt {
+  font-weight: 600;
+}
+.diagnostic-options {
+  margin-top: 2px;
+  color: #263d45;
+  font-size: 14px;
+  line-height: 1.06;
+}
+.diagnostic-answer {
+  margin-top: 2px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px 18px;
+  align-content: start;
+}
+#slide[data-type="review"] {
+  justify-content: flex-start;
+  gap: 12px;
+}
+#slide[data-type="review"] h1 {
+  font-size: 48px;
+}
+.review-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  font-size: 18px;
+}
+.review-number {
+  min-width: 24px;
+  font-weight: 700;
+}
+.review-item button {
+  min-width: 0;
+  flex: 1 1 auto;
+  padding: 7px 8px;
+  font-size: 16px;
+  text-align: left;
+  white-space: normal;
+}
+.review-choices {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.review-choices button {
+  font-size: 15px;
+  padding: 4px 8px;
+  min-height: 32px;
+}
+.review-paper {
+  color: var(--accent);
+  font-size: 16px;
+}
+</style><body><main id="stage"><section id="slide" aria-label="Teaching slide"></section><div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div><footer><div><button id="hint">Hint</button><button id="reveal">Reveal</button><button id="reset">Reset</button><button id="export-json" hidden>Export JSON</button></div><nav aria-label="Slides"><button id="prev" aria-label="Previous slide">←</button><span id="count"></span><button id="next" aria-label="Next slide">→</button></nav></footer></main><script type="application/json" id="deck-data">{"version":1,"title":"See the Clues and Count the Answers · Session 1","viewport":"1366x768","mode":"teaching","slides":[{"id":"hook-find","type":"image","prompt":"Today we do not write. What do we do?","src":"assets/search.svg","alt":"Magnifying glass over a short list, signalling detective work","hint":"No sentences today. Only circles and boxes."},{"id":"reader-marker","type":"choice","prompt":"Who reads your essay?","options":["The marker","Your teacher","Your friend"],"answer":"The marker","feedback":"Essays go to the marker. No Dear. No From.","hint":"Who checks your English?"},{"id":"no-dear-from","type":"choice","prompt":"Do we write Dear Ali and From, Siti?","options":["No Dear, no From","Yes, write both"],"answer":"No Dear, no From","feedback":"These essays need no greeting and no sign-off.","hint":"Essay or letter?"},{"id":"clues-a","type":"steps","prompt":"Point. Say each word twice.","items":["WHAT — thing: food, game","WHEN — time: Monday, morning","WHERE — place: school hall"],"hint":"WHAT asks apa. WHEN asks bila. WHERE asks di mana."},{"id":"clues-b","type":"steps","prompt":"Point. Say each word twice.","items":["WHO — person: teacher, friend","WHY — reason: it is fun","HOW — way: by bus, slowly"],"hint":"WHO asks siapa. WHY asks mengapa. HOW asks bagaimana."},{"id":"q1-model","type":"choice","prompt":"Q1 Badminton Match: when and where, how played, result. How many?","options":["3 answers","4 answers","5 answers"],"answer":"4 answers","feedback":"WHEN and WHERE are two boxes. HOW one. RESULT one.","hint":"Note 1 has AND. Two clue words?"},{"id":"split-rule","type":"reveal","prompt":"Split: a. when and where b. communication, learning c. wash hands or sanitise.","answer":"a. TIME and PLACE. b. COMMUNICATION and LEARNING. c. Choose one action.","feedback":"AND and commas add answers. OR asks you to choose.","hint":"a is AND. b is comma. c is OR."},{"id":"q27-count","type":"choice","prompt":"Keep Fit: eat balanced food, exercise, get sleep. How many answers?","options":["2 answers","3 answers","4 answers"],"answer":"3 answers","feedback":"No question mark still counts. Every note is compulsory.","hint":"Each line starts with a doing-word."},{"id":"job-cards","type":"steps","prompt":"Show the card: PAST, FACT, PLAN or ADVICE?","items":["PAST — took part: I went","FACT — benefits: It helps","PLAN — will: I will make","ADVICE — how to: You should"],"hint":"Find the signal word in each prompt."},{"id":"synthesis-toolkit","type":"compare","prompt":"Use this page during the race.","columns":[{"label":"Find and split","text":"WHAT thing, WHEN time, WHERE place, WHO person, WHY reason, HOW way. AND adds, comma adds, OR chooses."},{"label":"Job and reader","text":"PAST took part, FACT benefits, PLAN will, ADVICE how to. Reader is the marker."}],"hint":"Point to the line you use."},{"id":"race-flag","type":"image","prompt":"Pair race. Targets 8, then 4. No sentences.","src":"assets/trophy.svg","alt":"Trophy signalling a pair counting race","hint":"Keep the reference open. Point to each line."},{"id":"q17-try","type":"passage","prompt":"Q17: circle, split, count. Target 8.","text":"Badminton vs Table Tennis. Badminton: very popular, good facilities, established internationally. Table tennis: not so popular, can play at home, not much success. Which do you choose, and why?","hint":"Each comma item is one answer. Choice and reason add two."},{"id":"q17-check","type":"choice","prompt":"Q17: how many answers?","options":["6 answers","7 answers","8 answers"],"answer":"8 answers","feedback":"Three facts each, plus your choice and reason.","hint":"Three plus three plus two."},{"id":"q59-reader-trap","type":"choice","prompt":"Q59 Farewell Gathering: who she is, inspiration, debate help, wish. Count?","options":["4, reader is marker","4, reader is teacher","3, reader is marker"],"answer":"4, reader is marker","feedback":"She is the topic. The marker still reads it.","hint":"She is the TOPIC. Who MARKS it?"},{"id":"exit-check","type":"image","prompt":"Exit check. Alone. Circles and boxes only.","src":"assets/clipboard-check.svg","alt":"Clipboard with ticks signalling an independent check","hint":"Reader, job, boxes, total. Two sets."},{"id":"exit-key","type":"reveal","prompt":"Exit answers. Check your marks.","answer":"Set A: 5 points, job PAST. Set B: 3 points, job ADVICE.","feedback":"AND and commas add. OR chooses one."}]}</script><script>(() => {
+  "use strict";
+  const deck = JSON.parse(document.getElementById("deck-data").textContent),
+    stage = document.getElementById("stage"),
+    slide = document.getElementById("slide");
+  const [w, h] = (deck.viewport || "1366x768").split("x").map(Number);
+  stage.style.width = w + "px";
+  stage.style.height = h + "px";
+  let index = 0;
+  const responseLog = new Map();
+  const states = deck.slides.map(() => ({
+    hint: false,
+    revealed: false,
+    step: 0,
+    selected: null,
+    order: [],
+    groups: {},
+    mix: {},
+  }));
+  const el = (tag, text, cls) => {
+    const n = document.createElement(tag);
+    if (text !== undefined) n.textContent = text;
+    if (cls) n.className = cls;
+    return n;
+  };
+  const button = (text, fn, selected = false, result = "") => {
+    const classes = [selected ? "selected" : "", result].filter(Boolean);
+    const n = el("button", text, classes.join(" "));
+    n.type = "button";
+    n.setAttribute("aria-pressed", String(selected));
+    if (result) n.dataset.result = result;
+    n.onclick = fn;
+    return n;
+  };
+  function recordChoice(sourceIndex, option) {
+    const source = deck.slides[sourceIndex];
+    states[sourceIndex].selected = option;
+    responseLog.set(source.id, {
+      slideId: source.id,
+      slideNumber: sourceIndex + 1,
+      prompt: source.prompt,
+      response: option,
+      responseType: "teacher-recorded-spoken-choice",
+      recordedAt: new Date().toISOString(),
+    });
+  }
+  function draw() {
+    const focused = document.activeElement;
+    const focusIndex = [...slide.querySelectorAll("button")].indexOf(focused);
+      const s = deck.slides[index],
+      st = states[index];
+    slide.style.setProperty("--text-expansion", "1");
+    slide.replaceChildren();
+    slide.className = ["prompt", "reveal"].includes(s.type)
+      ? "prompt-only"
+      : "";
+    slide.dataset.id = s.id;
+    slide.dataset.type = s.type;
+    slide.setAttribute("aria-label", s.prompt);
+    const add = (tag, text, cls) => {
+      const n = el(tag, text, cls);
+      slide.append(n);
+      return n;
+    };
+    if (s.label) add("p", s.label, "question-label");
+    slide.append(el("h1", s.prompt));
+    if (s.instruction) add("p", s.instruction, "instruction");
+    if (s.stimulus) add("p", s.stimulus, "stimulus");
+    if (s.visual && s.type !== "diagnostic") {
+      const meta = add("div", undefined, "diagnostic-meta");
+      const mark = el("img", undefined, "diagnostic-mark");
+      mark.src = s.visual.src;
+      mark.alt = s.visual.alt || "";
+      mark.setAttribute("aria-hidden", "true");
+      meta.append(mark, el("span", s.visual.instruction || "", "diagnostic-instruction"));
+    }
+    if (s.type === "review") {
+      const intro = add("p", "Check the recorded answers. Click an option to change it, then export the JSON.", "diagnostic-instruction");
+      const reviewGrid = add("div", undefined, "review-grid");
+      s.reviewIds.forEach((id) => {
+        const sourceIndex = deck.slides.findIndex((candidate) => candidate.id === id);
+        const source = deck.slides[sourceIndex];
+        if (!source) return;
+        const row = el("div", undefined, "review-item");
+        row.append(el("span", `${source.id.replace("q-", "")}.`, "review-number"));
+        if (source.options) {
+          const current = states[sourceIndex].selected;
+          const currentIndex = current ? source.options.indexOf(current) : -1;
+          row.append(button(`${current ? `Recorded: ${current}` : "No response"}`, () => {
+            recordChoice(sourceIndex, source.options[(currentIndex + 1) % source.options.length]);
+            draw();
+          }, Boolean(current)));
+        } else {
+          row.append(el("span", states[sourceIndex].selected || "paper response", "review-paper"));
+        }
+        reviewGrid.append(row);
+      });
+    }
+    if (s.type === "diagnostic") {
+      const header = add("div", undefined, "diagnostic-meta");
+      if (s.visual) {
+        const mark = el("img", undefined, "diagnostic-mark");
+        mark.src = s.visual.src;
+        mark.alt = s.visual.alt || "";
+        mark.setAttribute("aria-hidden", "true");
+        header.append(mark);
+      }
+      header.append(el("span", s.visual?.instruction || "Answer on paper. Do not call out answers yet.", "diagnostic-instruction"));
+      const grid = add("div", undefined, "diagnostic-grid");
+      s.sections.forEach((section) => {
+        const col = el("section", undefined, "diagnostic-section");
+        col.append(el("h2", section.heading, "diagnostic-heading"));
+        section.items.forEach((item) => {
+          const row = el("div", undefined, "diagnostic-item");
+          row.append(el("div", `${item.id}. ${item.prompt}`, "diagnostic-prompt"));
+          if (item.options) row.append(el("div", item.options.map((o, i) => `${String.fromCharCode(65 + i)} ${o}`).join("   "), "diagnostic-options"));
+          if (st.revealed) row.append(el("div", `Answer: ${item.answer}`, "diagnostic-answer"));
+          col.append(row);
+        });
+        grid.append(col);
+      });
+    }
+    if (s.type === "cloze") {
+      const n = add("p", undefined, "hero");
+      const [a, b] = s.sentence.split("{{blank}}");
+      const blankText = st.revealed ? s.answer : st.selected || "_____";
+      n.append(
+        document.createTextNode(a),
+        el("span", blankText, blankText === "_____" ? "blank empty" : "blank"),
+        document.createTextNode(b),
+      );
+    }
+    if (s.type === "gap") {
+      const n = add("p", undefined, "passage");
+      const [a, b] = s.text.split("{{blank}}");
+      const blankText = st.revealed ? s.answer : st.selected || "_____";
+      n.append(
+        document.createTextNode(a),
+        el("span", blankText, blankText === "_____" ? "blank empty" : "blank"),
+        document.createTextNode(b),
+      );
+    }
+    if (["choice", "cloze", "gap"].includes(s.type)) {
+      const n = add("div", undefined, "choices");
+      s.options.forEach((o) => {
+        const selected = st.selected === o;
+        const result = deck.mode === "answering" ? "" : st.revealed
+          ? o === s.answer
+            ? "correct"
+            : selected
+              ? "incorrect"
+              : ""
+          : "";
+        const label = deck.mode === "answering" && selected
+          ? `Selected — ${o}`
+          :
+          result === "correct"
+            ? `✓ Correct — ${o}`
+            : result === "incorrect"
+              ? `✕ Incorrect — ${o}`
+              : o;
+        n.append(
+          button(
+            label,
+            () => {
+              if (st.revealed) return;
+              st.selected = o;
+              if (deck.mode === "answering") recordChoice(index, o);
+              draw();
+              if (deck.mode !== "answering") focusChoice(o);
+            },
+            selected,
+            result,
+          ),
+        );
+      });
+    }
+    if (s.type === "compare") {
+      const n = add("div", undefined, "compare");
+      s.columns.forEach((c) => {
+        const col = el("div");
+        col.append(el("p", c.label, "label"), el("p", c.text, "body"));
+        n.append(col);
+      });
+    }
+    if (s.type === "passage") add("p", s.text, "passage");
+    if (s.type === "writing") {
+      add("p", s.task, "body");
+      if (st.revealed && s.frame) add("p", s.frame, "answer");
+    }
+    if (s.type === "image") {
+      const n = add("img", undefined, "picture");
+      n.src = s.src;
+      n.alt = s.alt;
+    }
+    if (s.type === "steps") {
+      const n = add("div", undefined, "list");
+      s.items
+        .slice(0, Math.max(1, st.step + 1))
+        .forEach((t, i) => n.append(el("p", `${i + 1}. ${t}`, "step")));
+    }
+    if (s.type === "order") {
+      const n = add("div", undefined, "list");
+      if (st.revealed) {
+        const correct =
+          st.order.length === s.items.length &&
+          st.order.every((itemIndex, position) => itemIndex === position);
+        const attempt = el("div", undefined, `order-result ${correct ? "correct" : "incorrect"}`);
+        attempt.append(
+          el("p", correct ? "✓ Correct order" : "✕ Incorrect order", "result-status"),
+          el(
+            "p",
+            st.order.length
+              ? st.order.map((itemIndex, position) => `${position + 1}. ${s.items[itemIndex]}`).join("  ")
+              : "No order selected",
+            "result-sequence",
+          ),
+        );
+        n.append(attempt);
+        if (!correct) {
+          const canonical = el("div", undefined, "order-result correct");
+          canonical.append(
+            el("p", "✓ Correct order", "result-status"),
+            el(
+              "p",
+              s.items.map((item, position) => `${position + 1}. ${item}`).join("  "),
+              "result-sequence",
+            ),
+          );
+          n.append(canonical);
+        }
+      } else {
+        const display = s.items.map((_, i) => i).reverse();
+        display.forEach((i) => {
+          const pos = st.order.indexOf(i);
+          n.append(
+            button(
+              `${pos < 0 ? "○" : pos + 1 + "."} ${s.items[i]}`,
+              () => {
+                st.order =
+                  pos < 0 ? [...st.order, i] : st.order.filter((x) => x !== i);
+                draw();
+              },
+              pos >= 0,
+            ),
+          );
+        });
+      }
+    }
+    if (s.type === "sort") {
+      const n = add("div", undefined, "list");
+      s.items.forEach((item, i) => {
+        const row = el("div", undefined, "sort-row"),
+          choices = el("div", undefined, "choices");
+        row.append(el("span", item.text));
+        choices.setAttribute("role", "group");
+        choices.setAttribute("aria-label", item.text);
+        s.categories.forEach((c) => {
+          const selected = st.groups[i] === c;
+          const result = st.revealed
+            ? c === item.category
+              ? "correct"
+              : selected
+                ? "incorrect"
+                : ""
+            : "";
+          const label =
+            result === "correct"
+              ? `✓ Correct — ${c}`
+              : result === "incorrect"
+                ? `✕ Incorrect — ${c}`
+                : c;
+          choices.append(
+            button(
+              label,
+              () => {
+                if (st.revealed) return;
+                st.groups[i] = c;
+                draw();
+              },
+              selected,
+              result,
+            ),
+          );
+        });
+        row.append(choices);
+        n.append(row);
+      });
+    }
+    if (s.type === "wordmix") {
+      const reference = add("div", undefined, "wordmix-reference");
+      s.pairs.forEach((pair) => {
+        const selected = st.mix.word === pair.word;
+        const row = el("div", undefined, "wordmix-row");
+        row.append(
+          button(
+            pair.word,
+            () => {
+              st.mix.word = st.mix.word === pair.word ? null : pair.word;
+              draw();
+            },
+            selected,
+          ),
+          el("span", pair.meaning),
+        );
+        reference.append(row);
+      });
+      const builder = add("div", undefined, "wordmix-builder");
+      const ideaChoices = el("div", undefined, "wordmix-ideas");
+      ideaChoices.setAttribute("role", "group");
+      ideaChoices.setAttribute("aria-label", "Ideas");
+      s.ideas.forEach((idea) => {
+        ideaChoices.append(
+          button(
+            idea,
+            () => {
+              st.mix.idea = st.mix.idea === idea ? null : idea;
+              draw();
+            },
+            st.mix.idea === idea,
+          ),
+        );
+      });
+      const selection = el(
+        "p",
+        `${st.mix.word || "Choose a word"} + ${st.mix.idea || "choose an idea"}`,
+        "wordmix-selection",
+      );
+      selection.setAttribute("aria-live", "polite");
+      builder.append(ideaChoices, selection, el("p", s.frame, "wordmix-frame"));
+    }
+    if (st.hint && s.hint && !st.revealed) add("p", s.hint, "hint");
+    if (st.revealed) {
+      if (["reveal", "choice"].includes(s.type)) add("p", s.answer, "answer");
+      if (s.feedback) {
+        const f = add("p", s.feedback, "feedback");
+        f.setAttribute("role", "status");
+      }
+    }
+    expandContent(s.type);
+    const hint = document.getElementById("hint"),
+      rev = document.getElementById("reveal");
+    hint.hidden = !s.hint;
+    hint.disabled = st.revealed;
+    hint.textContent = st.hint ? "Hide hint" : "Hint";
+    rev.hidden = deck.mode === "answering" || !(
+      ["reveal", "choice", "cloze", "gap", "steps", "order", "sort", "diagnostic"].includes(
+        s.type,
+      ) ||
+      (s.type === "writing" && s.frame)
+    );
+    rev.textContent = s.type === "steps" ? "Next step" : "Reveal";
+    rev.disabled =
+      s.type === "steps" ? st.step >= s.items.length - 1 : st.revealed;
+    document.getElementById("reset").hidden =
+      deck.mode !== "answering" && hint.hidden && rev.hidden && s.type !== "wordmix";
+    const exportButton = document.getElementById("export-json");
+    exportButton.hidden = deck.mode !== "answering" || s.type !== "review";
+    exportButton.textContent = deck.mode === "answering" ? `Export JSON (${responseLog.size})` : "Export JSON";
+    document.getElementById("prev").disabled = index === 0;
+    document.getElementById("next").disabled = index === deck.slides.length - 1;
+    document.getElementById("count").textContent =
+      `${index + 1} / ${deck.slides.length}`;
+    if (focusIndex >= 0) slide.querySelectorAll("button")[focusIndex]?.focus();
+    document.getElementById("announcement").textContent =
+      `Slide ${index + 1} of ${deck.slides.length}. ${s.prompt}. ` +
+      (st.revealed
+        ? checkedAnnouncement(s, st)
+        : st.hint
+          ? s.hint || ""
+          : st.selected || "");
+  }
+  // Enlarge sparse content to use the classroom canvas. Never shrink below
+  // the shared projection type scale; oversized content must be split in JSON.
+  function expandContent(type) {
+    if (type === "image") return;
+    const fits = () => {
+      const bounds = slide.getBoundingClientRect();
+      const ratio = bounds.width / slide.offsetWidth;
+      const style = getComputedStyle(slide);
+      const top = bounds.top + parseFloat(style.paddingTop) * ratio;
+      const bottom = bounds.bottom - parseFloat(style.paddingBottom) * ratio;
+      const left = bounds.left + parseFloat(style.paddingLeft) * ratio;
+      const right = bounds.right - parseFloat(style.paddingRight) * ratio;
+      return [...slide.querySelectorAll("*")].every((node) => {
+        const r = node.getBoundingClientRect();
+        return (
+          (!r.width && !r.height) ||
+          (r.top >= top - 1 &&
+            r.bottom <= bottom + 1 &&
+            r.left >= left - 1 &&
+            r.right <= right + 1 &&
+            node.scrollWidth <= node.clientWidth + 1)
+        );
+      });
+    };
+    let low = 1,
+      high = type === "prompt" || type === "reveal" ? 1.4 : 1.25;
+    for (let i = 0; i < 8; i++) {
+      const mid = (low + high) / 2;
+      slide.style.setProperty("--text-expansion", mid);
+      if (fits()) low = mid;
+      else high = mid;
+    }
+    slide.style.setProperty("--text-expansion", low.toFixed(3));
+  }
+  function focusChoice(text) {
+    [...slide.querySelectorAll("button")]
+      .find((n) => n.textContent === text)
+      ?.focus();
+  }
+  function checkedAnnouncement(s, st) {
+    if (["choice", "cloze", "gap"].includes(s.type)) {
+      if (!st.selected)
+        return `Correct answer: ${s.answer}. ${s.feedback || ""}`;
+      return st.selected === s.answer
+        ? `Correct. ${s.answer}. ${s.feedback || ""}`
+        : `Incorrect. You chose ${st.selected}. Correct answer: ${s.answer}. ${s.feedback || ""}`;
+    }
+    if (s.type === "sort") {
+      const wrong = s.items.filter((item, i) => st.groups[i] !== item.category).length;
+      return wrong
+        ? `Incorrect. ${wrong} ${wrong === 1 ? "item needs" : "items need"} correction. ${s.feedback || ""}`
+        : `Correct. ${s.feedback || ""}`;
+    }
+    if (s.type === "order") {
+      const correct =
+        st.order.length === s.items.length &&
+        st.order.every((itemIndex, position) => itemIndex === position);
+      return `${correct ? "Correct" : "Incorrect"} order. ${s.feedback || ""}`;
+    }
+    return (s.answer || "") + " " + (s.feedback || "");
+  }
+  function reveal() {
+    const s = deck.slides[index],
+      st = states[index];
+    if (s.type === "steps") st.step = Math.min(st.step + 1, s.items.length - 1);
+    else {
+      st.revealed = true;
+      st.hint = false;
+    }
+    draw();
+  }
+  function move(n) {
+    index = Math.max(0, Math.min(deck.slides.length - 1, index + n));
+    draw();
+  }
+  document.getElementById("hint").onclick = () => {
+    states[index].hint = !states[index].hint;
+    draw();
+  };
+  document.getElementById("reveal").onclick = reveal;
+  document.getElementById("reset").onclick = () => {
+    responseLog.delete(deck.slides[index].id);
+    states[index] = {
+      hint: false,
+      revealed: false,
+      step: 0,
+      selected: null,
+      order: [],
+      groups: {},
+      mix: {},
+    };
+    draw();
+  };
+  document.getElementById("prev").onclick = () => move(-1);
+  document.getElementById("next").onclick = () => move(1);
+  document.getElementById("export-json").onclick = () => {
+    const currentSlide = deck.slides[index];
+    const payload = {
+      schema: "teacher-answering-responses-v1",
+      deckTitle: deck.title,
+      mode: deck.mode || "teaching",
+      exportedAt: new Date().toISOString(),
+      responses: [...responseLog.values()].sort((a, b) => a.slideNumber - b.slideNumber),
+      unansweredSlideIds: deck.slides
+        .filter((slide) => (currentSlide.reviewIds || []).includes(slide.id) && !responseLog.has(slide.id))
+        .map((slide) => slide.id),
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2) + "\n"], {type: "application/json"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    const safeTitle = String(deck.title).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    link.download = `${safeTitle || "diagnostic"}-${new Date().toISOString().slice(0, 10)}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+    document.getElementById("announcement").textContent = `Exported ${payload.responses.length} recorded responses as JSON. ${payload.unansweredSlideIds.length} response items remain unanswered.`;
+  };
+  document.addEventListener("keydown", (e) => {
+    if (e.target.isContentEditable || e.target.closest("input,textarea,select"))
+      return;
+    const space = e.code === "Space" || e.key === " ";
+    if (space && e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey) {
+      e.preventDefault();
+      if (!e.repeat) document.getElementById("reset").click();
+      return;
+    }
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      if (!e.repeat) move(e.key === "ArrowRight" ? 1 : -1);
+    } else if (space) {
+      // Capture Space even when a choice or navigation button has focus.
+      // Enter remains the native way to activate the focused button.
+      e.preventDefault();
+      const control = document.getElementById("reveal");
+      if (!e.repeat && !control.hidden && !control.disabled) control.click();
+    }
+  });
+  function scale() {
+    const z = Math.min(innerWidth / w, innerHeight / h);
+    stage.style.transform = `scale(${z})`;
+    stage.style.left = (innerWidth - w * z) / 2 + "px";
+    stage.style.top = (innerHeight - h * z) / 2 + "px";
+  }
+  addEventListener("resize", scale);
+  scale();
+  draw();
+})();
+</script></body></html>

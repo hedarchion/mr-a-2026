@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "title": "See the Clues and Count the Answers · Session 1",
+  "viewport": "1366x768",
+  "slides": [
+    {
+      "id": "hook-find",
+      "type": "image",
+      "prompt": "Today we do not write. What do we do?",
+      "src": "assets/search.svg",
+      "alt": "Magnifying glass over a short list, signalling detective work",
+      "hint": "No sentences today. Only circles and boxes.",
+      "notes": "0-5 hook. Chant find, circle, count twice; red pencil up on circle. Boxes only today; keep the three verbs on the wall all session."
+    },
+    {
+      "id": "reader-marker",
+      "type": "choice",
+      "prompt": "Who reads your essay?",
+      "options": ["The marker", "Your teacher", "Your friend"],
+      "answer": "The marker",
+      "feedback": "Essays go to the marker. No Dear. No From.",
+      "hint": "Who checks your English?",
+      "notes": "Circle ESSAY on paper. Reader is the marker. Park the Q59 trap: the teacher is IN that story but the reader is still the marker; prove it later."
+    },
+    {
+      "id": "no-dear-from",
+      "type": "choice",
+      "prompt": "Do we write Dear Ali and From, Siti?",
+      "options": ["No Dear, no From", "Yes, write both"],
+      "answer": "No Dear, no From",
+      "feedback": "These essays need no greeting and no sign-off.",
+      "hint": "Essay or letter?",
+      "notes": "Worksheet A item 4. All 60 tasks in this system are essays, so never add letter parts."
+    },
+    {
+      "id": "clues-a",
+      "type": "steps",
+      "prompt": "Point. Say each word twice.",
+      "items": ["WHAT — thing: food, game", "WHEN — time: Monday, morning", "WHERE — place: school hall"],
+      "hint": "WHAT asks apa. WHEN asks bila. WHERE asks di mana.",
+      "notes": "Chorus each twice. Red pencil underlines the clue word in every later note. BM meanings are small support only."
+    },
+    {
+      "id": "clues-b",
+      "type": "steps",
+      "prompt": "Point. Say each word twice.",
+      "items": ["WHO — person: teacher, friend", "WHY — reason: it is fun", "HOW — way: by bus, slowly"],
+      "hint": "WHO asks siapa. WHY asks mengapa. HOW asks bagaimana.",
+      "notes": "Repair HOW vs WHY: how to keep fit names the way; benefits name the reason. All six labels are reused on every later beat."
+    },
+    {
+      "id": "q1-model",
+      "type": "choice",
+      "prompt": "Q1 Badminton Match: when and where, how played, result. How many?",
+      "options": ["3 answers", "4 answers", "5 answers"],
+      "answer": "4 answers",
+      "feedback": "WHEN and WHERE are two boxes. HOW one. RESULT one.",
+      "hint": "Note 1 has AND. Two clue words?",
+      "notes": "Think aloud using only the six clue words. Cover WHERE and ask: WHEN alone is still an answer, so two boxes. Blue pencil TIME, red pencil PLACE. Four fingers."
+    },
+    {
+      "id": "split-rule",
+      "type": "reveal",
+      "prompt": "Split: a. when and where b. communication, learning c. wash hands or sanitise.",
+      "answer": "a. TIME and PLACE. b. COMMUNICATION and LEARNING. c. Choose one action.",
+      "feedback": "AND and commas add answers. OR asks you to choose.",
+      "hint": "a is AND. b is comma. c is OR.",
+      "notes": "Repair counting OR as two: OR means one action done well. Repair merging comma lists into one blob. The fourth split, what you saw and bought, stays on the worksheet to avoid overload."
+    },
+    {
+      "id": "q27-count",
+      "type": "choice",
+      "prompt": "Keep Fit: eat balanced food, exercise, get sleep. How many answers?",
+      "options": ["2 answers", "3 answers", "4 answers"],
+      "answer": "3 answers",
+      "feedback": "No question mark still counts. Every note is compulsory.",
+      "hint": "Each line starts with a doing-word.",
+      "notes": "Underline the doing-words in red. Contrast with OR: no choice here, all three count. Bridge: three answers, but what kind of writing? That is the job card."
+    },
+    {
+      "id": "job-cards",
+      "type": "steps",
+      "prompt": "Show the card: PAST, FACT, PLAN or ADVICE?",
+      "items": ["PAST — took part: I went", "FACT — benefits: It helps", "PLAN — will: I will make", "ADVICE — how to: You should"],
+      "hint": "Find the signal word in each prompt.",
+      "notes": "Hold-up check, six prompts: a trip you enjoyed PAST; benefits of reading FACT; your future creation PLAN; how to keep fit ADVICE; took part in a badminton match PAST; Eat balanced food ADVICE. Repair benefits vs advice: benefits TELLS a fact, advice TELLS what to do. Keep the four cards on the wall."
+    },
+    {
+      "id": "synthesis-toolkit",
+      "type": "compare",
+      "prompt": "Use this page during the race.",
+      "columns": [
+        {"label": "Find and split", "text": "WHAT thing, WHEN time, WHERE place, WHO person, WHY reason, HOW way. AND adds, comma adds, OR chooses."},
+        {"label": "Job and reader", "text": "PAST took part, FACT benefits, PLAN will, ADVICE how to. Reader is the marker."}
+      ],
+      "hint": "Point to the line you use.",
+      "notes": "Synthesis reference before application: all six clues, three split rules, four jobs and the reader rule together. No new teaching and no Q17 or Q59 answers here. Optional 60-second mask-and-recall game."
+    },
+    {
+      "id": "race-flag",
+      "type": "image",
+      "prompt": "Pair race. Targets 8, then 4. No sentences.",
+      "src": "assets/trophy.svg",
+      "alt": "Trophy signalling a pair counting race",
+      "hint": "Keep the reference open. Point to each line.",
+      "notes": "Timer about three minutes per race. Pairs circle, split and count only. Synthesis reference stays open. Hardest count first."
+    },
+    {
+      "id": "q17-try",
+      "type": "passage",
+      "prompt": "Q17: circle, split, count. Target 8.",
+      "text": "Badminton vs Table Tennis. Badminton: very popular, good facilities, established internationally. Table tennis: not so popular, can play at home, not much success. Which do you choose, and why?",
+      "hint": "Each comma item is one answer. Choice and reason add two.",
+      "notes": "Dataset maximum. Expect eight boxes: three badminton facts, three table-tennis facts, choice plus reason. Repair merging popularity across games, and dropping the reason."
+    },
+    {
+      "id": "q17-check",
+      "type": "choice",
+      "prompt": "Q17: how many answers?",
+      "options": ["6 answers", "7 answers", "8 answers"],
+      "answer": "8 answers",
+      "feedback": "Three facts each, plus your choice and reason.",
+      "hint": "Three plus three plus two.",
+      "notes": "Reveal the eight-way split. Choice WITHOUT reason is half the last two marks: WHY always needs its own box."
+    },
+    {
+      "id": "q59-reader-trap",
+      "type": "choice",
+      "prompt": "Q59 Farewell Gathering: who she is, inspiration, debate help, wish. Count?",
+      "options": ["4, reader is marker", "4, reader is teacher", "3, reader is marker"],
+      "answer": "4, reader is marker",
+      "feedback": "She is the topic. The marker still reads it.",
+      "hint": "She is the TOPIC. Who MARKS it?",
+      "notes": "Four boxes plus NO to reader-is-teacher. No Dear and no you: her name goes in a WHO box. SHE sentence bricks belong to Session 2, not now. Copy debating team accurately."
+    },
+    {
+      "id": "exit-check",
+      "type": "image",
+      "prompt": "Exit check. Alone. Circles and boxes only.",
+      "src": "assets/clipboard-check.svg",
+      "alt": "Clipboard with ticks signalling an independent check",
+      "hint": "Reader, job, boxes, total. Two sets.",
+      "notes": "Reference closed. Set A trip: WHEN+WHERE two, SAW+BOUGHT two, felt one, total five, job PAST. Set B hands: OR chooses one, balanced food one, sleep one, total three, job ADVICE. Four minutes strict."
+    },
+    {
+      "id": "exit-key",
+      "type": "reveal",
+      "prompt": "Exit answers. Check your marks.",
+      "answer": "Set A: 5 points, job PAST. Set B: 3 points, job ADVICE.",
+      "feedback": "AND and commas add. OR chooses one.",
+      "notes": "Mark five per set: reader one, job one, splits and counts, clue labels. Mastery eight of ten including one exact compound count. Below threshold gets a five-minute re-sort in Session 2; keep that list private."
+    }
+  ]
+}
