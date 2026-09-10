@@ -1,0 +1,66 @@
+{
+ "answerMap": {
+  "1": "WHERE, WHO — 2 boxes",
+  "2": "WHICH (= WHAT family), WHY, AND — 2 boxes",
+  "3": "TWO, TELL — 2 boxes",
+  "4": "one more answer",
+  "5": "do it (it is compulsory)",
+  "6": "HELP (blue) — SHOULD",
+  "7": "TELL (green) — did",
+  "8": "READER: friend; CARD: HELP; CIRCLES: WHICH, WHERE, WHO; BOXES: 3"
+ },
+ "code": "HLP-T-W31-K-20260910-EMAIL-S1",
+ "copies": 2,
+ "instructions": "Parts 1-3: work with your teacher. Circle the clue words on each line, then write the card or the boxes. Part 4: work ALONE.",
+ "marks": 8,
+ "sections": [
+  {
+   "bank": "WHAT · WHERE · WHEN · WHO · WHY · HOW · FEEL",
+   "heading": "1 · Circle the clue (with your teacher)",
+   "items": [
+    {
+     "text": "Where do you play football? Who plays with you? Circles: ___ANS___ Boxes: ___ANS___"
+    },
+    {
+     "text": "Which drink do you like and why do you like it? Circles: ___ANS___ Boxes: ___ANS___"
+    },
+    {
+     "text": "You have two favourite games. Tell me about them. Circles: ___ANS___ Boxes: ___ANS___"
+    }
+   ]
+  },
+  {
+   "bank": "AND = one more · TWO = two · TELL/INCLUDE = must do it",
+   "heading": "2 · Danger rules (with your teacher)",
+   "items": [
+    {
+     "text": "I see AND. I need ___ANS___."
+    },
+    {
+     "text": "I see TELL. I must ___ANS___."
+    }
+   ]
+  },
+  {
+   "bank": "HELP blue · TELL green · COME orange · SORRY red",
+   "heading": "3 · Choose the card (with your teacher)",
+   "items": [
+    {
+     "text": "Which sport should I choose? Card: ___ANS___"
+    },
+    {
+     "text": "What did you do last weekend? Card: ___ANS___"
+    }
+   ]
+  },
+  {
+   "heading": "4 · Alone: reader, card, circles, boxes",
+   "items": [
+    {
+     "text": "Which cartoon should I watch? Where can I watch it? Who watches with me? Reader: ___ANS___ Card: ___ANS___ Circles: ___ANS___ Boxes: ___ANS___"
+    }
+   ]
+  }
+ ],
+ "subtitle": "Find the clues"
+}

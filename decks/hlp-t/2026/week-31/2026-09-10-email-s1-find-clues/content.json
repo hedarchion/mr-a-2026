@@ -1,0 +1,152 @@
+{
+ "slides": [
+  {
+   "answer": "My friend — the name after Dear",
+   "feedback": "Emails keep Dear. The name after Dear is the reader.",
+   "hint": "Look after the word Dear. A name is there.",
+   "id": "hook-reset",
+   "notes": "0:00-2:00. Most pupils pick B (the 08-09 rule) — welcome it, then correct: in EMAILS the reader is the named friend, not the marker. Kill 'no Dear, no From' explicitly: emails KEEP Dear. Latecomers: repeat the one-liner 'We write to a friend today, not the marker.'",
+   "options": [
+    "My friend — the name after Dear",
+    "The marker",
+    "Nobody"
+   ],
+   "prompt": "New system starts today. In EMAILS, who do you write to?",
+   "type": "choice",
+   "visual": {
+    "alt": "Magnifying glass, signalling detective work: find the clues",
+    "src": "assets/search.svg"
+   }
+  },
+  {
+   "hint": "Find the word Dear. Read the name.",
+   "id": "one-email",
+   "notes": "2:00-4:00. Teacher circles the friend name after Dear (say it, point, pupils point). Say: 'The name after Dear is the reader. Every email starts here.' Deflect full-reading questions: 'Today we only find the reader. We write in Session 2.' The bracketed boxes are named only, not filled.",
+   "prompt": "We use one email every time. Point. Where is the reader?",
+   "text": "Dear [READER], How are you? I hope you are well. I am writing to you today. This message is important to me. Here is my message. [MAIN ANSWER]. First, [ANSWER 1]. Next, [ANSWER 2]. Also, [ANSWER 3]. Finally, [ANSWER 4]. That is all from me. Thank you for reading my message. I hope you understand it. Please write back soon. Best wishes, [MY NAME]",
+   "type": "passage"
+  },
+  {
+   "hint": "Circle the English word, not the Malay.",
+   "id": "clues-1",
+   "items": [
+    "WHAT 📦 means apa — thing or action.",
+    "WHERE 📍 means di mana — place.",
+    "WHEN 🕒 means bila — time.",
+    "WHO 👤 means siapa — person."
+   ],
+   "notes": "4:00-10:00, ~1.5 min per clue. Exact script aloud: 'Circle WHAT. WHAT means apa.' / 'Circle WHERE. WHERE means di mana.' (parallel for WHEN/WHO). Elicit Malay first, then fix. Board drills (circle the English clue): What sport do you like? / Where do you play it? / When do you play it? / Who plays with you? One-liner pre-empt: 'WHICH is also apa — it means choose one.'",
+   "prompt": "Circle the clue. Say the Malay meaning.",
+   "type": "steps"
+  },
+  {
+   "hint": "How + feel asks for a feeling.",
+   "id": "clues-2",
+   "items": [
+    "WHY 💡 means mengapa, sebab — reason.",
+    "HOW ⚙️ means bagaimana, cara — action or way.",
+    "FEEL ❤️ means perasaan — feeling."
+   ],
+   "notes": "10:00-14:00. Teach explicitly: 'feel after How = FEEL clue, the answer is a feeling.' Redirect answerers: 'Good answer. Now circle the clue word.' Fast round after reveal (oral, no new text): teacher says Malay, class says English — apa→WHAT, di mana→WHERE, bila→WHEN, siapa→WHO, mengapa→WHY, bagaimana→HOW, perasaan→FEEL.",
+   "prompt": "Circle the clue. Say the Malay meaning.",
+   "type": "steps"
+  },
+  {
+   "hint": "AND adds one box. TWO means two boxes.",
+   "id": "danger",
+   "items": [
+    "AND means one more answer.",
+    "TWO means two answers.",
+    "TELL or INCLUDE means you must do it."
+   ],
+   "notes": "14:00-18:00. Exact lines: 'I see AND. I need one more answer.' / 'I see TWO. I need two answers.' Board examples (circle the danger word): I like apples and oranges. / You have two free hours. / Tell me about your day. / Include your phone number. Distinguish once: TELL the danger word = an order inside the question; the TELL card = which email to write. Same word, two jobs.",
+   "prompt": "Danger! These words change your answers.",
+   "type": "steps"
+  },
+  {
+   "answer": "WHERE and WHO. Two questions, two boxes.",
+   "feedback": "Two questions need two answers. Hold up two fingers.",
+   "hint": "Two question words. No AND, no TWO.",
+   "id": "drill-a",
+   "notes": "18:00-19:00. Pupils circle on the worksheet, then hold up fingers for the box count. Fast whole-class check.",
+   "prompt": "Circle every clue. Write the number of answers. Where do you play football? Who plays with you?",
+   "type": "reveal"
+  },
+  {
+   "answer": "WHICH, WHY and AND. Two answers, not one.",
+   "feedback": "WHICH means choose one. AND joins two questions — two answers, not one.",
+   "hint": "WHICH is also apa. Find AND.",
+   "id": "drill-b",
+   "notes": "19:00-20:00. Common miss: AND skipped, answer '1' — replay 'I see AND. I need one more answer.' WHICH belongs to the WHAT family (choose one).",
+   "prompt": "Circle every clue. Write the number of answers. Which drink do you like and why do you like it?",
+   "type": "reveal"
+  },
+  {
+   "answer": "TWO and TELL. Two answers. You must do it.",
+   "feedback": "TWO means two answers. TELL only says you must answer.",
+   "hint": "Find TWO. Find TELL.",
+   "id": "drill-c",
+   "notes": "20:00-21:00. 'favourite' is not one of the seven circle clues — it is a TELL-card word for later (Beat 7); today circle TWO and TELL. TELL here is an order, not yet the green card.",
+   "prompt": "Circle every clue. Write the number of answers. You have two favourite games. Tell me about them.",
+   "type": "reveal"
+  },
+  {
+   "hint": "Find SHOULD. Find tell, did, went or favourite. Find invite. Find sorry.",
+   "id": "cards",
+   "items": [
+    "HELP is blue — should, suggest, recommend, advice.",
+    "TELL is green — tell, did, went, favourite, experience.",
+    "COME is orange — invite.",
+    "SORRY is red — sorry, apologise."
+   ],
+   "notes": "22:00-26:00, 1 min per prompt. Four oral prompts (teacher reads, pupils hold up colour or say card): 1. Which sport should I choose? (HELP, blue — SHOULD) 2. Tell me about your favourite game. (TELL, green — tell and favourite; correct the WHAT-misfire: 'WHAT is the clue, but tell sets the job.') 3. I invite you to my party. (COME, orange — invite is stronger than tell) 4. I am sorry I broke your pen. (SORRY, red). Exact line: 'I see SHOULD. Choose the blue HELP card.' Keep colours visible; pointing is fine if no cards in hand. did/went are also TELL triggers (card row, toolkit, worksheet item 7).",
+   "prompt": "Which card? Hold up the colour.",
+   "type": "steps"
+  },
+  {
+   "id": "toolkit",
+   "notes": "26:00-27:00. Read once straight through if needed, then point — do not teach from it. Keep this slide open (navigate back to it) during the guided model and the exit. No hints or reveals on a reference.",
+   "prompt": "Keep this open. Point to the row you need.",
+   "text": "Reader: the name after Dear — your friend. Clues: WHAT (apa, thing) · WHERE (di mana, place) · WHEN (bila, day or time) · WHO (siapa, person) · WHY (mengapa, sebab, reason) · HOW (bagaimana, cara, action or way) · FEEL (perasaan, feeling). Danger: AND (one more) · TWO (two) · TELL/INCLUDE (must do it). Cards: HELP blue (should, suggest, recommend, advice) · TELL green (tell, did, went, favourite, experience) · COME orange (invite) · SORRY red (apologise, sorry).",
+   "type": "passage"
+  },
+  {
+   "answer": "READER: friend. CARD: HELP. WHICH: badminton.",
+   "feedback": "SHOULD means advice, so HELP. WHICH means choose one.",
+   "hint": "Dear friend. I see SHOULD. Which colour card?",
+   "id": "sport-model-a",
+   "notes": "27:00-28:00. Routine part 1 (pupils repeat and do): 'Circle WHAT — here WHICH, also apa. I see SHOULD. Choose the blue HELP card.'",
+   "prompt": "Reader, card, first clue. Which sport should I choose?",
+   "type": "reveal"
+  },
+  {
+   "answer": "WHERE: school court. WHO: my friend.",
+   "feedback": "Two more questions, two more boxes.",
+   "hint": "WHERE asks the place. WHO asks the person.",
+   "id": "sport-model-b",
+   "notes": "28:00-29:00. Routine part 2: 'Circle WHERE. Circle WHO. Three questions — three boxes.' Stop sentence-writing: 'Boxes today. Sentences in Session 2.'",
+   "prompt": "Same question. Finish the boxes. Where can I play it? Who can play with me?",
+   "type": "reveal"
+  },
+  {
+   "alt": "Clipboard with a tick, signalling the independent exit check",
+   "id": "exit",
+   "notes": "29:00-30:00. Independent evidence: pupils complete READER + CARD + CIRCLES + BOXES on worksheet Part 4 alone (slates/paper if sheets already used). Dictate the frame: READER / CARD (circle HELP·TELL·COME·SORRY) / CIRCLES / BOXES. Collect before revealing the key. Marking offline per the key.",
+   "prompt": "Alone. Show me: reader, card, circles, boxes. Which cartoon should I watch? Where can I watch it? Who watches with me?",
+   "src": "assets/clipboard-check.svg",
+   "type": "image"
+  },
+  {
+   "answer": "READER: friend. CARD: HELP. CIRCLES: WHICH, WHERE, WHO. BOXES: 3.",
+   "feedback": "SHOULD gives HELP. Three questions, three boxes.",
+   "hint": "SHOULD points to HELP. Count the questions.",
+   "id": "exit-key",
+   "notes": "Reveal only after every sheet is collected. Pass = reader (friend) + HELP + at least 3 circles (WHICH/WHERE/WHO) + boxes 3. Fail patterns → Session 2 re-teach: wrong card (SHOULD→HELP), count under 3 (every question needs its box), reader = marker (Dear rule). Record aggregate only.",
+   "prompt": "Exit key. Mark after you collect every sheet.",
+   "type": "reveal"
+  }
+ ],
+ "title": "One Memorised Email · Session 1: Find the Clues",
+ "version": 1,
+ "viewport": "1366x768"
+}

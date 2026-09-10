@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "hook-reset",
+      "type": "choice",
+      "initialWords": 21,
+      "hintWords": 30,
+      "revealedWords": 38
+    },
+    {
+      "id": "one-email",
+      "type": "passage",
+      "initialWords": 75,
+      "hintWords": 82,
+      "revealedWords": 75
+    },
+    {
+      "id": "clues-1",
+      "type": "steps",
+      "initialWords": 15,
+      "hintWords": 22,
+      "revealedWords": 34
+    },
+    {
+      "id": "clues-2",
+      "type": "steps",
+      "initialWords": 14,
+      "hintWords": 21,
+      "revealedWords": 29
+    },
+    {
+      "id": "danger",
+      "type": "steps",
+      "initialWords": 11,
+      "hintWords": 19,
+      "revealedWords": 23
+    },
+    {
+      "id": "drill-a",
+      "type": "reveal",
+      "initialWords": 17,
+      "hintWords": 24,
+      "revealedWords": 33
+    },
+    {
+      "id": "drill-b",
+      "type": "reveal",
+      "initialWords": 19,
+      "hintWords": 25,
+      "revealedWords": 40
+    },
+    {
+      "id": "drill-c",
+      "type": "reveal",
+      "initialWords": 17,
+      "hintWords": 21,
+      "revealedWords": 36
+    },
+    {
+      "id": "cards",
+      "type": "steps",
+      "initialWords": 14,
+      "hintWords": 26,
+      "revealedWords": 34
+    },
+    {
+      "id": "toolkit",
+      "type": "passage",
+      "initialWords": 88,
+      "hintWords": 88,
+      "revealedWords": 88
+    },
+    {
+      "id": "sport-model-a",
+      "type": "reveal",
+      "initialWords": 9,
+      "hintWords": 17,
+      "revealedWords": 24
+    },
+    {
+      "id": "sport-model-b",
+      "type": "reveal",
+      "initialWords": 15,
+      "hintWords": 23,
+      "revealedWords": 27
+    },
+    {
+      "id": "exit",
+      "type": "image",
+      "initialWords": 21,
+      "hintWords": 21,
+      "revealedWords": 21
+    },
+    {
+      "id": "exit-key",
+      "type": "reveal",
+      "initialWords": 8,
+      "hintWords": 15,
+      "revealedWords": 25
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mr. A's Tutoring Slides</title>
+    <style>
+      :root { color-scheme: light; font-family: Arial, Helvetica, sans-serif; color: #173331; background: #f5f1e9; }
+      * { box-sizing: border-box; }
+      body { margin: 0; overflow-x: hidden; }
+      .wrap { max-width: 1180px; margin: 0 auto; padding: 4.5rem 2rem 5rem; }
+      header { border-left: 7px solid #16817d; padding-left: 1.35rem; margin-bottom: 2.4rem; }
+      header h1 { font-size: clamp(2.3rem, 5vw, 4.3rem); letter-spacing: -.055em; line-height: .98; margin: 0 0 .65rem; }
+      header p { margin: 0; color: #5e6d69; max-width: 60ch; font-size: 1.05rem; }
+      header p.cross { margin-top: .6rem; }
+      header p.cross a { color: #16817d; font-weight: 600; }
+      .filters { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; margin: 0 0 1rem; }
+      .filters select {
+        appearance: none; -webkit-appearance: none; font: inherit; color: inherit; background-color: #fff;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='m1 1 6 6 6-6' fill='none' stroke='%231f5f9e' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E");
+        background-position: right .85rem center; background-repeat: no-repeat; border: 1px solid #b9cbc6; border-radius: .35rem; min-width: 9.6rem; padding: .68rem 2.75rem .68rem .82rem;
+      }
+      .filters select:focus-visible { outline: 3px solid #7db3e6; outline-offset: 2px; }
+      .count { font-size: .9rem; color: #52657d; margin: 0 0 1rem; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.1rem; }
+      .card {
+        background: #fffdf9; border: 1px solid #d9dfd8; border-radius: .4rem; padding: 1.2rem 1.25rem 1.25rem;
+        box-shadow: 0 5px 16px #28433b0c; display: flex; flex-direction: column; gap: .7rem;
+      }
+      .card h2 { font-size: 1.06rem; line-height: 1.35; margin: 0; letter-spacing: -.01em; }
+      .card h2 a { color: #173331; text-decoration: none; }
+      .card h2 a:hover { color: #16817d; }
+      .badges { display: flex; flex-wrap: wrap; gap: .35rem; }
+      .badge {
+        font-size: .72rem; font-weight: 600; padding: .18rem .5rem; border-radius: 999px;
+        background: #e7f1ee; color: #24625e; border: 1px solid #c4dcd5;
+      }
+      .badge.new { background: #f8e9ca; color: #805b1d; border-color: #e7cc93; }
+      .meta { font-size: .85rem; color: #52657d; }
+      .links { display: flex; margin-top: auto; padding-top: .2rem; }
+      .links a {
+        font-size: .82rem; font-weight: 600; text-decoration: none; border-radius: .5rem; padding: .38rem .7rem;
+        background: transparent; color: #16817d; border: 1px solid #9fc5bb;
+      }
+      .links a.primary { background: #16817d; border-color: #16817d; color: #fff; }
+      .links a:hover { filter: brightness(.96); }
+      .empty { padding: 2.5rem 1rem; text-align: center; color: #52657d; background: #fff; border: 1px dashed #c9d6e4; border-radius: .9rem; }
+      .reset { display: none; font: inherit; font-size: .85rem; background: #fff; border: 1px solid #c9d6e4; border-radius: .55rem; padding: .45rem .7rem; color: #1f5f9e; cursor: pointer; }
+      .reset:hover { background: #eef4fb; }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <header>
+        <h1>Mr. A's Tutoring Slides</h1>
+        <p>Tutoring groups — latest lessons first. Filter the slide library by group, week, or day.</p>
+        <p class="cross"><a href="index.html">← Back to school classes</a></p>
+      </header>
+
+      <div class="filters" aria-label="Slide filters">
+        <select id="f-class" aria-label="Filter by class">
+          <option value="">All classes</option>
+        </select>
+        <select id="f-week" aria-label="Filter by week">
+          <option value="">All weeks</option>
+        </select>
+        <select id="f-day" aria-label="Filter by day">
+          <option value="">All days</option>
+        </select>
+        <button id="reset" class="reset" type="button">Clear filters</button>
+      </div>
+      <p id="count" class="count"></p>
+      <div id="grid" class="grid"></div>
+    </main>
+
+    <script type="application/json" id="deck-data">[{"class":"HLP-T","classSlug":"hlp-t","group":"tutoring","label":"HLP-t 2026","year":"2026","week":"31","date":"2026-09-10","day":"Thursday","topic":"HLP-t 2026 — One Memorised Email, Session 1: Find the Clues","topicSlug":"email-s1-find-clues","href":"decks/hlp-t/2026/week-31/2026-09-10-email-s1-find-clues/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"HLP-T","classSlug":"hlp-t","group":"tutoring","label":"HLP-t 2026","year":"2026","week":"31","date":"2026-09-08","day":"Tuesday","topic":"HLP-t 2026 — Session 1: See the Clues and Count the Answers","topicSlug":"session-1-find-circle-count","href":"decks/hlp-t/2026/week-31/2026-09-08-session-1-find-circle-count/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"TUITION-YEAR4","classSlug":"tuition-year4","group":"tutoring","label":"Tuition Year 4","year":"2026","week":"32","date":"2026-09-08","day":"Tuesday","topic":"Year 4 Tuition — Results and Next Steps","topicSlug":"results-and-next-steps","href":"decks/tuition-year4/2026/week-32/2026-09-08-results-and-next-steps/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"MYTUTOR-A","classSlug":"mytutor-a","group":"tutoring","label":"MyTutor-A","year":"2026","week":"31","date":"2026-09-06","day":"Sunday","topic":"MyTutor-A — Shahril — Session 1","topicSlug":"shahril","href":"decks/mytutor-a/2026/week-31/2026-09-06-shahril/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true},{"class":"TUITION-YEAR4","classSlug":"tuition-year4","group":"tutoring","label":"Tuition Year 4","year":"2026","week":"31","date":"2026-09-01","day":"Tuesday","topic":"Year 4 Tuition — Session 1: Diagnose → Discover → Fix","topicSlug":"session-1-diagnose-discover-fix","href":"decks/tuition-year4/2026/week-31/2026-09-01-session-1-diagnose-discover-fix/","hasSlides":true,"worksheet":null,"worksheetPdf":null,"notes":true}]</script>
+    <script type="application/json" id="deck-meta">{"classes":["HLP-T","MYTUTOR-A","TUITION-YEAR4"],"classLabels":{"HLP-T":"HLP-t 2026","TUITION-YEAR4":"Tuition Year 4","MYTUTOR-A":"MyTutor-A"},"weeks":["31","32"],"days":["Tuesday","Thursday","Sunday"],"generated":"2026-09-10"}</script>
+    <script>
+      const DECKS = JSON.parse(document.getElementById('deck-data').textContent);
+      const META = JSON.parse(document.getElementById('deck-meta').textContent);
+      const state = { cls: '', week: '', day: '' };
+
+      const els = {
+        cls: document.getElementById('f-class'),
+        week: document.getElementById('f-week'),
+        day: document.getElementById('f-day'),
+        reset: document.getElementById('reset'),
+        count: document.getElementById('count'),
+        grid: document.getElementById('grid'),
+      };
+
+      META.classes.forEach((c) => els.cls.add(new Option(META.classLabels[c] || c, c)));
+      META.weeks.forEach((w) => els.week.add(new Option('Week ' + w, w)));
+      META.days.forEach((d) => els.day.add(new Option(d, d)));
+
+      const fmtDate = (iso) => {
+        const [y, m, d] = iso.split('-').map(Number);
+        return new Date(y, m - 1, d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+      };
+
+      function filtered() {
+        return DECKS.filter((l) => {
+          if (state.cls && l.class !== state.cls) return false;
+          if (state.week && l.week !== state.week) return false;
+          if (state.day && l.day !== state.day) return false;
+          return true;
+        });
+      }
+
+      function render() {
+        const list = filtered();
+        els.count.textContent = list.length === DECKS.length
+          ? DECKS.length + ' slide deck' + (DECKS.length === 1 ? '' : 's')
+          : 'Showing ' + list.length + ' of ' + DECKS.length + ' slide decks';
+        els.reset.style.display = (state.cls || state.week || state.day) ? 'inline-block' : 'none';
+        if (!list.length) {
+          els.grid.innerHTML = '<div class="empty">No lessons match. Clear a filter or try a different filter.</div>';
+          return;
+        }
+        const latest = DECKS[0].date; // DECKS is pre-sorted newest first
+        els.grid.innerHTML = list.map((l) => {
+          const badges = [];
+          badges.push('<span class="badge">' + esc(l.label) + '</span>');
+          badges.push('<span class="badge">Week ' + l.week + '</span>');
+          if (l.date === latest) badges.push('<span class="badge new">Latest</span>');
+          const links = '<a class="primary" href="' + l.href + '">Open slides</a>';
+          return '<article class="card">'
+            + '<h2><a href="' + l.href + '">' + esc(l.topic) + '</a></h2>'
+            + '<div class="badges">' + badges.join('') + '</div>'
+            + '<div class="meta">' + l.day + ' · ' + fmtDate(l.date) + '</div>'
+            + '<div class="links">' + links + '</div>'
+            + '</article>';
+        }).join('');
+      }
+
+      const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+      const onInput = (key) => (e) => { state[key] = e.target.value; render(); };
+      els.cls.addEventListener('change', onInput('cls'));
+      els.week.addEventListener('change', onInput('week'));
+      els.day.addEventListener('change', onInput('day'));
+      els.reset.addEventListener('click', () => {
+        state.cls = state.week = state.day = '';
+        els.cls.value = ''; els.week.value = ''; els.day.value = '';
+        render();
+      });
+
+      render();
+    </script>
+  </body>
+</html>
