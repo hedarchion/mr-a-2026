@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "title": "Poetry Is Easier Than You Think — 1M",
+  "viewport": "1280x665",
+  "slides": [
+    {
+      "id": "1m-b1-poem",
+      "type": "choice",
+      "prompt": "Could this be a poem? Which one is BEST?",
+      "stimulus": "The rain is falling. The road is wet. People are going home.",
+      "options": ["A. Poem", "B. Not a poem", "C. Not sure"],
+      "answer": "C. Not sure",
+      "feedback": "All answers welcome. Today we test each idea against real poems.",
+      "hint": "No right or wrong. Tell me what you looked at.",
+      "notes": "HOOK / DIAGNOSTIC (~3 min, whole class). Gesture vote first (fingers 1/2/3), then take 3 hands max: 'What makes you think so?' Accept one-word answers. Log rhyme-rule assumption silently; do not correct yet. Sayable bridge: 'Let's meet a real poet.' Baseline for Beat 18 comparison."
+    },
+    {
+      "id": "1m-b2-swing",
+      "type": "choice",
+      "prompt": "What is this poem about? Which one is BEST?",
+      "stimulus": "\"How do you like to go up in a swing, Up in the air so blue?\" — Robert Louis Stevenson, The Swing",
+      "options": ["A. A war", "B. A swing", "C. A dream", "D. A journey"],
+      "answer": "B. A swing",
+      "feedback": "Ordinary subject — a child on a swing — yet it feels exciting.",
+      "hint": "Find the word three times. What is it?",
+      "visual": {
+        "src": "assets/rainbow-bridge.svg",
+        "alt": "Blue sky with a rainbow bridge"
+      },
+      "notes": "AUTHENTIC MODEL (~4 min). Read excerpt aloud TWICE; pupils chorally repeat the second line before voting. Expect near-unanimous B; D signals over-inference. Follow-up oral (no writing): 'Could you write about something ordinary — football, rain, your cat?' Collect 4–5 ideas. Bridge: 'If a swing can be a poem, what about rhyme?'"
+    },
+    {
+      "id": "1m-b3-rhyme",
+      "type": "choice",
+      "prompt": "Does a poem have to rhyme? Which is BEST?",
+      "stimulus": "The fog comes on little cat feet. Do comes and feet rhyme?",
+      "options": ["A. Yes", "B. No"],
+      "answer": "B. No",
+      "feedback": "Some poems rhyme. Some do not. Rhyme is a tool, not a rule.",
+      "hint": "Say comes. Say feet. Same end sound?",
+      "notes": "MISCONCEPTION CORRECTION (~2 min). A/B fingers, fast vote. If A: class says the pair aloud once; no phonics lecture. Log rhyme-as-rule correction. Bridge: 'If rhyme is not the secret, what makes these lines interesting?' Credit on slide is short; full Sandburg attribution follows on next slide."
+    },
+    {
+      "id": "1m-b4-fog",
+      "type": "passage",
+      "prompt": "What picture do you see in your head?",
+      "text": "The fog comes on little cat feet. It sits looking over harbor and city on silent haunches and then moves on. — Carl Sandburg, Fog",
+      "hint": "Close eyes. Fog moves — loud or quiet?",
+      "notes": "FULL POEM EXPERIENCE (~4 min). Read aloud once at normal speed, once slowly, pointing at each line. Pupils repeat 'sits / looks / moves' chorally. Accept any reasonable image (cat, smoke, quiet animal sitting); do NOT define personification yet. Word bank (voiceable rescue): fog · cat feet · sits · looks · moves. Teacher-spoken close: 'He does not explain fog. He makes us imagine it.' Bridge: 'Fog cannot really sit. So what did the poet do?'"
+    },
+    {
+      "id": "1m-b5-feet",
+      "type": "choice",
+      "prompt": "Fog has feet. True or impossible? Which is BEST?",
+      "stimulus": "The fog comes on little cat feet.",
+      "options": ["A. True", "B. Impossible"],
+      "answer": "B. Impossible",
+      "feedback": "Impossible. Fog has no feet. This is personification: living action.",
+      "hint": "Does fog have legs? Where did feet come from?",
+      "notes": "FIRST TOOL, DISCOVERED (~4 min). After vote, show orally: 'The wind whispers. The moon watches. The rain dances.' Define pupil wording: personification gives a non-human thing a human or living action (animal OK at A2). Try-it oral with verb bank first (sleeps / waits / smiles): 'The door ___. The sun ___.' Counters 'poem must be literally true'. Bridge: 'Poets also choose small exact words.'"
+    },
+    {
+      "id": "1m-b6-picture",
+      "type": "choice",
+      "prompt": "Which one gives a clearer picture? Which is BEST?",
+      "stimulus": "A or B — which can you see and hear?",
+      "options": ["A. The rain is nice.", "B. Cold rain taps on my window."],
+      "answer": "B. Cold rain taps on my window.",
+      "feedback": "B shows cold, taps, window. You see and hear it.",
+      "hint": "Which one can you see and hear?",
+      "notes": "SPECIFICITY CONTRAST (~3 min). Key line to say: 'Specific words make pictures.' Counter 'nice is enough' and 'poetic means long words': 'Did B use difficult English? No — exact English.' Try-it oral with frame: 'The dog ___.' (sleeps / waits / barks / watches). Bridge: 'Now watch one plain sentence become a poem.'"
+    },
+    {
+      "id": "1m-b7-bell",
+      "type": "steps",
+      "prompt": "How can we make this more interesting?",
+      "items": [
+        "The school bell rings.",
+        "The loud school bell rings.",
+        "The loud school bell shouts.",
+        "It shouts through the tired afternoon."
+      ],
+      "hint": "Add one detail. Loud or tired or cold?",
+      "feedback": "Detail, strong verb, image. No difficult English.",
+      "notes": "MODEL SENTENCE→POEM (~4 min). Build ORALLY before each reveal; offer verb choices (rings / shouts / sings) rather than open elicitation. Sayable per step: 'What can we add? What stronger verb? Where does it shout?' Accept variants (cries / hot evening). No grammar correction mid-build. Close: 'We did not need difficult English.' Bridge: 'Those moves have names. Here are all five together.'"
+    },
+    {
+      "id": "1m-b8-toolbox",
+      "type": "passage",
+      "prompt": "Your poet's toolbox — five choices. You need one.",
+      "text": "1. Specific words — cold rain taps. 2. Simile — moon like a lamp. 3. Personification — wind whispers. 4. Repetition — I wait, I wait. 5. Line breaks — rain / falls / tonight.",
+      "notes": "SYNTHESIS REFERENCE (~3 min, no new teaching, nothing hidden). All five visible from the start. Point to each; pupils repeat each example chorally (fix whispers, repetition). Point back: 1 = rain, 2–4 just now, 5 = bell break. Sayable: 'Poetry is making choices with ordinary words.' Bridge: 'Now test yourself — which tool is this?'"
+    },
+    {
+      "id": "1m-b9a-moon",
+      "type": "choice",
+      "prompt": "The moon smiles at me. Which one is BEST?",
+      "options": ["Simile", "Personification", "Repetition"],
+      "answer": "Personification",
+      "feedback": "The moon cannot smile. The poet gives it a human action.",
+      "hint": "Can the moon really smile? Who smiles?",
+      "notes": "CLASSIFY 1/3 (~1.5 min). Whole-class finger vote (1/2/3) before reveal. Contrast: not simile — no like/as."
+    },
+    {
+      "id": "1m-b9b-brother",
+      "type": "choice",
+      "prompt": "My brother runs like the wind. Which is BEST?",
+      "options": ["Simile", "Personification", "Repetition"],
+      "answer": "Simile",
+      "feedback": "Like compares running to the wind. Brother is human.",
+      "hint": "Find the word like. What two things compared?",
+      "notes": "CLASSIFY 2/3 (~1.5 min). Expected confusion: 'wind is non-human' → counter: 'Who runs? The brother — a person. The tool here is like.' Not personification."
+    },
+    {
+      "id": "1m-b9c-run",
+      "type": "choice",
+      "prompt": "Run, run, run! Which one is BEST?",
+      "options": ["Simile", "Personification", "Repetition"],
+      "answer": "Repetition",
+      "feedback": "Run is repeated on purpose. No comparison, no action.",
+      "hint": "How many times do you see run?",
+      "notes": "CLASSIFY 3/3 (~1 min). Contrast: no comparison word, no non-human action. Total Beat 9 ≈ 4 min."
+    },
+    {
+      "id": "1m-b10-camera",
+      "type": "prompt",
+      "prompt": "Turn on your poetry camera. What do you notice?",
+      "stimulus": "A rainy school afternoon. SEE — what can you see? HEAR — what can you hear? FEEL — what can you feel? NOTICE — small thing others ignore?",
+      "hint": "See shoes, sky, windows. Hear rain, voices, bells.",
+      "notes": "GUIDED IDEA GENERATION (~5 min, oral only). Sayable: 'Do not invent a new world. Tell me what is really here.' Build bank publicly from pupil words (take 6–8): wet shoes · grey sky · noisy rain · cold floor · umbrellas · dripping bags · sleepy students · water on the window. Accept feelings (sleepy, lonely). Per-prompt rescue: See — shoes, sky, windows. Hear — rain, voices, bells? Feel — cold? sleepy? wet socks? Notice — water on glass, dripping bags. Keep bank visible into Beat 11. Bridge: 'Now use these words. Let's write one together.'"
+    },
+    {
+      "id": "1m-b11-rain",
+      "type": "steps",
+      "prompt": "Let's write a poem together. What does rain do?",
+      "items": [
+        "The rain taps on the window",
+        "like tiny fingers.",
+        "It waits. It listens.",
+        "Then it disappears. Title: Rain"
+      ],
+      "hint": "Give a verb: taps, knocks, sings?",
+      "feedback": "Choices, not perfection: verb, simile, action, breaks.",
+      "visual": {
+        "src": "assets/unity-hands.svg",
+        "alt": "Hands together building one poem"
+      },
+      "notes": "GUIDED CONSTRUCTION (~5 min, teacher holds the pen). Staged sayables: 'What does the rain do? Where? What does it sound like? If rain were a person — waits? listens? watches?' Verb choices for 1M (taps / knocks / sings); simile frame 'It sounds like ___.' Title decided aloud ('What shall we call it? One word.'). Load-bearing line, say verbatim: 'This is not a perfect poem. It is a poem because we made choices.' Counters one-correct-poem; accept variant verbs. Leave visible as confidence anchor; move OFF this slide before independent writing so pupils cannot copy."
+    },
+    {
+      "id": "1m-b12-one",
+      "type": "prompt",
+      "prompt": "Choose ONE thing for your poem. Point now.",
+      "stimulus": "RAIN · MY FRIEND · MY PHONE · FOOTBALL · MY CAT / DOG · SCHOOL · THE MOON · A PLACE I LIKE · SOMETHING I MISS · SOMETHING I LOVE · Or your own.",
+      "hint": "Which one can you see right now?",
+      "notes": "COMMIT (~2 min). Visible commitment in 60 seconds (finger on choice / whisper to neighbour). Steer strugglers to RAIN / SCHOOL / MOON (banked language exists). Sayable: 'You only need ONE subject.' Teacher line: 'One clear subject makes a stronger poem.' Bridge: 'Here is a recipe if you need steps.'"
+    },
+    {
+      "id": "1m-b13a-recipe",
+      "type": "steps",
+      "prompt": "A simple recipe — training wheels. Lines 1 to 4.",
+      "items": [
+        "Line 1: Introduce it. (My cat...)",
+        "Line 2: What does it look like?",
+        "Line 3: What does it do?",
+        "Line 4: What does it sound / feel / smell like?"
+      ],
+      "hint": "Skip a line if needed. Keep 6 to 8 lines.",
+      "notes": "RECIPE PART 1/2 (~1 min). Read aloud once. Stress 'training wheels, not rules.' Link to toolbox (line 5≈simile, 6≈personification, 7≈repetition). Do NOT collect writing yet. Bridge: 'Plan in 30 seconds, then write.'"
+    },
+    {
+      "id": "1m-b13b-recipe",
+      "type": "steps",
+      "prompt": "Same recipe — lines 5 to 8. Skip if needed.",
+      "items": [
+        "Line 5: Compare it to something. (like / as)",
+        "Line 6: Give it a human action.",
+        "Line 7: Repeat a word or idea.",
+        "Line 8: End with a strong picture."
+      ],
+      "hint": "Skip a line if needed. Keep 6 to 8 lines.",
+      "notes": "RECIPE PART 2/2 (~1 min). Same wording as storyboard; split only because steps caps at 4 items and TV legibility needs large type. Total Beat 13 ≈ 2 min (trimmed from 3 to hold the hour)."
+    },
+    {
+      "id": "1m-b14-plan",
+      "type": "prompt",
+      "prompt": "Plan in 30 seconds. Fill this for YOUR subject.",
+      "stimulus": "My subject: ___. 3 things I notice: ___ / ___ / ___. One verb: ___. Like: ___. It ___. Model — rain: cold, window, grey; taps; tiny fingers; waits.",
+      "hint": "Stuck? Steal cold, window, grey. Change one word.",
+      "notes": "MODEL PLANNING (~2 min hard cap). Model with rain in ≤60 sec, then pupils fill SILENTLY. Circulate for blanks: first check = subject + one notice. Do NOT exceed 2 min. Sayable: 'Copy the frames. Use your own words. Thirty seconds.' Teacher close: 'Notes first, lines second. Now turn your notes into lines.' Bridge: 'Now write. Six to eight lines.'"
+    },
+    {
+      "id": "1m-b15-write",
+      "type": "writing",
+      "prompt": "Write your first poem — about ONE thing.",
+      "task": "6–8 lines. Give it a title. Use specific details. Use ONE: simile, personification, repetition, breaks. No rhyme needed.",
+      "notes": "INDEPENDENT TRANSFER (~8 min hard stop, timer, SILENCE). Sayable: 'Start now. One subject. Your choices.' Circulate in ladder order: one clear subject → lines appearing → one concrete detail → one tool. For non-starters, point to Beat 14 frames and dictate a starter ('My ___ ...'). Light grammar correction only — never block writing. Rescue ladder (voiceable): 'What can you see? What does it do? What does it sound like? What is it like? If it were a person, what would it do?' EXTENSION only if finished early: 'Repeat your best line once more.' Evidence: titled 6–8 line poem."
+    },
+    {
+      "id": "1m-b16-check",
+      "type": "prompt",
+      "prompt": "Read like a poet. Make ONE line better.",
+      "stimulus": "Title? 6–8 lines? Specific words? One tool? Picture in head? Line breaks chosen?",
+      "hint": "Point to weakest line. Add one word or like.",
+      "notes": "SELF-CHECK / REVISE (~2 min: fast check, then rewrite one line). Sayable: 'Do not ask, Is it perfect? Ask, Which line can I make better?' Affirm revisions adding specificity or a tool even if grammar is imperfect. Teacher line: 'Poets revise choices; one stronger line is enough today.' Bridge: 'So what IS poetry, after doing it?'"
+    },
+    {
+      "id": "1m-b17-what",
+      "type": "choice",
+      "prompt": "What is poetry? Which one is BEST?",
+      "options": ["A. Using difficult words", "B. Making everything rhyme", "C. Choosing words that make images"],
+      "answer": "C. Choosing words that make images",
+      "feedback": "Poetry is choices, not hard words.",
+      "hint": "Did your poem need big words? Rhyme?",
+      "notes": "CONSOLIDATION (~1 min). Expect C; if A/B, replay evidence ('comes/feet did not rhyme; cold/taps were not hard'). Follow-up oral, 3 answers: 'What is one choice you made? (a simile / a strong verb / a repeated word / a line break)'. Do NOT re-teach toolbox. Bridge: 'One last challenge — prove it in two lines.'"
+    },
+    {
+      "id": "1m-b18-moon",
+      "type": "writing",
+      "prompt": "Turn this into TWO poetic lines. Use one tool.",
+      "task": "The moon is bright. Write two lines. Use one choice.",
+      "frame": "The moon ___ (watches / smiles / waits) — or — like a ___ (lamp / light)",
+      "notes": "EXIT EVIDENCE, FRESH TRANSFER (~2 min). Reveal the frame only for stuck pupils (press Reveal). Reward ANY real choice — human action, comparison, strong break — not one perfect answer. Possibles: 'The moon / watches me.' or 'The bright moon hangs / like a lamp in the sky.' Take 3–4 shares; for each ask class: 'What choice did the writer make?' Do NOT judge 'beautiful'. Final line, say verbatim: 'You have written a poem.' Collect exit lines with Beat 15 poems."
+    }
+  ]
+}
