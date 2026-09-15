@@ -19,6 +19,7 @@ export const types = [
   "passage",
   "order",
   "sort",
+  "matrix",
   "wordmix",
   "image",
   "writing",
@@ -49,6 +50,12 @@ export function contentCounts(s) {
   if (s.type === "order") body.push(...s.items);
   if (s.type === "sort")
     body.push(...s.items.flatMap((x) => [x.text, ...s.categories]));
+  if (s.type === "matrix")
+    body.push(
+      ...s.rows,
+      ...s.cols,
+      ...s.pairs.map((x) => x.clue || ""),
+    );
   if (s.type === "wordmix")
     body.push(
       ...s.pairs.flatMap((x) => [x.word, x.meaning]),
@@ -57,11 +64,11 @@ export function contentCounts(s) {
     );
   const initial = words([s.prompt, ...body].join(" "));
   let revealed = initial;
-  if (["reveal", "choice", "short"].includes(s.type)) revealed += words(s.answer);
+  if (["reveal", "choice", "matrix", "short"].includes(s.type)) revealed += words(s.answer);
   if (s.type === "steps")
     revealed += s.items.slice(1).reduce((a, x) => a + words(x), 0);
   if (s.type === "writing") revealed += words(s.frame);
-  if (["reveal", "choice", "cloze", "gap", "order", "sort", "short"].includes(s.type))
+  if (["reveal", "choice", "cloze", "gap", "order", "sort", "matrix", "short"].includes(s.type))
     revealed += words(s.feedback);
   return {
     id: s.id,
@@ -107,10 +114,10 @@ export function validate(d) {
       if (s[k])
         require(typeof s[k] === "string" &&
           words(s[k]) <= 24, `${p}: ${k} exceeds 24 words`);
-    if (["reveal", "choice", "cloze", "gap", "order", "sort", "short"].includes(s.type))
+    if (["reveal", "choice", "cloze", "gap", "order", "sort", "matrix", "short"].includes(s.type))
       require(typeof s.feedback === "string" &&
         s.feedback.trim(), `${p}: explanatory feedback required`);
-    if (["reveal", "choice", "cloze", "gap", "short"].includes(s.type))
+    if (["reveal", "choice", "cloze", "gap", "matrix", "short"].includes(s.type))
       require(typeof s.answer === "string" &&
         s.answer.trim(), `${p}: answer required`);
     if (s.answer)
@@ -225,6 +232,43 @@ export function validate(d) {
             s.categories.includes(x.category),
         ), `${p}: 2–4 short items with canonical categories`);
     }
+    if (s.type === "matrix") {
+      require(Array.isArray(s.rows) &&
+        s.rows.length >= 2 &&
+        s.rows.length <= 4 &&
+        new Set(s.rows).size === s.rows.length &&
+        s.rows.every(
+          (x) => typeof x === "string" && words(x) >= 1 && words(x) <= 8,
+        ), `${p}: matrix needs 2–4 unique short rows`);
+      require(Array.isArray(s.cols) &&
+        s.cols.length >= 2 &&
+        s.cols.length <= 4 &&
+        new Set(s.cols).size === s.cols.length &&
+        s.cols.every(
+          (x) => typeof x === "string" && words(x) >= 1 && words(x) <= 8,
+        ), `${p}: matrix needs 2–4 unique short columns`);
+      require(Array.isArray(s.pairs) &&
+        s.pairs.length === (Array.isArray(s.rows) ? s.rows.length : -1) &&
+        s.pairs.every(
+          (x) =>
+            x &&
+            typeof x.row === "string" &&
+            Array.isArray(s.rows) &&
+            s.rows.includes(x.row) &&
+            typeof x.col === "string" &&
+            Array.isArray(s.cols) &&
+            s.cols.includes(x.col) &&
+            (x.clue === undefined ||
+              (typeof x.clue === "string" && words(x.clue) >= 1 && words(x.clue) <= 12)),
+        ), `${p}: matrix needs one canonical pair per row with an optional short clue`);
+      if (Array.isArray(s.pairs)) {
+        require(new Set(s.pairs.map((x) => x && x.row)).size === s.pairs.length,
+          `${p}: matrix rows must each pair exactly once`);
+        if (Array.isArray(s.cols) && s.pairs.length === s.cols.length)
+          require(new Set(s.pairs.map((x) => x && x.col)).size === s.pairs.length,
+            `${p}: matrix columns must each pair exactly once (one-to-one)`);
+      }
+    }
     if (s.type === "wordmix") {
       require(Array.isArray(s.pairs) &&
         s.pairs.length >= 2 &&
@@ -276,6 +320,8 @@ export function validate(d) {
       "task",
       "frame",
       "categories",
+      "rows",
+      "cols",
       "pairs",
       "ideas",
       "src",
@@ -289,9 +335,31 @@ export function validate(d) {
       "notes",
       "acceptedVariants",
       "placeholder",
+      "kwOnReveal",
     ];
     for (const k of Object.keys(s))
       require(allowed.includes(k), `${p}: unsupported field ${k}`);
+    if (s.kwOnReveal !== undefined)
+      require(typeof s.kwOnReveal === "boolean", `${p}: kwOnReveal must be a boolean`);
+    for (const k of Object.keys(s)) {
+      const v = s[k];
+      const texts = Array.isArray(v)
+        ? v.flatMap((x) =>
+            typeof x === "string"
+              ? [x]
+              : x && typeof x === "object"
+                ? Object.values(x).flatMap((y) => (typeof y === "string" ? [y] : []))
+                : [],
+          )
+        : typeof v === "string"
+          ? [v]
+          : [];
+      for (const t of texts)
+        require(
+          (t.match(/==/g) || []).length % 2 === 0,
+          `${p}: unbalanced == highlight in ${k}; wrap words as ==word==`,
+        );
+    }
   }
   if (errors.length) throw new Error(errors.join("\n"));
   for (const s of d.slides) {

@@ -108,6 +108,19 @@ test("categorisation needs recoverable canonical categories", () => {
   d.slides.find((s) => s.type === "sort").items[0].category = "Other";
   assert.throws(() => validate(d), /canonical categories/);
 });
+test("matrix needs one-to-one pairs with short clues", () => {
+  const d = sample();
+  const matrix = d.slides.find((s) => s.type === "matrix");
+  validate(d);
+  matrix.pairs[1].col = matrix.pairs[0].col;
+  assert.throws(() => validate(d), /exactly once/);
+  matrix.pairs[1].col = "Sentence A";
+  matrix.pairs[0].clue = Array(13).fill("word").join(" ");
+  assert.throws(() => validate(d), /short clue/);
+  delete matrix.pairs[0].clue;
+  matrix.answer = "";
+  assert.throws(() => validate(d), /answer required/);
+});
 test("wordmix requires concise unique words and ideas", () => {
   const d = sample();
   const mix = d.slides.find((s) => s.type === "wordmix");
@@ -123,6 +136,20 @@ test("rejects malformed objects with useful diagnostics", () => {
   const d = sample();
   d.slides = [null];
   assert.throws(() => validate(d), /slide object/);
+});
+test("keyword highlight requires balanced markers", () => {
+  const d = sample();
+  d.slides.find((s) => s.type === "reveal").prompt = "Broken ==highlight";
+  assert.throws(() => validate(d), /unbalanced ==/);
+  d.slides.find((s) => s.type === "reveal").prompt = "Say ==can== now.";
+  validate(d);
+});
+test("kwOnReveal must be a boolean when present", () => {
+  const d = sample();
+  d.slides[0].kwOnReveal = "yes";
+  assert.throws(() => validate(d), /kwOnReveal/);
+  d.slides[0].kwOnReveal = true;
+  validate(d);
 });
 test("separate visible-state budget catches combined dense content", () => {
   const d = sample();

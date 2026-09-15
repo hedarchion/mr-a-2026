@@ -374,6 +374,51 @@ async function testSlide(page, viewport, i, total) {
       fail(`${viewport.width}: sort keyboard path did not show the correct checked state on slide ${i + 1}`);
     if (!(await page.locator("#announcement").textContent()).includes("Correct."))
       fail(`${viewport.width}: sort did not announce the correct result on slide ${i + 1}`);
+  } else if (type === "matrix") {
+    const rows = page.locator(".matrix-row");
+    if ((await rows.count()) !== spec.pairs.length)
+      fail(`${viewport.width}: matrix row count mismatch on slide ${i + 1}`);
+    const testedWrongCols = [];
+    for (let j = 0; j < spec.pairs.length; j++) {
+      const cells = rows.nth(j).locator("button");
+      const labels = await cells.allTextContents();
+      const wrongIndex = labels.findIndex((label) => label !== spec.pairs[j].col);
+      await cells.nth(wrongIndex).click();
+      testedWrongCols[j] = labels[wrongIndex];
+    }
+    await page.locator("#reveal").click();
+    for (let j = 0; j < spec.pairs.length; j++) {
+      const wrong = rows.nth(j).locator("button.incorrect[aria-pressed='true']");
+      if ((await wrong.count()) !== 1 ||
+          !(await wrong.textContent()).startsWith("✕ Not yet") ||
+          !(await wrong.textContent()).includes(testedWrongCols[j]))
+        fail(`matrix wrong attempt missing: ${spec.id} row ${j}`);
+      const correct = await rows.nth(j).locator("button.correct").textContent();
+      if (!correct.startsWith("✓ Correct") || !correct.includes(spec.pairs[j].col))
+        fail(`matrix canonical answer missing: ${spec.id} row ${j}`);
+      if (spec.pairs[j].clue && !correct.includes(spec.pairs[j].clue))
+        fail(`matrix clue missing: ${spec.id} row ${j}`);
+    }
+    if (!(await page.locator("#announcement").textContent()).includes("Incorrect."))
+      fail(`${viewport.width}: matrix did not announce the wrong result on slide ${i + 1}`);
+    await measure(page, `${viewport.width}x${viewport.height} slide ${i + 1} incorrect`);
+    await screenshot(page, viewport, i + 1, "incorrect");
+    await page.locator("#reset").click();
+    if ((await page.locator(".matrix-row button[aria-pressed='true']").count()) !== 0)
+      fail(`${viewport.width}: matrix Reset did not clear selections on slide ${i + 1}`);
+    for (let j = 0; j < spec.pairs.length; j++) {
+      const correct = page.locator(".matrix-row").nth(j).locator("button", {
+        hasText: spec.pairs[j].col,
+      });
+      await correct.focus();
+      await page.keyboard.press("Enter");
+    }
+    await page.keyboard.press("Space");
+    if ((await page.locator(".matrix-row button.incorrect").count()) !== 0 ||
+        (await page.locator(".matrix-row button.correct[aria-pressed='true']").count()) !== spec.pairs.length)
+      fail(`${viewport.width}: matrix keyboard path did not show the correct checked state on slide ${i + 1}`);
+    if (!(await page.locator("#announcement").textContent()).includes("Correct."))
+      fail(`${viewport.width}: matrix did not announce the correct result on slide ${i + 1}`);
   } else if (type === "order") {
     let buttons = page.locator("#slide .list button");
     for (let j = 0; j < (await buttons.count()); j++)

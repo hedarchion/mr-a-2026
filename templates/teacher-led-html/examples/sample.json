@@ -143,6 +143,21 @@
    "notes": "Teacher selects the category proposed by the class. Reveal fills the canonical categories; selections have no scores."
   },
   {
+   "id": "matrix",
+   "type": "matrix",
+   "prompt": "Match each gap with its sentence.",
+   "rows": ["Gap 1", "Gap 2"],
+   "cols": ["Sentence A", "Sentence B"],
+   "pairs": [
+    {"row": "Gap 1", "col": "Sentence B", "clue": "Look for the time word."},
+    {"row": "Gap 2", "col": "Sentence A", "clue": "Look at the last line."}
+   ],
+   "answer": "1–B, 2–A",
+   "feedback": "Each clue fits before and after its gap.",
+   "hint": "Read before and after the gap.",
+   "notes": "Pair-matching fixture: neutral selection, then Reveal marks each row Correct or Not yet with its clue. Reset clears the table."
+  },
+  {
    "id": "wordmix",
    "type": "wordmix",
    "prompt": "Mix a word with an idea",

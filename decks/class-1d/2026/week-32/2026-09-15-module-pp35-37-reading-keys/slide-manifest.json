@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "retrieve-animals",
+      "type": "steps",
+      "initialWords": 10,
+      "hintWords": 17,
+      "revealedWords": 21
+    },
+    {
+      "id": "words-hard-1",
+      "type": "steps",
+      "initialWords": 15,
+      "hintWords": 15,
+      "revealedWords": 28
+    },
+    {
+      "id": "words-hard-2",
+      "type": "steps",
+      "initialWords": 14,
+      "hintWords": 14,
+      "revealedWords": 30
+    },
+    {
+      "id": "words-all-four",
+      "type": "steps",
+      "initialWords": 12,
+      "hintWords": 20,
+      "revealedWords": 33
+    },
+    {
+      "id": "read-bulb",
+      "type": "prompt",
+      "initialWords": 14,
+      "hintWords": 31,
+      "revealedWords": 14
+    },
+    {
+      "id": "match-bulb-1",
+      "type": "matrix",
+      "initialWords": 22,
+      "hintWords": 28,
+      "revealedWords": 32
+    },
+    {
+      "id": "match-bulb-2",
+      "type": "matrix",
+      "initialWords": 22,
+      "hintWords": 28,
+      "revealedWords": 31
+    },
+    {
+      "id": "keys-bulb",
+      "type": "reveal",
+      "initialWords": 4,
+      "hintWords": 4,
+      "revealedWords": 18
+    },
+    {
+      "id": "read-teleport",
+      "type": "prompt",
+      "initialWords": 8,
+      "hintWords": 23,
+      "revealedWords": 8
+    },
+    {
+      "id": "match-teleport-1",
+      "type": "matrix",
+      "initialWords": 22,
+      "hintWords": 27,
+      "revealedWords": 30
+    },
+    {
+      "id": "match-teleport-2",
+      "type": "matrix",
+      "initialWords": 22,
+      "hintWords": 27,
+      "revealedWords": 30
+    },
+    {
+      "id": "keys-teleport",
+      "type": "reveal",
+      "initialWords": 2,
+      "hintWords": 2,
+      "revealedWords": 15
+    },
+    {
+      "id": "think-bulb",
+      "type": "reveal",
+      "initialWords": 7,
+      "hintWords": 18,
+      "revealedWords": 24
+    },
+    {
+      "id": "think-teleport-use",
+      "type": "reveal",
+      "initialWords": 5,
+      "hintWords": 12,
+      "revealedWords": 17
+    },
+    {
+      "id": "think-your-view",
+      "type": "reveal",
+      "initialWords": 6,
+      "hintWords": 11,
+      "revealedWords": 14
+    },
+    {
+      "id": "reading-round-close",
+      "type": "steps",
+      "initialWords": 11,
+      "hintWords": 25,
+      "revealedWords": 17
+    }
+  ]
+}

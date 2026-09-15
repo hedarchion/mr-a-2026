@@ -1,0 +1,202 @@
+{
+  "version": 1,
+  "title": "Module pp.35–37: words, matching, keys",
+  "viewport": "1280x665",
+  "slides": [
+    {
+      "id": "retrieve-animals",
+      "type": "steps",
+      "prompt": "Yesterday's animals: true or false?",
+      "hint": "Think of the tiger, terrapin and hornbill.",
+      "items": [
+        "1. Terrapins are endangered. True.",
+        "2. Deforestation takes homes. True.",
+        "3. Eco products harm animals. False."
+      ],
+      "visual": { "src": "assets/paw-print.svg", "alt": "Paw print orientation icon" },
+      "notes": "Hands up / choral True-True-False, 6 min max. Elicit each verdict BEFORE tapping Next step. Say the why orally: terrapins are endangered; forests gone means homes gone; eco means safe. Misconception: eco-friendly misread as harmful (cf. Module p.35 Q4 False). Follow-up: ask what poaching means (one word: illegal hunting). Bridge: same skill today — match the right sentence. Retrieval from 2026-09-14 deck only; do not reteach p.34."
+    },
+    {
+      "id": "words-hard-1",
+      "type": "steps",
+      "prompt": "Say it. Know it. Repeat after me.",
+      "items": [
+        "==endangered== — en-DAYN-jerd — terancam — not safe",
+        "==deforestation== — dee-for-es-TAY-shun — forests cut down",
+        "Tigers are ==endangered==.",
+        "==Deforestation== takes homes."
+      ],
+      "notes": "Teacher models each once, pupils repeat twice; drill the stressed caps syllable. Both words verified non-A2 (0 matches, A2 Key Aug 2025). Keep Malay brief; examples are paraphrases, not book verbatim."
+    },
+    {
+      "id": "words-hard-2",
+      "type": "steps",
+      "prompt": "Two more. Say them strongly.",
+      "items": [
+        "==poacher== — POH-cher — pemburu haram — hunts illegally",
+        "==conservation== — kon-ser-VAY-shun — protecting nature",
+        "==Poachers== take eggs and shells.",
+        "==Conservation== means volunteer and donate."
+      ],
+      "notes": "Correct poacher = illegal hunter (not any hunter). Cue the deforestation/conservation swap early: de-FOR-est = forest gone; con-SERVE = save. Both words verified non-A2."
+    },
+    {
+      "id": "words-all-four",
+      "type": "steps",
+      "prompt": "Four words — match the Malay.",
+      "hint": "Person, forest, danger, help — point to each.",
+      "items": [
+        "==endangered== — terancam — may disappear",
+        "==deforestation== — penebangan hutan — forests cut down",
+        "==poacher== — pemburu haram — hunts illegally",
+        "==conservation== — pemuliharaan — protect nature"
+      ],
+      "notes": "Required synthesis beat: all four taught words together on one slide, final state complete, no new teaching. Build with Next step; pupils give the Malay before each appears where possible. Say the swap cue orally: de-FOR-est means forest gone; con-SERVE means save. 4 min. Steps form chosen over reveal so the 96px prompt-only scale cannot overflow."
+    },
+    {
+      "id": "read-bulb",
+      "type": "prompt",
+      "prompt": "Read The Light Bulb on page 36. Gaps 1 to 4. Listen and follow.",
+      "hint": "credited — people say he did it. Practical — useful, works well. Power station — makes electricity.",
+      "visual": { "src": "assets/lightbulb.svg", "alt": "Light bulb topic icon" },
+      "notes": "Display route: project the module PDF / pupils open p.36 — full passage is read from the book, not reprinted here. Teacher reads once at natural speed, then gap sentences slowly; choral repeat trial and error + power station. Defer solving: just follow first. Pronunciation: credited KREE-dit-ed, practical PRAK-ti-kel. credited/practical verified non-A2; station is A2 (record 1421)."
+    },
+    {
+      "id": "match-bulb-1",
+      "type": "matrix",
+      "prompt": "Match gaps 1 and 2.",
+      "rows": [
+        "Gap 1: Edison, earlier ideas",
+        "Gap 2: 3,000, 1882 New York"
+      ],
+      "cols": ["A", "B", "C", "D"],
+      "pairs": [
+        { "row": "Gap 1: Edison, earlier ideas", "col": "C", "clue": "Although" },
+        { "row": "Gap 2: 3,000, 1882 New York", "col": "A", "clue": "3,000" }
+      ],
+      "answer": "1–C, 2–A",
+      "feedback": "Each sentence fits before and after its gap.",
+      "hint": "Gap 2 has numbers to find.",
+      "notes": "New matrix pair-matching game, first half. Tap one sentence per gap, then Reveal. Neutral attempt until Reveal; wrong rows show Not yet, canonical rows show Correct + clue. Gap 2 easiest (numbers); Gap 1 hardest (Although contrast). Misconception: matching one shared word — cue read before AND after the gap. 4 min."
+    },
+    {
+      "id": "match-bulb-2",
+      "type": "matrix",
+      "prompt": "Now match gaps 3 and 4.",
+      "rows": [
+        "Gap 3: homes and streets",
+        "Gap 4: greatest invention ending"
+      ],
+      "cols": ["A", "B", "C", "D"],
+      "pairs": [
+        { "row": "Gap 3: homes and streets", "col": "D", "clue": "streets" },
+        { "row": "Gap 4: greatest invention ending", "col": "B", "clue": "ending" }
+      ],
+      "answer": "3–D, 4–B",
+      "feedback": "Street light everywhere, then the big ending.",
+      "hint": "Gap 4 is the last line.",
+      "notes": "Matrix second half. All four sentences stay visible so pupils choose from the full set. Reset clears this half only. 4 min."
+    },
+    {
+      "id": "keys-bulb",
+      "type": "reveal",
+      "prompt": "Keys: The Light Bulb.",
+      "answer": "1–C, 2–A, 3–D, 4–B",
+      "feedback": "Although joins ideas. 3,000 tries. Homes and streets. Big ending.",
+      "visual": { "src": "assets/key-round.svg", "alt": "Key icon for answer keys" },
+      "notes": "Keys-only beat by teacher request. Pupils copy keys quietly, 3 min. Redirect A-for-1 attempts to the Although contrast. No new vocabulary here."
+    },
+    {
+      "id": "read-teleport",
+      "type": "prompt",
+      "prompt": "Read Teleportation on page 37. Listen and follow.",
+      "hint": "crisis — a bad emergency. Evacuate — move people to safety. Pollution — dirty air.",
+      "visual": { "src": "assets/rocket.svg", "alt": "Rocket topic icon for teleportation" },
+      "notes": "Same display route from the book, faster cycle (6 min). Choral repeat evacuate + pollution. Correct teleportation = fast travel, same time (not time travel). crisis/evacuate/pollution verified non-A2; invention and electricity are A2 (records 794, 481)."
+    },
+    {
+      "id": "match-teleport-1",
+      "type": "matrix",
+      "prompt": "Match gaps 5 and 6.",
+      "rows": [
+        "Gap 5: lunch in Tokyo",
+        "Gap 6: earthquake zones, move fast"
+      ],
+      "cols": ["E", "F", "G", "H"],
+      "pairs": [
+        { "row": "Gap 5: lunch in Tokyo", "col": "E", "clue": "family" },
+        { "row": "Gap 6: earthquake zones, move fast", "col": "H", "clue": "rescue" }
+      ],
+      "answer": "5–E, 6–H",
+      "feedback": "Family visits fast, rescue moves faster.",
+      "hint": "Gap 6 moves people out.",
+      "notes": "Second matrix round, higher independence, first half (4 min). Watch the 6/H vs 7/F swap later — cue: 6 = move fast, 7 = clean air. Reset clears this half only."
+    },
+    {
+      "id": "match-teleport-2",
+      "type": "matrix",
+      "prompt": "Last match: gaps 7 and 8.",
+      "rows": [
+        "Gap 7: fewer cars, clean air",
+        "Gap 8: in conclusion"
+      ],
+      "cols": ["E", "F", "G", "H"],
+      "pairs": [
+        { "row": "Gap 7: fewer cars, clean air", "col": "F", "clue": "air" },
+        { "row": "Gap 8: in conclusion", "col": "G", "clue": "conclusion" }
+      ],
+      "answer": "7–F, 8–G",
+      "feedback": "Clean air first, then the ending.",
+      "hint": "Gap 8 names the ending.",
+      "notes": "Matrix last half (3 min). Gap 8 easiest (in conclusion = ending). All four sentences stay visible."
+    },
+    {
+      "id": "keys-teleport",
+      "type": "reveal",
+      "prompt": "Keys: Teleportation.",
+      "answer": "5–E, 6–H, 7–F, 8–G",
+      "feedback": "Family plus emergency. Move out fast. Clean air. Ending.",
+      "visual": { "src": "assets/key-round.svg", "alt": "Key icon for answer keys" },
+      "notes": "Keys-only beat. Pupils record keys; quick choral read of the four clue phrases. 3 min."
+    },
+    {
+      "id": "think-bulb",
+      "type": "reveal",
+      "prompt": "Light Bulb: why 3,000? Which place helped?",
+      "hint": "1 = wanted it to work. 2 = New York homes.",
+      "answer": "1. He tried until it worked. 2. Homes or streets.",
+      "feedback": "Trying many times is trial and error.",
+      "notes": "Fresh comprehension, not module items. Individual books, short answers of 8 words or fewer; copying whole gap sentences is not accepted. 4 min for both."
+    },
+    {
+      "id": "think-teleport-use",
+      "type": "reveal",
+      "prompt": "Teleportation: crisis use? Planet use?",
+      "hint": "Crisis saves lives. Planet means clean air.",
+      "answer": "Crisis: move people out fast. Planet: less pollution.",
+      "feedback": "Fast rescue, clean planet.",
+      "notes": "Fresh comprehension, not module items. Short answers of 8 words or fewer; copying whole gap sentences is not accepted."
+    },
+    {
+      "id": "think-your-view",
+      "type": "reveal",
+      "prompt": "Bulb or teleportation for you? Why?",
+      "hint": "Pick one. Give your reason.",
+      "answer": "Any clear reason.",
+      "feedback": "Your reason is the answer.",
+      "notes": "Open view question: accept any intelligible reason, e.g. Bulb — I study at night; Teleportation — visit family fast. Hands check if time allows, else drop discussion when behind."
+    },
+    {
+      "id": "reading-round-close",
+      "type": "steps",
+      "prompt": "Reading round. Teacher picks.",
+      "hint": "Today: page 35 Q5 to Q8, pages 36 to 37 keys. Finish at home.",
+      "items": [
+        "A: He tried over three thousand designs.",
+        "B: Teleportation moves people from danger."
+      ],
+      "visual": { "src": "assets/dices.svg", "alt": "Dice icon for the teacher randomizer" },
+      "notes": "Teacher-operated PBD-style round (never pupil procedure, no What-is-PBD copy): teacher runs the randomizer, names the tested skill (read gap sentences clearly), reveals line A, pick leads to pupil reading it, then line B, next pick. Immediate oral feedback (Clear / Again slowly). 4–6 pupils max. Tap Hint to show the bookwork pointer: Module p.35 Q5–8 + pp.36–37 keys. 5–6 min. Steps form chosen so the 96px prompt-only scale cannot overflow."
+    }
+  ]
+}
