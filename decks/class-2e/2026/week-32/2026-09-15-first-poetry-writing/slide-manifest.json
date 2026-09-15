@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "2e-b01-hook",
+      "type": "choice",
+      "initialWords": 32,
+      "hintWords": 47,
+      "revealedWords": 51
+    },
+    {
+      "id": "2e-b02-swing",
+      "type": "choice",
+      "initialWords": 43,
+      "hintWords": 54,
+      "revealedWords": 61
+    },
+    {
+      "id": "2e-b03-rhyme",
+      "type": "choice",
+      "initialWords": 27,
+      "hintWords": 34,
+      "revealedWords": 42
+    },
+    {
+      "id": "2e-b04-fog",
+      "type": "passage",
+      "initialWords": 33,
+      "hintWords": 46,
+      "revealedWords": 33
+    },
+    {
+      "id": "2e-b05-fog-feet",
+      "type": "choice",
+      "initialWords": 20,
+      "hintWords": 30,
+      "revealedWords": 36
+    },
+    {
+      "id": "2e-b06-specific",
+      "type": "choice",
+      "initialWords": 22,
+      "hintWords": 32,
+      "revealedWords": 45
+    },
+    {
+      "id": "2e-b07-bell-build",
+      "type": "steps",
+      "initialWords": 11,
+      "hintWords": 11,
+      "revealedWords": 30
+    },
+    {
+      "id": "2e-b08-toolbox",
+      "type": "passage",
+      "initialWords": 44,
+      "hintWords": 44,
+      "revealedWords": 44
+    },
+    {
+      "id": "2e-b09a-moon",
+      "type": "choice",
+      "initialWords": 15,
+      "hintWords": 22,
+      "revealedWords": 28
+    },
+    {
+      "id": "2e-b09b-brother",
+      "type": "choice",
+      "initialWords": 16,
+      "hintWords": 25,
+      "revealedWords": 26
+    },
+    {
+      "id": "2e-b09c-run",
+      "type": "choice",
+      "initialWords": 13,
+      "hintWords": 20,
+      "revealedWords": 24
+    },
+    {
+      "id": "2e-b10-camera",
+      "type": "prompt",
+      "initialWords": 22,
+      "hintWords": 34,
+      "revealedWords": 22
+    },
+    {
+      "id": "2e-b11-rain-together",
+      "type": "steps",
+      "initialWords": 16,
+      "hintWords": 16,
+      "revealedWords": 28
+    },
+    {
+      "id": "2e-b12-choice",
+      "type": "prompt",
+      "initialWords": 25,
+      "hintWords": 39,
+      "revealedWords": 25
+    },
+    {
+      "id": "2e-b13a-recipe-1",
+      "type": "steps",
+      "initialWords": 15,
+      "hintWords": 15,
+      "revealedWords": 32
+    },
+    {
+      "id": "2e-b13b-recipe-2",
+      "type": "steps",
+      "initialWords": 16,
+      "hintWords": 16,
+      "revealedWords": 34
+    },
+    {
+      "id": "2e-b14-plan",
+      "type": "prompt",
+      "initialWords": 21,
+      "hintWords": 34,
+      "revealedWords": 21
+    },
+    {
+      "id": "2e-b15-write",
+      "type": "writing",
+      "initialWords": 30,
+      "hintWords": 30,
+      "revealedWords": 56
+    },
+    {
+      "id": "2e-b16-check",
+      "type": "prompt",
+      "initialWords": 25,
+      "hintWords": 36,
+      "revealedWords": 25
+    },
+    {
+      "id": "2e-b17-what-is",
+      "type": "choice",
+      "initialWords": 22,
+      "hintWords": 32,
+      "revealedWords": 38
+    },
+    {
+      "id": "2e-b18-exit",
+      "type": "writing",
+      "initialWords": 21,
+      "hintWords": 21,
+      "revealedWords": 32
+    }
+  ]
+}

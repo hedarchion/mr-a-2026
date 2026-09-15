@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160" fill="none" stroke="#1F2937" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" role="img">
+  <title>Two pupils holding hands together</title>
+  <circle cx="80" cy="44" r="16"/>
+  <path d="M80 62 L80 108 M80 76 L58 92 M80 76 L102 92 M80 108 L64 138 M80 108 L96 138"/>
+  <circle cx="160" cy="44" r="16"/>
+  <path d="M160 62 L160 108 M160 76 L138 92 M160 76 L182 92 M160 108 L144 138 M160 108 L176 138"/>
+  <path d="M102 92 L138 92" stroke="#0E7C7B" stroke-width="8"/>
+  <path d="M120 18 c-3-6-14-6-14 1 c0 6 7 9 14 15 c7-6 14-9 14-15 c0-7-11-7-14-1z" fill="#0E7C7B" stroke="none"/>
+</svg>
