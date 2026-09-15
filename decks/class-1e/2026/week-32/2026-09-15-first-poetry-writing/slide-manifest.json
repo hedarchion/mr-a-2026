@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "slides": [
+    {
+      "id": "1e-01-hook",
+      "type": "choice",
+      "initialWords": 27,
+      "hintWords": 39,
+      "revealedWords": 42
+    },
+    {
+      "id": "1e-02-swing",
+      "type": "choice",
+      "initialWords": 39,
+      "hintWords": 50,
+      "revealedWords": 54
+    },
+    {
+      "id": "1e-03-rhyme",
+      "type": "choice",
+      "initialWords": 28,
+      "hintWords": 35,
+      "revealedWords": 42
+    },
+    {
+      "id": "1e-04-fog",
+      "type": "passage",
+      "initialWords": 33,
+      "hintWords": 41,
+      "revealedWords": 33
+    },
+    {
+      "id": "1e-05-person",
+      "type": "choice",
+      "initialWords": 18,
+      "hintWords": 28,
+      "revealedWords": 33
+    },
+    {
+      "id": "1e-06-specific",
+      "type": "choice",
+      "initialWords": 32,
+      "hintWords": 42,
+      "revealedWords": 53
+    },
+    {
+      "id": "1e-07-bell",
+      "type": "steps",
+      "initialWords": 11,
+      "hintWords": 11,
+      "revealedWords": 30
+    },
+    {
+      "id": "1e-08-toolbox",
+      "type": "passage",
+      "initialWords": 44,
+      "hintWords": 44,
+      "revealedWords": 44
+    },
+    {
+      "id": "1e-09a-moon",
+      "type": "choice",
+      "initialWords": 12,
+      "hintWords": 19,
+      "revealedWords": 24
+    },
+    {
+      "id": "1e-09b-wind",
+      "type": "choice",
+      "initialWords": 13,
+      "hintWords": 22,
+      "revealedWords": 23
+    },
+    {
+      "id": "1e-09c-run",
+      "type": "choice",
+      "initialWords": 10,
+      "hintWords": 17,
+      "revealedWords": 20
+    },
+    {
+      "id": "1e-10-camera",
+      "type": "prompt",
+      "initialWords": 36,
+      "hintWords": 44,
+      "revealedWords": 36
+    },
+    {
+      "id": "1e-11-together",
+      "type": "steps",
+      "initialWords": 13,
+      "hintWords": 13,
+      "revealedWords": 35
+    },
+    {
+      "id": "1e-12-choose",
+      "type": "prompt",
+      "initialWords": 46,
+      "hintWords": 56,
+      "revealedWords": 46
+    },
+    {
+      "id": "1e-13-recipe",
+      "type": "passage",
+      "initialWords": 62,
+      "hintWords": 74,
+      "revealedWords": 62
+    },
+    {
+      "id": "1e-14-plan",
+      "type": "prompt",
+      "initialWords": 46,
+      "hintWords": 56,
+      "revealedWords": 46
+    },
+    {
+      "id": "1e-15-write",
+      "type": "writing",
+      "initialWords": 25,
+      "hintWords": 25,
+      "revealedWords": 36
+    },
+    {
+      "id": "1e-16-check",
+      "type": "passage",
+      "initialWords": 25,
+      "hintWords": 34,
+      "revealedWords": 25
+    },
+    {
+      "id": "1e-17-what",
+      "type": "choice",
+      "initialWords": 19,
+      "hintWords": 29,
+      "revealedWords": 33
+    },
+    {
+      "id": "1e-18-exit",
+      "type": "prompt",
+      "initialWords": 13,
+      "hintWords": 26,
+      "revealedWords": 13
+    }
+  ]
+}
